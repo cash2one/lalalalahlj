@@ -1,0 +1,18 @@
+<div class="flash">
+      <div class="foucebox" style="margin:0 auto">
+        <div class="bd">
+          <ul>{% for i in lht %}
+            <li><a href="/detail/{{ i._id }}" target="_blank"><img  src="{{ i.guide_image }}"><p><span style="line-height:55px;font-size:24px;color:#fff;">{{ i.title }}</span></p></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+        <div class="hd">
+          <div  class="hoverBg" ></div>
+          <ul>
+              {% for i in lht %}
+            <li><a href="/detail/{{ i._id }}" target="_blank"><img  src="{{ i.guide_image }}"></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>

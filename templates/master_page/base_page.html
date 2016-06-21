@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
+
+    {% endblock %}
+
+</head>
+<body>
+{#头文件#}
+{% block top %}
+    {% include 'master_page/header_page.html' %}
+{% endblock %}
+{#中间文件#}
+<div class="content ft30">
+    {% block middle %}
+    {% endblock %}
+
+</div>
+{#包含底部文件#}
+{#{% block footer %}#}
+{#    <div {% block footerclass %} {% endblock %}>#}
+{#        {% include 'news_channel/master_page/news-footer.html' %}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+<script type="text/javascript">
+
+		jQuery(".foucebox").slide({ mainCell:".bd ul", effect:"fold", autoPlay:true, delayTime:300, triggerTime:50, startFun:function(i){
+				//下面代码控制鼠标状态滑动
+				jQuery(".foucebox .hoverBg").animate({"margin-top":74*i},150);
+			}
+		});
+
+	</script>
+<script type="text/javascript">
+jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"top", autoPlay:true, autoPage:true, switchLoad:"_src" });
+	</script>
+<script type="text/javascript">jQuery(".notice").slide({ titCell:".tab-hd li", mainCell:".tab-bd",delayTime:0 });</script>
+<script type="text/javascript">
+
+	(function(){
+			var ind = 2; //初始位置
+			var nav= jQuery(".nav");
+			var init = jQuery(".nav .m").eq(ind);
+			var block = jQuery(".nav .block"); //滑块
+			block.css({"left":init.position().left-3}); //初始化滑块位置
+			nav.hover(function(){},function(){ block.animate({"left":init.position().left-3},100); }); //移出导航滑块返回
+
+			jQuery(".nav").slide({
+					type:"menu", //效果类型
+					titCell:".m", // 鼠标触发对象
+					targetCell:".sub", // 效果对象，必须被titCell包含
+					delayTime:300, // 效果时间
+					triggerTime:0, //鼠标延迟触发时间
+					returnDefault:true,//on返回初始位置
+					defaultIndex:ind,//初始位置
+					startFun:function(i,c,s,tit){ //控制当前滑块位置
+						block.animate({"left":tit.eq(i).position().left-3},100);
+					}
+				});
+	})()
+
+	</script>
+</body>
+</html>
+

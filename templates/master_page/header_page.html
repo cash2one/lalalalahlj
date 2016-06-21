@@ -1,0 +1,97 @@
+<div class="header">
+    <div class="logo"><a href="#"><img src="/static/images/logo.png" width="270" height="100"></a></div>
+    <div class="header_r">
+        <div class="seach">
+            <div class="seach_l">
+                <input name="" type="text">
+            </div>
+            <div class="seach_r">
+                <input name="" type="button">
+            </div>
+        </div>
+        <div class="header_nav">
+            <ul class="f14">
+                <li><a href="#">app</a></li>
+                <li><a href="#">公众号</a></li>
+                <li><a href="#">投稿</a></li>
+                <li><a href="#">登陆</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="menu">
+    <div class="navBar">
+        <ul id="ul_menu" class="nav clearfix">
+            {#      <li class="m on">#}
+            {#        <h3><a target="_blank" href="/">首页</a></h3>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">看龙江</a></h3>#}
+            {#        <ul class="sub">#}
+            {#          <li><a href="/list/576500b1dcc88e31a7d2e4b8">在前行</a></li>#}
+            {#          <li><a href="/list/5765013ddcc88e31a7d2e4bc">城市</a></li>#}
+            {#          <li><a href="/list/57650146dcc88e31a7d2e4bd">图说</a></li>#}
+            {#          <li><a href="/list/57650155dcc88e31a6f35010">龙江看点</a></li>#}
+            {#          <li><a href="/list/57650161dcc88e31a6f35011">人事任免</a></li>#}
+            {#          <li><a href="/list/576503c9dcc88e31a6f35012">暖新闻</a></li>#}
+            {#        </ul>#}
+            {#      </li>#}
+            {#      <li class="m on"><!-- 当前频道添加on -->#}
+            {#        <h3><a target="_blank" href="#">观时事</a></h3>#}
+            {#        <ul class="sub">#}
+            {#          <li><a href="/list/576503f2dcc88e31a6f35013">高层动态</a></li>#}
+            {#          <li><a href="/list/576503fedcc88e31a7d2e4be">法治观察</a></li>#}
+            {#          <li><a href="/list/5765040cdcc88e31a6f35014">舆论场</a></li>#}
+            {#          <li><a href="/list/57650418dcc88e31a7d2e4bf">扫描中国</a></li>#}
+            {#          <li><a href="/list/5765043adcc88e31a6f35015">啄木鸟</a></li>#}
+            {#        </ul>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">知天下</a></h3>#}
+            {#        <ul class="sub">#}
+            {#          <li><a href="#">世情博览</a></li>#}
+            {#          <li><a href="#">环球人物</a></li>#}
+            {#          <li><a href="#">趣事妙闻</a></li>#}
+            {#        </ul>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">品深度</a></h3>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">享悦读</a></h3>#}
+            {#        <ul class="sub">#}
+            {#          <li><a href="#">养生汇</a></li>#}
+            {#          <li><a href="#">味蕾吧</a></li>#}
+            {#          <li><a href="#">时尚范</a></li>#}
+            {#          <li><a href="#">爱运动</a></li>#}
+            {#        </ul>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">侃八卦</a></h3>#}
+            {#        <ul class="sub">#}
+            {#          <li><a href="#">红人馆</a></li>#}
+            {#          <li><a href="#">二次元</a></li>#}
+            {#          <li><a href="#">连环画</a></li>#}
+            {#        </ul>#}
+            {#      </li>#}
+            {#      <li class="m">#}
+            {#        <h3><a target="_blank" href="#">晓百态</a></h3>#}
+            {#      </li>#}
+            {#      <li class="block" style="left: 167px;"></li>#}
+            <!-- 滑动块 -->
+            {{ menu|safe }}
+        </ul>
+{#        <script type="text/javascript">#}
+{#            (function () {#}
+{#                $.ajax({#}
+{#                    type: "GET",#}
+{#                    url: "/menu/",#}
+{#                    dataType: "json",#}
+{#                    success: function (data) {#}
+{#                        $("#ul_menu").html(data);#}
+{#                    }#}
+{#                });#}
+{#            })(jQuery)#}
+{#        </script>#}
+    </div>
+</div>

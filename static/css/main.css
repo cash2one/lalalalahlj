@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+/* 全局常用设置 */
+*{margin:0px;padding:0px;}
+img{border:0px;}
+body,th,td{font:12px "Microsoft Yahei","simsun";}
+html,body{height:100%;}
+ul{list-style-type: none;}
+table{margin:0px;padding:0px;border-collapse:collapse;border:0px;}
+td{padding:0;}
+
+
+/* 常用字体颜色 */
+.white{color:#FFFFFF;}
+.black{color:#000000;}
+.gray{color:#777;}
+.red{color:#FF0000;}
+.crimson{color:#de0000;}
+.blue{color:#224181;}
+.yellow{color:#ff6700;}
+
+/* 常用字号 */
+.f0{font-size:0px;}
+.f12{font-size:12px;}
+.f13{font-size:13px;}
+.f14{font-size:14px;}
+.f15{font-size:15px;}
+.f16{font-size:16px;}
+.f22{font-size:22px;}
+.f24{font-size:24px;}
+
+/* 常用格式 */
+.JuZhong{margin:0 auto;}
+.Jushang{margin-top:10px;}
+.Txt_center{text-align:center;}
+.Txt_left{text-align:left;}
+.Txt_right{text-align:right;}
+.Txt_cu{ font-weight:700;}
+
+/*常用间距*/
+.zuobianju {margin-left:10px; display:inline;}
+.shangbianju {margin-top:10px; display:inline;}
+
+.ft10 {margin-top:10px;}
+.ft15 {margin-top:15px;}
+.ft30 {margin-top:30px;}
+.fl30 {margin-left:30px; display:inline;}
+.fr20 {margin-right:20px; display:inline;}
+
+/* 常用链接样式 */
+a{color:#000;text-decoration: none;}
+a:hover{text-decoration: underline;color:#ff6700;}
+
+.clear{clear:both;}
+
+

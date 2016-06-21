@@ -1,0 +1,220 @@
+{% extends "master_page/base_page.html" %}
+{% block title %}龙网{% endblock %}
+{% block middle %}
+    <div class="end_tlt ft15 f14">您当前的位置 ：<a href="#">首页</a> > {{ channel.Name }}</div>
+
+    <div class="content ft30">
+        <!---------left-------->
+        <div class="con_l">
+
+
+            <div class="news_tlt">{{ detail.Title }}</div>
+
+            <div class="news_about"><p>{{ detail.Source }}&nbsp;&nbsp;{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;作者：{{ detail.Author }}</p>
+
+                <div class="news_about_btn">
+                    <ul>
+                        <li><img src="/static/images/dot03.jpg" width="14" height="13"/>&nbsp;<a href="#">分享</a></li>
+                        <li><img src="/static/images/dot04.jpg" width="14" height="13"/>&nbsp;<a href="#">收藏</a></li>
+                        <li><img src="/static/images/dot05.jpg" width="14" height="13"/>&nbsp;&nbsp;<a href="#">评论</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="news_zw">
+                <div class="news_font f16">
+                   {{ detail.Content|safe }}
+                </div>
+                <div class="news_pdzb f14">频道主编：{{ detail.Editor }}</div>
+
+                <div class="news_xgyd ft30">
+                    <!---------相关阅读-------->
+                    <div class="www360buy" style="margin:0 auto">
+                        <div class="hd">
+                            <ul>
+                                <li>趣事妙闻</li>
+                                <li>时尚范</li>
+                                <li>爱运动</li>
+                                <li>红人馆</li>
+                                <li>二次元</li>
+                            </ul>
+                        </div>
+                        <div class="bd">
+
+                            <ul class="lh">
+                                <li>
+                                    {% for i in qsmw1 %}
+                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
+                                                                           height="250"/></a></div>
+                                      {% endfor %}
+                                    <div class="p-list f14">
+                                         {% for i in qsmw %}
+                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                         {% endfor %}
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                            <ul class="lh">
+                                <li>
+                                     {% for i in ssf1 %}
+                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
+                                                                           height="250"/></a></div>
+                                      {% endfor %}
+                                    <div class="p-list f14">
+                                         {% for i in ssf %}
+                                         <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                         {% endfor %}
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <ul class="lh">
+                                <li>
+                                     {% for i in ayd1 %}
+                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
+                                                                           height="250"/></a></div>
+                                      {% endfor %}
+                                    <div class="p-list f14">
+                                         {% for i in ayd %}
+                                         <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                         {% endfor %}
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <ul class="lh">
+                                <li>
+                                     {% for i in hrg1 %}
+                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
+                                                                           height="250"/></a></div>
+                                      {% endfor %}
+                                    <div class="p-list f14">
+                                         {% for i in hrg %}
+                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                         {% endfor %}
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                            <ul class="lh">
+                                <li>
+                                   {% for i in ecy1 %}
+                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
+                                                                           height="250"/></a></div>
+                                      {% endfor %}
+                                    <div class="p-list f14">
+                                         {% for i in ecy %}
+                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                         {% endfor %}
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!---------评论-------->
+                <div class="news_xgyd ft30">
+                    <div class="news_pl">
+                        <span>评论</span>
+                    </div>
+                    <div class="news_pl_b ft15">
+                        <p><textarea name="" cols="" rows=""></textarea></p>
+                        <span><input name="" type="button" value="发送"/></span>
+                    </div>
+                    <div class="news_pl_list">
+                        <ul>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                            <li>
+    <span>
+    <h4>大岩</h4>
+    <h5>1天前</h5>
+    </span>
+                                <p class="f14">
+                                    北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。北隍城乡山后村渔民邹少亮在北隍城岛北面海域从事捕捞生产时，捕获一只3.8斤重的龙虾。经上网搜索比对，此龙虾叫波斯顿龙虾，又称加拿大龙虾。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+          <!---------right-------->
+  {% include 'generic_components/right_side_bar.html' %}
+        {% include "master_page/footer_page.html" %}
+</div>
+     <script type="text/javascript">jQuery(".www360buy").slide({delayTime:0 });</script>
+{% endblock %}

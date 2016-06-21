@@ -6,7 +6,8 @@ import json
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import search_news_db, get_head_image, image_server, switch_string_to_time
+from longwang.mongodb_news import search_news_db, get_head_image, image_server, switch_string_to_time, get_images, \
+    get_mongodb_dict
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -29,15 +30,28 @@ def index():
     # 轮换图
     lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 5)
     # 要闻
-    yw = search_news_db([ObjectId("57650551dcc88e31a6f3501c")], 3)
+    # yw = search_news_db([ObjectId("57650551dcc88e31a6f3501c")], 3)
+    yw = get_images([ObjectId("5768ecd3dcc88e0c2b3bbbe6"), ObjectId("5768efccdcc88e0c2b3bbbed"),
+                     ObjectId("5768f550dcc88e0c25d886d0")])
     # 高层动态
-    gcdt = search_news_db([ObjectId("576503f2dcc88e31a6f35013")], 3)
+    # gcdt = search_news_db([ObjectId("576503f2dcc88e31a6f35013")], 3)
+    gcdt = get_images([ObjectId("5768e960dcc88e07cb182456"), ObjectId("5768ef17dcc88e0c2b3bbbeb"),
+                       ObjectId("5768f5ffdcc88e0c25d886d3")])
     # 快讯
-    kx = search_news_db([ObjectId("57650558dcc88e31a7d2e4c4")], 3)
+    # kx = search_news_db([ObjectId("57650558dcc88e31a7d2e4c4")], 3)
+    kx = get_images([ObjectId("5768eb0edcc88e07cb182458"), ObjectId("5768f1a5dcc88e0c2b3bbbf1"),
+                     ObjectId("5768f899dcc88e0c25d886d8")])
     # 本网原创
-    bwyc = search_news_db([ObjectId("57650560dcc88e31a7d2e4c5")], 3)
+    # bwyc = search_news_db([ObjectId("57650560dcc88e31a7d2e4c5")], 3)
+    bwyc = get_images([ObjectId("5768f08bdcc88e0c2b3bbbef"), ObjectId("5768f4b0dcc88e0c2b3bbbfa"),
+                       ObjectId("57690044dcc88e2870bc3d95")])
+    # 首页14条新闻
+    # list = db.News.find({"Status": 4, "Guideimage": {"$ne": ""}}).sort('Published', pymongo.DESCENDING).limit(14)
+    _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 14)
+    # for i in list:
+    #     _list.append(get_mongodb_dict(i))
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
-                           lht=lht, rmtj=rmtj, menu=get_menu())
+                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list)
 
 
 @index_page.route('/list/<channel>/')
@@ -54,13 +68,14 @@ def s_list(channel):
 @index_page.route('/list/<channel>/<page>')
 def s_list_page(channel, page=1):
     pre_page = 5
-    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4, "Guideimage": {"$ne": ""}}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
-    value=""
+    value = ""
     for i in news_list:
-      value=value+" <li><p><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" %\
-                  (image_server + i["Guideimage"], i["_id"],i["Title"],i["Summary"],switch_string_to_time(str(i["Published"])))
+        value = value + " <li><p><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                        (image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                         switch_string_to_time(str(i["Published"])))
     return json.dumps(value)
 
 

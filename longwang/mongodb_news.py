@@ -11,8 +11,8 @@ image_server = "http://125.211.222.237:17937/"
 
 
 # 根据编号  是否带图  调取的条数 新闻编号列表  新闻类型 是否推荐
-def search_news_db(Channel,  limit, list_db=[], newstype=1):
-    condition = {"Channel": {"$in": Channel}, "newstype": newstype, "Status": 4}
+def search_news_db(Channel, limit, list_db=[], newstype=1):
+    condition = {"Channel": {"$in": Channel}, "newstype": newstype, "Status": 4, "Guideimage": {"$ne": ""}}
     # if is_images == 1:
     #     condition.update({"Images": {"$ne": []}})
     if list_db != []:
@@ -59,8 +59,8 @@ def get_mongodb_dict(i):
     new_dict["images"] = i["Images"]
     new_dict["guide_image"] = image_server + i["Guideimage"]
     new_dict["publish_time"] = i["Published"]
-    # new_dict["cid"] = i["column_id"]["id"]
-    # new_dict["column"] = i["column_id"]["name"]
+    new_dict["cid"] = i["Channel"][0]
+    new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
     # new_dict["href"] = db.news_column.find_one({"_id": int(i["column_id"]["id"])})["des"]
     return new_dict
 
@@ -73,36 +73,10 @@ def switch_string_to_time(string):
     return publish_time
 
 
-# 根据编号  是否带图  调取的条数 新闻编号列表  是否头题 是否焦点
-def search_news_list_db(column_id, is_images, limit, list_db=[], is_head=0, is_focus=0):
-    condition = {"column_id.id": {"$in": column_id}, "is_head": is_head, "status": 1}
-    if is_images == 1:
-        condition.update({"images": {"$ne": []}})
-    if list_db != []:
-        id_list = []
-        for news_detail in list_db:
-            id_list.append(ObjectId(news_detail["_id"]))
-        condition.update({"_id": {"$nin": id_list}})
-    if is_focus == 1:
-        condition.update({"is_focus": 1})
-    news_list = db.news_detail.find(condition).sort('publish_time', pymongo.DESCENDING).limit(limit)
-    news_db_list = []
-    try:
-        for news_detail in news_list:
-            news_db_list.append(get_mongodb_dict(news_detail))
-    except:
-        # 当有乱码问题导致报错时，直接跳过重新获取新的新闻条目
-        news_list = db.news_detail.find(condition).sort('publish_time', pymongo.DESCENDING).skip(limit).limit(limit)
-        for news_detail in news_list:
-            news_db_list.append(get_mongodb_dict(news_detail))
-        pass
-    return news_db_list
-
-
 # 轮换图
 def get_head_image(channel, limit):
     lht = db.ChannelHeadImage.find({"ChannelID": ObjectId(channel)}).sort("no", pymongo.DESCENDING).limit(limit)
-    _lht=[]
+    _lht = []
     for i in lht:
         new_dict = {}
         new_dict["_id"] = i["NewsID"]
@@ -110,3 +84,11 @@ def get_head_image(channel, limit):
         new_dict["guide_image"] = image_server + i["HeadImage"]
         _lht.append(new_dict)
     return _lht
+
+
+def get_images(_list):
+    list = db.News.find({"_id": {"$in": _list}, "Status": 4}).sort('Published', pymongo.DESCENDING)
+    _list = []
+    for i in list:
+        _list.append(get_mongodb_dict(i))
+    return _list

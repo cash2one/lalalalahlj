@@ -57,7 +57,6 @@ def s_list_page(channel, page=1):
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
-    _list = []
     value=""
     for i in news_list:
       value=value+" <li><p><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" %\

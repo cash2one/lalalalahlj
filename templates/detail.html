@@ -1,5 +1,12 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+        img{max-width: 600px}
+    </style>
+
+{% endblock %}
 {% block middle %}
     <div class="end_tlt ft15 f14">您当前的位置 ：<a href="#">首页</a> > {{ channel.Name }}</div>
 

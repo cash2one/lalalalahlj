@@ -3,12 +3,15 @@
 {% block head %}
     {{ super() }}
     <style>
-        img{max-width: 600px}
+        img {
+            max-width: 600px
+        }
     </style>
 
 {% endblock %}
 {% block middle %}
-    <div class="end_tlt ft15 f14">您当前的位置 ：<a href="/">首页</a> > <a href="/list/{{ channel._id }}">{{ channel.Name }}</a></div>
+    <div class="end_tlt ft15 f14">您当前的位置 ：<a href="/">首页</a> > <a href="/list/{{ channel._id }}">{{ channel.Name }}</a>
+    </div>
 
     <div class="content ft30">
         <!---------left-------->
@@ -23,13 +26,14 @@
                     <ul>
                         <li><img src="/static/images/dot03.jpg" width="14" height="13"/>&nbsp;<a href="#">分享</a></li>
                         <li><img src="/static/images/dot04.jpg" width="14" height="13"/>&nbsp;<a href="#">收藏</a></li>
-                        <li><img src="/static/images/dot05.jpg" width="14" height="13"/>&nbsp;&nbsp;<a href="#">评论</a></li>
+                        <li><img src="/static/images/dot05.jpg" width="14" height="13"/>&nbsp;&nbsp;<a href="#">评论</a>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="news_zw">
                 <div class="news_font f16">
-                   {{ detail.Content|safe }}
+                    {{ detail.Content|safe }}
                 </div>
                 <div class="news_pdzb f14">频道主编：{{ detail.Editor }}</div>
 
@@ -50,13 +54,14 @@
                             <ul class="lh">
                                 <li>
                                     {% for i in qsmw1 %}
-                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
-                                                                           height="250"/></a></div>
-                                      {% endfor %}
+                                        <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"
+                                                                               width="250"
+                                                                               height="250"/></a></div>
+                                    {% endfor %}
                                     <div class="p-list f14">
-                                         {% for i in qsmw %}
-                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
-                                         {% endfor %}
+                                        {% for i in qsmw %}
+                                            <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                        {% endfor %}
                                     </div>
 
                                 </li>
@@ -65,14 +70,15 @@
 
                             <ul class="lh">
                                 <li>
-                                     {% for i in ssf1 %}
-                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
-                                                                           height="250"/></a></div>
-                                      {% endfor %}
+                                    {% for i in ssf1 %}
+                                        <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"
+                                                                               width="250"
+                                                                               height="250"/></a></div>
+                                    {% endfor %}
                                     <div class="p-list f14">
-                                         {% for i in ssf %}
-                                         <a href="/detail/{{ i._id }}">{{ i.title }}</a>
-                                         {% endfor %}
+                                        {% for i in ssf %}
+                                            <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                        {% endfor %}
                                     </div>
                                 </li>
 
@@ -80,14 +86,15 @@
 
                             <ul class="lh">
                                 <li>
-                                     {% for i in ayd1 %}
-                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
-                                                                           height="250"/></a></div>
-                                      {% endfor %}
+                                    {% for i in ayd1 %}
+                                        <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"
+                                                                               width="250"
+                                                                               height="250"/></a></div>
+                                    {% endfor %}
                                     <div class="p-list f14">
-                                         {% for i in ayd %}
-                                         <a href="/detail/{{ i._id }}">{{ i.title }}</a>
-                                         {% endfor %}
+                                        {% for i in ayd %}
+                                            <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                        {% endfor %}
                                     </div>
                                 </li>
 
@@ -95,14 +102,15 @@
 
                             <ul class="lh">
                                 <li>
-                                     {% for i in hrg1 %}
-                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
-                                                                           height="250"/></a></div>
-                                      {% endfor %}
+                                    {% for i in hrg1 %}
+                                        <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"
+                                                                               width="250"
+                                                                               height="250"/></a></div>
+                                    {% endfor %}
                                     <div class="p-list f14">
-                                         {% for i in hrg %}
-                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
-                                         {% endfor %}
+                                        {% for i in hrg %}
+                                            <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                        {% endfor %}
                                     </div>
                                 </li>
 
@@ -110,14 +118,15 @@
 
                             <ul class="lh">
                                 <li>
-                                   {% for i in ecy1 %}
-                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250" width="250"
-                                                                           height="250"/></a></div>
-                                      {% endfor %}
+                                    {% for i in ecy1 %}
+                                        <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"
+                                                                               width="250"
+                                                                               height="250"/></a></div>
+                                    {% endfor %}
                                     <div class="p-list f14">
-                                         {% for i in ecy %}
-                                        <a href="/detail/{{ i._id }}">{{ i.title }}</a>
-                                         {% endfor %}
+                                        {% for i in ecy %}
+                                            <a href="/detail/{{ i._id }}">{{ i.title }}</a>
+                                        {% endfor %}
                                     </div>
                                 </li>
 
@@ -219,9 +228,9 @@
 
         </div>
 
-          <!---------right-------->
-  {% include 'generic_components/right_side_bar.html' %}
+        <!---------right-------->
+        {% include 'generic_components/right_side_bar.html' %}
         {% include "master_page/footer_page.html" %}
-</div>
-     <script type="text/javascript">jQuery(".www360buy").slide({delayTime:0 });</script>
+    </div>
+    <script type="text/javascript">jQuery(".www360buy").slide({delayTime: 0});</script>
 {% endblock %}

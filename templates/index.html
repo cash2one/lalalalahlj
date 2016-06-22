@@ -1,124 +1,178 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script>
+        function getScroll() {
+            var top, left, width, height;
+            if (document.documentElement && document.documentElement.scrollTop) {
+                top = document.documentElement.scrollTop;
+                left = document.documentElement.scrollLeft;
+                width = document.documentElement.scrollWidth;
+                height = document.documentElement.scrollHeight;
+            }
+            else if (document.body) {
+                top = document.body.scrollTop;
+                left = document.body.scrollLeft;
+                width = document.body.scrollWidth;
+                height = document.body.scrollHeight;
+            }
+            return {top: top, left: left, width: width, height: height};
+        }
+        function scall() {
+            var v = getScroll();
+//alert(v.top);
+            var e = document.getElementById("scoll_news");
+{#            e.style.top = ((v.top) + 520) + "px"; //纵滚动条离顶部距离#}
+            e.scrollTop=((v.top) + 520) + "px"; //纵滚动条离顶部距离
+        }
+        window.onload = scall;
+        window.onscroll = scall;
+    </script>
+    <style type="text/css">
+        .wrap {
+            float: left;
+            width: 600px;
+            height: 2150px;
+            overflow: hidden;
+        }
+
+        .box1 {
+            width: 618px;
+            height: 2150px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        {#            background-color: #eee;#}
+        }
+
+
+    </style>
+{% endblock %}
 {% block middle %}
-  <div class="content ft30">
-  {% include "generic_components/list_rotation_graph.html" %}
-  </div>
-  
-  <!----专题----->
-  {% include "generic_components/zt_right_bar.html" %}
-  <!---------left-------->
+    <div class="content ft30">
+        {% include "generic_components/list_rotation_graph.html" %}
+    </div>
+
+    <!----专题----->
+    {% include "generic_components/zt_right_bar.html" %}
+    <!---------left-------->
 
     <!---------w620新闻-------->
-    <div class="left_news ft30">
-      <ul>
-          {% for i in _list %}
-        <li>
-          <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171" /></a></p>
-          <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-          <h4>{{ i.summary|truncate(50) }}</h4>
+    <div id="scoll_news" class="wrap ft30">
+        <div class="box1">
+            <div class="left_news ft30" style="height: 2150px">
+                <ul>
+                    {% for i in _list %}
+                        <li>
+                            <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                                  width="261" height="171"/></a></p>
+                            <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                            <h4>{{ i.summary|truncate(50) }}</h4>
           <span>
           <h5>{{ i.publish_time.strftime('%m-%d') }}</h5>
           <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
-          </span> </li>
-          {% endfor %}
-      </ul>
+          </span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-    
     <!---------mid-------->
-    
+
     <div class="con_i_r ft30">
-    
-    <div class="con_m"> 
-      <!----要闻----->
-      <div class="con_m_main">
-        <div class="mid_tlt">
-          <p><a href="/list/57650551dcc88e31a6f3501c">要闻</a></p>
-{#          <span>news</span> #}
+
+        <div class="con_m">
+            <!----要闻----->
+            <div class="con_m_main">
+                <div class="mid_tlt">
+                    <p><a href="/list/57650551dcc88e31a6f3501c">要闻</a></p>
+                    {#          <span>news</span> #}
+                </div>
+                <div class="mid_list">
+                    <ul>
+                        {% for i in yw %}
+                            <li>
+                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h4>{{ i.summary }}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!----高层动态----->
+            <div class="con_m_main ft30">
+                <div class="mid_tlt">
+                    <p><a href="/list/576503f2dcc88e31a6f35013">高层动态</a></p>
+                    {#          <span>SENIOR NEWS</span> #}
+                </div>
+                <div class="mid_list">
+                    <ul>
+                        {% for i in gcdt %}
+                            <li>
+                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h4>{{ i.summary }}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!----快讯----->
+            <div class="con_m_main ft30">
+                <div class="mid_tlt">
+                    <p><a href="/list/57650558dcc88e31a7d2e4c4">快讯</a></p>
+                    {#          <span>news flash</span>#}
+                </div>
+                <div class="mid_list">
+                    <ul>
+                        {% for i in kx %}
+                            <li>
+                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h4>{{ i.summary }}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!----本网原创----->
+            <div class="con_m_main ft30">
+                <div class="mid_tlt">
+                    <p><a href="/list/57650560dcc88e31a7d2e4c5">本网原创</a></p>
+                    {#          <span>original</span> #}
+                </div>
+                <div class="mid_list">
+                    <ul>
+                        {% for i in bwyc %}
+                            <li>
+                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h4>{{ i.summary }}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="mid_list">
-          <ul>
-              {% for i in yw %}
-            <li>
-              <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-              <h4>{{ i.summary }}</h4>
-            </li>
-            {% endfor %}
-          </ul>
+
+
+        <!---------right-------->
+        {% include 'generic_components/index_right_side_bar.html' %}
+
+        <div class="footer">
+            <div class="footer_logo"><img src="/static/images/jtlogo.jpg" width="300" height="52"></div>
+            <div class="footer_list">
+                <ul class="f14">
+                    <li>黑龙江新媒体集团 &amp; 黑龙江画报社&nbsp;&nbsp;&nbsp;版权所有</li>
+                    <li>Copyright © 2016 www.chinahlj.com ,All Rights Reserved</li>
+                    <li><a href="#">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;黑ICP备
+                        16016867号
+                    </li>
+
+                </ul>
+            </div>
         </div>
-      </div>
-      <!----高层动态----->
-      <div class="con_m_main ft30">
-        <div class="mid_tlt">
-          <p><a href="/list/576503f2dcc88e31a6f35013">高层动态</a></p>
-{#          <span>SENIOR NEWS</span> #}
-        </div>
-        <div class="mid_list">
-          <ul>
-               {% for i in gcdt %}
-            <li>
-              <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-              <h4>{{ i.summary }}</h4>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      <!----快讯----->
-      <div class="con_m_main ft30">
-        <div class="mid_tlt">
-          <p><a href="/list/57650558dcc88e31a7d2e4c4">快讯</a></p>
-{#          <span>news flash</span>#}
-        </div>
-        <div class="mid_list">
-          <ul>
-               {% for i in kx %}
-            <li>
-              <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-              <h4>{{ i.summary }}</h4>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      <!----本网原创----->
-      <div class="con_m_main ft30">
-        <div class="mid_tlt">
-          <p><a href="/list/57650560dcc88e31a7d2e4c5">本网原创</a></p>
-{#          <span>original</span> #}
-        </div>
-        <div class="mid_list">
-          <ul>
-              {% for i in bwyc %}
-            <li>
-              <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-              <h4>{{ i.summary }}</h4>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
+
     </div>
 
-  
-  <!---------right-------->
-  {% include 'generic_components/index_right_side_bar.html' %}
-  
-<div class="footer">
-  <div class="footer_logo"><img src="/static/images/jtlogo.jpg" width="300" height="52"></div>
-  <div class="footer_list">
-  <ul class="f14">
-  <li>黑龙江新媒体集团 &amp; 黑龙江画报社&nbsp;&nbsp;&nbsp;版权所有</li>
-  <li>Copyright © 2016 www.chinahlj.com ,All Rights Reserved</li>
-  <li><a href="#">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;黑ICP备 16016867号</li>
 
-  </ul>
-  </div>
-  </div>
-  
-  </div>
-  
-  
 
 
 {% endblock %}

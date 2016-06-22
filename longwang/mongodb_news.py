@@ -80,7 +80,7 @@ def get_head_image(channel, limit):
     for i in lht:
         new_dict = {}
         new_dict["_id"] = i["NewsID"]
-        new_dict["title"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Title"]
+        new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["HeadImage"]
         _lht.append(new_dict)
     return _lht

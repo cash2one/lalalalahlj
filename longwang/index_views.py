@@ -49,7 +49,7 @@ def index():
     bwyc = get_images([ObjectId("5768f08bdcc88e0c2b3bbbef"), ObjectId("5768f4b0dcc88e0c2b3bbbfa"),
                        ObjectId("57690044dcc88e2870bc3d95")])
     # 首页14条新闻
-    _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 14)
+    _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 40)
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
                            lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list,ph=ph)
 

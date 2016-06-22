@@ -6,22 +6,25 @@ import json
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import search_news_db, get_head_image, image_server, switch_string_to_time, get_images, \
-    get_mongodb_dict
+from longwang.mongodb_news import search_news_db, get_head_image, image_server, switch_string_to_time, get_images
 from bson import ObjectId
 
 db = conn.mongo_conn()
 
 # 侧边栏
 # 专题
-zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+# zt_images = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 4)
+# zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+zt_images = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 4)
+zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 3, zt_images)
 # 侃八卦
 gbg = search_news_db(
     [ObjectId("576504f7dcc88e31a6f3501a"), ObjectId("57650505dcc88e31a6f3501b"), ObjectId("5765050fdcc88e31a7d2e4c3")],
     10)
 # 热门图集
 rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, [], 2)
+# 新闻排行
+ph = search_news_db([ObjectId("5765045adcc88e31a6f35016"), ObjectId("57650499dcc88e31a6f35018"), ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 
@@ -46,12 +49,9 @@ def index():
     bwyc = get_images([ObjectId("5768f08bdcc88e0c2b3bbbef"), ObjectId("5768f4b0dcc88e0c2b3bbbfa"),
                        ObjectId("57690044dcc88e2870bc3d95")])
     # 首页14条新闻
-    # list = db.News.find({"Status": 4, "Guideimage": {"$ne": ""}}).sort('Published', pymongo.DESCENDING).limit(14)
     _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 14)
-    # for i in list:
-    #     _list.append(get_mongodb_dict(i))
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
-                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list)
+                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list,ph=ph)
 
 
 @index_page.route('/list/<channel>/')
@@ -62,7 +62,7 @@ def s_list(channel):
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
-                           detail=detail, menu=get_menu())
+                           detail=detail, menu=get_menu(),ph=ph)
 
 
 @index_page.route('/list/<channel>/<page>')
@@ -102,7 +102,7 @@ def detail(id):
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu())
+                           channel=channel, menu=get_menu(),ph=ph)
 
 
 # @index_page.route('/menu/')

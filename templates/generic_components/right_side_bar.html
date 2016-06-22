@@ -48,86 +48,29 @@
           <div class="tab-bd">
             <div class="tab-pal">
               <ul>
+                  {% for i in ph %}
                 <li>
-                  <p><img src="/static/images/no1.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no2.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no3.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no4.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no7.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no8.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
+                  <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  {% endfor %}
               </ul>
             </div>
             <div class="tab-pal" style=" display: none">
               <ul>
+                 {% for i in ph %}
                 <li>
-                  <p><img src="/static/images/no1.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no2.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no3.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no4.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no7.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no8.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
+                  <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  {% endfor %}
               </ul>
             </div>
             <div class="tab-pal" style=" display: none">
               <ul>
+                  {% for i in ph %}
                 <li>
-                  <p><img src="/static/images/no1.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no2.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no3.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no4.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no6.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no7.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
-                <li>
-                  <p><img src="/static/images/no8.jpg" width="21" height="25" /></p>
-                  <span><a href="#">我为什么要把房卖了！租房住？</a></span> </li>
+                  <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  {% endfor %}
               </ul>
             </div>
           </div>
@@ -160,29 +103,53 @@
       </div>
     </div>
 
-    <!----热门图集----->
+{#    <!----热门图集----->#}
+{#    <div class="con_r_main ft30">#}
+{#      <div class="right_tlt">#}
+{#        <p><a href="#">热门图集</a>#}
+{#        </p>#}
+{#        <span>photo</span> #}
+{#      </div>#}
+{#      <div class="con_r_main">#}
+{#          {% for i in rmtj %}#}
+{#              {% if loop.index0==0 %}#}
+{#        <div class="photo_list">#}
+{#          <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=220&h=110" width="220" height="110" /></a></p>#}
+{#          <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>#}
+{#        </div>#}
+{#              {% endif %}#}
+{#          {% endfor %}#}
+{#        <div class="right_list" style="margin-top:12px;">#}
+{#          <ul>#}
+{#               {% for i in rmtj %}#}
+{#              {% if loop.index0>0 %}#}
+{#            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>#}
+{#                {% endif %}#}
+{#          {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+ <!----热门图集----->
     <div class="con_r_main ft30">
       <div class="right_tlt">
-        <p><a href="#">热门图集</a>
-        </p>
-{#        <span>photo</span> #}
-      </div>
+        <p><a href="#">热门图集</a></p>
+        <span>photo</span> </div>
       <div class="con_r_main">
-          {% for i in rmtj %}
-              {% if loop.index0==0 %}
         <div class="photo_list">
-          <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=220&h=110" width="220" height="110" /></a></p>
-          <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+          <p><a href="#"><img src="/static/images/pic02.jpg" width="220" height="110" /></a></p>
+          <h3 class="Txt_cu"><a href="#">中纪委机关报刊文：电视问政领导被送听物后须观后效</a></h3>
         </div>
-              {% endif %}
-          {% endfor %}
         <div class="right_list" style="margin-top:12px;">
           <ul>
-               {% for i in rmtj %}
-              {% if loop.index0>0 %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-                {% endif %}
-          {% endfor %}
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
+            <li><a href="#">再谈为什么线下财富管理公司基本都</a></li>
           </ul>
         </div>
       </div>

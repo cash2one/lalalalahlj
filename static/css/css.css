@@ -80,10 +80,11 @@
 .left_news ul {vertical-align:middle;}
 .left_news ul li {width:307px; border-left:2px solid #f0f0f0; border-right:2px solid #f0f0f0;  border-bottom:2px solid #f0f0f0; padding-bottom:18px; margin-left:-2px; display:inline-block; float:left;}
 .left_news ul li p {width:261px; height:171px; font-size:0px; margin:0 auto; margin-top:20px;}
-.left_news ul li h3 {width:261px; display:block; height:auto; line-height:26px; font-size:18px; margin:0 auto; overflow:hidden; margin-top:13px;}
+.left_news ul li h3 {width:261px; display:block;
+    height: 26px; line-height:26px; font-size:18px; margin:0 auto; overflow:hidden; margin-top:13px;}
 .left_news ul li h3 a { text-decoration:none; color:#333;}
 .left_news ul li h3 a:hover { text-decoration:none; color:#5799b3;}
-.left_news ul li h4 {width:261px; display:block; height:auto; line-height:20px; font-size:14px; font-weight:normal; margin:0 auto; color:#666; margin-top:15px;}
+.left_news ul li h4 {width:261px; display:block; height:60px; line-height:20px; font-size:14px; font-weight:normal; margin:0 auto; color:#666; margin-top:15px;}
 .left_news ul li span {width:261px; height:24px; display:block; margin:0 auto; margin-top:20px;}
 .left_news ul li span h5 {width:60px; height:24px; line-height:24px; float:left; color:#a0a0a0; font-weight:normal; font-size:12px;}
 .left_news ul li span h6 {width:62px; height:22px; line-height:22px; float:right; border:1px solid #e2e2e2; font-weight:normal; text-align:center;}

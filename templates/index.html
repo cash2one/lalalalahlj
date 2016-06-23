@@ -69,7 +69,7 @@
                             <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary|truncate(50) }}</h4>
           <span>
-          <h5>{{ i.publish_time.strftime('%m-%d') }}</h5>
+          <h5>{{ i.publish_time }}</h5>
           <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
           </span></li>
                     {% endfor %}

@@ -2,6 +2,7 @@
 # filename:mongodb_news.py
 # __author__ = 'wanglina'
 import datetime
+import time
 from bson import ObjectId
 import pymongo
 from connect import conn
@@ -11,10 +12,10 @@ image_server = "http://125.211.222.237:17937/"
 
 
 # 根据编号  是否带图  调取的条数 新闻编号列表  新闻类型 是否推荐
-def search_news_db(Channel, limit, list_db=[], newstype=1):
-    condition = {"Channel": {"$in": Channel}, "newstype": newstype, "Status": 4, "Guideimage": {"$ne": ""}}
-    # if is_images == 1:
-    #     condition.update({"Images": {"$ne": []}})
+def search_news_db(Channel, limit, Guideimage=0, list_db=[], newstype=1):
+    condition = {"Channel": {"$in": Channel}, "newstype": newstype, "Status": 4}
+    if Guideimage == 1:
+        condition.update({"Guideimage": {"$ne": ""}})
     if list_db != []:
         id_list = []
         for news_detail in list_db:
@@ -57,8 +58,8 @@ def get_mongodb_dict(i):
     new_dict["title"] = i["Title"]
     new_dict["summary"] = i["Summary"]
     new_dict["images"] = i["Images"]
-    new_dict["guide_image"] = image_server + i["Guideimage"]
-    new_dict["publish_time"] = i["Published"]
+    new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
+    new_dict["publish_time"] = datetime_op(i["Published"])
     new_dict["cid"] = i["Channel"][0]
     new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
     # new_dict["href"] = db.news_column.find_one({"_id": int(i["column_id"]["id"])})["des"]
@@ -71,6 +72,26 @@ def switch_string_to_time(string):
     if publish_time.year < 1900:  # 有些时间抓取错误所以做特殊处理
         publish_time = datetime.datetime.now()
     return publish_time
+
+
+# 把datetime转成字符串
+def datetime_toString(dt):
+    return dt.strftime("%Y-%m-%d-%H")
+
+
+# 把字符串转成时间戳形式
+def string_toTimestamp(strTime):
+    return time.mktime(switch_string_to_time(strTime).timetuple())
+
+
+# 把时间戳转成字符串形式
+def timestamp_toString(stamp):
+    return time.strftime("%Y-%m-%d-%H", time.localtime(stamp))
+
+
+# 把datetime类型转外时间戳形式
+def datetime_toTimestamp(dateTim):
+    return time.mktime(dateTim.timetuple())
 
 
 # 轮换图
@@ -92,3 +113,23 @@ def get_images(_list):
     for i in list:
         _list.append(get_mongodb_dict(i))
     return _list
+
+
+def datetime_op(date_time):
+    now = datetime.datetime.now()
+    seconds = int((now - date_time).seconds)
+    year = seconds / 525660
+    day = seconds / 86400
+    hour = seconds / 3600
+    minute = seconds / 60
+    if year > 0:
+        return '{0}年前'.format(year)
+    if day > 0:
+        return '{0}天前'.format(day)
+    if hour > 0:
+        return '{0}小时前'.format(hour)
+    if minute > 0:
+        return '{0}分钟前'.format(minute)
+    if seconds < 60:
+        return '刚刚'
+    return str(date_time)

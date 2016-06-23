@@ -32,11 +32,11 @@
             <ul id="ul_content">
                 {% for i in channel %}
                     <li>
-                        <p><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></p>
+                        <p {% if i.guide_image=="" %}style="display: none"{% endif %}><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></p>
                         <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         {#    <h6><a href="#">舆论场</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;43分钟前</h6>#}
-                        <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time.strftime('%Y-%m-%d %H:%M') }}</h6>
+                        <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
                     </li>
                 {% endfor %}
             </ul>

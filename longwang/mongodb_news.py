@@ -8,6 +8,7 @@ import pymongo
 from connect import conn
 
 db = conn.mongo_conn()
+
 image_server = "http://125.211.222.237:17937/"
 
 
@@ -75,23 +76,23 @@ def switch_string_to_time(string):
 
 
 # 把datetime转成字符串
-def datetime_toString(dt):
+def dt_to_s(dt):
     return dt.strftime("%Y-%m-%d-%H")
 
 
 # 把字符串转成时间戳形式
-def string_toTimestamp(strTime):
+def s_to_t(strTime):
     return time.mktime(switch_string_to_time(strTime).timetuple())
 
 
 # 把时间戳转成字符串形式
-def timestamp_toString(stamp):
+def t_to_s(stamp):
     return time.strftime("%Y-%m-%d-%H", time.localtime(stamp))
 
 
 # 把datetime类型转外时间戳形式
-def datetime_toTimestamp(dateTim):
-    return time.mktime(dateTim.timetuple())
+def d_to_s(dateTime):
+    return time.mktime(dateTime.timetuple())
 
 
 # 轮换图

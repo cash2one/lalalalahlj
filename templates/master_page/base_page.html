@@ -8,7 +8,22 @@
         <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
         <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
-
+        <script>
+            $(function () {
+                get_hot();
+            });
+            //热词切换
+            function get_hot() {
+                $.ajaxSettings.async = false;
+                $.getJSON("/get_hot/", function (result) {
+                    $("#ul_hot").html(result.key);
+                });
+            }
+            function js_method(akey) {
+                    var url = "http://www.hljss.com"+encodeURI("/s/" + akey + "/");
+                    window.open(url, '_blank');
+            }
+        </script>
     {% endblock %}
 
 </head>
@@ -25,9 +40,9 @@
 </div>
 {#包含底部文件#}
 {% block footer %}
-{#    <div {% block footerclass %} {% endblock %}>#}
-{#        {% include 'master_page/footer_page.html' %}#}
-{#    </div>#}
+    {#    <div {% block footerclass %} {% endblock %}>#}
+    {#        {% include 'master_page/footer_page.html' %}#}
+    {#    </div>#}
 {% endblock %}
 
 <script type="text/javascript">

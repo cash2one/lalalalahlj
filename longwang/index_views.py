@@ -2,7 +2,8 @@
 # filename:index_news.py
 # __author__ = 'wanglina'
 import json
-import datetime
+
+import math
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
@@ -10,7 +11,7 @@ from longwang.mongodb_news import search_news_db, get_head_image, image_server, 
 from bson import ObjectId
 
 db = conn.mongo_conn()
-
+db_redis = conn.redis_conn()
 # 侧边栏
 # 专题
 # zt_images = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 4)
@@ -20,7 +21,7 @@ zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 3, 0, zt_images)
 # 侃八卦
 gbg = search_news_db(
     [ObjectId("576504f7dcc88e31a6f3501a"), ObjectId("57650505dcc88e31a6f3501b"), ObjectId("5765050fdcc88e31a7d2e4c3")],
-    10)
+    8)
 # 热门图集
 rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
 # 新闻排行
@@ -131,3 +132,19 @@ def get_menu():
 
     value += "<li class='block' style='left: 167px;'></li>"
     return value
+
+
+# 热词获取
+@index_page.route('/get_hot/')
+def search_hot_redis():
+    string = ""
+    count = 0
+    for i in db_redis.hkeys('hot_searh'):
+        if count <= 8:
+            count += 1
+            string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+                i, i)
+        else:
+            pass
+
+    return json.dumps({"key": string})

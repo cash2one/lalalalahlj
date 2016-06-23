@@ -2,12 +2,12 @@
 # filename:index_news.py
 # __author__ = 'wanglina'
 import json
-
-import math
+import urllib2
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, get_images
+from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, get_images, \
+    get_mongodb_dict
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -29,6 +29,9 @@ ph = search_news_db(
     [ObjectId("5765045adcc88e31a6f35016"), ObjectId("57650499dcc88e31a6f35018"), ObjectId("5765050fdcc88e31a7d2e4c3")],
     8)
 index_page = Blueprint('index_page', __name__, template_folder='templates')
+
+# 分页
+pre_page = 9
 
 
 @index_page.route('/')
@@ -61,7 +64,7 @@ def index():
 def s_list(channel):
     # 轮换图
     lht = get_head_image(ObjectId(channel), 5)
-    c_list = search_news_db([ObjectId(channel)], 5)
+    c_list = search_news_db([ObjectId(channel)], pre_page)
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
@@ -70,7 +73,6 @@ def s_list(channel):
 
 @index_page.route('/list/<channel>/<page>')
 def s_list_page(channel, page=1):
-    pre_page = 5
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
@@ -148,3 +150,17 @@ def search_hot_redis():
             pass
 
     return json.dumps({"key": string})
+
+
+# 全文搜索
+@index_page.route('/ss/<keywords>/')
+@index_page.route('/ss/<keywords>/<page>')
+def ss_keywords(keywords, page=1):
+    keyword = urllib2.unquote(str(keywords))
+    k_list = db.News.find({"$text": {"$search": keyword}, "Status": 4}).sort('Published', pymongo.DESCENDING).skip(
+        pre_page * (int(page) - 1)).limit(pre_page)
+    c_list = []
+    for i in k_list:
+        c_list.append(get_mongodb_dict(i))
+    return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), ph=ph,
+                           c_list=c_list, keyword=keyword)

@@ -20,14 +20,33 @@
                 });
             }
             function js_method(akey) {
-                    var url = "http://www.hljss.com"+encodeURI("/s/" + akey + "/");
-                    window.open(url, '_blank');
+                var url = "http://www.hljss.com" + encodeURI("/s/" + akey + "/");
+                window.open(url, '_blank');
+            }
+            function s_method(key) {
+                var a = ""
+                if (key == null) {
+                    a = encodeURI($("#keyword").val());
+                    if (a == "") {
+                        return false;
+                    }
+                }
+                else {
+                    a = key;
+                }
+                if (a == "") {
+                    return false;
+                } else {
+                    var url = encodeURI("/ss/" + a + "/");
+                    window.open(url, '_blank')
+                }
+
             }
         </script>
     {% endblock %}
 
 </head>
-<body>
+<body onkeydown="if(event.keyCode==13){s_method();}">
 {#头文件#}
 {% block top %}
     {% include 'master_page/header_page.html' %}

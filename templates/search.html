@@ -1,0 +1,59 @@
+{% extends "master_page/base_page.html" %}
+{% block title %}龙网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#loading").click(function () {
+                var page = $("#page").val();
+{#                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {#}
+{#                    $('#ul_content').append(result);#}
+{#                    $("#page").val(parseInt(page) + 1);#}
+{#                });#}
+            });
+
+        });
+
+    </script>
+{% endblock %}
+{% block middle %}
+    <!---------left-------->
+    <div class="con_l">
+{#        {% include "generic_components/list_rotation_graph.html" %}#}
+
+        <!---------w950新闻分类-------->
+{#        <div class="list_tlt ft30">#}
+{#            <p><img src="/static/images/ylc_logo.png" width="46" height="45"/></p>#}
+{#            <span>{{ detail.Name }}</span>#}
+{#        </div>#}
+
+        <div class="list_news">
+            <ul id="ul_content">
+                {% for i in c_list %}
+                    <li>
+                        <p {% if i.guide_image=="" %}style="display: none"{% endif %}><img
+                                src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></p>
+                        <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
+                        <h5>{{ i.summary }}</h5>
+                        {#    <h6><a href="#">舆论场</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;43分钟前</h6>#}
+                        <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="list_news_jz" id="loading">点击浏览更多文章</div>
+        <input type="hidden" id="page" value="2">
+
+    </div>
+
+    <!---------right-------->
+    {% include 'generic_components/right_side_bar.html' %}
+
+{% endblock %}
+
+{% block footer %}
+        {% include 'master_page/footer_page.html' %}
+{% endblock %}

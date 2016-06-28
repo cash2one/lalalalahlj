@@ -1358,5 +1358,34 @@
     margin-top: 5px;
 }
 
+/**********分页开始**********/
+DIV.jogger {
+	text-align:center;
+PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 7px;
+ PADDING-TOP: 2px; FONT-FAMILY: "Lucida Sans Unicode",
+ "Lucida Grande", LucidaGrande, "Lucida Sans", Geneva, Verdana, sans-serif
+}
+DIV.jogger A {
+PADDING-RIGHT: 0.64em; PADDING-LEFT: 0.64em; PADDING-BOTTOM: 0.43em;
+ MARGIN: 2px; COLOR: #fff; PADDING-TOP: 0.5em;
+BACKGROUND-COLOR: #ccc; TEXT-DECORATION: none
+}
+DIV.jogger A:hover {
+PADDING-RIGHT: 0.64em; PADDING-LEFT: 0.64em; PADDING-BOTTOM: 0.43em;
+ MARGIN: 2px; COLOR: #666; PADDING-TOP: 0.5em; BACKGROUND-COLOR: #dfdfdf;
+}
+DIV.jogger A:active {
+PADDING-RIGHT: 0.64em; PADDING-LEFT: 0.64em; PADDING-BOTTOM: 0.43em;
+ MARGIN: 2px; COLOR: #fff; PADDING-TOP: 0.5em; BACKGROUND-COLOR: #dfdfdf
+}
+DIV.jogger SPAN.current {
+PADDING-RIGHT: 0.64em; PADDING-LEFT: 0.64em; PADDING-BOTTOM: 0.43em;
+ MARGIN: 2px; COLOR: #666; PADDING-TOP: 0.5em; BACKGROUND-COLOR: #dfdfdf
+}
+DIV.jogger SPAN.disabled {
+DISPLAY: none
+}
 
-	
+.content_l {width:850px; height:auto; float:left;}
+/*.content_r {width:320px; height:auto; float:left;}*/
+/**********分页结束**********/

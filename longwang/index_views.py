@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-#
 # filename:index_news.py
-# __author__ = 'wanglina'
+__author__ = 'wanglina'
+from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
@@ -88,7 +89,51 @@ def s_list_page(channel, page=1):
 
 
 @index_page.route('/detail/<id>/')
-def detail(id):
+@index_page.route('/detail/<id>/<page>/')
+def detail(id, page=1):
+    # 新闻详细
+    detail = db.News.find_one({"_id": ObjectId(id)})
+    # 频道
+    channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
+    # 趣事秒闻
+    qsmw1 = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 1)
+    qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 8, qsmw1)
+    # 时尚范
+    ssf1 = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 1)
+    ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 8, ssf1)
+    # 爱运动
+    ayd1 = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 1)
+    ayd = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 8, ayd1)
+    # 红人馆
+    hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
+    hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
+    # 二次元
+    ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
+    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
+    # <div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>
+    count = detail["Content"].split(
+        '<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>')
+    # print len(count)
+    # for i in count:
+    #     print i
+    d = {}
+    d["_id"] = detail["_id"]
+    d["Title"] = detail["Title"]
+    d["Source"] = detail["Source"]
+    d["Published"] = detail["Published"]
+    d["Author"] = detail["Author"]
+    d["Content"] = detail["Content"]
+    if len(count) > 1:
+        d["Content"] = count[int(page) - 1]
+    d["Editor"] = detail["Editor"]
+    pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
+    return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
+                           qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
+                           channel=channel, menu=get_menu(), ph=ph, pagebar_html=pagebar_html, count=len(count))
+
+
+@index_page.route('/detail_all/<id>/')
+def detail_all(id):
     # 新闻详细
     detail = db.News.find_one({"_id": ObjectId(id)})
     # 频道
@@ -110,7 +155,7 @@ def detail(id):
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), ph=ph)
+                           channel=channel, menu=get_menu(), ph=ph,  count=1)
 
 
 # @index_page.route('/menu/')

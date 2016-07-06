@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-#
 # filename:index_news.py
-__author__ = 'wanglina'
+# __author__ = 'wanglina'
 from longwang.pager.pager import pager
 import json
 import urllib2
@@ -35,6 +35,7 @@ index_page = Blueprint('index_page', __name__, template_folder='templates')
 pre_page = 9
 
 
+# 首页
 @index_page.route('/')
 def index():
     # 轮换图
@@ -61,6 +62,7 @@ def index():
                            lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list, ph=ph)
 
 
+# 二级频道列表
 @index_page.route('/list/<channel>/')
 def s_list(channel):
     # 轮换图
@@ -72,6 +74,7 @@ def s_list(channel):
                            detail=detail, menu=get_menu(), ph=ph)
 
 
+# 二级频道分页
 @index_page.route('/list/<channel>/<page>')
 def s_list_page(channel, page=1):
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
@@ -88,6 +91,7 @@ def s_list_page(channel, page=1):
     return json.dumps(value)
 
 
+# 详细页面 分页显示
 @index_page.route('/detail/<id>/')
 @index_page.route('/detail/<id>/<page>/')
 def detail(id, page=1):
@@ -132,6 +136,7 @@ def detail(id, page=1):
                            channel=channel, menu=get_menu(), ph=ph, pagebar_html=pagebar_html, count=len(count))
 
 
+# 详细页面全部显示
 @index_page.route('/detail_all/<id>/')
 def detail_all(id):
     # 新闻详细
@@ -155,7 +160,7 @@ def detail_all(id):
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), ph=ph,  count=1)
+                           channel=channel, menu=get_menu(), ph=ph, count=1)
 
 
 # @index_page.route('/menu/')

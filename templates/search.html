@@ -43,10 +43,10 @@
             </ul>
         </div>
 
-
+      {% if c_list|length>8 %}
         <div class="list_news_jz" id="loading">点击浏览更多文章</div>
         <input type="hidden" id="page" value="2">
-
+      {% endif %}
     </div>
 
     <!---------right-------->

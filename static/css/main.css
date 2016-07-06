@@ -16,6 +16,7 @@ td{padding:0;}
 .red{color:#FF0000;}
 .crimson{color:#de0000;}
 .blue{color:#224181;}
+.sky{color:#46abd0;}
 .yellow{color:#ff6700;}
 
 /* 常用字号 */
@@ -28,6 +29,7 @@ td{padding:0;}
 .f22{font-size:22px;}
 .f24{font-size:24px;}
 
+.fbold{font-weight:bold;}
 /* 常用格式 */
 .JuZhong{margin:0 auto;}
 .Jushang{margin-top:10px;}
@@ -43,8 +45,16 @@ td{padding:0;}
 .ft10 {margin-top:10px;}
 .ft15 {margin-top:15px;}
 .ft30 {margin-top:30px;}
+.fl10 {margin-left:10px;}
+.fl20 {margin-left:20px;}
+.fl48 {margin-left:48px;}
 .fl30 {margin-left:30px; display:inline;}
 .fr20 {margin-right:20px; display:inline;}
+.fr30 {margin-right:30px;}
+.fb10 {margin-bottom:10px;}
+.fb15 {margin-bottom:15px;}
+.fb60 {margin-bottom:60px;}
+
 
 /* 常用链接样式 */
 a{color:#000;text-decoration: none;}

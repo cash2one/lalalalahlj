@@ -140,4 +140,5 @@ def datetime_op(date_time):
 def search_indexnews_db(Channel, limit):
     condition = {"ChannelId": str(Channel)}
     news_list = db.IndexNews.find(condition).sort("orderno").limit(limit)
+    print db.IndexNews.find(condition).count()
     return news_list

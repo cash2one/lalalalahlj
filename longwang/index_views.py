@@ -25,10 +25,7 @@ gbg = search_news_db(
     8)
 # 热门图集
 rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
-# 新闻排行
-hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
-zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
-yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+
 
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 
@@ -52,7 +49,10 @@ def index():
 
     # 本网原创
     bwyc = search_indexnews_db("576b3759a6d2e970226062ce", 3)
-
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 首页14条新闻
     _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 40)
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
@@ -67,6 +67,10 @@ def s_list(channel):
     c_list = search_news_db([ObjectId(channel)], pre_page)
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
 
@@ -102,9 +106,9 @@ def detail(id, page=1):
     # 时尚范
     ssf1 = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 1)
     ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 8, ssf1)
-    # 爱运动
-    ayd1 = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 1)
-    ayd = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 8, ayd1)
+    # 味蕾吧
+    ayd1 = search_news_db([ObjectId("576504a3dcc88e31a7d2e4c1")], 1)
+    ayd = search_news_db([ObjectId("576504a3dcc88e31a7d2e4c1")], 8, ayd1)
     # 红人馆
     hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
     hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
@@ -127,6 +131,10 @@ def detail(id, page=1):
     if len(count) > 1:
         d["Content"] = count[int(page) - 1]
     d["Editor"] = detail["Editor"]
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
@@ -156,6 +164,10 @@ def detail_all(id):
     # 二次元
     ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1)
@@ -211,6 +223,10 @@ def ss_keywords(keywords, page=1):
     c_list = []
     for i in k_list:
         c_list.append(get_mongodb_dict(i))
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
                            zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)

@@ -7,7 +7,7 @@ import urllib2
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, get_images, \
+from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict
 from bson import ObjectId
 
@@ -26,9 +26,10 @@ gbg = search_news_db(
 # 热门图集
 rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
 # 新闻排行
-ph = search_news_db(
-    [ObjectId("5765045adcc88e31a6f35016"), ObjectId("57650499dcc88e31a6f35018"), ObjectId("5765050fdcc88e31a7d2e4c3")],
-    8)
+hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 # 分页
@@ -41,25 +42,21 @@ def index():
     # 轮换图
     lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 5)
     # 要闻
-    # yw = search_news_db([ObjectId("57650551dcc88e31a6f3501c")], 3)
-    yw = get_images([ObjectId("5768ecd3dcc88e0c2b3bbbe6"), ObjectId("5768efccdcc88e0c2b3bbbed"),
-                     ObjectId("5768f550dcc88e0c25d886d0")])
+    yw = search_indexnews_db("576b36a9a6d2e970226062c3", 3)
+
     # 高层动态
-    # gcdt = search_news_db([ObjectId("576503f2dcc88e31a6f35013")], 3)
-    gcdt = get_images([ObjectId("5768e960dcc88e07cb182456"), ObjectId("5768ef17dcc88e0c2b3bbbeb"),
-                       ObjectId("5768f5ffdcc88e0c25d886d3")])
+    gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 3)
+
     # 快讯
-    # kx = search_news_db([ObjectId("57650558dcc88e31a7d2e4c4")], 3)
-    kx = get_images([ObjectId("5768eb0edcc88e07cb182458"), ObjectId("5768f1a5dcc88e0c2b3bbbf1"),
-                     ObjectId("5768f899dcc88e0c25d886d8")])
+    kx = search_indexnews_db("576b373aa6d2e970226062cb", 3)
+
     # 本网原创
-    # bwyc = search_news_db([ObjectId("57650560dcc88e31a7d2e4c5")], 3)
-    bwyc = get_images([ObjectId("5768f08bdcc88e0c2b3bbbef"), ObjectId("5768f4b0dcc88e0c2b3bbbfa"),
-                       ObjectId("57690044dcc88e2870bc3d95")])
+    bwyc = search_indexnews_db("576b3759a6d2e970226062ce", 3)
+
     # 首页14条新闻
     _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 40)
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
-                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list, ph=ph)
+                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list, hours=hours, zb=zb, yb=yb)
 
 
 # 二级频道列表
@@ -71,7 +68,7 @@ def s_list(channel):
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
-                           detail=detail, menu=get_menu(), ph=ph)
+                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
 
 
 # 二级频道分页
@@ -133,7 +130,8 @@ def detail(id, page=1):
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), ph=ph, pagebar_html=pagebar_html, count=len(count))
+                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
+                           count=len(count))
 
 
 # 详细页面全部显示
@@ -160,7 +158,7 @@ def detail_all(id):
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), ph=ph, count=1)
+                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1)
 
 
 # @index_page.route('/menu/')
@@ -207,10 +205,12 @@ def search_hot_redis():
 @index_page.route('/ss/<keywords>/<page>')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
+    # {"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
     k_list = db.News.find({"$text": {"$search": keyword}, "Status": 4}).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
     c_list = []
     for i in k_list:
         c_list.append(get_mongodb_dict(i))
-    return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), ph=ph,
+    return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
+                           zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)

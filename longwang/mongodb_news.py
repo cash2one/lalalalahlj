@@ -134,3 +134,10 @@ def datetime_op(date_time):
     if seconds < 60:
         return '刚刚'
     return str(date_time)
+
+
+# 获取组版新闻
+def search_indexnews_db(Channel, limit):
+    condition = {"ChannelId": str(Channel)}
+    news_list = db.IndexNews.find(condition).sort("orderno").limit(limit)
+    return news_list

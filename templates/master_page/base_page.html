@@ -7,6 +7,7 @@
         <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
         <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
         <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/static/js/sousuo.js"></script>
         <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
         <script>
             $(function () {
@@ -19,29 +20,7 @@
                     $("#ul_hot").html(result.key);
                 });
             }
-            function js_method(akey) {
-                var url = "http://www.hljss.com" + encodeURI("/s/" + akey + "/");
-                window.open(url, '_blank');
-            }
-            function s_method(key) {
-                var a = ""
-                if (key == null) {
-                    a = encodeURI($("#keyword").val());
-                    if (a == "") {
-                        return false;
-                    }
-                }
-                else {
-                    a = key;
-                }
-                if (a == "") {
-                    return false;
-                } else {
-                    var url = encodeURI("/ss/" + a + "/");
-                    window.open(url, '_blank')
-                }
 
-            }
         </script>
     {% endblock %}
 

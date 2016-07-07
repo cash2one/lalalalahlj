@@ -48,28 +48,28 @@
           <div class="tab-bd">
             <div class="tab-pal">
               <ul>
-                  {% for i in ph %}
+                {% for i in hours %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
             <div class="tab-pal" style=" display: none">
               <ul>
-                 {% for i in ph %}
+                 {% for i in zb %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
             <div class="tab-pal" style=" display: none">
               <ul>
-                  {% for i in ph %}
+                {% for i in yb %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
+                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>

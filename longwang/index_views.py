@@ -15,10 +15,9 @@ db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 # 侧边栏
 # 专题
-# zt_images = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 4)
-# zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
-zt_images = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 4, 1)
-zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 3, 0, zt_images)
+zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+
 # 侃八卦
 gbg = search_news_db(
     [ObjectId("576504f7dcc88e31a6f3501a"), ObjectId("57650505dcc88e31a6f3501b"), ObjectId("5765050fdcc88e31a7d2e4c3")],
@@ -106,12 +105,12 @@ def detail(id, page=1):
     # 时尚范
     ssf1 = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 1)
     ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 8, ssf1)
-    # 味蕾吧
-    ayd1 = search_news_db([ObjectId("576504a3dcc88e31a7d2e4c1")], 1)
-    ayd = search_news_db([ObjectId("576504a3dcc88e31a7d2e4c1")], 8, ayd1)
+    # 爱运动
+    ayd1 = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 1)
+    ayd = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 8, ayd1)
     # 红人馆
-    hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
-    hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
+    # hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
+    # hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
     # 二次元
     ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
@@ -137,7 +136,7 @@ def detail(id, page=1):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
-                           qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
+                           qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd,  ecy1=ecy1, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
                            count=len(count))
 

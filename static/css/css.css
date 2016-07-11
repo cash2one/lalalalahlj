@@ -1505,7 +1505,7 @@ DISPLAY: none
 	.gsp_list_n03 {float:left; margin-top:30px; margin-bottom:10px; width:870px; height:340px;}
 	.n03_picblock {float:left; margin-top:10px; padding-top:10px; border-top:2px solid #ccc; width:870px; height:340px;}
 	.n03_large {position:relative; float:left; margin-top:2px; width:429px; height:279px;}
-	.n03_large a p,.n03_small a p{display:bloke; overflow:hidden; position:absolute; bottom:0px; left:0px; font-family:"宋体"; font-size:14px; color:#FFF;}
+	.n03_large a p,.n03_small a p{display:block; overflow:hidden; position:absolute; bottom:0px; left:0px; font-family:"宋体"; font-size:14px; color:#FFF;}
 	.n03_large a p {padding-left:10px;width:419px; height:30px; line-height:30px; background:rgba(0,0,0,0.6);}
 	.n03_small a p {padding-left:10px;width:209px; height:30px; line-height:30px; background:rgba(0,0,0,0.6);}
 	.n03_large img {width:429px; height:279px;}

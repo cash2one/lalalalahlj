@@ -11,6 +11,19 @@
         <script src="/static/js/sousuo.js"></script>
         <script type="text/javascript" src="/static/js/koala.min.1.5.js"></script>
         <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
+         <script>
+            $(function () {
+                get_hot();
+            });
+            //热词切换
+            function get_hot() {
+                $.ajaxSettings.async = false;
+                $.getJSON("/get_hot/", function (result) {
+                    $("#ul_hot").html(result.key);
+                });
+            }
+
+        </script>
     {% endblock %}
 
 </head>

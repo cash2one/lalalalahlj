@@ -22,7 +22,7 @@
                 {% for i in hours %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
@@ -31,7 +31,7 @@
                  {% for i in zb %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
@@ -40,7 +40,7 @@
                 {% for i in yb %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/detail/{{ i.NewsID }}" target="_blank">{{ i.Title }}</a></span> </li>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>

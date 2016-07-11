@@ -1,33 +1,39 @@
 <div class="dpt_header">
-	<div class="dpt_headnav">
-    	<ul class="dpt_headnav_l">
-        	<li><span><a href="/">黑龙江网首页</a></span> <p>|</p></li>
-        	<li><span><a href="/">看龙江</a></span> <p>|</p></li>
-        	<li><span><a href="#">观时事</a></span> <p>|</p></li>
-        	<li><span><a href="#">知天下</a></span> <p>|</p></li>
-            <li><span><a href="/psd">品深度</a></span> <p>|</p></li>
-            <li><span><a href="/kbg">侃八卦</a></span> <p>|</p></li>
+    <div class="dpt_headnav">
+        <ul class="dpt_headnav_l">
+            <li><span><a href="/">黑龙江网首页</a></span>
+                <p>|</p></li>
+            <li><span><a href="/">看龙江</a></span>
+                <p>|</p></li>
+            <li><span><a href="#">观时事</a></span>
+                <p>|</p></li>
+            <li><span><a href="#">知天下</a></span>
+                <p>|</p></li>
+            <li><span><a href="/psd">品深度</a></span>
+                <p>|</p></li>
+            <li><span><a href="/kbg">侃八卦</a></span>
+                <p>|</p></li>
             <li><span><a href="#">晓百态</a></span></li>
         </ul>
-{#        <ul class="dpt_headnav_r" style="margin-top:10px;">#}
-{#            <div class="seach">#}
-{#              <div class="seach_l">#}
-{#                <input name="" type="text" />#}
-{#              </div>#}
-{#              <div class="seach_r">#}
-{#                <input name="" type="button" />#}
-{#              </div>#}
-{#            </div>#}
-{#            <div class="header_nav">#}
-{#              <ul class="f14">#}
-{#                <li><a href="#">app</a></li>#}
-{#                <li><a href="#">公众号</a></li>#}
-{#                <li><a href="#">投稿</a></li>#}
-{#                <li><a href="#">登陆</a></li>#}
-{#              </ul>#}
-{#            </div>#}
-{#        </ul>#}
-       {% include "master_page/search_page.html" %}
+        {#        <ul class="dpt_headnav_r" style="margin-top:10px;">#}
+        {#            <div class="seach">#}
+        {#              <div class="seach_l">#}
+        {#                <input name="" type="text" />#}
+        {#              </div>#}
+        {#              <div class="seach_r">#}
+        {#                <input name="" type="button" />#}
+        {#              </div>#}
+        {#            </div>#}
+        {#            <div class="header_nav">#}
+        {#              <ul class="f14">#}
+        {#                <li><a href="#">app</a></li>#}
+        {#                <li><a href="#">公众号</a></li>#}
+        {#                <li><a href="#">投稿</a></li>#}
+        {#                <li><a href="#">登陆</a></li>#}
+        {#              </ul>#}
+        {#            </div>#}
+        {#        </ul>#}
+        {% include "master_page/search_page.html" %}
     </div>
     <div class="dpt_logo"><a href="#"><img src="/static/images/kbg-logo.png" width="355px" height="53px;"/></a></div>
 
@@ -36,12 +42,9 @@
     <div class="gsp_navBar">
         <ul class="gsp_nav gsp_clearfix">
             <li class="m"><h3><a target="_blank" href="#">首页</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">明星</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">电影</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">电视</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">龙江</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">音乐</a></h3></li>
-            <li class="m"><h3><a target="_blank" href="#">二次元</a></h3></li>
+            {% for i in menu %}
+            <li class="m"><h3><a target="_blank" href="#">{{ i.Name }}</a></h3></li>
+            {% endfor %}
             <li class="gsp_block"></li>
             <!-- 滑动块 -->
         </ul>

@@ -140,5 +140,12 @@ def datetime_op(date_time):
 def search_indexnews_db(Channel, limit):
     condition = {"ChannelId": str(Channel)}
     news_list = db.IndexNews.find(condition).sort("orderno").limit(limit)
-    print db.IndexNews.find(condition).count()
-    return news_list
+    _news_list = []
+    for i in news_list:
+        new_dict = {}
+        new_dict["_id"] = i["NewsID"]
+        new_dict["title"] = i["Title"]
+        new_dict["guide_image"] = image_server + i["image"]
+        new_dict["summary"] = i["Summary"]
+        _news_list.append(new_dict)
+    return _news_list

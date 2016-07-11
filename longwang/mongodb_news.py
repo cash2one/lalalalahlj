@@ -149,3 +149,24 @@ def search_indexnews_db(Channel, limit):
         new_dict["summary"] = i["Summary"]
         _news_list.append(new_dict)
     return _news_list
+
+
+
+# 头条新闻
+def get_image_news(channel, limit, list_db=[]):
+    condition = {"ChannelId": channel}
+    if list_db != []:
+        id_list = []
+        for news_list in list_db:
+            id_list.append(news_list["_id"])
+        condition.update({"_id": {"$nin": id_list}})
+    lht = db.IndexNews.find(condition).sort("no", pymongo.DESCENDING).limit(limit)
+    _lht = []
+    for i in lht:
+        new_dict = {}
+        new_dict["_id"] = i["NewsID"]
+        new_dict["title"] = i["Title"]
+        new_dict["guide_image"] = image_server + i["image"]
+        new_dict["summary"] = i["Summary"]
+        _lht.append(new_dict)
+    return _lht

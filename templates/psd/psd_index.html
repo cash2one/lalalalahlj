@@ -1,0 +1,129 @@
+{% extends "psd/master_page/base_page.html" %}
+{% block title %}龙网{% endblock %}
+
+{% block middle %}
+<div class="content ft30">
+  <!---------left-------->
+  <!---------轮播图-------->
+  <div class="gsp_con_l">
+    <div class="gsp_flash">
+      <div class="gsp_foucebox" style="margin:0 auto">
+          <div id="fsD1" class="focus">
+              <div id="D1pic1" class="fPic">
+                  {% for i in lht %}
+                  <div class="fcon" style="display: none;">
+
+                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
+
+                  </div>
+                    {% endfor %}
+              </div>
+              <div class="fbg">
+              <div class="D1fBt" id="D1fBt">
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>1</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>3</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>
+              </div>
+              </div>
+              <span class="prev"></span>
+              <span class="next"></span>
+          </div>
+      </div>
+    </div>
+
+{#    <!---------w950新闻分类-------->#}
+    <div class="dpt_list_news">
+        <ul class="dpt_list_n01">
+            <div class="dpt_left_news">
+              <ul>
+                  {% for i in ttxw %}
+                <li {% if loop.index%3==0 %} {% else %}class="fr30"{% endif %}>
+                  <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
+                  <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                  <h4>{{ i.summary|truncate(50) }}</h4>
+				</li>
+                  {% endfor %}
+              </ul>
+
+            </div>
+        </ul>
+        <ul class="dpt_list_n03 ft30">
+        	<div class="n03_pictit">
+                 <p class="n03_tit01" >今日热评</p>
+                 <p class="n03_tit02" >政治经济</p>
+                 <p class="n03_tit02" >社会民生</p>
+                 <p class="n03_tit02" >文化娱乐</p>
+                 <p class="n03_tit02" >教育科技</p>
+            </div>
+            <ul class="dpt_list_n04" style="display:block;">
+                {% for i in jrrp %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+                {% endfor %}
+
+            </ul>
+            <ul class="dpt_list_n04" style="display:none;">
+                {% for i in zzjj %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+                {% endfor %}
+
+            </ul>
+            <ul class="dpt_list_n04" style="display:none;">
+                {% for i in shms %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+                {% endfor %}
+            </ul>
+            <ul class="dpt_list_n04" style="display:none;">
+                {% for i in whyl %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+                {% endfor %}
+
+            </ul>
+            <ul class="dpt_list_n04" style="display:none;">
+                {% for i in jykj %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </ul><!--lv1_h360-->
+
+    </div>
+    <div class="dpt_list_news_jz">点击浏览更多文章</div>
+  </div>
+
+
+{#  <!---------right-------->#}
+{% include "psd/master_page/right_side_bar.html" %}
+
+  </div>
+</div>
+
+
+{% endblock %}
+<!---------20160628以下编写：wt------------->

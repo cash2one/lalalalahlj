@@ -1,0 +1,239 @@
+{% extends "psd/master_page/base_page.html" %}
+{% block title %}龙网{% endblock %}
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#loading").click(function () {
+                var page = $("#page").val();
+                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {
+                    $('#ul_content').append(result);
+                    $("#page").val(parseInt(page) + 1);
+                });
+            });
+
+        });
+
+    </script>
+
+
+{% block middle %}
+<div class="content ft30"> 
+  <!---------left-------->
+  <!---------轮播图-------->
+  <div class="gsp_con_l">
+    <div class="gsp_flash">
+      <div class="gsp_foucebox" style="margin:0 auto">
+          <div id="fsD1" class="focus">  
+              <div id="D1pic1" class="fPic">
+                  {% for i in lht %}
+                  <div class="fcon" style="display: none;">
+                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
+                  </div>
+                  {% endfor %}
+{#                  <div class="fcon" style="display: none;">#}
+{#                      <a target="_blank" href="#"><img src="images/2.jpg" style="opacity: 1; "></a>#}
+{#                      <span class="shadow"><a target="_blank" href="#">佟大为登封面表情搞怪 成熟男人也是天真男孩</a></span>#}
+{#                  </div>#}
+{#                  <div class="fcon" style="display: none;">#}
+{#                      <a target="_blank" href="#"><img src="images/0.4.jpg" style="opacity: 1; "></a>#}
+{#                      <span class="shadow"><a target="_blank" href="#">21岁出柜超模巴厘自曝搞笑全裸照</a></span>#}
+{#                  </div>#}
+{#                  <div class="fcon" style="display: none;">#}
+{#                      <a target="_blank" href="#"><img src="images/3.jpg"style="opacity: 1; "></a>#}
+{#                      <span class="shadow"><a target="_blank" href="#">金喜善出道21年 皮肤白皙越长越“嫩”！</a></span>#}
+{#                  </div>    #}
+              </div>
+              <div class="fbg">  
+              <div class="D1fBt" id="D1fBt">  
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>  
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>  
+              </div>  
+              </div>  
+              <span class="prev"></span>   
+              <span class="next"></span>    
+          </div>
+      </div>
+    </div>
+    
+    <!---------w950新闻分类-------->
+    <div class="dpt_list_news">   
+        <ul class="dpt_list_n03">
+            <ul class="dpt2_list_n04">
+                {% for i in c_list %}
+                <li>
+                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
+                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>i.publish_time</h6>
+                </li>
+                {% endfor %}
+            </ul>
+        </ul><!--lv1_h360-->        
+
+    </div>
+    <div class="dpt_list_news_jz" id="loading">点击浏览更多文章</div>
+  </div>
+  
+  <!---------right-------->
+  <div class="gsp_con_r">
+
+    <!----今日热评----->
+    <div class="gsp_con_r_main">
+      <div class="gsp_right_tlt">
+        <p><a href="#">今日热评</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+        <div class="gsp_right_deet" >
+          <ul class="deet_pic">
+              {% for i in jrrp_1 %}
+        	<li class="deet_pic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
+              {% endfor %}
+                {% for i in jrrp_2 %}
+        	<li class="deet_pic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="140" height="105" /></a></li>
+            <li class="deet_pic_txt"><span>{{ i.summary }}</span></li>
+                {% endfor %}
+          </ul>
+          <ul class="deet_list">
+              {% for i in jrrp_5 %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----独家视界----->
+    <div class="dpt_con_r_main ft30">
+      <div class="dpt_right_tlt fb15">
+        <p><a href="#">独家视界</a></p>
+      </div>
+      <div class="dpt_con_r_main onlyvision">
+        <div class="dpt_right_vision" >
+			<ul>
+                {% for i in djsj %}
+				<li>
+                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="100" height="75" /></a></h1>
+    				<h2><a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a></h2>
+                    <h3>{{ i.summary|truncate(30) }}</h3>
+				</li>
+                {% endfor %}
+			</ul>
+        </div>
+      </div>
+    </div>
+
+    <!----当事者说----->
+    <div class="dpt_con_r_main ft30">
+      <div class="dpt_right_tlt">
+        <p><a href="#">当事者说</a></p>
+      </div>
+      <div class="dpt_con_r_main">
+        <div class="dpt_right_party" >
+			<ul>
+                {% for i in dszs %}
+				<li>
+                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="100" height="75" /></a></h1>
+    				<h2><a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a></h2>
+                    <h3>{{ i.summary|truncate(30) }}</h3>
+				</li>
+                {% endfor %}
+			</ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!----新闻排行----->
+    <div class="gsp2_con_r_main ft30">
+      <div class="gsp2_right_tlt">
+        <p><a href="#">新闻排行</a></p>
+      </div>
+      <div class="gsp2_con_r_main">
+        <div class="gsp2_notice" style="margin:0 auto">
+          <div class="tab2-hd">
+            <ul class="tab2-nav">
+              <li><a href="#" target="_blank">24小时</a></li>
+              <li><a href="#" target="_blank">周榜</a></li>
+              <li><a href="#" target="_blank">月榜</a></li>
+            </ul>
+          </div>
+          <div class="tab2-bd">
+            <div class="tab2-pal">
+              <ul>
+                  {% for i in ph_24 %}
+                <li>
+                    <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></span> </li>
+                  {% endfor %}
+              </ul>
+            </div>
+            <div class="tab2-pal" style=" display: none">
+              <ul>
+                  {% for i in ph_week %}
+                <li>
+                  <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></span> </li>
+                  {% endfor %}
+              </ul>
+            </div>
+            <div class="tab2-pal" style=" display: none">
+              <ul>
+                  {% for i in ph_month %}
+                <li>
+                  <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
+                  <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></span> </li>
+                  {% endfor %}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!----新闻热搜----->
+    <div class="gsp_con_r_main ft30">
+      <div class="gsp_right_tlt">
+        <p><a href="#">新闻热搜</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+        <div class="gsp_seach_ci">
+          <ul id="ul_hot">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----专题----->
+    <div class="gsp_con_r_main ft30">
+      <div class="gsp_right_tlt fbold" style="height:30px;">
+        <p><a href="#" style="color:#205366;font-size:16px;">专题</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+        <div class="gsp_right_list" >
+          <ul>
+              {% for i in zt %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+        {% include 'master_page/footer_page.html' %}
+{% endblock %}
+<!---------20160628以下编写：wt------------->

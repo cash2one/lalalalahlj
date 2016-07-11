@@ -13,6 +13,7 @@ db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 
 kbg_page = Blueprint('kbg_page', __name__, template_folder='templates')
+pre_page = 5
 
 
 # 二级频道首页
@@ -58,13 +59,26 @@ def kbg_index():
     bdyx = search_indexnews_db("57833a833c7e58bdfe540d81", 7)
     # 合作媒体
     hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
+    # 明星 5条
+    mx5 = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], pre_page)
     return render_template('kbg/kbg_index.html', lht=lht, tt=tt, jryw=jryw, hours=hours, zb=zb, yb=yb, blt=blt,
                            blt1=blt1, ecy=ecy,
                            ljyc=ljyc, xzlj=xzlj, ljyc1=ljyc1, xzlj1=xzlj1, menu=menu1, zt=zt, mx=mx, ds=ds, yy=yy,
-                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt)
+                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5)
 
 
 # 二级频道列表
-@kbg_page.route('/kbg/list/')
-def kbg_list():
-    return render_template('kbg/kbg_list.html')
+@kbg_page.route('/kbg/<channel>/<page>/')
+def kbg_list(channel, page=1):
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    value = ""
+    for i in news_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                 (style, image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                  datetime_op((i["Published"])))
+    return json.dumps(value)

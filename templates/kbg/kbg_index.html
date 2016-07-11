@@ -1,5 +1,29 @@
 {% extends "/kbg/master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script>
+        function goto(channel) {
+            loading(channel, 1);
+            $("#channel").val(channel);
+        }
+        function loading(channel, page) {
+            $.getJSON('/kbg/'+channel+'/' + page, function (result) {
+                if(page==1) {
+                    $('#ul_content').html(result);
+                }else {
+                    $('#ul_content').append(result);
+                }
+                 $("#page").val(parseInt(page)+1);
+            });
+        }
+        function go_to(){
+            var channel = $("#channel").val();
+            var page = $("#page").val();
+            loading(channel, page);
+        };
+    </script>
+{% endblock %}
 {% block middle %}
     <!---------left-------->
     <!---------轮播图-------->
@@ -106,10 +130,10 @@
 
             <ul class="gsp_list_n03">
                 <div class="n03_pictit">
-                    <p class="n03_tit01">明星</p>
-                    <p class="n03_tit02">电影</p>
-                    <p class="n03_tit02">电视</p>
-                    <p class="n03_tit02">音乐</p>
+                    <p class="n03_tit01" onclick="return goto('5765050fdcc88e31a7d2e4c3')">明星</p>
+                    <p class="n03_tit02" onclick="return goto('5768d0b9dcc88e3891c7369c')">电影</p>
+                    <p class="n03_tit02" onclick="return goto('5768d0c1dcc88e3891c7369d')">电视</p>
+                    <p class="n03_tit02" onclick="return goto('5768d0c9dcc88e3891c7369e')">音乐</p>
                 </div>
                 <ul class="n03_picblock" style="display:block;">
                     {% for i in mx %}
@@ -128,8 +152,8 @@
                 </ul>
                 <ul class="n03_picblock" style="display:none;">
                     {% for i in dy %}
-                    <li class="n03_large"><a href="#" target="_blank"><img src="{{ i.guide_image }}?w=429&h=279"/>
-                        <p>{{ i.title }}</p></a></li>
+                        <li class="n03_large"><a href="#" target="_blank"><img src="{{ i.guide_image }}?w=429&h=279"/>
+                            <p>{{ i.title }}</p></a></li>
                     {% endfor %}
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
@@ -139,7 +163,7 @@
                             <div class="film_right_list">
                                 <ul>
                                     {% for i in rdyp %}
-                                    <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                                        <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
                                     {% endfor %}
 
                                 </ul>
@@ -153,8 +177,8 @@
                         <div class="film_con_r_main">
                             <div class="film_right_list">
                                 <ul>
-                                     {% for i in bdyx %}
-                                    <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                                    {% for i in bdyx %}
+                                        <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -162,7 +186,7 @@
                     </div>
                 </ul>
                 <ul class="n03_picblock" style="display:none;">
-                      {% for i in ds %}
+                    {% for i in ds %}
                         {% if loop.index0==0 %}
                             <li class="n03_large"><a href="/detail/{{ i._id }}" target="_blank"><img
                                     src="{{ i.guide_image }}?w=429&h=279"/>
@@ -175,7 +199,7 @@
                     {% endfor %}
                 </ul>
                 <ul class="n03_picblock" style="display:none;">
-                     {% for i in yy %}
+                    {% for i in yy %}
                         {% if loop.index0==0 %}
                             <li class="n03_large"><a href="/detail/{{ i._id }}" target="_blank"><img
                                     src="{{ i.guide_image }}?w=429&h=279"/>
@@ -189,46 +213,21 @@
                 </ul>
             </ul><!--lv1_h360-->
 
-            <ul class="gsp_list_n04">
-                <li>
-                    <p><img src="/static/images/0.4.jpg" width="260" height="170"/></p>
-                    <h2><a href="#">王宪魁率团访问新西兰澳大利亚韩国 拓展合作领域促进经贸转型升级</a></h2>
-                    <h5>
-                        滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。</h5>
-                    <h6>06-14&nbsp;43分钟前</h6>
-                </li>
-                <li>
-                    <p><img src="/static/images/pic01.png" width="260" height="170"/></p>
-                    <h2><a href="#">王宪魁率团访问新西兰澳大利亚</a></h2>
-                    <h5>
-                        滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。</h5>
-                    <h6>06-14&nbsp;43分钟前</h6>
-                </li>
-                <li>
-                    <p><img src="/static/images/pic03.jpg" width="260" height="170"/></p>
-                    <h2><a href="#">王宪魁率团访问新西兰澳大利亚韩国 拓展合作领域促进经贸转型升级</a></h2>
-                    <h5>
-                        滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。</h5>
-                    <h6>06-14&nbsp;43分钟前</h6>
-                </li>
-                <li>
-                    <p><img src="/static/images/pic02.jpg" width="260" height="170"/></p>
-                    <h2><a href="#">王宪魁率团访问新西兰澳大利亚韩国 拓展合作领域促进经贸转型升级</a></h2>
-                    <h5>
-                        滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。</h5>
-                    <h6>06-14&nbsp;43分钟前</h6>
-                </li>
-                <li>
-                    <p><img src="/static/images/8.jpg" width="260" height="170"/></p>
-                    <h2><a href="#">王宪魁率团访问新西兰澳大利亚韩国 拓展合作领域促进经贸转型升级</a></h2>
-                    <h5>
-                        滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。滨海新区发布了41所具有招生资格的民办幼儿园名单(不含开发区)，并公布电话66897218接受社会监督。</h5>
-                    <h6>06-14&nbsp;43分钟前</h6>
-                </li>
+            <ul class="gsp_list_n04" id="ul_content">
+                {% for i in mx5 %}
+                    <li>
+                        <p><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
+                        <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
+                        <h5>{{ i.summary }}</h5>
+                        <h6>{{ i.publish_time }}</h6>
+                    </li>
+                {% endfor %}
 
             </ul>
         </div>
-        <div class="gsp_list_news_jz">点击浏览更多文章</div>
+        <div class="gsp_list_news_jz" onclick="return go_to();">点击浏览更多文章</div>
+        <input type="hidden" id="page" value="2">
+        <input type="hidden" id="channel" value="5765050fdcc88e31a7d2e4c3">
     </div>
 
     <!---------right-------->
@@ -434,9 +433,9 @@
             <div class="gsp_con_r_main">
                 <div class="gsp_right_co">
                     {% for i in hzmt %}
-                    <tt><span><a href="{{ i.Url }}">{{ i.Name }}</a></span>
-                    {% if loop.last %} {% else %}   <p>|</p>{% endif %}
-                    </tt>
+                        <tt><span><a href="{{ i.Url }}">{{ i.Name }}</a></span>
+                            {% if loop.last %} {% else %}   <p>|</p>{% endif %}
+                        </tt>
                     {% endfor %}
                 </div>
             </div>

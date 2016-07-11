@@ -67,13 +67,13 @@ def psd_index():
                            shms=shms,
                            whyl=whyl,
                            jykj=jykj
+
+
                            )
-
-
+pre_page = 5
 # 二级频道列表
 @psd_page.route('/psd/list/<channel>/')
 def psd_list(channel):
-    pre_page = 5
     # 轮换头图
     lht = get_head_image(ObjectId(channel), 5)
     # 新闻列表
@@ -111,3 +111,19 @@ def psd_list(channel):
                            zt=zt,
                            detail=detail
                            )
+
+# 二级频道分页
+@psd_page.route('/psd/list/<channel>/<page>')
+def s_list_page(channel, page=1):
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    value = ""
+    for i in news_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                 (style, image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                  datetime_op((i["Published"])))
+    return json.dumps(value)

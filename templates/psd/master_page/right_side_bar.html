@@ -153,24 +153,11 @@
       </div>
       <div class="gsp_con_r_main">
         <div class="gsp_right_co" >
-            <span><a href="#">陶喆</a></span> <p>|</p>
-            <tt><span><a href="#">林俊杰</a></span> <p>|</p></tt>
-            <tt><span><a href="#">TFBOYS王源</a></span> <p>|</p></tt>
-            <tt><span><a href="#">大S付出</a></span> <p>|</p></tt>
-            <tt><span><a href="#">麦当娜</a></span> <p>|</p></tt>
-            <tt><span><a href="#">林俊杰</a></span> <p>|</p></tt>
-            <tt><span><a href="#">TFBOYS王源</a></span> <p>|</p></tt>
-            <tt><span><a href="#">大S付出</a></span> <p>|</p></tt>
-            <tt><span><a href="#">麦当娜</a></span> <p>|</p></tt>
-            <tt><span><a href="#">林俊杰</a></span> <p>|</p></tt>
-            <tt><span><a href="#">大S付出</a></span> <p>|</p></tt>
-            <tt><span><a href="#">麦当娜</a></span> <p>|</p></tt>
-            <tt><span><a href="#">林俊杰</a></span> <p>|</p></tt>
-            <tt><span><a href="#">TFBOYS王源</a></span> <p>|</p></tt>
-            <tt><span><a href="#">大S付大S付出出</a></span> <p>|</p></tt>
-            <tt><span><a href="#">麦当娜</a></span> <p>|</p></tt>
-            <tt><span><a href="#">林俊杰</a></span> <p>|</p></tt>
-            <tt><span><a href="#">许婧</a></span></tt>
+            {% for i in hzmt %}
+                        <tt><span><a href="{{ i.Url }}" target="_blank">{{ i.Name }}</a></span>
+                            {% if loop.last %} {% else %}   <p>|</p>{% endif %}
+                        </tt>
+                    {% endfor %}
         </div>
       </div>
     </div>

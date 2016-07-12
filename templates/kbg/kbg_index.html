@@ -147,8 +147,6 @@
                                 <p>{{ i.title }}</p></a></li>
                         {% endif %}
                     {% endfor %}
-
-
                 </ul>
                 <ul class="n03_picblock" style="display:none;">
                     {% for i in dy %}
@@ -216,7 +214,7 @@
             <ul class="gsp_list_n04" id="ul_content">
                 {% for i in mx5 %}
                     <li>
-                        <p><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
+                        <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></a></p>
                         <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
@@ -433,7 +431,7 @@
             <div class="gsp_con_r_main">
                 <div class="gsp_right_co">
                     {% for i in hzmt %}
-                        <tt><span><a href="{{ i.Url }}">{{ i.Name }}</a></span>
+                        <tt><span><a href="{{ i.Url }}" target="_blank">{{ i.Name }}</a></span>
                             {% if loop.last %} {% else %}   <p>|</p>{% endif %}
                         </tt>
                     {% endfor %}
@@ -442,7 +440,7 @@
         </div>
 
         <!----集团logo----->
-        {% include "/kbg/user_control/page_foot.html" %}
+        {% include "kbg/user_control/page_foot.html" %}
 
     </div>
     </div>

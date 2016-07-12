@@ -1,6 +1,31 @@
 {% extends "psd/master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
 
+{% block head %}
+    {{ super() }}
+        <script>
+        function goto(channel) {
+            loading(channel, 1);
+            $("#channel").val(channel);
+        }
+        function loading(channel, page) {
+            $.getJSON('/psd/'+channel+'/' + page, function (result) {
+                if(page==1) {
+                    $('.dpt_list_n04').html(result);
+                }else {
+                    $('.dpt_list_n04').append(result);
+                }
+                 $("#page").val(parseInt(page)+1);
+            });
+        }
+        function go_to(){
+            var channel = $("#channel").val();
+            var page = $("#page").val();
+            loading(channel, page);
+        }
+    </script>
+{% endblock %}
+
 {% block middle %}
 <div class="content ft30">
   <!---------left-------->
@@ -51,11 +76,11 @@
         </ul>
         <ul class="dpt_list_n03 ft30">
         	<div class="n03_pictit">
-                 <p class="n03_tit01" >今日热评</p>
-                 <p class="n03_tit02" >政治经济</p>
-                 <p class="n03_tit02" >社会民生</p>
-                 <p class="n03_tit02" >文化娱乐</p>
-                 <p class="n03_tit02" >教育科技</p>
+                 <p class="n03_tit01" onclick="return goto('5782f547dcc88e7769576fbd')">今日热评</p>
+                 <p class="n03_tit02" onclick="return goto('5782f5cadcc88e7769576fc0')">政治经济</p>
+                 <p class="n03_tit02" onclick="return goto('5782f5d2dcc88e776838c3f4')">社会民生</p>
+                 <p class="n03_tit02" onclick="return goto('5782f5dadcc88e7769576fc1')">文化娱乐</p>
+                 <p class="n03_tit02" onclick="return goto('578311fadcc88e4cb57770c3')">教育科技</p>
             </div>
             <ul class="dpt_list_n04" style="display:block;">
                 {% for i in jrrp %}
@@ -114,7 +139,9 @@
         </ul><!--lv1_h360-->
 
     </div>
-    <div class="dpt_list_news_jz">点击浏览更多文章</div>
+    <div class="dpt_list_news_jz" onclick="return go_to();">点击浏览更多文章</div>
+    <input type="hidden" id="page" value="2">
+      <input type="hidden" id="channel" value="5782f547dcc88e7769576fbd">
   </div>
 
 

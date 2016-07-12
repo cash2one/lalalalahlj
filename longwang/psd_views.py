@@ -14,6 +14,8 @@ db_redis = conn.redis_conn()
 
 psd_page = Blueprint('psd_page', __name__, template_folder='templates')
 
+pre_page = 5
+
 
 # 二级频道首页
 @psd_page.route('/psd/')
@@ -41,7 +43,7 @@ def psd_index():
     # 专题
     zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 5)
     # 今日热评
-    jrrp = search_news_db([ObjectId("5782f547dcc88e7769576fbd")], 5)
+    jrrp = get_image_news("577c647559f0d8efacae7e68", 5)
     # 政治经济
     zzjj = search_news_db([ObjectId("5782f5cadcc88e7769576fc0")], 5)
     # 社会民生
@@ -50,6 +52,8 @@ def psd_index():
     whyl = search_news_db([ObjectId("5782f5dadcc88e7769576fc1")], 5)
     # 教育科技
     jykj = search_news_db([ObjectId("578311fadcc88e4cb57770c3")], 5)
+    # 合作媒体
+    hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     return render_template('psd/psd_index.html',
                            lht=lht,
                            ttxw=ttxw,
@@ -66,11 +70,30 @@ def psd_index():
                            zzjj=zzjj,
                            shms=shms,
                            whyl=whyl,
-                           jykj=jykj
-
-
+                           jykj=jykj,
+                           hzmt=hzmt
                            )
-pre_page = 5
+
+
+# 二级频道列表
+@psd_page.route('/psd/')
+@psd_page.route('/psd/<channel>/<page>/')
+def kbg_list(channel, page=1):
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    value = ""
+    for i in news_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> \
+        <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % (
+        style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+        datetime_op((i["Published"])))
+    return json.dumps(value)
+
+
 # 二级频道列表
 @psd_page.route('/psd/list/<channel>/')
 def psd_list(channel):
@@ -96,6 +119,8 @@ def psd_list(channel):
     ph_month = get_image_news("576b37daa6d2e970226062d7", 8)
     # 专题
     zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 5)
+    # # 合作媒体
+    # hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('psd/psd_list.html', lht=lht,
@@ -109,10 +134,13 @@ def psd_list(channel):
                            ph_month=ph_month,
                            ph_week=ph_week,
                            zt=zt,
-                           detail=detail
+                           detail=detail,
+                           # hzmt=hzmt
                            )
 
+
 # 二级频道分页
+@psd_page.route('/psd/list/<channel>/')
 @psd_page.route('/psd/list/<channel>/<page>')
 def news_list_page(channel, page=1):
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}

@@ -1,17 +1,19 @@
 {% extends "psd/master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
-
+{% block head %}
+    {{ super() }}
         <script type="text/javascript">
         $(document).ready(function () {
             $("#loading").click(function () {
                 var page = $("#page").val();
                 $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {
-                    $('#dpt2_list_n04').append(result);
+                    $('.dpt2_list_n04').append(result);
                     $("#page").val(parseInt(page) + 1);
                 });
             });
         });
     </script>
+{% endblock %}
 {% block middle %}
 <div class="content ft30"> 
   <!---------left-------->
@@ -51,7 +53,7 @@
                     <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
                     <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
-                    <h6>i.publish_time</h6>
+                    <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
             </ul>

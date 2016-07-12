@@ -114,7 +114,7 @@ def psd_list(channel):
 
 # 二级频道分页
 @psd_page.route('/psd/list/<channel>/<page>')
-def s_list_page(channel, page=1):
+def news_list_page(channel, page=1):
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)

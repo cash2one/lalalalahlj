@@ -3,7 +3,6 @@
 
         <script type="text/javascript">
         $(document).ready(function () {
-
             $("#loading").click(function () {
                 var page = $("#page").val();
                 $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {
@@ -11,12 +10,8 @@
                     $("#page").val(parseInt(page) + 1);
                 });
             });
-
         });
-
     </script>
-
-
 {% block middle %}
 <div class="content ft30"> 
   <!---------left-------->

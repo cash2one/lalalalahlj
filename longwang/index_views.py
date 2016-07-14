@@ -180,17 +180,31 @@ def get_menu():
         c_c = db.Channel.find({"Parent": ObjectId(i["_id"]), "Status": 1}).sort("OrderNumber")
         if c_c.count() > 0:
             value += "<li class='m'>"
-            value += "<h3><a href='#'>%s</a></h3>" % (i["Name"])
+            value += "<h3><a href='%s'>%s</a></h3>" % (i["Href"], i["Name"])
             value += "<ul class='sub'>"
             for j in c_c:
-                value += "<li><a href='/list/%s'>%s</a></li>" % (j["_id"], j["Name"])
+                value += "<li><a href='%s'>%s</a></li>" % (j["Href"], j["Name"])
             value += "</ul></li>"
         else:
             value += "<li class='m'>"
-            value += "<h3><a href='/list/%s'>%s</a></h3></li>" % (i["_id"], i["Name"])
-
+            value += "<h3><a href='%s'>%s</a></h3></li>" % (i["Href"], i["Name"])
     value += "<li class='block' style='left: 167px;'></li>"
     return value
+
+
+def set_menu():
+    c_p = db.Channel.find(
+        {"Parent": ObjectId("5428b978f639ab1548d55184"), "_id": {"$ne": ObjectId("5764f5396aba261f94bf517a")},
+         "Status": 1}).sort("OrderNumber")
+    for i in c_p:
+        c_c = db.Channel.find({"Parent": ObjectId(i["_id"]), "Status": 1}).sort("OrderNumber")
+        if c_c.count() > 0:
+            for j in c_c:
+                db.Channel.update({"_id":j["_id"]},{"$set":{"Href":"/list/"+str(j["_id"])}})
+        else:
+            db.Channel.update({"_id":i["_id"]},{"$set":{"Href":"/list/"+str(i["_id"])}})
+    return "success"
+
 
 
 # 热词获取

@@ -1,22 +1,19 @@
 {% extends "psd/master_page/base_page.html" %}
 {% block title %}龙网{% endblock %}
-
+{% block head %}
+    {{ super() }}
         <script type="text/javascript">
         $(document).ready(function () {
-
             $("#loading").click(function () {
                 var page = $("#page").val();
-                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {
-                    $('#ul_content').append(result);
+                $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {
+                    $('.dpt2_list_n04').append(result);
                     $("#page").val(parseInt(page) + 1);
                 });
             });
-
         });
-
     </script>
-
-
+{% endblock %}
 {% block middle %}
 <div class="content ft30"> 
   <!---------left-------->
@@ -32,18 +29,6 @@
                       <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
                   </div>
                   {% endfor %}
-{#                  <div class="fcon" style="display: none;">#}
-{#                      <a target="_blank" href="#"><img src="images/2.jpg" style="opacity: 1; "></a>#}
-{#                      <span class="shadow"><a target="_blank" href="#">佟大为登封面表情搞怪 成熟男人也是天真男孩</a></span>#}
-{#                  </div>#}
-{#                  <div class="fcon" style="display: none;">#}
-{#                      <a target="_blank" href="#"><img src="images/0.4.jpg" style="opacity: 1; "></a>#}
-{#                      <span class="shadow"><a target="_blank" href="#">21岁出柜超模巴厘自曝搞笑全裸照</a></span>#}
-{#                  </div>#}
-{#                  <div class="fcon" style="display: none;">#}
-{#                      <a target="_blank" href="#"><img src="images/3.jpg"style="opacity: 1; "></a>#}
-{#                      <span class="shadow"><a target="_blank" href="#">金喜善出道21年 皮肤白皙越长越“嫩”！</a></span>#}
-{#                  </div>    #}
               </div>
               <div class="fbg">  
               <div class="D1fBt" id="D1fBt">  
@@ -68,7 +53,7 @@
                     <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="260" height="170" /></a></p>
                     <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
-                    <h6>i.publish_time</h6>
+                    <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
             </ul>
@@ -76,6 +61,7 @@
 
     </div>
     <div class="dpt_list_news_jz" id="loading">点击浏览更多文章</div>
+  <input type="hidden" id="page" value="2">
   </div>
   
   <!---------right-------->

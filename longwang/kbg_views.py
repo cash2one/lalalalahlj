@@ -29,10 +29,10 @@ def kbg_index():
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 3)
     # 龙江演出 4条
     ljyc1 = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 2, 1)
-    ljyc = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 3)
+    ljyc = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 3, 0, ljyc1)
     # 星在龙江 4条
     xzlj1 = search_news_db([ObjectId("5782f82edcc88e776838c3fb")], 2, 1)
-    xzlj = search_news_db([ObjectId("5782f82edcc88e776838c3fb")], 3)
+    xzlj = search_news_db([ObjectId("5782f82edcc88e776838c3fb")], 3, 0, xzlj1)
     # 今日要闻 10条
     jryw = search_indexnews_db("577c5ecb59f0d8efacae7e4e", 10)
     # 新闻排行
@@ -82,3 +82,23 @@ def kbg_list(channel, page=1):
                  (style, image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
+
+
+# 二级频道列表
+@kbg_page.route('/kbg/list/<channel>/')
+def kbg_list_index(channel):
+    # 轮换图
+    lht = get_head_image(ObjectId(channel), 4)
+    news_list = search_news_db([ObjectId(channel)], pre_page)
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 频道菜单
+    menu1 = db.Channel.find({"Parent": ObjectId("576500f0dcc88e31a7d2e4ba"), "Visible": 1}).sort("OrderNumber")
+    # 报料台 4条
+    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1, [], 2)
+    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=channel,
+                           menu=menu1, blt=blt, rmtj=rmtj)

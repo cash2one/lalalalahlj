@@ -131,7 +131,7 @@
             <ul class="gsp_list_n03">
                 <div class="n03_pictit">
                     <p class="n03_tit01" onclick="return goto('5765050fdcc88e31a7d2e4c3')">明星</p>
-                    <p class="n03_tit02" onclick="return goto('5768d0b9dcc88e3891c7369c')">电影</p>
+                    <p class="n03_tit02" onclick="return goto('57859e6bdcc88e1a665d81e5')">电影</p>
                     <p class="n03_tit02" onclick="return goto('5768d0c1dcc88e3891c7369d')">电视</p>
                     <p class="n03_tit02" onclick="return goto('5768d0c9dcc88e3891c7369e')">音乐</p>
                 </div>
@@ -216,7 +216,7 @@
             <ul class="gsp_list_n04" id="ul_content">
                 {% for i in mx5 %}
                     <li>
-                        <p><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
+                        <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
                         <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
@@ -285,7 +285,7 @@
         <!----爆料台----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
-                <p style="text-align:left;"><a href="#"><img src="/static/images/gsp-deet.png" width="98" height="34"/></a>
+                <p style="text-align:left;"><a href="/kbg/list/5782f7a4dcc88e7769576fc5/"><img src="/static/images/gsp-deet.png" width="98" height="34"/></a>
                 </p>
             </div>
             <div class="gsp_con_r_main">
@@ -312,12 +312,12 @@
         <!----龙江演出----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt02">
-                <p class="tlt02_bdr01">龙江演出</p>
-                <p class="tlt02_bdr02">星在龙江</p>
+                <p class="tlt02_bdr01" onclick="javascript:location.href('/kbg/list/5782f81ddcc88e7769576fc8/')">龙江演出</p>
+                <p class="tlt02_bdr02" onclick="javascript:location.href('/kbg/list/5782f82edcc88e776838c3fb/')">星在龙江</p>
             </div>
             <div class="gsp_con_r_main onlyshow" style="display:block;">
                 <div class="gsp_right_show">
-                    {% for i in ljyc1 %}
+
                         <ul class="show_pic">
                             {% for i in ljyc1 %}
                                 <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/detail/{{ i._id }}"><img
@@ -325,7 +325,7 @@
                                     <p>{{ i.title }}</p></a></li>
                             {% endfor %}
                         </ul>
-                    {% endfor %}
+
                     <ul class="show_list">
                         {% for i in ljyc %}
                             <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
@@ -360,16 +360,6 @@
                 <div class="gsp_seach_ci">
                     <ul id="ul_hot">
                         {#                        <li><a href="#" style="color:#46abd0;">猴宝宝</a></li>#}
-                        {#                        <li><a href="#">315</a></li>#}
-                        {#                        <li><a href="#">老炮</a></li>#}
-                        {#                        <li><a href="#">安倍傻</a></li>#}
-                        {#                        <li><a href="#">银行</a></li>#}
-                        {#                        <li><a href="#">一路</a></li>#}
-                        {#                        <li><a href="#">钓鱼岛</a></li>#}
-                        {#                        <li><a href="#">普京</a></li>#}
-                        {#                        <li><a href="#">奥巴马</a></li>#}
-                        {#                        <li><a href="#">安倍2</a></li>#}
-                        {#                        <li><a href="#">新媒体集团</a></li>#}
                     </ul>
                 </div>
             </div>
@@ -394,7 +384,7 @@
         <!----二次元----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
-                <p><a href="#">二次元</a></p>
+                <p><a href="/list/57650505dcc88e31a6f3501b/">二次元</a></p>
             </div>
             <div class="gsp_con_r_main">
                 <div class="gsp_right_list">

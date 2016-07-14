@@ -19,9 +19,7 @@ zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
 zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
 
 # 侃八卦
-gbg = search_news_db(
-    [ObjectId("576504f7dcc88e31a6f3501a"), ObjectId("57650505dcc88e31a6f3501b"), ObjectId("5765050fdcc88e31a7d2e4c3")],
-    8)
+gbg = search_news_db([ObjectId("576500f0dcc88e31a7d2e4ba")], 8)
 # 热门图集
 rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
 

@@ -107,7 +107,7 @@ var node = $('.gsp_list_n03');
 tagClickEvent(node.find('.n03_pictit p'),node.find('.n03_picblock'),"n03_tit01");
 
 var node = $('.gsp_con_r_main');
-tagClickEvent(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
+mouseenter(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
 
 function tagClickEvent(tag, closet, style){
 	tag.click(function(){
@@ -117,6 +117,15 @@ function tagClickEvent(tag, closet, style){
 			closet.css('display','none');
 			closet.eq(index).css('display','block');
 	});
+}
+function mouseenter(tag, closet, style) {
+    tag.mouseenter(function () {
+        tag.removeClass(style);
+        $(this).addClass(style);
+        var index = tag.index($(this));
+        closet.css('display', 'none');
+        closet.eq(index).css('display', 'block');
+    });
 }
 </script>
 </body>

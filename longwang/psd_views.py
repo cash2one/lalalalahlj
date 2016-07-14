@@ -53,7 +53,7 @@ def psd_index():
     # 教育科技
     jykj = search_news_db([ObjectId("578311fadcc88e4cb57770c3")], 5)
     # 合作媒体
-    hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
+    hzmt = db.Media.find({"ChannelID": ObjectId("576500d7dcc88e31a6f3500d")})
     return render_template('psd/psd_index.html',
                            lht=lht,
                            ttxw=ttxw,
@@ -123,6 +123,7 @@ def psd_list(channel):
     # hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 频道
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
+    name = get_name(channel)
     return render_template('psd/psd_list.html', lht=lht,
                            c_list=c_list,
                            jrrp_1=jrrp_1,
@@ -135,6 +136,7 @@ def psd_list(channel):
                            ph_week=ph_week,
                            zt=zt,
                            detail=detail,
+                           name=name
                            # hzmt=hzmt
                            )
 
@@ -155,3 +157,9 @@ def news_list_page(channel, page=1):
                  (style, image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
+
+
+
+def get_name(channel):
+    name = db.Channel.find_one({"_id":ObjectId(channel)})["Name"]
+    return name

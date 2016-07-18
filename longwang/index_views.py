@@ -13,15 +13,6 @@ from bson import ObjectId
 
 db = conn.mongo_conn()
 db_redis = conn.redis_conn()
-# 侧边栏
-# 专题
-zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
-
-# 侃八卦
-gbg = search_news_db([ObjectId("576500f0dcc88e31a7d2e4ba")], 8)
-# 热门图集
-rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
 
 
 index_page = Blueprint('index_page', __name__, template_folder='templates')
@@ -37,7 +28,13 @@ def index():
     lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 5)
     # 要闻
     yw = search_indexnews_db("576b36a9a6d2e970226062c3", 3)
-
+    # 侃八卦
+    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     # 高层动态
     gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 3)
 
@@ -51,9 +48,13 @@ def index():
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 首页14条新闻
-    _list = search_news_db([ObjectId("576503f2dcc88e31a6f35013"), ObjectId("5765040cdcc88e31a6f35014")], 40)
+    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).limit(14)
+    _news_list = []
+    for news_detail in news_list:
+        _news_list.append(get_mongodb_dict(news_detail))
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx, bwyc=bwyc,
-                           lht=lht, rmtj=rmtj, menu=get_menu(), _list=_list, hours=hours, zb=zb, yb=yb)
+                           lht=lht, rmtj=rmtj, menu=get_menu(), news_list=_news_list, hours=hours, zb=zb, yb=yb)
 
 
 # 二级频道列表
@@ -68,6 +69,13 @@ def s_list(channel):
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 侃八卦
+    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
 
@@ -133,8 +141,15 @@ def detail(id, page=1):
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
+    # 侃八卦
+    gbg = search_news_db([ObjectId("576500f0dcc88e31a7d2e4ba")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
-                           qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd,  ecy1=ecy1, ecy=ecy,
+                           qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, ecy1=ecy1, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
                            count=len(count))
 
@@ -165,6 +180,13 @@ def detail_all(id):
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 侃八卦
+    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1)
@@ -200,11 +222,10 @@ def set_menu():
         c_c = db.Channel.find({"Parent": ObjectId(i["_id"]), "Status": 1}).sort("OrderNumber")
         if c_c.count() > 0:
             for j in c_c:
-                db.Channel.update({"_id":j["_id"]},{"$set":{"Href":"/list/"+str(j["_id"])}})
+                db.Channel.update({"_id": j["_id"]}, {"$set": {"Href": "/list/" + str(j["_id"])}})
         else:
-            db.Channel.update({"_id":i["_id"]},{"$set":{"Href":"/list/"+str(i["_id"])}})
+            db.Channel.update({"_id": i["_id"]}, {"$set": {"Href": "/list/" + str(i["_id"])}})
     return "success"
-
 
 
 # 热词获取
@@ -213,13 +234,15 @@ def search_hot_redis():
     string = ""
     count = 0
     for i in db_redis.hkeys('hot_searh'):
+      if len(i)<24:
         if count <= 8:
             count += 1
             string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
                 i, i)
         else:
             pass
-
+      else:
+          pass
     return json.dumps({"key": string})
 
 
@@ -228,8 +251,9 @@ def search_hot_redis():
 @index_page.route('/ss/<keywords>/<page>')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
-    # {"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
-    k_list = db.News.find({"$text": {"$search": keyword}, "Status": 4}).sort('Published', pymongo.DESCENDING).skip(
+    # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
+    condition = {"$text": {"$search": keyword}, "Status": 4}
+    k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
     c_list = []
     for i in k_list:
@@ -238,6 +262,29 @@ def ss_keywords(keywords, page=1):
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 侃八卦
+    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
                            zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)
+
+
+# 首页下拉
+@index_page.route('/issift/<page>/')
+def is_sift(page=1):
+    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 14).limit(14)
+    string = ""
+    for i in news_list:
+        string += "<li><p><a href='/detail/%s' target='_blank'>" % (i["_id"])
+        string += "<img src='%s?w=261&h=171, width='261' height='171'/></a></p><h3 class='Txt_cu'><a href='/detail/%s' target='_blank'>%s</a></h3>" % (
+            image_server + i["Guideimage"], i["_id"], i["Title"])
+        string += "<h4>%s</h4><span><h5>%s</h5>" % (i["Summary"], datetime_op(i["Published"]))
+        c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
+        string += "<h6><a href='%s'>%s</a></h6></span></li>" % (c["Href"], c["Name"])
+    return json.dumps({"datalist": string})

@@ -2,51 +2,13 @@
 {% block title %}龙网{% endblock %}
 {% block head %}
     {{ super() }}
-    <script>
-        function getScroll() {
-            var top, left, width, height;
-            if (document.documentElement && document.documentElement.scrollTop) {
-                top = document.documentElement.scrollTop;
-                left = document.documentElement.scrollLeft;
-                width = document.documentElement.scrollWidth;
-                height = document.documentElement.scrollHeight;
-            }
-            else if (document.body) {
-                top = document.body.scrollTop;
-                left = document.body.scrollLeft;
-                width = document.body.scrollWidth;
-                height = document.body.scrollHeight;
-            }
-            return {top: top, left: left, width: width, height: height};
-        }
-        function scall() {
-            var v = getScroll();
-//alert(v.top);
-            var e = document.getElementById("scoll_news");
-            {#            e.style.top = ((v.top) + 520) + "px"; //纵滚动条离顶部距离#}
-            e.scrollTop = ((v.top) + 520) + "px"; //纵滚动条离顶部距离
-        }
-        window.onload = scall;
-        window.onscroll = scall;
-    </script>
-    <style type="text/css">
-        .wrap {
-            float: left;
-            width: 600px;
-            height: 2150px;
-            overflow: hidden;
-        }
-
-        .box1 {
-            width: 618px;
-            height: 2150px;
-            overflow-y: scroll;
-            overflow-x: hidden;
-        {#            background-color: #eee;#}
-        }
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 
 
-    </style>
+
+
+
 {% endblock %}
 {% block middle %}
     <div class="content ft30">
@@ -58,16 +20,16 @@
     <!---------left-------->
 
     <!---------w620新闻-------->
-    <div id="scoll_news" class="wrap ft30">
+    <div class="wrap ft30">
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
-                <ul>
-                    {% for i in _list %}
+                <ul id="uuuu" class="tiles-wrap animated">
+                    {% for i in news_list %}
                         <li>
                             <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
                                                                                   width="261" height="171"/></a></p>
                             <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-                            <h4>{{ i.summary|truncate(50) }}</h4>
+                            <h4>{{ i.summary }}</h4>
           <span>
           <h5>{{ i.publish_time }}</h5>
           <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
@@ -79,7 +41,7 @@
     </div>
     <!---------mid-------->
 
-    <div class="con_i_r ft30">
+    <div id="right" class="con_i_r ft30">
 
         <div class="con_m">
             <!----要闻----->
@@ -152,7 +114,7 @@
             </div>
         </div>
 
-
+        <input type="hidden" value="2" id="page">
         <!---------right-------->
         {% include 'generic_components/index_right_side_bar.html' %}
 
@@ -174,5 +136,80 @@
 
 
 
+    {#  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>#}
+    <script type="text/javascript">
+        var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                rightHeight = $("#right")[0].scrollHeight + 596;  // 页头高度 596
+        (function ($) {
+            var wookmark,
+                    container = '#uuuu',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
 
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth: 307 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                fixedRight();
+
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                var closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    $.ajaxSettings.async = false;
+                    $.getJSON("/issift/" + page, function (data) {
+                        {#                 items=data.datalist;#}
+                        var $firstTen = jQuery.parseHTML(data.datalist);
+                        $container.append($firstTen);
+                        $("#page").val(parseInt(page) + 1);
+                        wookmark.initItems();
+                        wookmark.layout(true, function () {
+                            // Fade in items after layout
+                            setTimeout(function () {
+                                {#                            $firstTen.css('opacity', 1);#}
+                            }, 300);
+                            // Get the first then items from the grid, clone them, and add them to the bottom of the grid
+                            {#          var $items = $('li', $container),#}
+                            {#              $firstTen = $items.slice(0, 10).clone().css('opacity', 0);#}
+                            {#          $container.append($firstTen);#}
+                            {##}
+                            {#          wookmark.initItems();#}
+                            {#          wookmark.layout(true, function () {#}
+                            {#            // Fade in items after layout#}
+                            {#            setTimeout(function() {#}
+                            {#              $firstTen.css('opacity', 1);#}
+                            {#            }, 300);#}
+                  });
+                })
+
+
+            }
+        };
+
+                // Capture scroll event.
+                $window.on('scroll.wookmark', onScroll);
+                $window.on('resize', fixedRight);
+            }
+
+            )(jQuery);
+
+        // 固定右侧列表位置
+        function fixedRight() {
+            if ($(window).scrollTop() + winHeight >= rightHeight) {
+                $("#right").css({
+                    "position": "fixed",
+                    "bottom": "0",
+                    "left": ($(window).width() > 1200 ? $(window).width() - 1200 : 0) / 2 + 620 + 30 + "px"
+                }); // 左侧列宽 620 + 浮动边距 30
+                //$("#right").css({"position":"fixed", "bottom":"0", "right":($(window).width() - 1200) / 2 + "px"});
+            } else {
+                $("#right").css({"position": "relative", "bottom": "auto", "left": "auto"});
+            }
+        }
+    </script>
 {% endblock %}

@@ -22,7 +22,7 @@ pre_page = 5
 @psd_page.route('/psd/')
 def psd_index():
     # 轮换图
-    lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 4)
+    lht = get_head_image(ObjectId("576500d7dcc88e31a6f3500d"), 4)
     # 头条新闻
     ttxw = get_image_news("577c646159f0d8efacae7e65", 6)
     # 今日热评文字1
@@ -42,7 +42,7 @@ def psd_index():
     # 排行月
     ph_month = get_image_news("576b37daa6d2e970226062d7", 8)
     # 专题
-    zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 5)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 5)
     # 今日热评
     jrrp = search_news_db([ObjectId("5782f547dcc88e7769576fbd")], 5)
     # 政治经济
@@ -122,7 +122,7 @@ def psd_list(channel):
     # 排行月
     ph_month = get_image_news("576b37daa6d2e970226062d7", 8)
     # 专题
-    zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 5)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 5)
     # # 合作媒体
     # hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 频道

@@ -64,7 +64,7 @@ def kbg_index():
     return render_template('kbg/kbg_index.html', lht=lht, tt=tt, jryw=jryw, hours=hours, zb=zb, yb=yb, blt=blt,
                            blt1=blt1, ecy=ecy,
                            ljyc=ljyc, xzlj=xzlj, ljyc1=ljyc1, xzlj1=xzlj1, menu=menu1, zt=zt, mx=mx, ds=ds, yy=yy,
-                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5)
+                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5, ys="sy")
 
 
 # 二级频道列表
@@ -79,7 +79,7 @@ def kbg_list(channel, page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style,i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                 (style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
 
@@ -100,5 +100,7 @@ def kbg_list_index(channel):
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1, [], 2)
-    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=channel,
+    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel),
                            menu=menu1, blt=blt, rmtj=rmtj)
+
+

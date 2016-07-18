@@ -10,12 +10,14 @@
 <div class="gsp_menu">
     <div class="gsp_navBar">
         <ul class="gsp_nav gsp_clearfix">
-            <li class="m"><h3><a href="/psd/">首页</a></h3></li>
-            <li class="m"><h3><a href="/psd/list/5768d025dcc88e389016f576/">龙江网评</a></h3></li>
-            <li class="m "><h3><a href="/psd/list/5768d034dcc88e3891c73699/">政说龙江</a></h3></li>
-            <li class="m"><h3><a href="/psd/list/5768d034dcc88e3891c73699/">独家视界</a></h3></li>
-            <li class="m"><h3><a href="/psd/list/5768d051dcc88e389016f578/">八方舆言</a></h3></li>
-            <li class="m"><h3><a href="/psd/list/5768d059dcc88e3891c7369a/">当事者说</a></h3></li>
+            <li class="m"><h3><a href="/psd/"{% if ys=="sy" %} style="background-color: #46abd0;" {% endif %}>首页</a></h3></li>
+            {% for i in menu %}
+            <li class="m">
+                <h3>
+                    <a {% if cid==i._id %} style="background-color:#46abd0;"{% endif %} href="/psd/list/{{ i._id }}/">{{ i.Name }}</a>
+            </h3>
+            </li>
+            {% endfor %}
             <li class="gsp_block"></li>
             <!-- 滑动块 -->
         </ul>

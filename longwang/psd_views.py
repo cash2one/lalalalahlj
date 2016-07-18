@@ -9,6 +9,7 @@ from longwang.mongodb_news import get_image_news, search_news_db, get_head_image
     get_mongodb_dict
 from bson import ObjectId
 
+
 db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 
@@ -43,7 +44,7 @@ def psd_index():
     # 专题
     zt = search_news_db([ObjectId("5768d0b9dcc88e3891c7369c")], 5)
     # 今日热评
-    jrrp = get_image_news("577c647559f0d8efacae7e68", 5)
+    jrrp = search_news_db([ObjectId("5782f547dcc88e7769576fbd")], 5)
     # 政治经济
     zzjj = search_news_db([ObjectId("5782f5cadcc88e7769576fc0")], 5)
     # 社会民生
@@ -54,6 +55,7 @@ def psd_index():
     jykj = search_news_db([ObjectId("578311fadcc88e4cb57770c3")], 5)
     # 合作媒体
     hzmt = db.Media.find({"ChannelID": ObjectId("576500d7dcc88e31a6f3500d")})
+    menu1 = db.Channel.find({"Parent": ObjectId("576500d7dcc88e31a6f3500d"), "Visible": 1}).sort("OrderNumber")
     return render_template('psd/psd_index.html',
                            lht=lht,
                            ttxw=ttxw,
@@ -71,7 +73,9 @@ def psd_index():
                            shms=shms,
                            whyl=whyl,
                            jykj=jykj,
-                           hzmt=hzmt
+                           hzmt=hzmt,
+                           ys="sy",
+                           menu=menu1
                            )
 
 
@@ -122,6 +126,7 @@ def psd_list(channel):
     # # 合作媒体
     # hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 频道
+    menu1 = db.Channel.find({"Parent": ObjectId("576500d7dcc88e31a6f3500d"), "Visible": 1}).sort("OrderNumber")
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     name = get_name(channel)
     return render_template('psd/psd_list.html', lht=lht,
@@ -136,8 +141,9 @@ def psd_list(channel):
                            ph_week=ph_week,
                            zt=zt,
                            detail=detail,
-                           name=name
-                           # hzmt=hzmt
+                           name=name,
+                           menu=menu1,
+                           cid=ObjectId(channel)
                            )
 
 

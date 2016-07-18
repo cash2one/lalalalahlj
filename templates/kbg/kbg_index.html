@@ -8,20 +8,21 @@
             $("#channel").val(channel);
         }
         function loading(channel, page) {
-            $.getJSON('/kbg/'+channel+'/' + page, function (result) {
-                if(page==1) {
+            $.getJSON('/kbg/' + channel + '/' + page, function (result) {
+                if (page == 1) {
                     $('#ul_content').html(result);
-                }else {
+                } else {
                     $('#ul_content').append(result);
                 }
-                 $("#page").val(parseInt(page)+1);
+                $("#page").val(parseInt(page) + 1);
             });
         }
-        function go_to(){
+        function go_to() {
             var channel = $("#channel").val();
             var page = $("#page").val();
             loading(channel, page);
-        };
+        }
+        ;
     </script>
 {% endblock %}
 {% block middle %}
@@ -117,9 +118,9 @@
             <ul class="gsp_list_n02">
                 <li class="n02_tit">
                     <h2>
-{#                        <a href="#">#}
-                            今日要闻
-{#                        </a>#}
+                        {#                        <a href="#">#}
+                        今日要闻
+                        {#                        </a>#}
                     </h2>
                     {#                    <h3>2016-6-15</h3>#}
                 </li>
@@ -218,7 +219,9 @@
             <ul class="gsp_list_n04" id="ul_content">
                 {% for i in mx5 %}
                     <li>
-                        <p {% if i.guide_image=="" %}style="display: none" {% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></a></p>
+                        <p {% if i.guide_image=="" %}style="display: none" {% endif %}><a href="/detail/{{ i._id }}"
+                                                                                          target="_blank"><img
+                                src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></a></p>
                         <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
@@ -240,18 +243,30 @@
         <div class="gsp2_con_r_main">
             <div class="gsp2_right_tlt">
                 <p>
-{#                    <a href="#">#}
-                        新闻排行
-{#                    </a>#}
+                    {#                    <a href="#">#}
+                    新闻排行
+                    {#                    </a>#}
                 </p>
             </div>
             <div class="gsp2_con_r_main">
                 <div class="gsp2_notice" style="margin:0 auto">
                     <div class="tab2-hd">
                         <ul class="tab2-nav">
-                            <li><a href="#" target="_blank">24小时</a></li>
-                            <li><a href="#" target="_blank">周榜</a></li>
-                            <li><a href="#" target="_blank">月榜</a></li>
+                            <li>
+                                {#                  <a href="#" target="_blank">#}
+                                24小时
+                                {#                  </a>#}
+                            </li>
+                            <li>
+                                {#                  <a href="#" target="_blank">#}
+                                周榜
+                                {#                  </a>#}
+                            </li>
+                            <li>
+                                {#                  <a href="#" target="_blank">#}
+                                月榜
+                                {#                  </a>#}
+                            </li>
                         </ul>
                     </div>
                     <div class="tab2-bd">
@@ -291,7 +306,8 @@
         <!----爆料台----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
-                <p style="text-align:left;"><a href="/kbg/list/5782f7a4dcc88e7769576fc5/"><img src="/static/images/gsp-deet.png" width="98" height="34"/></a>
+                <p style="text-align:left;"><a href="/kbg/list/5782f7a4dcc88e7769576fc5/"><img
+                        src="/static/images/gsp-deet.png" width="98" height="34"/></a>
                 </p>
             </div>
             <div class="gsp_con_r_main">
@@ -324,13 +340,13 @@
             <div class="gsp_con_r_main onlyshow" style="display:block;">
                 <div class="gsp_right_show">
 
-                        <ul class="show_pic">
-                            {% for i in ljyc1 %}
-                                <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/detail/{{ i._id }}"><img
-                                        src="{{ i.guide_image }}?w=140&h=92" width="140" height="92"/>
-                                    <p>{{ i.title }}</p></a></li>
-                            {% endfor %}
-                        </ul>
+                    <ul class="show_pic">
+                        {% for i in ljyc1 %}
+                            <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/detail/{{ i._id }}"><img
+                                    src="{{ i.guide_image }}?w=140&h=92" width="140" height="92"/>
+                                <p>{{ i.title }}</p></a></li>
+                        {% endfor %}
+                    </ul>
 
                     <ul class="show_list">
                         {% for i in ljyc %}
@@ -361,9 +377,9 @@
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
                 <p>
-{#                    <a href="#">#}
-                        新闻热搜
-{#                    </a>#}
+                    {#                    <a href="#">#}
+                    新闻热搜
+                    {#                    </a>#}
                 </p>
             </div>
             <div class="gsp_con_r_main">
@@ -379,9 +395,9 @@
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
                 <p>
-{#                    <a href="#">#}
-                        热专题
-{#                    </a>#}
+                    {#                    <a href="#">#}
+                    热专题
+                    {#                    </a>#}
                 </p>
             </div>
             <div class="gsp_con_r_main">

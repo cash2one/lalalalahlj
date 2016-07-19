@@ -8,7 +8,7 @@ __author__ = 'wanglina'
 # mongodb master method (can write and read)
 def mongo_conn():
     client = MongoClient(
-        "mongodb://chinahlj_user:chinahlj_user123@125.211.222.237:27638/chinahlj?authMechanism=SCRAM-SHA-1")
+        "mongodb://chinahlj_user:chinahlj_user123@192.168.22.101:27638/chinahlj?authMechanism=SCRAM-SHA-1")
     db = client["chinahlj"]
     return db
 

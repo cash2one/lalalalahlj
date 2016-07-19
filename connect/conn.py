@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import redis
-from flask.ext.pymongo import MongoClient
+from flask_pymongo import MongoClient
 
 __author__ = 'wanglina'
 

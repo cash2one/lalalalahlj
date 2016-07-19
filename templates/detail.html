@@ -69,7 +69,7 @@
                 {{ detail.Content|safe }}
             </div>
             <div class="news_pdzb f14">频道主编：{{ detail.Editor }}</div>
-            <div class="content_l ft20" {% if count==1 %}style="display: none"{% endif %}>
+            <div class="content_l ft20"  {% if count==1 %}style="display: none"{% else %}style="margin-top:20px"{% endif %}>
                 <div class="jogger">
                     {% autoescape false %}
                     {{ pagebar_html }}

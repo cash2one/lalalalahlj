@@ -62,7 +62,10 @@ def get_mongodb_dict(i):
     new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
     new_dict["publish_time"] = datetime_op(i["Published"])
     new_dict["cid"] = i["Channel"][0]
-    new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
+    try:
+       new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
+    except:
+        pass
     # new_dict["href"] = db.news_column.find_one({"_id": int(i["column_id"]["id"])})["des"]
     return new_dict
 

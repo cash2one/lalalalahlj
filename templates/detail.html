@@ -22,7 +22,7 @@
 
         <div class="news_tlt">{{ detail.Title }}</div>
 
-        <div class="news_about"><p>{{ detail.Source }}&nbsp;&nbsp;{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="news_about"><p>来源：{{ detail.Source }}&nbsp;&nbsp;{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;
             {% if detail.Author!="" %}    作者：{{ detail.Author }}{% endif %}
         </p>
 
@@ -68,7 +68,7 @@
             <div class="news_font f16">
                 {{ detail.Content|safe }}
             </div>
-            <div class="news_pdzb f14">频道主编：{{ detail.Editor }}</div>
+            <div class="news_pdzb">频道主编：{{ detail.Editor }}</div>
             <div class="content_l ft20"  {% if count==1 %}style="display: none"{% else %}style="margin-top:20px"{% endif %}>
                 <div class="jogger">
                     {% autoescape false %}

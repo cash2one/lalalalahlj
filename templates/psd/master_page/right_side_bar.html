@@ -12,7 +12,7 @@
         	<li class="deet_pic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
               {% endfor %}
                 {% for i in jrrp_2 %}
-        	<li class="deet_pic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="140" height="105" /></a></li>
+        	<li class="deet_pic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=140&h=105" width="140" height="105" /></a></li>
             <li class="deet_pic_txt"><span>{{ i.summary }}</span></li>
                 {% endfor %}
           </ul>
@@ -35,7 +35,7 @@
 			<ul>
                 {% for i in djsj %}
 				<li>
-                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="100" height="75" /></a></h1>
+                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=100&h=75" width="100" height="75" /></a></h1>
     				<h2><a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a></h2>
                     <h3>{{ i.summary|truncate(30) }}</h3>
 				</li>
@@ -55,7 +55,7 @@
 			<ul>
                 {% for i in dszs %}
 				<li>
-                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="100" height="75" /></a></h1>
+                	<h1><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=100&h=75" width="100" height="75" /></a></h1>
     				<h2><a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a></h2>
                     <h3>{{ i.summary|truncate(30) }}</h3>
 				</li>

@@ -75,8 +75,8 @@
       <div class="gsp_con_r_main">
         <div class="gsp_right_deet" >
           <ul class="deet_pic">
-              {% for i in jrrp_1 %}
-        	<li class="deet_pic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
+              {% for i in jrrp_2 %}
+        	<li class="deet_pic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
               {% endfor %}
                 {% for i in jrrp_2 %}
         	<li class="deet_pic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=140&h=105" width="140" height="105" /></a></li>
@@ -85,7 +85,7 @@
           </ul>
           <ul class="deet_list">
               {% for i in jrrp_5 %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
               {% endfor %}
           </ul>
         </div>

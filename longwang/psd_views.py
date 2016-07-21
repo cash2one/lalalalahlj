@@ -9,7 +9,6 @@ from longwang.mongodb_news import get_image_news, search_news_db, get_head_image
     get_mongodb_dict
 from bson import ObjectId
 
-
 db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 
@@ -26,11 +25,11 @@ def psd_index():
     # 头条新闻
     ttxw = get_image_news("577c646159f0d8efacae7e65", 6)
     # 今日热评文字1
-    jrrp_1 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # jrrp_1 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评图片1
-    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1, jrrp_1)
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_1 + jrrp_2)
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_2)
     # 独家视界
     djsj = get_image_news("577c648559f0d8efacae7e6b", 10)
     # 当事者说
@@ -59,7 +58,7 @@ def psd_index():
     return render_template('psd/psd_index.html',
                            lht=lht,
                            ttxw=ttxw,
-                           jrrp_1=jrrp_1,
+                           # jrrp_1=jrrp_1,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
                            djsj=djsj,
@@ -93,8 +92,8 @@ def kbg_list(channel, page=1):
             style = 'style="display: none"'
         value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> \
         <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % (
-        style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
-        datetime_op((i["Published"])))
+            style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+            datetime_op((i["Published"])))
     return json.dumps(value)
 
 
@@ -106,11 +105,11 @@ def psd_list(channel):
     # 新闻列表
     c_list = search_news_db([ObjectId(channel)], pre_page)
     # 今日热评文字1
-    jrrp_1 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # jrrp_1 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评图片1
-    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1, jrrp_1)
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_1 + jrrp_2)
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_2)
     # 独家视界
     djsj = get_image_news("577c648559f0d8efacae7e6b", 10)
     # 当事者说
@@ -131,7 +130,7 @@ def psd_list(channel):
     name = get_name(channel)
     return render_template('psd/psd_list.html', lht=lht,
                            c_list=c_list,
-                           jrrp_1=jrrp_1,
+                           # jrrp_1=jrrp_1,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
                            djsj=djsj,
@@ -165,7 +164,6 @@ def news_list_page(channel, page=1):
     return json.dumps(value)
 
 
-
 def get_name(channel):
-    name = db.Channel.find_one({"_id":ObjectId(channel)})["Name"]
+    name = db.Channel.find_one({"_id": ObjectId(channel)})["Name"]
     return name

@@ -1465,7 +1465,7 @@ DISPLAY: none
 	.deet_pic_tit a {color:#333;}
 	.deet_pic_tit a:hover {color:#205366;}
 	.deet_pic_img {width:140px; height:105px;}
-	.deet_pic_txt {margin-left:10px; width:150px; height:100px; line-height:20px; font-family:"宋体"; font-size:12px; text-indent:2em; color:#7b7b7b;}
+	.deet_pic_txt {margin-left:10px; width:150px; height:100px; line-height:20px; font-family:"宋体"; font-size:14px; text-indent:2em; color:#7b7b7b;}
 
 	.deet_list {vertical-align: middle;}
 	.deet_list li {width:300px; height:42px; line-height:42px; font-family:"宋体"; border-bottom:1px solid #f0f0f4; float:left; overflow:hidden;}

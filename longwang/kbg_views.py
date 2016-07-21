@@ -8,6 +8,7 @@ from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict
 from bson import ObjectId
+from psd_views import get_name
 
 db = conn.mongo_conn()
 db_redis = conn.redis_conn()
@@ -100,7 +101,8 @@ def kbg_list_index(channel):
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1, [], 2)
+    name = get_name(channel)
     return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel),
-                           menu=menu1, blt=blt, rmtj=rmtj)
+                           menu=menu1, blt=blt, rmtj=rmtj,name=name)
 
 

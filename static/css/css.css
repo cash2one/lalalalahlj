@@ -819,14 +819,7 @@
     margin-top: 15px;
 }
 
-.photo_list h3 {
-    width: 220px;
-    height: auto;
-    line-height: 26px;
-    font-size: 18px;
-    float: left;
-    margin-top: 13px;
-}
+.photo_list h3 {width:220px; height:auto; line-height:26px; font-size:18px; float:left; margin-top:13px; font-weight:normal;}
 
 .photo_list h3 a {
     text-decoration: none;

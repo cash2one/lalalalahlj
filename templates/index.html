@@ -13,6 +13,7 @@
 {% block middle %}
     <div class="content ft30">
         {% include "generic_components/list_rotation_graph.html" %}
+{#    {% include "generic_components/lht.html" %}#}
     </div>
 
     <!----专题----->
@@ -97,7 +98,7 @@
                 </div>
                 <div class="mid_list">
                     <ul>
-                        {% for i in kx %}
+                        {% for i in ljkd %}
                             <li>
                                 <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>
@@ -130,7 +131,16 @@
     </div>
 
 
-
+	<script type="text/javascript">
+		//大图和文字切换
+		jQuery(".txMovie").slide({ titCell:".focus_nav li", mainCell:".focus_pic", targetCell:".focus_text li", autoPlay:true,delayTime:100,startFun:function(i){
+				//控制小图自动翻页
+				if(i==0){ jQuery(".txMovie .navPrev").click() } else if( i%3==0 ){ jQuery(".txMovie .navNext").click()}
+			}
+		});
+		//小图滚动
+		jQuery(".txMovie").slide({ mainCell:".focus_nav ul",prevCell:".navPrev",nextCell:".navNext",effect:"left",vis:3,scroll:3,delayTime:0,autoPage:true,pnLoop:false});
+	</script>
     {#  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>#}
     <script type="text/javascript">
         var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix

@@ -440,6 +440,7 @@
     height: 48px;
     border-bottom: 2px solid #ccc;
     float: left;
+    font-weight:700;
 }
 
 .mid_tlt p {
@@ -519,41 +520,11 @@
 }
 
 /****right***/
-.zt_tlt {
-    width: 220px;
-    height: 34px;
-    border-bottom: 2px solid #ccc;
-    float: left;
-}
-
-.zt_tlt p {
-    width: 40px;
-    height: 34px;
-    line-height: 34px;
-    float: left;
-    margin-left: 43px;
-}
-
-.zt_tlt p a {
-    text-decoration: none;
-    color: #205366;
-}
-
-.zt_tlt p a:hover {
-    text-decoration: underline;
-    color: #205366;
-}
-
-.zt_tlt span {
-    width: 105px;
-    height: 34px;
-    line-height: 34px;
-    float: left;
-    color: #999;
-    font-family: Arial;
-    text-transform: uppercase;
-    text-align: center;
-}
+.zt_tlt {width:220px; height:34px; border-bottom:2px solid #ccc; float:left;}
+.zt_tlt p {width:220px; height:34px; line-height:34px; float:left; text-align:center;}
+.zt_tlt p a {text-decoration:none; color:#205366;}
+.zt_tlt p a:hover {text-decoration: underline; color:#205366;}
+.zt_tlt span {width:105px; height:34px; line-height:34px; float:left; color:#999; font-family: Arial; text-transform: uppercase; text-align: center;}
 
 .zt_flash {
     width: 220px;
@@ -652,6 +623,7 @@
     height: 48px;
     border-bottom: 2px solid #ccc;
     float: left;
+    font-weight:700;
 }
 
 .right_tlt p {
@@ -1308,8 +1280,10 @@ DISPLAY: none
 
 .gsp_banner {float:left; width:1200px; height:90px;}
 
-.gsp_logo {float:left; width:281px; height:60px;}
-.gsp_logo img {margin-top:10px;}
+.gsp_logo {float:left; width:365px; height:82px;}
+.gsp_logo a {display:block; float:left;}
+.gsp_logo_a01 {margin-top:15px}
+.gsp_logo_a02 {margin:30px auto auto 10px;}
 
 .gsp_header_r {float:right; margin-top:15px; width:175px; height:30px; }
 
@@ -1725,5 +1699,18 @@ DISPLAY: none
   .film_right_list ul li a {text-decoration:none; color:#333;}
   .film_right_list ul li a:hover {text-decoration: underline; color:#205366;}
 
+  /*热门图集*/
+.right_list02 {width:220px; height:auto; float: left;}
+.right_list02 ul {vertical-align: middle;}
+.right_list02 ul li {width:220px; height:auto; line-height:35px; /*border-bottom:1px solid #f0f0f4;*/ float:left; overflow:hidden;}
+.right_list02 ul li a {text-decoration:none; color:#333;}
+.right_list02 ul li a:hover {text-decoration: underline; color:#205366;}
+.right_list02 ul li span {display:block; overflow:hidden; height:35px; line-height:35px;}
+/*专题*/
+.right_list03 {width:220px; height:auto; float: left;}
+.right_list03 ul {vertical-align: middle;}
+.right_list03 ul li {width:220px; height:36px;line-height:36px; border-bottom:1px solid #f0f0f4; float:left; overflow:hidden;}
+.right_list03 ul li a {text-decoration:none; color:#333;}
+.right_list03 ul li a:hover {text-decoration: underline; color:#205366;}
 
 /*--------20160628以下css编写：蒋文婷 结束-------------*/

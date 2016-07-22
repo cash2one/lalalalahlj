@@ -33,13 +33,11 @@ def index():
     zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
     zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
     # 热门图集
-    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
+    rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     # 今日要闻
     gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 3)
-
     # 龙江看点
-    kx = search_indexnews_db("579190303c7ee91e3478823d", 6)
-
+    ljkd = search_indexnews_db("579190303c7ee91e3478823d", 6)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
@@ -59,7 +57,7 @@ def index():
     _news_list = []
     for news_detail in news_list:
         _news_list.append(get_mongodb_dict(news_detail))
-    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, kx=kx,
+    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd,
                            lht=lht, rmtj=rmtj, menu=get_menu(), news_list=_news_list, hours=hours, zb=zb, yb=yb, zd=_zd)
 
 
@@ -81,7 +79,7 @@ def s_list(channel):
     zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
     zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
     # 热门图集
-    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
+    rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
 

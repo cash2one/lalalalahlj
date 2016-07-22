@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>
-{% block title %}
-{% endblock %}
+    {% block title %}
+    {% endblock %}
 </title>
 <head>
     {% block head %}
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
         <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
@@ -17,6 +17,7 @@
         <script>
             $(function () {
                 get_hot();
+                $(".menu").smartFloat();
             });
             //热词切换
             function get_hot() {
@@ -25,7 +26,35 @@
                     $("#ul_hot").html(result.key);
                 });
             }
-
+            $.fn.smartFloat = function () {
+                var position = function (element) {
+                    var top = element.position().top, pos = element.css("position");
+                    $(window).scroll(function () {
+                        var scrolls = $(this).scrollTop();
+                        if (scrolls > top) {
+                            if (window.XMLHttpRequest) {
+                                element.css({
+                                    position: "fixed",
+                                    "z-index":3,
+                                    top: 0
+                                });
+                            } else {
+                                element.css({
+                                    top: scrolls
+                                });
+                            }
+                        } else {
+                            element.css({
+                                position: pos,
+                                top: top
+                            });
+                        }
+                    });
+                };
+                return $(this).each(function () {
+                    position($(this));
+                });
+            };
         </script>
     {% endblock %}
 

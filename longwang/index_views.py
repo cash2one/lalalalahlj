@@ -200,7 +200,7 @@ def detail_all(id):
 
 # @index_page.route('/menu/')
 def get_menu():
-    value = "<li class='m'><h3><a target='_blank' href='/'>首页</a></h3></li>"
+    value = "<li class='m'><h3><a href='/'>首页</a></h3></li>"
     c_p = db.Channel.find(
         {"Parent": ObjectId("5428b978f639ab1548d55184"), "_id": {"$ne": ObjectId("5764f5396aba261f94bf517a")},
          "Status": 1, "Visible": 1}).sort("OrderNumber")

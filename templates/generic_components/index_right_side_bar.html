@@ -83,34 +83,55 @@
     </div>
 
     <!----热门图集----->
+    {#    <div class="con_r_main ft30">#}
+    {#        <div class="right_tlt">#}
+    {#            <p><a href="/list/5768a6f4dcc88e0510fe053a">热门图集</a>#}
+    {#            </p>#}
+    {#        <span>photo</span>#}
+    {#        </div>#}
+    {#        <div class="con_r_main">#}
+    {#            {% for i in rmtj %}#}
+    {#                {% if loop.index0==0 %}#}
+    {#                    <div class="photo_list">#}
+    {#                        <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=220&h=110"#}
+    {#                                                                              width="220" height="110"/></a></p>#}
+    {#                        <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>#}
+    {#                    </div>#}
+    {#                {% endif %}#}
+    {#            {% endfor %}#}
+    {#            <div class="right_list" style="margin-top:12px;">#}
+    {#                <ul>#}
+    {#                    {% for i in rmtj %}#}
+    {#                        {% if loop.index0>0 %}#}
+    {#                            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>#}
+    {#                        {% endif %}#}
+    {#                    {% endfor %}#}
+    {#                </ul>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+    <!----热门图集----->
     <div class="con_r_main ft30">
         <div class="right_tlt">
-            <p><a href="/list/5768a6f4dcc88e0510fe053a">热门图集</a>
-            </p>
+            <p><a href="/list/5768a6f4dcc88e0510fe053a" target="_blank">热门图集</a></p>
             {#        <span>photo</span>#}
         </div>
         <div class="con_r_main">
-            {% for i in rmtj %}
-                {% if loop.index0==0 %}
-                    <div class="photo_list">
-                        <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=220&h=110"
-                                                                              width="220" height="110"/></a></p>
-                        <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            <div class="right_list" style="margin-top:12px;">
+            <div class="right_list02" id="right_list02" style="margin-top:10px;">
                 <ul>
                     {% for i in rmtj %}
-                        {% if loop.index0>0 %}
-                            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-                        {% endif %}
+                        <li><a href="/detail/{{ i._id }}" {% if loop.index0==0 %}style="text-decoration: underline; color:#205366;" {% endif %}>
+                            <span>{{ i.title }}</span>
+                            <img  {% if loop.index0==0 %}  style="display: block"{% else %}style="display: none" {% endif %}
+                                                           src="{{ i.guide_image }}?w=220&h=110" width="220"
+                                                           height="110"/></a></li>
                     {% endfor %}
+
                 </ul>
             </div>
         </div>
     </div>
-
 
     <!----侃八卦----->
     <div class="con_r_main ft30">
@@ -129,3 +150,24 @@
         </div>
     </div>
 </div>
+<script>
+
+    $("#right_list02 ul li").mouseenter(function () {
+        var ul = $(this).parent("ul");
+        var li = ul.children("li");
+        var index = $(this).index();
+        $.each(li, function (i) {
+            if (index == i) {
+                              li.eq(i).find("a").css({"text-decoration": "underline","color":"#205366"});
+                              li.eq(i).find("img").css("display"," block");
+            } else {
+                               li.eq(i).find("a").css({"text-decoration": "none","color":"#333"});
+                               li.eq(i).find("img").css("display"," none");
+
+
+            }
+        })
+
+    });
+
+</script>

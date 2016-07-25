@@ -13,6 +13,7 @@
 {% block middle %}
     <div class="content ft30">
         {% include "generic_components/list_rotation_graph.html" %}
+{#    {% include "generic_components/lht.html" %}#}
     </div>
 
     <!----专题----->
@@ -24,6 +25,17 @@
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
                 <ul id="uuuu" class="tiles-wrap animated">
+                 {% for i in zd %}
+                        <li>
+                            <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                                  width="261" height="171"/></a></p>
+                            <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                            <h4>{{ i.summary }}</h4>
+          <span>
+          <h5>{{ i.publish_time }}</h5>
+          <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
+          </span></li>
+                    {% endfor %}
                     {% for i in news_list %}
                         <li>
                             <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
@@ -47,7 +59,7 @@
             <!----要闻----->
             <div class="con_m_main">
                 <div class="mid_tlt">
-                    <p><a href="/list/57650551dcc88e31a6f3501c">要闻</a></p>
+                    <p><a href="/list/57650551dcc88e31a6f3501c">龙江头条</a></p>
                     {#          <span>news</span> #}
                 </div>
                 <div class="mid_list">
@@ -64,7 +76,7 @@
             <!----高层动态----->
             <div class="con_m_main ft30">
                 <div class="mid_tlt">
-                    <p><a href="/list/576503f2dcc88e31a6f35013">高层动态</a></p>
+                    <p><a href="/list/5791887ddcc88e07453e0e10">今日要闻</a></p>
                     {#          <span>SENIOR NEWS</span> #}
                 </div>
                 <div class="mid_list">
@@ -81,12 +93,12 @@
             <!----快讯----->
             <div class="con_m_main ft30">
                 <div class="mid_tlt">
-                    <p><a href="/list/57650558dcc88e31a7d2e4c4">快讯</a></p>
+                    <p><a href="/list/57650155dcc88e31a6f35010">龙江看点</a></p>
                     {#          <span>news flash</span>#}
                 </div>
                 <div class="mid_list">
                     <ul>
-                        {% for i in kx %}
+                        {% for i in ljkd %}
                             <li>
                                 <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>
@@ -95,23 +107,7 @@
                     </ul>
                 </div>
             </div>
-            <!----本网原创----->
-            <div class="con_m_main ft30">
-                <div class="mid_tlt">
-                    <p><a href="/list/57650560dcc88e31a7d2e4c5">本网原创</a></p>
-                    {#          <span>original</span> #}
-                </div>
-                <div class="mid_list">
-                    <ul>
-                        {% for i in bwyc %}
-                            <li>
-                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
-                                <h4>{{ i.summary }}</h4>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+
         </div>
 
         <input type="hidden" value="2" id="page">
@@ -135,7 +131,16 @@
     </div>
 
 
-
+{#	<script type="text/javascript">#}
+{#		//大图和文字切换#}
+{#		jQuery(".txMovie").slide({ titCell:".focus_nav li", mainCell:".focus_pic", targetCell:".focus_text li", autoPlay:true,delayTime:100,startFun:function(i){#}
+{#				//控制小图自动翻页#}
+{#				if(i==0){ jQuery(".txMovie .navPrev").click() } else if( i%3==0 ){ jQuery(".txMovie .navNext").click()}#}
+{#			}#}
+{#		});#}
+{#		//小图滚动#}
+{#		jQuery(".txMovie").slide({ mainCell:".focus_nav ul",prevCell:".navPrev",nextCell:".navNext",effect:"left",vis:3,scroll:3,delayTime:0,autoPage:true,pnLoop:false});#}
+{#	</script>#}
     {#  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>#}
     <script type="text/javascript">
         var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
@@ -184,19 +189,17 @@
                             {#            setTimeout(function() {#}
                             {#              $firstTen.css('opacity', 1);#}
                             {#            }, 300);#}
-                  });
-                })
+                        });
+                    })
 
 
-            }
-        };
+                }
+            };
 
-                // Capture scroll event.
-                $window.on('scroll.wookmark', onScroll);
-                $window.on('resize', fixedRight);
-            }
-
-            )(jQuery);
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+            $window.on('resize', fixedRight);
+        })(jQuery);
 
         // 固定右侧列表位置
         function fixedRight() {

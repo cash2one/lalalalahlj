@@ -30,14 +30,14 @@ def index():
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     # 今日要闻
-    gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 3)
+    gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 4)
     # 龙江看点
-    ljkd = search_indexnews_db("579190303c7ee91e3478823d", 6)
+    ljkd = search_indexnews_db("579190303c7ee91e3478823d", 5)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
@@ -57,8 +57,8 @@ def index():
     _news_list = []
     for news_detail in news_list:
         _news_list.append(get_mongodb_dict(news_detail))
-    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd,
-                           lht=lht, rmtj=rmtj, menu=get_menu(), news_list=_news_list, hours=hours, zb=zb, yb=yb, zd=_zd)
+    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd,lht=lht, rmtj=rmtj, menu=get_menu(), news_list=_news_list,
+                           hours=hours, zb=zb, yb=yb, zd=_zd)
 
 
 # 二级频道列表
@@ -76,8 +76,8 @@ def s_list(channel):
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
@@ -148,8 +148,8 @@ def detail(id, page=1):
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
@@ -187,8 +187,8 @@ def detail_all(id):
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
@@ -269,8 +269,8 @@ def ss_keywords(keywords, page=1):
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,

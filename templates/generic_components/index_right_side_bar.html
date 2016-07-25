@@ -152,28 +152,22 @@
 </div>
 <script>
 
-{#    $("#right_list02 ul li").mouseenter(function () {#}
-{#        var ul = $(this).parent("ul");#}
-{#        var li = $(this).parent("ul").children("li");#}
-{#        var index = $(this).index();#}
-{#        $.each(li, function (i) {#}
-{#            if (index == i) {#}
-{#                alert("yes"+i);#}
-{#                               ul.eq(i).children("li").find("a").css({"text-decoration": "underline","color":"#205366"});#}
-{#                               ul.eq(i).children("li").find("img").css("display: block");#}
-{#            } else {#}
-{#                alert("no"+i);#}
-{#                               ul.eq(i).children("li").find("a").css("text-decoration:none");#}
-{#                               ul.eq(i).children("li").find("img").css("display: none");#}
-{##}
-{#                              ul.eq(i).children("li").find("a").attr("class","hover1");#}
-{#                               ul.eq(i).children("li").find("img").attr("class","block1");#}
-{#            }#}
-{#        })#}
-{##}
-{#    });#}
+    $("#right_list02 ul li").mouseenter(function () {
+        var ul = $(this).parent("ul");
+        var li = ul.children("li");
+        var index = $(this).index();
+        $.each(li, function (i) {
+            if (index == i) {
+                              li.eq(i).find("a").css({"text-decoration": "underline","color":"#205366"});
+                              li.eq(i).find("img").css("display"," block");
+            } else {
+                               li.eq(i).find("a").css("text-decoration","none");
+                               li.eq(i).find("img").css("display"," none");
 
 
+            }
+        })
 
+    });
 
 </script>

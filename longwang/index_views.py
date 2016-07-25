@@ -14,7 +14,6 @@ from bson import ObjectId
 db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 
-
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 # 分页
@@ -234,15 +233,15 @@ def search_hot_redis():
     string = ""
     count = 0
     for i in db_redis.hkeys('hot_searh'):
-      if len(i)<24:
-        if count <= 8:
-            count += 1
-            string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-                i, i)
+        if len(i) < 24:
+            if count <= 8:
+                count += 1
+                string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+                    i, i)
+            else:
+                pass
         else:
             pass
-      else:
-          pass
     return json.dumps({"key": string})
 
 
@@ -288,3 +287,68 @@ def is_sift(page=1):
         c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
         string += "<h6><a href='%s'>%s</a></h6></span></li>" % (c["Href"], c["Name"])
     return json.dumps({"datalist": string})
+
+
+# 一级页面首页（除侃八卦和品深度）
+
+@index_page.route('/fllist/<channel>/')
+def front_page(channel):
+    # lht = get_head_image(channel, 5)
+    channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
+    channel_list = []
+    for i in channel_list_raw:
+        channel_list.append(i["_id"])
+    news_list = search_news_db(channel_list, 9, 1)
+    detail = db.Channel.find_one({"_id": ObjectId(channel)})
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 侃八卦
+    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    # 专题
+    zt_images = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 4)
+    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 3, zt_images)
+    # 热门图集
+    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 9, 1, [], 2)
+    return render_template('front_list.html', news_list=news_list,
+                           detail=detail,
+                           hours=hours,
+                           zb=zb,
+                           yb=yb,
+                           gbg=gbg,
+                           zt_images=zt_images,
+                           # lht=lht,
+                           zt=zt,
+                           rmtj=rmtj,
+                           )
+
+
+@index_page.route('/fllist/<channel>/<page>/')
+def news_list_page(channel, page=1):
+    channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
+    channel_list = []
+    for i in channel_list_raw:
+        channel_list.append(i["_id"])
+    # condition = {"Channel": {"$in": channel_list}, "Status": 4}
+    news_list = db.News.find({"Channel": {"$in": channel_list}}).sort('Published', pymongo.DESCENDING).skip(
+        pre_page * (int(page) - 1)).limit(
+        pre_page)
+    news_dic_list = []
+    for i in news_list:
+        i["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
+        news_dic_list.append(i)
+    value = ""
+    for i in news_dic_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li %s><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s<tt><a href='#'>%s</a></tt></h6></li>" % \
+                 (style, style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                  datetime_op((i["Published"])), i["cname"])
+    return json.dumps(value)
+
+
+def get_name(channel):
+    name = db.Channel.find_one({"_id": ObjectId(channel)})["Name"]
+    return name

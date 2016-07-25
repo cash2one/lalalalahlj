@@ -1732,5 +1732,27 @@ DISPLAY: none
   .film_right_list ul li a {text-decoration:none; color:#333;}
   .film_right_list ul li a:hover {text-decoration: underline; color:#205366;}
 
+.focus02 { float:left; border:1px solid #dfdfdf; width:950px;height:370px;overflow:hidden;}
+.focus02 li {display:block; float:left; overflow:hidden;}
+.fcs02-li01 {width:650px; height:370px;}
+.fcs02-li02 {position:relative; margin-left:18px; width:268px; height:370px;}
+.fcs02-li02 h1,.fcs02-li02 h2,.fcs02-li02 h3 {display:block; float:left; overflow:hidden; width:268px;}
+.fcs02-li02 h1 {max-height:105px; line-height:35px;}
+.fcs02-li02 h1 a:hover {color:#22596d; text-decoration:none;}
+.fcs02-li02 h2 {max-height:160px; line-height:20px; font-size:14px; font-weight:normal; color:#4b4b4b;}
+.fcs02-li02 h3 {position:absolute; bottom:10px; left:0px; font-size:12px; font-weight:normal; color:#a09f9f;}
 
+
+.list02_news {width:950px; height:auto; float:left;}
+.list02_news ul {vertical-align:middle;}
+.list02_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+.list02_news ul li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
+.list02_news ul li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
+.list02_news ul li h2 a { text-decoration:none; color:#000;}
+.list02_news ul li h2 a:hover { text-decoration:none; color:#205366;}
+.list02_news ul li h5 {width:auto; height:40px; line-height:20px; font-size:14px; font-weight:normal; margin-top:20px; color:#666; overflow: hidden;}
+.list02_news ul li h6 {width:669px; height:auto; margin-left:280px; font-size:12px; font-weight:normal; margin-top:20px; color:#a0a0a0; bottom:0;}
+.list02_news ul li h6 tt {display:block; float:right; overflow:hidden; border:1px solid #e2e2e2; padding-left:10px; padding-right:10px; width:auto; height:22px; line-height:22px;}
+.list02_news ul li h6 a { color:#46abd0;}
+.list02_news ul li h6 a:hover { color:#2a6d86; text-decoration:none;}
 /*--------20160628以下css编写：蒋文婷 结束-------------*/

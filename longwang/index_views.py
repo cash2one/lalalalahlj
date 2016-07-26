@@ -33,7 +33,7 @@ def index():
     zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
+    rmtj = search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     # 今日要闻
     gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 4)
     # 龙江看点
@@ -57,7 +57,8 @@ def index():
     _news_list = []
     for news_detail in news_list:
         _news_list.append(get_mongodb_dict(news_detail))
-    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd,lht=lht, rmtj=rmtj, menu=get_menu(), news_list=_news_list,
+    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd, lht=lht,
+                           rmtj=rmtj, menu=get_menu(), news_list=_news_list,
                            hours=hours, zb=zb, yb=yb, zd=_zd)
 
 
@@ -79,7 +80,7 @@ def s_list(channel):
     zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj =search_indexnews_db("5791c0b43c7ee91e34788240", 3)
+    rmtj = search_indexnews_db("5791c0b43c7ee91e34788240", 3)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
 
@@ -298,7 +299,7 @@ def is_sift(page=1):
 
 @index_page.route('/fllist/<channel>/')
 def front_page(channel):
-    # lht = get_head_image(channel, 5)
+    lht = get_head_image(channel, 5)
     channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
     channel_list = []
     for i in channel_list_raw:
@@ -323,9 +324,10 @@ def front_page(channel):
                            yb=yb,
                            gbg=gbg,
                            zt_images=zt_images,
-                           # lht=lht,
+                           lht=lht,
                            zt=zt,
                            rmtj=rmtj,
+                           menu=get_menu()
                            )
 
 

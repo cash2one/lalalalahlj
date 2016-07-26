@@ -40,10 +40,10 @@
     <ul id="ul_content">
         {% for i in news_list %}
     <li>
-    <p><a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
-    <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
+    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
+    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
     <h5>{{ i.summary }}</h5>
-    <h6>{{ i.publish_time }} <tt><a href="#">{{ i.cname }}</a></tt></h6>
+    <h6>{{ i.publish_time }} <tt><a href="/list/{{ i.cid }}/">{{ i.cname }}</a></tt></h6>
     </li>
         {% endfor %}
     </ul>

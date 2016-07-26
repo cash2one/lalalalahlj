@@ -12,7 +12,7 @@
                     <ul>
                         {% for i in zt_images %}
                             <li><a href="/detail/{{ i._id }}" target="_blank"><img _src="{{ i.guide_image }}"
-                                                                                   src="{{ i.guide_image }}"/></a></li>
+                                                                                   src="{{ i.guide_image }}?w=225&h=185"/></a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -180,3 +180,24 @@
         </div>
     </div>
 </div>
+<script>
+
+    $("#right_list02 ul li").mouseenter(function () {
+        var ul = $(this).parent("ul");
+        var li = ul.children("li");
+        var index = $(this).index();
+        $.each(li, function (i) {
+            if (index == i) {
+                              li.eq(i).find("a").css({"text-decoration": "underline","color":"#205366"});
+                              li.eq(i).find("img").css("display"," block");
+            } else {
+                               li.eq(i).find("a").css({"text-decoration": "none","color":"#333"});
+                               li.eq(i).find("img").css("display"," none");
+
+
+            }
+        })
+
+    });
+
+</script>

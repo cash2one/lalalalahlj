@@ -1,40 +1,81 @@
-  <div class="content ft30">
-   <div class="flash">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-        <div class="txMovie">
-             <ul class="focus_pic" id="focus_pic_list">
-                <li><a href="#"><img src="/static/images/1.jpg" width="650" height="370"/></a></li>
-                <li><a href="#"><img src="/static/images/2.jpg" width="650" height="370" /></a></li>
-                <li><a href="#"><img src="/static/images/3.jpg" width="650" height="370" /></a></li>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/static/css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Swiper -->
+<div class="swiper-container" style="z-index: 0">
+    <div class="swiper-wrapper">
+        {% for i in lht %}
+        <div class="swiper-slide">
+            <ul style="display:block; width:950px; height:353px;">
+                <li class="fcs05-li01"><a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=620&h=353" width="620" height="353"/></a></li>
+                <li class="fcs05-li02">
+                    <h1 class="ft20" style="margin-bottom: 10px"><a href="/detail/{{ i._id }}">{{ i.title }}</a></h1>
+                    <h2 class="ft20">{{ i.summary }}</h2>
+                    <h3>{{ i.publish_time }}</h3>
+                </li>
             </ul>
-        
-            <div class="focus_nav">
-                <ul id="focus_smaillPic_list">
-                    <li><a><img src="/static/images/1.jpg"><span class="cover"></span></a><b>▲</b></li>
-                    <li><a><img src="/static/images/2.jpg"><span class="cover"></span></a><b>▲</b></li>
-                    <li><a><img src="/static/images/3.jpg"><span class="cover"></span></a><b>▲</b></li>
-                </ul>
-            </div>
-        
-            <div class="focus_text">
-                <ul id="focus_content_list">
-                  <li class="fcs02-li02">       
-                    <h1 class="ft20"><a href="#">习近平：全面建成小康社会任何地区任何民族都不能落下</a></h1>
-                    <h2 class="ft20">中共中央总书记、国家主席、中央军委主席习近平近日在宁川考察时强调，到2020年全面建成小康社会，任何一个地区、任何一个民族都不能落下。</h2>
-                    <h3>7小时前</h3>
-                  </li>
-                  <li class="fcs02-li02">       
-                    <h1 class="ft20"><a href="#">图2：全面建成小康社会任何地区任何民族都不能落下</a></h1>
-                    <h2 class="ft20">中共中央总书记、国家主席、中央军委主席习近平近日在宁川考察时强调，到2020年全面建成小康社会，任何一个地区、任何一个民族都不能落下。</h2>
-                    <h3>7小时前</h3>
-                  </li>
-                  <li class="fcs02-li02">       
-                    <h1 class="ft20"><a href="#">图3：全面建成小康社会任何地区任何民族都不能落下</a></h1>
-                    <h2 class="ft20">中共中央总书记、国家主席、中央军委主席习近平近日在宁川考察时强调，到2020年全面建成小康社会，任何一个地区、任何一个民族都不能落下。</h2>
-                    <h3>7小时前</h3>
-                  </li>
-                </ul>
-            </div>
         </div>
+        {% endfor %}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
-  </div>
+
+<!-- Swiper JS -->
+<script src="/static/js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 3200,
+        autoplayDisableOnInteraction: false
+    });
+</script>
+</body>
+</html>

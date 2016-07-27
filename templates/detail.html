@@ -25,14 +25,11 @@
         <div class="news_about"><p>来源：{{ detail.Source }}&nbsp;&nbsp;{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;
             {% if detail.Author!="" %}    作者：{{ detail.Author }}{% endif %}
         </p>
-
-            <div class="news_about_btn">
+        <div class="news_about_btn">
                 <ul>
                     <li>
-                        {#                            <img src="/static/images/dot03.jpg" width="14" height="13"/>&nbsp;#}
-                        <div id="bd" class="bdsharebuttonbox"><a class="bds_more" href="#"
-                                                                 style="background: url('/static/images/dot03.jpg') no-repeat;color: #8e8e8e"
-                                                                 data-cmd="more">分享</a>
+
+                        <div id="bd" class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1469586652137"><a class="bds_more" href="#" style="background: url('/static/images/dot03.jpg') no-repeat;color: #8e8e8e" data-cmd="more">分享</a>
                         </div>
                     </li>
                     <script>window._bd_share_config = {
@@ -58,17 +55,24 @@
                     };
                     with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
 
-                    <li><img src="/static/images/dot04.jpg" width="14" height="13"/>&nbsp;<a href="#">收藏</a></li>
-                    <li><img src="/static/images/dot05.jpg" width="14" height="13"/>&nbsp;&nbsp;<a href="#">评论</a>
+                    <li><img src="/static/images/dot04.jpg" width="14" height="13" data-bd-imgshare-binded="1">&nbsp;<a href="#">收藏</a></li>
+                    <li><img src="/static/images/dot05.jpg" width="14" height="13" data-bd-imgshare-binded="1">&nbsp;&nbsp;<a href="#">评论</a>
                     </li>
                 </ul>
             </div>
+
         </div>
         <div class="news_zw">
             <div class="news_font f16">
                 {{ detail.Content|safe }}
             </div>
             <div class="news_pdzb">频道主编：{{ detail.Editor }}</div>
+        <div class="news_pdzb_share">
+
+                        <div class="bdsharebuttonbox" style="float: right"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["weixin","qzone","tsina","sqq"],"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["tsina","weixin","sqq","qzone"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","weixin","sqq","qzone"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+        </div>
             <div class="content_l ft20"  {% if count==1 %}style="display: none"{% else %}style="margin-top:20px"{% endif %}>
                 <div class="jogger">
                     {% autoescape false %}

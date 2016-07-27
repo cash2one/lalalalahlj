@@ -19,19 +19,9 @@
 {% block middle %}
   <!---------left-------->
   <div class="con_l">
-      <div class="focus02" style="margin:0 auto">
-		<ul>
-            {% for i in lht %}
-	      <li class="fcs02-li01"><a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}" width="650" height="370" /></a></li>
-            {% endfor %}
-        {% for i in lht %}
-		  <li class="fcs02-li02">       
-        	<h1 class="ft20"><a href="/detail/{{ i._id }}">{{ i.title }}</a></h1>
-        	<h2 class="ft20">{{ i.summary }}</h2>
-            <h3>{{ i.publish_time }}</h3>
-          </li>
-        {% endfor %}
-		</ul>
+      <div class="focus02"  style="margin:0 auto;">
+          {% include "generic_components/lht.html" %}
+
       </div>
     
     <!---------w950新闻分类-------->

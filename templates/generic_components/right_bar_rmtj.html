@@ -1,0 +1,20 @@
+    <!----热门推荐----->
+    <div class="con_r_main ft30">
+        <div class="right_tlt">
+            <p><a >热门推荐</a></p>
+            {#        <span>photo</span>#}
+        </div>
+        <div class="con_r_main">
+            <div class="right_list021"  style="margin-top:10px;">
+                <ul>
+                    {% for i in rmtui %}
+                        <li><a href="/detail/{{ i._id }}" >
+                            <img src="{{ i.guide_image }}?w=220&h=110" width="220" height="110"/>
+                        <span>{{ i.title }}</span>
+                        </a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>

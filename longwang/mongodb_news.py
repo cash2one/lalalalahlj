@@ -103,10 +103,13 @@ def get_head_image(channel, limit):
     lht = db.ChannelHeadImage.find({"ChannelID": ObjectId(channel)}).sort("no", pymongo.DESCENDING).limit(limit)
     _lht = []
     for i in lht:
+        dd=db.News.find_one({"_id":ObjectId(i["NewsID"])})
         new_dict = {}
         new_dict["_id"] = i["NewsID"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["HeadImage"]
+        new_dict["summary"] = dd["Summary"]
+        new_dict["publish_time"] = datetime_op(dd["Published"])
         _lht.append(new_dict)
     return _lht
 
@@ -152,7 +155,6 @@ def search_indexnews_db(Channel, limit):
         new_dict["summary"] = i["Summary"]
         _news_list.append(new_dict)
     return _news_list
-
 
 
 # 头条新闻

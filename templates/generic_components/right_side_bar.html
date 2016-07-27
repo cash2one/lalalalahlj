@@ -113,34 +113,7 @@
         </div>
     </div>
 
-    <!----热门图集----->
-{#    <div class="con_r_main ft30">#}
-{#        <div class="right_tlt">#}
-{#            <p><a href="/list/5768a6f4dcc88e0510fe053a">热门图集</a>#}
-{#            </p>#}
-            {#        <span>photo</span>#}
-{#        </div>#}
-{#        <div class="con_r_main">#}
-{#            {% for i in rmtj %}#}
-{#                {% if loop.index0==0 %}#}
-{#                    <div class="photo_list">#}
-{#                        <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=220&h=110"#}
-{#                                                                              width="220" height="110"/></a></p>#}
-{#                        <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>#}
-{#                    </div>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#            <div class="right_list" style="margin-top:12px;">#}
-{#                <ul>#}
-{#                    {% for i in rmtj %}#}
-{#                        {% if loop.index0>0 %}#}
-{#                            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>#}
-{#                        {% endif %}#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
+
     <!----热门图集----->
     <div class="con_r_main ft30">
         <div class="right_tlt">
@@ -162,23 +135,14 @@
             </div>
         </div>
     </div>
+{% if d==1 %}
+    <!----热门推荐----->
+  {% include "generic_components/right_bar_rmtj.html" %}
+{% else %}
+        <!----侃八卦----->
+   {% include "generic_components/right_bar_kbg.html" %}
 
-    <!----侃八卦----->
-    <div class="con_r_main ft30">
-        <div class="right_tlt">
-            <p><a href="/kbg/">侃八卦</a></p>
-            {#        <span>Gossip</span> #}
-        </div>
-        <div class="con_r_main">
-            <div class="right_list">
-                <ul>
-                    {% for i in gbg %}
-                        <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
+{% endif %}
 </div>
 <script>
 

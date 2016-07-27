@@ -108,8 +108,12 @@ def s_list_page(channel, page=1):
 def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"_id": ObjectId(id)})
-    # if detail["newstype"]==2:
-
+    if detail["newstype"] == 2:
+        wqhg = db.News.find(
+            {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
+             "Guideimage": {"$ne": ""}}).sort(
+            "Published", pymongo.DESCENDING).limit(25)
+        return render_template('picview.html', detail=detail, wqhg=wqhg)
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻
@@ -160,7 +164,7 @@ def detail(id, page=1):
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, ecy1=ecy1, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
-                           count=len(count),rmtui=rmtui,d=1)
+                           count=len(count), rmtui=rmtui, d=1)
 
 
 # 详细页面全部显示
@@ -200,7 +204,7 @@ def detail_all(id):
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1,rmtui=rmtui,d=1)
+                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1, rmtui=rmtui, d=1)
 
 
 # @index_page.route('/menu/')

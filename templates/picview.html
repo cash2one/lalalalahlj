@@ -3,25 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>龙网-图片细览</title>
-<link href="css/main.css" rel="stylesheet" type="text/css" />
-<link href="css/css.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery1.42.min.js"></script>
-<script type="text/javascript" src="js/jquery.noconflict.min.js"></script>
+<title>{{ detail.Title }}-黑龙江网</title>
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/css.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.noconflict.min.js"></script>
 </head>
 
 <body>
 <div class="vrty_header" style="height:45px; line-height:45px;">
     <div class="vrty_headnav_o" style="height:45px; line-height:45px;">
         <ul class="vrty_headnav_l" style="height:45px; line-height:45px;">
-            <li><img src="images/picview-logo.png" class="picview-logo" /></li>
-            <li><span><a href="#">黑龙江网首页</a></span> <p>|</p></li>
+            <li><img src="/static/images/picview-logo.png" class="picview-logo" /></li>
+            <li><span><a href="/">黑龙江网首页</a></span> <p>|</p></li>
             <li><span><a href="#">看龙江</a></span> <p>|</p></li>
-            <li><span><a href="#">观时事</a></span> <p>|</p></li>
-            <li><span><a href="#">知天下</a></span> <p>|</p></li>
-            <li><span><a href="#">品深度</a></span> <p>|</p></li>
-            <li><span><a href="#">侃八卦</a></span> <p>|</p></li>
-            <li><span><a href="#">晓百态</a></span></li>       
+            <li><span><a href="/fllist/576500c6dcc88e31a6f3500c/">观时事</a></span> <p>|</p></li>
+            <li><span><a href="/fllist/576500cfdcc88e31a7d2e4b9/">知天下</a></span> <p>|</p></li>
+            <li><span><a href="/psd">品深度</a></span> <p>|</p></li>
+            <li><span><a href="/fllist/576500e8dcc88e31a6f3500e/">享悦读</a></span> <p>|</p></li>
+            <li><span><a href="/kbg">侃八卦</a></span>
+{#                <p>|</p>#}
+            </li>
+{#            <li><span><a href="#">晓百态</a></span></li>       #}
         </ul>
     </div>
 </div>
@@ -30,44 +33,31 @@
 <div id="wrapper">
 	<!--滚动看图-->
 	<div id="picSlideWrap" class="clearfix ft20">
-		<h3 class="titleh3">高清：我国多省遭50年来罕见旱情</h3>
-		<h4 class="titleh4">发布时间：2011-05-30 04:43:00  |　来源:中国新闻网</h4>
+		<h3 class="titleh3">{{ detail.Title }}</h3>
+		<h4 class="titleh4">发布时间：{{ detail.Published }}  |　来源:{{ detail.Source }}</h4>
 	
 		<div class="imgnav" id="imgnav"> 
-			<div id="img"> 
-				<img src="images/0.1.jpg" width="780" height="570"/>
-				<img src="images/0.2.jpg"  width="780" height="570"/>
-				<img src="images/0.3.jpg" width="780" height="570" />
-				<img src="images/0.4.jpg"  width="780" height="570" />
-				<img src="images/0.5.jpg" width="780" height="570"/>
-				<img src="images/6.jpg"  width="780" height="570"/>
-				<img src="images/7.jpg" width="780" height="570" />
-				<img src="images/cc958824-b2f5-426a-8e35-53eacef66adc.jpg"  width="780" height="570" />
-				<img src="images/pic05.jpg" width="780" height="570"/>
-				<img src="images/pic04.jpg"  width="780" height="570"/>
+			<div id="img">
+                {% for i in detail["Images"] %}
+				<img src="{{ format_http_url(i.url) }}?w=780&h=570" width="780" height="570"/>
+                {% endfor %}
+
 				<div id="front" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
 				<div id="next" title="下一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
 			</div>
-		
-			<div id="content02">
-				<p>今年以来，湘鄂两地降雨、来水偏少，蓄水不足，出现严重的旱情。在流经湖北石首市、湖南华容县等地的华容河流域1679平方公里范围内，30万群众生产生活用水出现困难。从5月4日开始，湖南华容县和湖北石首市一起"引江济河"，在位于石首市调关镇的华容河与长江交汇处筑堤铺管，通过管道将长江水引进久旱少水的华容河.新华社记者 李尕 摄 </p>
+		    {% for i in detail["Images"] %}
+			<div id="content_{{ loop.index }}">
+				<p>{{ i.describe }} </p>
 			</div>
-		
+		   {% endfor %}
 			<div id="cbtn">
-				<i class="picSildeLeft"><img src="images/picSlideLeft.gif"/></i> 
-				<i class="picSildeRight"><img src="images/picSlideRight.gif"/></i> 
+				<i class="picSildeLeft"><img src="/static/images/picSlideLeft.gif"/></i> 
+				<i class="picSildeRight"><img src="/static/images/picSlideRight.gif"/></i> 
 				<div id="cSlideUl">
 					<ul>
-						<li><img src="images/0.1.jpg"/><tt></tt></li>
-						<li><img src="images/0.2.jpg"/><tt></tt></li>
-						<li><img src="images/0.3.jpg" /><tt></tt></li>
-						<li><img src="images/0.4.jpg"/><tt></tt></li>
-						<li><img src="images/0.5.jpg"/><tt></tt></li>
-						<li><img src="images/6.jpg"/><tt></tt></li>
-						<li><img src="images/7.jpg" /><tt></tt></li>
-						<li><img src="images/cc958824-b2f5-426a-8e35-53eacef66adc.jpg"/><tt></tt></li>
-						<li><img src="images/pic05.jpg"/><tt></tt></li>
-						<li><img src="images/pic04.jpg"/><tt></tt></li>
+                        {% for i in detail["Images"] %}
+						<li><img src="{{ format_http_url(i.url) }}?w=116&h=86"/><tt></tt></li>
+                        {% endfor %}
 					</ul>
 				</div>
 			</div>         
@@ -80,31 +70,24 @@
 <div class="area grayBg ft30">
   <div class="reviewBox" id="galleryBox" style="width: 1153.5px;">
     <div class="titleBar clearfix">
-         <h2 class="left">往期<span>回顾</span></h2><a href="#" target="_blank" class="morelink right">查看更多</a>
+         <h2 class="left">往期<span>回顾</span></h2>
+{#        <a href="#" target="_blank" class="morelink right">查看更多</a>#}
     </div>
     <div style="overflow:hidden;width:960px; margin:0 auto; height:210px; position:relative">
         <ul class="reviewList clearfix" id="gallery" style="width: 2880px; left: 0px;">
-           <li><a href="#" target="_blank"><img src="images/0.1.jpg" width="200" height="147" alt=""><p>朱丹的“慢”生活：任性做自己</p></a><b>163</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.2.jpg" width="200" height="147" alt=""><p>杜海涛的减肥日记</p></a><b>162</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.3.jpg" width="200" height="147" alt=""><p>不想当少爷的向佐：我也可以打出一片天</p></a><b>161</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.4.jpg" width="200" height="147" alt=""><p>学会知足的凌潇肃</p></a><b>160</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.5.jpg" width="200" height="147" alt=""><p>金巧巧 误入豪门的耿直姐</p></a><b>159</b></li>
-           <li><a href="#" target="_blank"><img src="images/6.jpg" width="200" height="147" alt=""><p>“红色偶像”杜淳的大男子主义</p></a><b>158</b></li>
-           <li><a href="#" target="_blank"><img src="images/7.jpg" width="200" height="147" alt=""><p>“真性情”的葛荟婕：我依旧相信爱情</p></a><b>157</b></li>
-           <li><a href="#" target="_blank"><img src="images/pic04.jpg" width="200" height="147" alt=""><p>《变形记》少年进入娱乐圈之后</p></a><b>156</b></li>
-           <li><a href="#" target="_blank"><img src="images/pic05.jpg" width="200" height="147" alt=""><p>张予曦 勇闯娱乐圈的“小兄弟”</p></a><b>149</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.4.jpg" width="200" height="147" alt=""><p>街头卖艺人张大侠的生活</p></a><b>155</b></li>
-           <li><a href="#" target="_blank"><img src="images/0.2.jpg" width="200" height="147" alt=""><p>王明明 “试水”娱乐圈的胸模冠军</p></a><b>154</b></li>
-           <li><a href="#" target="_blank"><img src="images/pic04.jpg" width="200" height="147" alt=""><p>崛起中的“笑二代”:郭麒麟VS巴图</p></a><b>153</b></li>
+            {% for i in wqhg %}
+           <li><a href="/detail/{{ i._id }}" target="_blank"><img src="{{format_http_url( i.Guideimage )  }}?w=200&h=147" width="200" height="147" alt=""><p>{{ i.Title }}</p></a><b>{{ loop.index }}</b></li>
+            {% endfor %}
         </ul>
     </div>
     <div id="fn_focus_prev_next"> <a href="#" hidefocus="true" target="_self" class="prev">&lt;</a> <a href="#" hidefocus="true" target="_self" class="next">&gt;</a> </div>
   </div>
 </div>
-<script src="js/comicStrip.835556.min.js"></script> 
+<script src="/static/js/comicStrip.835556.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){                          
-
+    $("div[id^='content_']").hide();
+    $("#content_1").show();
 	var index=0;
 	var length=$("#img img").length;
 	var i=1;
@@ -113,6 +96,8 @@ $(document).ready(function(){
 	function showImg(i){
 		$("#img img").eq(i).stop(true,true).fadeIn(800).siblings("img").hide();
 		$("#cbtn li").eq(i).addClass("hov").siblings().removeClass("hov");
+        $("div[id^='content_']").hide();
+        $("#content_" + i).show();
 	}
 
 	function slideNext(){

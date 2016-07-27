@@ -27,7 +27,7 @@ def kbg_index():
     # 报料台 4条
     blt1 = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 1, 1)
     # 报料台 4条
-    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 3)
+    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 3, 0, blt1)
     # 龙江演出 4条
     ljyc1 = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 2, 1)
     ljyc = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 3, 0, ljyc1)
@@ -102,7 +102,6 @@ def kbg_list_index(channel):
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1, [], 2)
     name = get_name(channel)
-    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel),
-                           menu=menu1, blt=blt, rmtj=rmtj,name=name)
-
-
+    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
+                           cid=ObjectId(channel),
+                           menu=menu1, blt=blt, rmtj=rmtj, name=name)

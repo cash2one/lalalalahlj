@@ -719,6 +719,29 @@
     color: #46abd0;
     font-size: 22px;
 }
+/**list**/
+.list_tlt1 {
+    width: 870px;
+    height: 95px;
+    float: left;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.list_tlt1 p {
+    width: 46px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.list_tlt1 span {
+    width: 870px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    text-align: center;
+    color: #46abd0;
+    font-size: 22px;
+}
 .list_news {width:950px; height:auto; float:left;}
 .list_news ul {vertical-align:middle;}
 .list_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}

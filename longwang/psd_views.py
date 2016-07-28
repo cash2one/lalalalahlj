@@ -29,11 +29,11 @@ def psd_index():
     # 今日热评图片1
     jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_2)
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     # 独家视界
     djsj = get_image_news("577c648559f0d8efacae7e6b", 10)
     # 当事者说
-    dszs = get_image_news("577c649059f0d8efacae7e6e", 3)
+    dszs = get_image_news("577c649059f0d8efacae7e6e", 4)
     # 排行24
     ph_24 = get_image_news("576b37b8a6d2e970226062d1", 8)
     # 排行周

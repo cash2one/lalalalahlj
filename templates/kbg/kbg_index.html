@@ -59,60 +59,6 @@
         <!---------w950新闻分类 头条新闻-------->
         <div class="gsp_list_news">
             <ul class="gsp_list_n01">
-{#                {% if tt|length>=15 %}#}
-{#                    <li>#}
-{##}
-{#                        <p><a href="/detail/{{ tt[0]["_id"] }}"><img src="{{ tt[0]["guide_image"] }}?w=165&h=100" width="165" height="100"/></a></p>#}
-{#                        <h2><a href="/detail/{{ tt[0]["_id"] }}">{{ tt[0]["title"] }}</a></h2>#}
-{##}
-{#                        <h5 class="Jushang"><tt><a href="/detail/{{ tt[1]["_id"] }}">{{ tt[1]["title"] }}</a></tt></h5>#}
-{##}
-{#                        <h5><tt><a href="/detail/{{ tt[2]["_id"] }}">{{ tt[2]["title"] }}</a></tt></h5>#}
-{##}
-{#                    </li>#}
-{#                    <li>#}
-{##}
-{#                        <p><a href="/detail/{{ tt[0]["_id"] }}"><img src="{{ tt[3]["guide_image"] }}?w=165&h=100" width="165" height="100"/></a></p>#}
-{#                        <h2><a href="/detail/{{ tt[3]["_id"] }}">{{ tt[3]["title"] }}</a></h2>#}
-{##}
-{#                        <h5 class="Jushang"><tt><a href="/detail/{{ tt[4]["_id"] }}">{{ tt[4]["title"] }}</a></tt></h5>#}
-{##}
-{#                        <h5><tt><a href="/detail/{{ tt[5]["_id"] }}">{{ tt[5]["title"] }}</a></tt></h5>#}
-{##}
-{#                    </li>#}
-{#                    <li>#}
-{##}
-{#                        <p><a href="/detail/{{ tt[0]["_id"] }}"><img src="{{ tt[6]["guide_image"] }}?w=165&h=100" width="165" height="100"/></a></p>#}
-{#                        <h2><a href="/detail/{{ tt[6]["_id"] }}">{{ tt[6]["title"] }}</a></h2>#}
-{##}
-{#                        <h5 class="Jushang"><tt><a href="/detail/{{ tt[7]["_id"] }}">{{ tt[7]["title"] }}</a></tt></h5>#}
-{##}
-{#                        <h5><tt><a href="/detail/{{ tt[8]["_id"] }}">{{ tt[8]["title"] }}</a></tt></h5>#}
-{##}
-{#                    </li>#}
-{#                    <li>#}
-{##}
-{#                        <p><a href="/detail/{{ tt[0]["_id"] }}"><img src="{{ tt[9]["guide_image"] }}?w=165&h=100" width="165" height="100"/></a></p>#}
-{#                        <h2><a href="/detail/{{ tt[9]["_id"] }}">{{ tt[9]["title"] }}</a></h2>#}
-{##}
-{#                        <h5 class="Jushang"><tt><a href="/detail/{{ tt[10]["_id"] }}">{{ tt[10]["title"] }}</a></tt>#}
-{#                        </h5>#}
-{##}
-{#                        <h5><tt><a href="/detail/{{ tt[11]["_id"] }}">{{ tt[11]["title"] }}</a></tt></h5>#}
-{##}
-{#                    </li>#}
-{#                    <li>#}
-{##}
-{#                        <p><a href="/detail/{{ tt[0]["_id"] }}"><img src="{{ tt[12]["guide_image"] }}?w=165&h=100" width="165" height="100"/></a></p>#}
-{#                        <h2><a href="/detail/{{ tt[12]["_id"] }}">{{ tt[12]["title"] }}</a></h2>#}
-{##}
-{#                        <h5 class="Jushang"><tt><a href="/detail/{{ tt[13]["_id"] }}">{{ tt[13]["title"] }}</a></tt>#}
-{#                        </h5>#}
-{##}
-{#                        <h5><tt><a href="/detail/{{ tt[14]["_id"] }}">{{ tt[14]["title"] }}</a></tt></h5>#}
-{##}
-{#                    </li>#}
-{#                {% endif %}#}
                 {% for i in tt %}
               <li>
                 <p><a href="/detail/{{ i["_id"] }}" target="_blank"><img src="{{ i.guide_image }}?w=165&h=100" width="165" height="100" /></a></p>
@@ -162,12 +108,12 @@
                 </ul>
                 <ul class="n03_picblock" style="display:none;">
                     {% for i in dy %}
-                        <li class="n03_large"><a href="#" target="_blank"><img src="{{ i.guide_image }}?w=429&h=279"/>
+                        <li class="n03_large"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=429&h=279"/>
                             <p>{{ i.title }}</p></a></li>
                     {% endfor %}
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="#">热点影评</a></p>
+                            <p><a href="/kbg/list/5782f7ecdcc88e776838c3fa">热点影评</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">
@@ -182,7 +128,7 @@
                     </div>
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="#">本地影讯</a></p>
+                            <p><a href="/kbg/list/5782f7f6dcc88e7769576fc7">本地影讯</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">

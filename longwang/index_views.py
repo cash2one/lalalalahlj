@@ -122,19 +122,19 @@ def detail(id, page=1):
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻
     qsmw1 = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 1)
-    qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 8, qsmw1)
+    qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 6, qsmw1)
     # 时尚范
     ssf1 = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 1)
-    ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 8, ssf1)
+    ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 6, ssf1)
     # 爱运动
     ayd1 = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 1)
-    ayd = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 8, ayd1)
+    ayd = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 6, ayd1)
     # 红人馆
-    # hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
-    # hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
+    hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
+    hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 6, hrg1)
     # 二次元
     ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
-    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
+    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 6, ecy1)
     # <div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>
     count = detail["Content"].split(
         '<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>')
@@ -180,19 +180,19 @@ def detail_all(id):
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻
     qsmw1 = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 1)
-    qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 8, qsmw1)
+    qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 6, qsmw1)
     # 时尚范
     ssf1 = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 1)
-    ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 8, ssf1)
+    ssf = search_news_db([ObjectId("576504bddcc88e31a6f35019")], 6, ssf1)
     # 爱运动
-    ayd1 = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 1)
-    ayd = search_news_db([ObjectId("576504cddcc88e31a7d2e4c2")], 8, ayd1)
+    ayd1 = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 1)
+    ayd = search_news_db([ObjectId("5782ffcbdcc88e128e6cd34e")], 6, ayd1)
     # 红人馆
     hrg1 = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 1)
-    hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 8, hrg1)
+    hrg = search_news_db([ObjectId("576504f7dcc88e31a6f3501a")], 6, hrg1)
     # 二次元
     ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
-    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 8, ecy1)
+    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 6, ecy1)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)

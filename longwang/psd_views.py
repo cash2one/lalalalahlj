@@ -127,10 +127,9 @@ def psd_list(channel):
     # 频道
     menu1 = db.Channel.find({"Parent": ObjectId("576500d7dcc88e31a6f3500d"), "Visible": 1}).sort("OrderNumber")
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
-    name = get_name(channel)
+    # name = get_name(channel)
     return render_template('psd/psd_list.html', lht=lht,
                            c_list=c_list,
-                           # jrrp_1=jrrp_1,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
                            djsj=djsj,
@@ -140,7 +139,6 @@ def psd_list(channel):
                            ph_week=ph_week,
                            zt=zt,
                            detail=detail,
-                           name=name,
                            menu=menu1,
                            cid=ObjectId(channel)
                            )

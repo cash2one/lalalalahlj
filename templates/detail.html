@@ -93,14 +93,14 @@
                             <li>二次元</li>
                         </ul>
                     </div>
-                    <div class="bd">
+                    <div class="bd" id="lh">
 
                         <ul class="lh">
                             <li>
-                                {% for i in qsmw1 %}
-                                    <div class="p-img ld"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=250&h=250"
-                                                                           width="250"
-                                                                           height="250"/></a></div>
+                                {% for i in qsmw %}
+                                    <div class="p-img ld" {% if loop.index==1 %}style="display: block" {% else %}style="display: none"{% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                           width="261"
+                                                                           height="171"/></a></div>
                                 {% endfor %}
                                 <div class="p-list f14">
                                     {% for i in qsmw %}
@@ -114,10 +114,10 @@
 
                         <ul class="lh">
                             <li>
-                                {% for i in ssf1 %}
-                                    <div class="p-img ld"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=250&h=250"
-                                                                           width="250"
-                                                                           height="250"/></a></div>
+                                {% for i in ssf %}
+                                    <div class="p-img ld" {% if loop.index==1 %}style="display: block" {% else %}style="display: none"{% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                           width="261"
+                                                                           height="171"/></a></div>
                                 {% endfor %}
                                 <div class="p-list f14">
                                     {% for i in ssf %}
@@ -130,10 +130,10 @@
 
                         <ul class="lh">
                             <li>
-                                {% for i in ayd1 %}
-                                    <div class="p-img ld"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=250&h=250"
-                                                                           width="250"
-                                                                           height="250"/></a></div>
+                                {% for i in ayd %}
+                                    <div class="p-img ld" {% if loop.index==1 %}style="display: block" {% else %}style="display: none"{% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                           width="261"
+                                                                           height="171"/></a></div>
                                 {% endfor %}
                                 <div class="p-list f14">
                                     {% for i in ayd %}
@@ -147,9 +147,9 @@
 {#                        <ul class="lh">#}
 {#                            <li>#}
 {#                                {% for i in hrg1 %}#}
-{#                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=250&h=250"#}
-{#                                                                           width="250"#}
-{#                                                                           height="250"/></a></div>#}
+{#                                    <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                           width="261"
+                                                                           height="171"/></a></div>#}
 {#                                {% endfor %}#}
 {#                                <div class="p-list f14">#}
 {#                                    {% for i in hrg %}#}
@@ -162,10 +162,10 @@
 
                         <ul class="lh">
                             <li>
-                                {% for i in ecy1 %}
-                                    <div class="p-img ld"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=250&h=250"
-                                                                           width="250"
-                                                                           height="250"/></a></div>
+                                {% for i in ecy %}
+                                    <div class="p-img ld" {% if loop.index==1 %}style="display: block" {% else %}style="display: none"{% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                           width="261"
+                                                                           height="171"/></a></div>
                                 {% endfor %}
                                 <div class="p-list f14">
                                     {% for i in ecy %}
@@ -212,6 +212,29 @@
 
 </div>
 <script type="text/javascript">jQuery(".www360buy").slide({delayTime: 0});</script>
+<script>
+
+    $("#lh ul li div[class='p-list f14'] a").mouseenter(function () {
+        var li= $(this).parent("div").parent("li");
+        var img=li.children("div[class='p-img ld']");
+        var text = $(this).parent("div");
+        var index = $(this).index();
+{#        console.log(index);#}
+        $.each(img, function (i) {
+            if (index == i) {
+                              text.find("a").eq(i).css({"text-decoration": "underline","color":"#205366"});
+                              img.eq(i).css("display"," block");
+            } else {
+                               text.find("a").eq(i).css({"text-decoration": "none","color":"#333"});
+                               img.eq(i).css("display"," none");
+
+
+            }
+        })
+
+    });
+
+</script>
 {% endblock %}
 {% block footer %}
     {% include 'master_page/footer_page.html' %}

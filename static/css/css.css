@@ -659,7 +659,7 @@
     width: 550px;
     height: 150px;
     float: left;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .footer_logo {
@@ -939,79 +939,18 @@
     float: left;
 }
 
-.www360buy {
-    width: 850px;
-    border-top: 2px solid #205366;
-}
-
-.www360buy .hd {
-    overflow: hidden;
-    background: url(../images/bg.png) 0 -32px #efefef;
-    border-left: 1px solid #ddd;
-}
-
-.www360buy .hd li {
-    position: relative;
-    margin-left: -1px;
-    height: 37px;
-    line-height: 37px;
-    text-align: center;
-    width: 168px;
-    float: left;
-    border: 1px solid #ddd;
-    border-top: 0;
-    font: normal 14px/37px "Microsoft YaHei";
-    _font-weight: bold;
-    cursor: default;
-}
-
-.www360buy .hd li.on {
-    width: 172px;
-    background: #fff;
-    border-bottom: 1px solid #fff;
-    color: #205366;
-}
-
-.www360buy .bd {
-    height: 300px;
-    border: 1px solid #ddd;
-    border-top: 0;
-}
-
-.www360buy .lh {
-    overflow: hidden;
-}
-
-.www360buy .lh li {
-    float: left;
-    margin: 20px 0 0 30px;
-}
-
-.www360buy .lh li .p-img {
-    width: 250px;
-    height: 250px;
-    float: left;
-}
-
-.www360buy .lh li .p-list {
-    width: 500px;
-    height: auto;
-    float: left;
-    margin-left: 30px;
-}
-
-.www360buy .lh li .p-list a {
-    width: 500px;
-    height: 32px;
-    line-height: 32px;
-    float: left;
-    text-decoration: none;
-}
-
-.www360buy .lh li .p-list a:hover {
-    color: #205366;
-    text-decoration: underline;
-}
+	.www360buy{ width:850px; border-top:2px solid #205366;   }
+	.www360buy .hd{ overflow:hidden; background:url(../images/bg.png) 0 -32px #efefef; border-left:1px solid #ddd;  }
+	.www360buy .hd li{ position:relative; margin-left:-1px;  height:37px; line-height:37px; text-align:center; width:168px; float:left; border:1px solid #ddd; border-top:0;
+		font:normal 14px/37px "Microsoft YaHei"; _font-weight:bold; cursor:default; }
+	.www360buy .hd li.on{ width:172px; background:#fff; border-bottom:1px solid #fff; color:#205366;  }
+	.www360buy .bd{ height:220px; border:1px solid #ddd; border-top:0;  }
+	.www360buy .lh{ overflow:hidden;  }
+	.www360buy .lh li{ float:left; margin:20px 0 0 30px;}
+	.www360buy .lh li .p-img{ width:261px; height:171px; float:left; }
+	.www360buy .lh li .p-list{ width:500px; height:auto; float:left; margin-left:30px;}
+	.www360buy .lh li .p-list a{ width:500px; height:30px; line-height:30px; float:left; text-decoration:none;}
+	.www360buy .lh li .p-list a:hover{ color:#205366; text-decoration: underline;}
 
 .news_pl {
     width: 850px;

@@ -58,7 +58,9 @@ def index():
     for news_detail in news_list:
         _news_list.append(get_mongodb_dict(news_detail))
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd, lht=lht,
-                           rmtj=rmtj, menu=get_menu(), news_list=_news_list,
+                           rmtj=rmtj,
+                           menu=get_menu(),
+                           news_list=_news_list,
                            hours=hours, zb=zb, yb=yb, zd=_zd)
 
 

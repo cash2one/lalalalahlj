@@ -21,13 +21,13 @@ pre_page = 5
 @kbg_page.route('/kbg/')
 def kbg_index():
     # 轮换图 4张
-    lht = get_head_image(ObjectId("576500f0dcc88e31a7d2e4ba"), 4)
+    lht = get_head_image(ObjectId("576500f0dcc88e31a7d2e4ba"), 5)
     # 头条新闻  15条
     tt = search_indexnews_db("577c5eaa59f0d8efacae7e4b", 15)
     # 报料台 4条
     blt1 = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 1, 1)
     # 报料台 4条
-    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 3)
+    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 3, 0, blt1)
     # 龙江演出 4条
     ljyc1 = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 2, 1)
     ljyc = search_news_db([ObjectId("5782f81ddcc88e7769576fc8")], 3, 0, ljyc1)
@@ -47,13 +47,13 @@ def kbg_index():
     # 热专题
     zt = search_indexnews_db("577c5ee759f0d8efacae7e51", 5)
     # 明星 5带图
-    mx = search_indexnews_db("577c5f0d59f0d8efacae7e56", 5)
+    mx = get_head_image(ObjectId("5765050fdcc88e31a7d2e4c3"), 5)
     # 电视 5带图
-    ds = search_indexnews_db("577c5f3459f0d8efacae7e5e", 5)
+    ds = get_head_image(ObjectId("5768d0c1dcc88e3891c7369d"), 5)
     # 音乐 5带图
-    yy = search_indexnews_db("577c5f3e59f0d8efacae7e61", 5)
+    yy = get_head_image(ObjectId("5768d0c9dcc88e3891c7369e"), 5)
     # 电影 1带图
-    dy = search_indexnews_db("577c5f1a59f0d8efacae7e59", 1)
+    dy = get_head_image(ObjectId("5768d0b9dcc88e3891c7369c"), 1)
     # 热点影评 7
     rdyp = search_indexnews_db("57833a603c7e58bdfe540d7f", 7)
     # 本地影讯 7
@@ -102,7 +102,6 @@ def kbg_list_index(channel):
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1, [], 2)
     name = get_name(channel)
-    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel),
-                           menu=menu1, blt=blt, rmtj=rmtj,name=name)
-
-
+    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
+                           cid=ObjectId(channel),
+                           menu=menu1, blt=blt, rmtj=rmtj, name=name)

@@ -109,10 +109,14 @@ def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"_id": ObjectId(id)})
     if detail["newstype"] == 2:
+        # wqhg = db.News.find(
+        #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
+        #      "Guideimage": {"$ne": ""}}).sort(
+        #     "Published", pymongo.DESCENDING).limit(20)
         wqhg = db.News.find(
-            {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
+            {"Published": {"$gt": detail["Published"]}, "Status": 4,
              "Guideimage": {"$ne": ""}}).sort(
-            "Published", pymongo.DESCENDING).limit(25)
+            "Published", pymongo.DESCENDING).limit(20)
         return render_template('picview.html', detail=detail, wqhg=wqhg)
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})

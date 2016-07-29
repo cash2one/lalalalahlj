@@ -19,31 +19,35 @@
   <!---------left-------->
   <!---------轮播图-------->
   <div class="gsp_con_l">
-    <div class="gsp_flash">
-      <div class="gsp_foucebox" style="margin:0 auto">
-          <div id="fsD1" class="focus">  
-              <div id="D1pic1" class="fPic">
-                  {% for i in lht %}
-                  <div class="fcon" style="display: none;">
-                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
-                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
-                  </div>
-                  {% endfor %}
-              </div>
-              <div class="fbg">  
-              <div class="D1fBt" id="D1fBt">  
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>  
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>  
-              </div>  
-              </div>  
-              <span class="prev"></span>   
-              <span class="next"></span>    
-          </div>
-      </div>
-    </div>
-    
+{#    <div class="gsp_flash">#}
+{#      <div class="gsp_foucebox" style="margin:0 auto">#}
+{#          <div id="fsD1" class="focus">  #}
+{#              <div id="D1pic1" class="fPic">#}
+{#                  {% for i in lht %}#}
+{#                  <div class="fcon" style="display: none;">#}
+{#                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>#}
+{#                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>#}
+{#                  </div>#}
+{#                  {% endfor %}#}
+{#              </div>#}
+{#              <div class="fbg">  #}
+{#              <div class="D1fBt" id="D1fBt">  #}
+{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  #}
+{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  #}
+{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>  #}
+{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>  #}
+{#              </div>  #}
+{#              </div>  #}
+{#              <span class="prev"></span>   #}
+{#              <span class="next"></span>    #}
+{#          </div>#}
+{#      </div>#}
+{#    </div>#}
+            <!---------w950新闻分类-------->
+        <div class="list_tlt1">
+            <p><img src="/static/images/ylc_logo.png" width="46" height="45"/></p>
+            <span>{{ name }}</span>
+        </div>
     <!---------w950新闻分类-------->
     <div class="dpt_list_news">   
         <ul class="dpt_list_n03">

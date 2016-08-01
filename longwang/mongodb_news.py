@@ -13,8 +13,8 @@ image_server = "http://125.211.222.237:17937/"
 
 
 # 根据编号  是否带图  调取的条数 新闻编号列表  新闻类型 是否推荐
-def search_news_db(Channel, limit, Guideimage=0, list_db=[], newstype=1):
-    condition = {"Channel": {"$in": Channel}, "newstype": newstype, "Status": 4}
+def search_news_db(Channel, limit, Guideimage=0, list_db=[]):
+    condition = {"Channel": {"$in": Channel},  "Status": 4}
     if Guideimage == 1:
         condition.update({"Guideimage": {"$ne": ""}})
     if list_db != []:

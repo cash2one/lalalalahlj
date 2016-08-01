@@ -1,21 +1,25 @@
 {% extends "master_page/base_page.html" %}
-{% block title %}龙网{% endblock %}
+{% block title %}{{ detail.Name }}_黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-    <script type="text/javascript">
-        $(document).ready(function () {
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function () {#}
+{##}
+{#            $("#loading").click(function () {#}
+{#                var page = $("#page").val();#}
+{#                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {#}
+{#                    $('#ul_content').append(result);#}
+{#                    $("#page").val(parseInt(page) + 1);#}
+{#                });#}
+{#            });#}
+{##}
+{#        });#}
+{#    #}
+{#    </script>#}
 
-            $("#loading").click(function () {
-                var page = $("#page").val();
-                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {
-                    $('#ul_content').append(result);
-                    $("#page").val(parseInt(page) + 1);
-                });
-            });
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 
-        });
-
-    </script>
 {% endblock %}
 {% block middle %}
     <!---------left-------->
@@ -29,7 +33,7 @@
         </div>
 
         <div class="list_news">
-            <ul id="ul_content">
+            <ul id="ul_news">
                 {% for i in channel %}
                     <li>
                         <p {% if i.guide_image=="" %}style="display: none"{% endif %}><img
@@ -44,7 +48,7 @@
         </div>
 
 
-        <div class="list_news_jz" id="loading">点击浏览更多文章</div>
+{#        <div class="list_news_jz" id="loading">点击浏览更多文章</div>#}
         <input type="hidden" id="page" value="2">
 
     </div>
@@ -56,4 +60,51 @@
 
 {% block footer %}
         {% include 'master_page/footer_page.html' %}
+
+<script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '#ul_news',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth: 950 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    $.ajaxSettings.async = false;
+                    $.getJSON("/list/{{ detail._id }}/" + page, function (result) {
+                        var $firstTen = jQuery.parseHTML(result);
+                        $container.append($firstTen);
+                        $("#page").val(parseInt(page) + 1);
+                        wookmark.initItems();
+                        wookmark.layout(true, function () {
+                            // Fade in items after layout
+                            setTimeout(function () {
+                                {#                            $firstTen.css('opacity', 1);#}
+                            }, 300);
+
+                        });
+                    })
+
+
+                }
+            };
+
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+
+
+    </script>
 {% endblock %}

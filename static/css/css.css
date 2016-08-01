@@ -743,7 +743,7 @@
     font-size: 22px;
 }
 .list_news {width:950px; height:auto; float:left;}
-.list_news ul {vertical-align:middle;}
+.list_news ul {vertical-align:middle;position: relative}
 .list_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
 .list_news ul li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 .list_news ul li h2 {width:auto;  height: 22px;line-height: 22px;overflow: hidden; font-size:22px;}

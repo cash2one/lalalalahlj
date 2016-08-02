@@ -14,7 +14,7 @@ db = conn.mongo_conn()
 db_redis = conn.redis_conn()
 
 kbg_page = Blueprint('kbg_page', __name__, template_folder='templates')
-pre_page = 5
+pre_page = 10
 
 
 # 二级频道首页
@@ -71,18 +71,19 @@ def kbg_index():
 # 二级频道列表
 @kbg_page.route('/kbg/<channel>/<page>/')
 def kbg_list(channel, page=1):
-    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
-        pre_page)
-    value = ""
-    for i in news_list:
-        style = 'style="display: block"'
-        if i["Guideimage"] == "":
-            style = 'style="display: none"'
-        value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
-                  datetime_op((i["Published"])))
-    return json.dumps(value)
+        condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+            pre_page * (int(page) - 1)).limit(
+            pre_page)
+        value = ""
+        for i in news_list:
+            style = 'style="display: block"'
+            if i["Guideimage"] == "":
+                style = 'style="display: none"'
+            value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                     (style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                      datetime_op((i["Published"])))
+        return json.dumps(value)
 
 
 # 二级频道列表
@@ -101,7 +102,7 @@ def kbg_list_index(channel):
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
     rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1)
-    detail = db.Channel.find_one({"_id":ObjectId(channel)})
+    detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
                            cid=ObjectId(channel),
                            menu=menu1, blt=blt, rmtj=rmtj, detail=detail)

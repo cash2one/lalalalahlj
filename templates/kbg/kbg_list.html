@@ -237,6 +237,7 @@
                     closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
                     var page = $("#page").val();
+                    if (parseInt(page) <= 20) {
                     $.ajaxSettings.async = false;
                     $.getJSON('/kbg/{{ detail._id }}/' + page, function (result) {
                         var $firstTen = jQuery.parseHTML(result);
@@ -252,7 +253,7 @@
                         });
                     })
 
-
+                }
                 }
             };
 

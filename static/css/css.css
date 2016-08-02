@@ -1213,8 +1213,8 @@ DISPLAY: none
 	.n03_tit01 {color:#fff; background-color:#46abd0;}
 	.n03_tit02 {margin-left:50px; }
 
-	.gsp_list_n04 {vertical-align:middle;float: left}
-	.gsp_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+	.gsp_list_n04 {vertical-align:middle;float: left;position: relative}
+	.gsp_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1;margin-top: 20px}
 	.gsp_list_n04 li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 	.gsp_list_n04 li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
 	.gsp_list_n04 li h2 a { text-decoration:none; color:#000;}

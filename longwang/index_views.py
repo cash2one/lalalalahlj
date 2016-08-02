@@ -17,7 +17,7 @@ db_redis = conn.redis_conn()
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 # 分页
-pre_page = 9
+pre_page = 10
 
 
 # 首页

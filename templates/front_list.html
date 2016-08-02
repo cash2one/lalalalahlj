@@ -72,21 +72,22 @@
                     closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
                     var page = $("#page").val();
-                    $.ajaxSettings.async = false;
-                    $.getJSON("/fllist/{{ detail._id }}/" + page, function (result) {
-                        var $firstTen = jQuery.parseHTML(result);
-                        $container.append($firstTen);
-                        $("#page").val(parseInt(page) + 1);
-                        wookmark.initItems();
-                        wookmark.layout(true, function () {
-                            // Fade in items after layout
-                            setTimeout(function () {
-                                {#                            $firstTen.css('opacity', 1);#}
-                            }, 300);
+                    if(parseInt(page)<=20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON("/fllist/{{ detail._id }}/" + page, function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                    {#                            $firstTen.css('opacity', 1);#}
+                                }, 300);
 
-                        });
-                    })
-
+                            });
+                        })
+                    }
 
                 }
             };

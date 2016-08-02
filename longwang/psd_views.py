@@ -14,7 +14,7 @@ db_redis = conn.redis_conn()
 
 psd_page = Blueprint('psd_page', __name__, template_folder='templates')
 
-pre_page = 5
+pre_page = 9
 
 
 # 二级频道首页

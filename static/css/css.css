@@ -1467,6 +1467,9 @@ DISPLAY: none
 /****in-depth 中列新闻***/
 
 .dpt_list_news {width:870px; height:auto; float:left; margin-top:10px;}
+.dpt_list_news ul{position: relative}
+/*.dpt_list_news ul ul  {position: relative}*/
+
 
 	.dpt_list_n01 {vertical-align:middle;}
 	  .dpt_left_news {width:870px; height:auto; float:left; padding-left:2px;}

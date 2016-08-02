@@ -2,24 +2,26 @@
 {% block title %}{{ name }}-侃八卦-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-    <script>
-
-        function loading(channel, page) {
-            $.getJSON('/kbg/' + channel + '/' + page, function (result) {
-                if (page == 1) {
-                    $('#ul_content').html(result);
-                } else {
-                    $('#ul_content').append(result);
-                }
-                $("#page").val(parseInt(page) + 1);
-            });
-        }
-        function go_to(channel) {
-            var page = $("#page").val();
-            loading(channel, page);
-        }
-        ;
-    </script>
+{#    <script>#}
+{##}
+{#        function loading(channel, page) {#}
+{#            $.getJSON('/kbg/' + channel + '/' + page, function (result) {#}
+{#                if (page == 1) {#}
+{#                    $('#ul_content').html(result);#}
+{#                } else {#}
+{#                    $('#ul_content').append(result);#}
+{#                }#}
+{#                $("#page").val(parseInt(page) + 1);#}
+{#            });#}
+{#        }#}
+{#        function go_to(channel) {#}
+{#            var page = $("#page").val();#}
+{#            loading(channel, page);#}
+{#        }#}
+{#        ;#}
+{#    </script>#}
+        <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 {% endblock %}
 {% block middle %}
     <!---------left-------->
@@ -58,7 +60,7 @@
         </div>
         <!---------w950新闻分类-------->
         <div class="gsp2_list_news">
-            <ul class="gsp2_list_n04" id="ul_content">
+            <ul class="gsp2_list_n04" id="ul_news">
                 {% for i in news_list %}
                     <li>
                         <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img
@@ -72,7 +74,7 @@
             </ul>
         </div>
 
-        <div class="gsp_list_news_jz" onclick="return go_to('{{ cid }}');">点击浏览更多文章</div>
+{#        <div class="gsp_list_news_jz" onclick="return go_to('{{ cid }}');">点击浏览更多文章</div>#}
         <input type="hidden" id="page" value="2">
     </div>
 
@@ -215,4 +217,50 @@
 {% endblock %}
 {% block footer %}
     {% include 'master_page/footer_page.html' %}
+    <script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '#ul_news',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth: 950 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    $.ajaxSettings.async = false;
+                    $.getJSON('/kbg/{{ detail._id }}/' + page, function (result) {
+                        var $firstTen = jQuery.parseHTML(result);
+                        $container.append($firstTen);
+                        $("#page").val(parseInt(page) + 1);
+                        wookmark.initItems();
+                        wookmark.layout(true, function () {
+                            // Fade in items after layout
+                            setTimeout(function () {
+                                {#                            $firstTen.css('opacity', 1);#}
+                            }, 300);
+
+                        });
+                    })
+
+
+                }
+            };
+
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+
+
+    </script>
 {% endblock %}

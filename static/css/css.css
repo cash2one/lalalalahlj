@@ -1355,6 +1355,7 @@ DISPLAY: none
 
 
 .gsp2_list_news {width:870px; height:auto; float:left; margin-top:10px;}
+.gsp2_list_news ul{position: relative}
 	.gsp2_list_n04 {vertical-align:middle;}
 	.gsp2_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
 	.gsp2_list_n04 li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}

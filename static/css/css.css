@@ -1570,7 +1570,7 @@ DISPLAY: none
 
 
 .list02_news {width:950px; height:auto; float:left;}
-.list02_news ul {vertical-align:middle;}
+.list02_news ul {vertical-align:middle;position:relative;}
 .list02_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
 .list02_news ul li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 .list02_news ul li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}

@@ -744,7 +744,7 @@
 }
 .list_news {width:950px; height:auto; float:left;}
 .list_news ul {vertical-align:middle;position: relative}
-.list_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+.list_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; padding-top: 20px}
 .list_news ul li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 .list_news ul li h2 {width:auto;  height: 22px;line-height: 22px;overflow: hidden; font-size:22px;}
 .list_news ul li h2 a { text-decoration:none; color:#000;}
@@ -1181,7 +1181,7 @@ DISPLAY: none
 
 .gsp_list_news {width:870px; height:auto; float:left; margin-top:10px;}
 
-	.gsp_list_n01 {vertical-align:middle;}
+	.gsp_list_n01 {vertical-align:middle;float: left}
 	.gsp_list_n01 li {width:870px; height:120px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
 	.gsp_list_n01 li p {width:165px; height:100px; float:left; font-size:0px; margin-right:20px;}
 	.gsp_list_n01 li h2 {width:auto; height:auto; font-size:20px;}
@@ -1190,7 +1190,7 @@ DISPLAY: none
 	.gsp_list_n01 li h5 {width:680px; height:50px; line-height:25px; font-size:14px; font-family:"宋体"; font-weight:normal; overflow: hidden;}
 	.gsp_list_n01 li tt {width:auto; height:50px; line-height:25px; font-size:14px; font-family:"宋体"; font-weight:normal; overflow: hidden;}
 
-	.gsp_list_n02 {vertical-align:middle;}
+	.gsp_list_n02 {vertical-align:middle;float: left}
 	.gsp_list_n02 li{display:block; overflow:hidden; float:left;}
 	.n02_tit {border-bottom:2px solid #205366; margin-top:30px; width:870px; height:50px; line-height:25px; text-align:center;}
 	.n02_tit h2,.n02_tit h3 {font-weight:normal;}
@@ -1213,7 +1213,7 @@ DISPLAY: none
 	.n03_tit01 {color:#fff; background-color:#46abd0;}
 	.n03_tit02 {margin-left:50px; }
 
-	.gsp_list_n04 {vertical-align:middle;}
+	.gsp_list_n04 {vertical-align:middle;float: left}
 	.gsp_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
 	.gsp_list_n04 li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 	.gsp_list_n04 li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
@@ -1357,7 +1357,7 @@ DISPLAY: none
 .gsp2_list_news {width:870px; height:auto; float:left; margin-top:10px;}
 .gsp2_list_news ul{position: relative}
 	.gsp2_list_n04 {vertical-align:middle;}
-	.gsp2_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+	.gsp2_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; padding-top:20px;}
 	.gsp2_list_n04 li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 	.gsp2_list_n04 li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
 	.gsp2_list_n04 li h2 a { text-decoration:none; color:#000;}
@@ -1493,7 +1493,7 @@ DISPLAY: none
 	.dpt_list_n04 li h6 {width:570px; height:auto; font-size:12px; font-family:"宋体"; font-weight:normal; float:left; margin-top:20px; color:#a0a0a0; bottom:0;}
 
 	.dpt2_list_n04 {vertical-align:middle;padding-top:10px;}
-	.dpt2_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+	.dpt2_list_n04 li {width:870px; height:190px; float:left; border-bottom:1px solid #f1f1f1; padding-top: 20px}
 	.dpt2_list_n04 li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 	.dpt2_list_n04 li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
 	.dpt2_list_n04 li h2 a { text-decoration:none; color:#000;}
@@ -1571,7 +1571,7 @@ DISPLAY: none
 
 .list02_news {width:950px; height:auto; float:left;}
 .list02_news ul {vertical-align:middle;position:relative;}
-.list02_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; margin-top:20px;}
+.list02_news ul li {width:950px; height:191px; float:left; border-bottom:1px solid #f1f1f1; padding-top: 20px}
 .list02_news ul li p {width:261px; height:171px; float:left; font-size:0px; margin-right:20px;}
 .list02_news ul li h2 {width:auto; height:auto; font-size:26px; font-weight:normal;}
 .list02_news ul li h2 a { text-decoration:none; color:#000;}

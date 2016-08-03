@@ -101,7 +101,7 @@ def kbg_list_index(channel):
     # 报料台 4条
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
-    rmtj = search_news_db([ObjectId("5768a6f4dcc88e0510fe053a")], 4, 1)
+    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
                            cid=ObjectId(channel),

@@ -36,10 +36,10 @@
 		<h3 class="titleh3">{{ detail.Title }}</h3>
 		<h4 class="titleh4">发布时间：{{ detail.Published }}  |　来源:{{ detail.Source }}</h4>
 	
-		<div class="imgnav" id="imgnav"> 
+		<div class="imgnav" id="imgnav">
 			<div id="img">
                 {% for i in detail["Images"] %}
-				<img src="{{ format_http_url(i.url) }}?w=780&h=570" width="780" height="570"/>
+				<img src="{{ format_http_url(i.url) }}" />
                 {% endfor %}
 
 				<div id="front" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>

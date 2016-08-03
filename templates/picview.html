@@ -39,7 +39,7 @@
 		<div class="imgnav" id="imgnav">
 			<div id="img">
                 {% for i in detail["Images"] %}
-				<img src="{{ format_http_url(i.url) }}" />
+				<img src="{{ format_http_url(i.url) }}?h=570" />
                 {% endfor %}
 
 				<div id="front" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>

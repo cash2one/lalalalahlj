@@ -14,7 +14,7 @@ image_server = "http://125.211.222.237:17937/"
 
 # 根据编号  是否带图  调取的条数 新闻编号列表  新闻类型 是否推荐
 def search_news_db(Channel, limit, Guideimage=0, list_db=[]):
-    condition = {"Channel": {"$in": Channel},  "Status": 4}
+    condition = {"Channel": {"$in": Channel}, "Status": 4}
     if Guideimage == 1:
         condition.update({"Guideimage": {"$ne": ""}})
     if list_db != []:
@@ -63,7 +63,7 @@ def get_mongodb_dict(i):
     new_dict["publish_time"] = datetime_op(i["Published"])
     new_dict["cid"] = i["Channel"][0]
     try:
-       new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
+        new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
     except:
         pass
     # new_dict["href"] = db.news_column.find_one({"_id": int(i["column_id"]["id"])})["des"]
@@ -103,7 +103,7 @@ def get_head_image(channel, limit):
     lht = db.ChannelHeadImage.find({"ChannelID": ObjectId(channel)}).sort("no", pymongo.DESCENDING).limit(limit)
     _lht = []
     for i in lht:
-        dd=db.News.find_one({"_id":ObjectId(i["NewsID"])})
+        dd = db.News.find_one({"_id": ObjectId(i["NewsID"])})
         new_dict = {}
         new_dict["_id"] = i["NewsID"]
         new_dict["title"] = i["Title"]
@@ -124,20 +124,23 @@ def get_images(_list):
 
 def datetime_op(date_time):
     now = datetime.datetime.now()
-    seconds = int((now - date_time).seconds)
-    year = seconds / 525660
-    day = seconds / 86400
-    hour = seconds / 3600
-    minute = seconds / 60
+    passed = now - date_time
+    year = passed.days / 365
+    month = passed.days / 30
+    day = passed.days
+    hour = passed.seconds / 3600
+    minute = passed.seconds/60
     if year > 0:
         return '{0}年前'.format(year)
+    if month > 0:
+        return '{0}月前'.format(month)
     if day > 0:
         return '{0}天前'.format(day)
     if hour > 0:
         return '{0}小时前'.format(hour)
     if minute > 0:
         return '{0}分钟前'.format(minute)
-    if seconds < 60:
+    if passed.seconds < 60:
         return '刚刚'
     return str(date_time)
 

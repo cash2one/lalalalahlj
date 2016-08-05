@@ -55,7 +55,7 @@ def get_hot_list(column_id):
 # 根据mongodb按照条件取出的数据重新
 def get_mongodb_dict(i):
     new_dict = {}
-    new_dict["_id"] = i["_id"]
+    new_dict["_id"] = i["numid"]
     new_dict["title"] = i["Title"]
     new_dict["summary"] = i["Summary"]
     new_dict["images"] = i["Images"]
@@ -105,7 +105,7 @@ def get_head_image(channel, limit):
     for i in lht:
         dd = db.News.find_one({"_id": ObjectId(i["NewsID"])})
         new_dict = {}
-        new_dict["_id"] = i["NewsID"]
+        new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["HeadImage"]
         new_dict["summary"] = dd["Summary"]
@@ -152,7 +152,7 @@ def search_indexnews_db(Channel, limit):
     _news_list = []
     for i in news_list:
         new_dict = {}
-        new_dict["_id"] = i["NewsID"]
+        new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
         new_dict["summary"] = i["Summary"]
@@ -172,7 +172,7 @@ def get_image_news(channel, limit, list_db=[]):
     _lht = []
     for i in lht:
         new_dict = {}
-        new_dict["_id"] = i["NewsID"]
+        new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
         new_dict["summary"] = i["Summary"]

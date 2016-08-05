@@ -109,7 +109,7 @@ def s_list_page(channel, page=1):
 @index_page.route('/detail/<id>/<page>/')
 def detail(id, page=1):
     # 新闻详细
-    detail = db.News.find_one({"_id": ObjectId(id)})
+    detail = db.News.find_one({"numid": int(id)})
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
@@ -144,7 +144,7 @@ def detail(id, page=1):
     # for i in count:
     #     print i
     d = {}
-    d["_id"] = detail["_id"]
+    d["numid"] = detail["numid"]
     d["Title"] = detail["Title"]
     d["Source"] = detail["Source"]
     d["Published"] = detail["Published"]

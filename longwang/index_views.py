@@ -144,7 +144,7 @@ def detail(id, page=1):
     # for i in count:
     #     print i
     d = {}
-    d["numid"] = detail["numid"]
+    d["_id"] = detail["numid"]
     d["Title"] = detail["Title"]
     d["Source"] = detail["Source"]
     d["Published"] = detail["Published"]
@@ -177,7 +177,7 @@ def detail(id, page=1):
 @index_page.route('/detail_all/<id>/')
 def detail_all(id):
     # 新闻详细
-    detail = db.News.find_one({"_id": ObjectId(id)})
+    detail = db.News.find_one({"numid": int(id)})
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻

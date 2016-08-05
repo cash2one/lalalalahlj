@@ -274,32 +274,32 @@
         {% if loop.index==1 %}
         <li class="big-square">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==2 %}
         <li class="reck ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==3 %}
         <li class="reck last">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==4 %}
         <li class="small-square ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==5 %}
         <li class="small-square ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% else %}
         <li class="small-square last02">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% endif %}
     {% endfor %}

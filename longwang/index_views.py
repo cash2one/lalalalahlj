@@ -65,13 +65,14 @@ def index():
 
 
 # 二级频道列表
-@index_page.route('/list/<channel>/')
-def s_list(channel):
+@index_page.route('/list/<id>/')
+def s_list(id):
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换图
     lht = get_head_image(ObjectId(channel), 5)
     c_list = search_news_db([ObjectId(channel)], pre_page)
     # 频道
-    detail = db.Channel.find_one({"_id": ObjectId(channel)})
+    detail = db.Channel.find_one({"numid": int(id)})
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
@@ -88,8 +89,9 @@ def s_list(channel):
 
 
 # 二级频道分页
-@index_page.route('/list/<channel>/<page>')
-def s_list_page(channel, page=1):
+@index_page.route('/list/<id>/<page>')
+def s_list_page(id, page=1):
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
@@ -99,7 +101,7 @@ def s_list_page(channel, page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                 (style, image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
 

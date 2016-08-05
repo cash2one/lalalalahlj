@@ -80,8 +80,9 @@ def psd_index():
 
 # 二级频道列表
 @psd_page.route('/psd/')
-@psd_page.route('/psd/<channel>/<page>/')
-def kbg_list(channel, page=1):
+@psd_page.route('/psd/<id>/<page>/')
+def kbg_list(id, page=1):
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
@@ -92,14 +93,15 @@ def kbg_list(channel, page=1):
             style = 'style="display: none"'
         value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> \
         <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % (
-            style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+            style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
             datetime_op((i["Published"])))
     return json.dumps(value)
 
 
 # 二级频道列表
-@psd_page.route('/psd/list/<channel>/')
-def psd_list(channel):
+@psd_page.route('/psd/list/<id>/')
+def psd_list(id):
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换头图
     lht = get_head_image(ObjectId(channel), 5)
     # 新闻列表
@@ -145,9 +147,10 @@ def psd_list(channel):
 
 
 # 二级频道分页
-@psd_page.route('/psd/list/<channel>/')
-@psd_page.route('/psd/list/<channel>/<page>')
-def news_list_page(channel, page=1):
+@psd_page.route('/psd/list/<id>/')
+@psd_page.route('/psd/list/<id>/<page>')
+def news_list_page(id, page=1):
+    channel = db.Channel.find_one({"numid":int(id)})["_id"]
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
@@ -157,7 +160,7 @@ def news_list_page(channel, page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li %s><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                 (style, style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
 

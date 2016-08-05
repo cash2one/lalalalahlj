@@ -78,19 +78,19 @@
 				<li class="lj_list02_li01">
                 {% for j in i %}
                     {% if loop.index==1 %}
-                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ j.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ j.guide_image }}" width="130" height="85" /></a>
+                    <a href="/detail/{{ j._id }}" target="_blank"><p>{{ j.title }}</p></a>
+                	<a href="/detail/{{ j._id }}" target="_blank"><img src="{{ j.guide_image }}" width="130" height="85" /></a>
                     <tt>{{ j.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
                     {% elif loop.index==2 %}
-                    <a href="/detail/{{ i._id }}" target="_blank"><p class="ft10">{{ j.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ j.guide_image }}" width="130" height="85" /></a>
+                    <a href="/detail/{{ j._id }}" target="_blank"><p class="ft10">{{ j.title }}</p></a>
+                	<a href="/detail/{{ j._id }}" target="_blank"><img src="{{ j.guide_image }}" width="130" height="85" /></a>
                     <tt>{{ j.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
                 </li>
                 {% elif loop.index==3 or loop.index==4 %}
-				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ j.guide_image }}" width="200" height="125" /><p>{{ j.title }}</p></a></li>
+				<li class="lj_list02_li02"><a href="/detail/{{ j._id }}" target="_blank"><img src="{{ j.guide_image }}" width="200" height="125" /><p>{{ j.title }}</p></a></li>
 {#				<li class="lj_list02_li02"><a href="#"><img src="images/69266e7fd11641c1a01ed4a462d5685820160722173203.jpg" width="200" height="125" /><p>中俄当代摄影艺术展》将在黑河展出</p></a></li>#}
                 {% elif loop.index > 4 %}
-				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ j.title }}</a></li>
+				<li class="lj_list02_li03"><a href="/detail/{{ j._id }}" target="_blank">{{ j.title }}</a></li>
                 {% endif %}
                     {% endfor %}
             </ul>

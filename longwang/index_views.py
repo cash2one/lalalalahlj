@@ -315,8 +315,9 @@ def is_sift(page=1):
 
 # 一级页面首页（除侃八卦和品深度）
 
-@index_page.route('/fllist/<channel>/')
-def front_page(channel):
+@index_page.route('/fllist/<id>/')
+def front_page(id):
+    channel = db.Channel.find_one({"numid":int(id)})["_id"]
     lht = get_head_image(channel, 5)
     channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
     channel_list = []

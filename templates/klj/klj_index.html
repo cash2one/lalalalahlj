@@ -1,0 +1,313 @@
+{% extends "klj/master_page/base_page.html" %}
+{% block title %}{{ name }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block middle %}
+
+    <!---------left-------->
+    <div class="content ft30">
+
+
+  <div class="gsp_con_l">
+    <!---------轮播图-------->
+    <div class="gsp_flash">
+      <div class="gsp_foucebox" style="margin:0 auto">
+          <div id="fsD1" class="focus">
+              <div id="D1pic1" class="fPic">
+                  {% for i in lht %}
+                  <div class="fcon" style="display: none;">
+                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
+                  </div>
+                  {% endfor %}
+              </div>
+              <div class="fbg">
+              <div class="D1fBt" id="D1fBt">
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>
+              </div>
+              </div>
+              <span class="prev"></span>
+              <span class="next"></span>
+          </div>
+      </div>
+    </div>
+
+  <!---------w950新闻分类-------->
+    <div class="gsp_list_news" style="margin-top:0px;">
+		<div class="lj_list_n01">
+			<ul>
+				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="#">本网独家</a></li>
+                {% for i in bwdj %}
+                    {% if loop.index==1 %}
+				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
+                	<img src="{{ i.guide_image }}" width="108" height="72" />
+                    <p>{{ i.title }}</p></a>
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    {% else %}
+				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+			</ul>
+			<ul class="fl30">
+				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="#">民情观察</a></li>
+                {% for i in mqgc %}
+                    {% if loop.index==1 %}
+				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
+                	<img src="{{ i.guide_image }}" width="108" height="72" />
+                    <p>{{ i.title }}</p></a>
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    {% else %}
+				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+			</ul>
+		</div>
+        <div class="lj_list_n02">
+        	<div class="lj_list_title02"><a href="#">城市联播</a></div>
+        	<div class="lj_list_pictit">
+                {% for i in menu1 %}
+                 <p {% if loop.index==1 %} class="lj_list_tit01" {% else %} class="lj_list_tit02" {% endif %}>{{ i.Name }}</p>
+                {% endfor %}
+            </div>
+        {% for i in news_list %}
+            <ul class="lj_list_picblock" {% if loop.index==1 %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+				<li class="lj_list02_li01">
+                {% for j in i %}
+                    {% if loop.index==1 %}
+                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ j.title }}</p></a>
+                	<img src="{{ j.guide_image }}" width="130" height="85" />
+                    <tt>{{ j.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    {% elif loop.index==2 %}
+                    <a href="/detail/{{ i._id }}" target="_blank"><p class="ft10">{{ j.title }}</p></a>
+                	<img src="{{ j.guide_image }}" width="130" height="85" />
+                    <tt>{{ j.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                </li>
+                {% elif loop.index==3 or loop.index==4 %}
+				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ j.guide_image }}" width="200" height="125" /><p>{{ j.title }}</p></a></li>
+{#				<li class="lj_list02_li02"><a href="#"><img src="images/69266e7fd11641c1a01ed4a462d5685820160722173203.jpg" width="200" height="125" /><p>中俄当代摄影艺术展》将在黑河展出</p></a></li>#}
+                {% elif loop.index > 4 %}
+				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ j.title }}</a></li>
+                {% endif %}
+                    {% endfor %}
+            </ul>
+                {% endfor %}
+        </div>
+        <div class="lj_list_n03">
+        	<div class="lj_list_title03"><a href="#">龙江资讯</a></div>
+            <ul class="lj_list_picblock">
+				<li class="lj_list02_li01">
+                {% for i in ljzx %}
+                    {% if loop.index==1 %}
+                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a>
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    {% elif loop.index==2 %}
+                    <a href="#"><p class="ft10">{{ i.title }}</p></a>
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                </li>
+                {% elif loop.index==3 or loop.index==4 %}
+				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
+                {% elif loop.index>4 %}
+				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+
+        </div>
+        <div class="lj_list_n03">
+        	<div class="lj_list_title03"><a href="#">生活万象</a></div>
+            <ul class="lj_list_picblock">
+				<li class="lj_list02_li01">
+                    {% for i in shwx %}
+                    {% if loop.index==1 %}
+                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a>
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    {% elif loop.index==2 %}
+                    <a href="/detail/{{ i._id }}" target="_blank"><p class="ft10">{{ i.title }}</p></a>
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
+                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                </li>
+                {% elif loop.index==3 or loop.index==4 %}
+				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
+                {% elif loop.index>4 %}
+				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        </div>
+    </div>
+    <!---------right-------->
+  <div class="gsp_con_r">
+
+    <!----领导活动报道集----->
+    <div class="gsp_con_r_main">
+      <div class="gsp_right_tlt02">
+        <p class="tlt02_bdr01">领导活动报道集</p>
+        <p class="tlt02_bdr02">人事任免</p>
+      </div>
+      <div class="gsp_con_r_main onlyshow" style="display:block;">
+        <div class="gsp_right_show" >
+          <ul class="show_list">
+              {% for i in ldhdbdj %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="gsp_con_r_main onlyshow" style="display:none;">
+        <div class="gsp_right_show" >
+          <ul class="show_list">
+              {% for i in rsrm %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----话龙点经----->
+    <div class="gsp_con_r_main ft30">
+      <div class="gsp_right_tlt">
+        <p><a href="#">话龙点经</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+        <div class="gsp_right_deet" >
+
+          <ul class="lj_rpic">
+              {% for i in hldj %}
+            {% if loop.index==1 %}
+        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&w=65" width="95" height="65" /></a></li>
+            <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
+          </ul>
+
+          <ul class="lj_rlist">
+              {% else %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+              {% endif %}
+        {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----寒地黑土----->
+    <div class="gsp_con_r_main ft30">
+      <div class="gsp_right_tlt">
+        <p><a href="#">寒地黑土</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+        <div class="gsp_right_deet" >
+            {% for i in hdht %}
+            {% if loop.index==1 %}
+          <ul class="lj_rpic">
+        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
+            <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
+          </ul>
+                {% elif loop.index==2 %}
+          <ul class="lj_rpic">
+        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
+            <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
+          </ul>
+          <ul class="lj_rlist">
+              {% else %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+              {% endif %}
+        {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----专题----->
+    <div class="gsp_con_r_main ft30">
+      <div class="gsp_right_tlt">
+        <p><a href="#">专题</a></p>
+      </div>
+      <div class="gsp_con_r_main">
+          <div class="zt_flash ft20" style="width:300px; height:251px;">
+            <div class="focusBox-zt" style="width:300px; height:251px;">
+              <div class="bdzt" style="width:300px; height:251px;">
+                <ul>
+                    {% for i in zt_images %}
+                  <li><a target="_blank" href="/detail/{{ i._id }}"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}" style="width:300px; height:251px;"/></a></li>
+                    {% endfor %}
+{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/22.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
+{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/33.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
+{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/44.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
+                </ul>
+              </div>
+              <div class="hdzt">
+                <ul>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <ul class="lj_rlist">
+              {% for i in zt %}
+            <li><a href="/detail/{{ i_id }}" target="_blank">{{ i.title }}</a></li>
+              {% endfor %}
+{#            <li><a href="#">关于动漫展的那些事儿</a></li>#}
+{#            <li><a href="#">我为什么要把房卖了！租房住？</a></li>#}
+{#            <li><a href="#">关于动漫展的那些事儿</a></li>#}
+          </ul>
+      </div>
+    </div>
+
+  </div>
+      </div>
+<!-- 图集精选 -->
+
+<div class="local_site_content">
+<div class="lj_list_title04">图说龙江</div>
+    <ul class="idx-photo-main">
+        {% for i in tslj %}
+        {% if loop.index==1 %}
+        <li class="big-square">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% elif loop.index==2 %}
+        <li class="reck ">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% elif loop.index==3 %}
+        <li class="reck last">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% elif loop.index==4 %}
+        <li class="small-square ">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% elif loop.index==5 %}
+        <li class="small-square ">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% else %}
+        <li class="small-square last02">
+            <img src="{{ i.guide_image }}">
+            <a target="_blank" href="#"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}
+{% block footer %}
+{% include "master_page/footer_page.html"  %}
+    {% endblock %}

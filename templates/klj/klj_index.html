@@ -44,9 +44,9 @@
                 {% for i in bwdj %}
                     {% if loop.index==1 %}
 				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
-                	<img src="{{ i.guide_image }}" width="108" height="72" />
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
                     <p>{{ i.title }}</p></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    <tt>{{ i.summary|truncate(60) }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
                     {% else %}
 				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
                     {% endif %}
@@ -57,9 +57,9 @@
                 {% for i in mqgc %}
                     {% if loop.index==1 %}
 				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
-                	<img src="{{ i.guide_image }}" width="108" height="72" />
+                	<img src="{{ i.guide_image }}" width="130" height="85" />
                     <p>{{ i.title }}</p></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    <tt>{{ i.summary|truncate(60) }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
                     {% else %}
 				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
                     {% endif %}

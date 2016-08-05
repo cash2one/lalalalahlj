@@ -20,7 +20,7 @@ def search_news_db(Channel, limit, Guideimage=0, list_db=[]):
     if list_db != []:
         id_list = []
         for news_detail in list_db:
-            id_list.append(ObjectId(news_detail["_id"]))
+            id_list.append(int(news_detail["_id"]))
         condition.update({"_id": {"$nin": id_list}})
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).limit(limit)
     news_db_list = []

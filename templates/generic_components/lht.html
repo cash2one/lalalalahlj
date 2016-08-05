@@ -44,9 +44,9 @@
         {% for i in lht %}
         <div class="swiper-slide">
             <ul style="display:block; width:950px; height:353px;">
-                <li class="fcs05-li01"><a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=620&h=353" width="620" height="353"/></a></li>
+                <li class="fcs05-li01"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=620&h=353" width="620" height="353"/></a></li>
                 <li class="fcs05-li02">
-                    <h1 class="ft20" style="margin-bottom: 10px"><a href="/detail/{{ i._id }}">{{ i.title }}</a></h1>
+                    <h1 class="ft20" style="margin-bottom: 10px"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h1>
                     <h2 class="ft20">{{ i.summary }}</h2>
                     <h3>{{ i.publish_time }}</h3>
                 </li>

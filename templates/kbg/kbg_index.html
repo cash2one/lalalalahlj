@@ -90,10 +90,10 @@
 
             <ul class="gsp_list_n03">
                 <div class="n03_pictit">
-                    <p class="n03_tit01" onclick="return goto('5765050fdcc88e31a7d2e4c3')">明星</p>
-                    <p class="n03_tit02" onclick="return goto('57859e6bdcc88e1a665d81e5')">电影</p>
-                    <p class="n03_tit02" onclick="return goto('5768d0c1dcc88e3891c7369d')">电视</p>
-                    <p class="n03_tit02" onclick="return goto('5768d0c9dcc88e3891c7369e')">音乐</p>
+                    <p class="n03_tit01" onclick="return goto('28')">明星</p>
+                    <p class="n03_tit02" onclick="return goto('39')">电影</p>
+                    <p class="n03_tit02" onclick="return goto('40')">电视</p>
+                    <p class="n03_tit02" onclick="return goto('41')">音乐</p>
                 </div>
                 <ul class="n03_picblock" style="display:block;">
                     {% for i in mx %}
@@ -115,7 +115,7 @@
                     {% endfor %}
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="/kbg/list/5782f7ecdcc88e776838c3fa">热点影评</a></p>
+                            <p><a href="/kbg/list/47/">热点影评</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">
@@ -130,7 +130,7 @@
                     </div>
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="/kbg/list/5782f7f6dcc88e7769576fc7">本地影讯</a></p>
+                            <p><a href="/kbg/list/48/">本地影讯</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">
@@ -188,7 +188,7 @@
         </div>
         <div class="gsp_list_news_jz" onclick="return go_to();">点击浏览更多文章</div>
         <input type="hidden" id="page" value="2">
-        <input type="hidden" id="channel" value="5765050fdcc88e31a7d2e4c3">
+        <input type="hidden" id="channel" value="28">
     </div>
 
     <!---------right-------->
@@ -262,7 +262,7 @@
         <!----爆料台----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
-                <p style="text-align:left;"><a href="/kbg/list/5782f7a4dcc88e7769576fc5/"><img
+                <p style="text-align:left;"><a href="/kbg/list/46/"><img
                         src="/static/images/gsp-deet.png" width="98" height="34"/></a>
                 </p>
             </div>
@@ -290,8 +290,8 @@
         <!----龙江演出----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt02">
-                <p class="tlt02_bdr01" onclick="javascript:window.open('/kbg/list/5782f81ddcc88e7769576fc8/')">龙江演出</p>
-                <p class="tlt02_bdr02" onclick="javascript:window.open('/kbg/list/5782f82edcc88e776838c3fb/')">星在龙江</p>
+                <p class="tlt02_bdr01" onclick="javascript:window.open('/kbg/list/49/')">龙江演出</p>
+                <p class="tlt02_bdr02" onclick="javascript:window.open('/kbg/list/50/')">星在龙江</p>
             </div>
             <div class="gsp_con_r_main onlyshow" style="display:block;">
                 <div class="gsp_right_show">
@@ -360,7 +360,7 @@
                 <div class="gsp_right_list">
                     <ul>
                         {% for i in zt %}
-                            <li><a href="/detail/i._id">{{ i.title }}</a></li>
+                            <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -370,7 +370,7 @@
         <!----二次元----->
         <div class="gsp_con_r_main ft30">
             <div class="gsp_right_tlt">
-                <p><a href="/list/57650505dcc88e31a6f3501b/">二次元</a></p>
+                <p><a href="/list/27/">二次元</a></p>
             </div>
             <div class="gsp_con_r_main">
                 <div class="gsp_right_list">

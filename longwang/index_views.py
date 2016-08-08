@@ -304,9 +304,9 @@ def is_sift(page=1):
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 14).limit(14)
     string = ""
     for i in news_list:
-        string += "<li><p><a href='/detail/%s' target='_blank'>" % (i["_id"])
+        string += "<li><p><a href='/detail/%s' target='_blank'>" % (i["numid"])
         string += "<img src='%s?w=261&h=171, width='261' height='171'/></a></p><h3 class='Txt_cu'><a href='/detail/%s' target='_blank'>%s</a></h3>" % (
-            image_server + i["Guideimage"], i["_id"], i["Title"])
+            image_server + i["Guideimage"], i["numid"], i["Title"])
         string += "<h4>%s</h4><span><h5>%s</h5>" % (i["Summary"], datetime_op(i["Published"]))
         c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
         string += "<h6><a href='%s'>%s</a></h6></span></li>" % (c["Href"], c["Name"])

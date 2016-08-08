@@ -1821,10 +1821,10 @@ a:hover .ep-share-yixin{background-position:-250px -25px}
   .lj_list_title a {margin-left:10px; font-size:20px; color:#333; font-family:"微软雅黑"; vertical-align:middle}
   .lj_list_title a:hover {color:#205366;}
 .lj_list_li01 { margin:20px 0 0 0; height:100px}
- .lj_list_li01 tt { margin-top:10px; max-height:60px; line-height:20px; font-size:12px; color:#7b7b7b;}
+  .lj_list_li01 tt { margin-top:10px; max-height:40px; line-height:20px; font-size:12px; color:#7b7b7b;}
   .lj_list_li01 img {float:left}
   .lj_list_li01 p,.lj_list_li01 tt {float:left; overflow:hidden; margin-left:10px; width:300px}
-  .lj_list_li01 p { height:20px; line-height:20px; font-size:16px; font-weight:bold;}
+ .lj_list_li01 p { height:40px; line-height:20px; font-size:14px; font-weight:bold;}
   /*.lj_list_li01 tt { margin-top:10px;max-height:40px; line-height:20px; font-size:12px; color:#7b7b7b;}*/
  .lj_list_li01 p,.lj_list_li01 tt {float:left; overflow:hidden; margin-left:10px; width:270px}
   .lj_list_li01 tt span {color:#46abd0;}

@@ -131,20 +131,21 @@
     </div>
 
     <!----专题----->
-    <div class="gsp_con_r_main ft30">
-      <div class="gsp_right_tlt fbold" style="height:30px;">
-        <p style="color:#205366;font-size:16px;">专题</p>
-      </div>
-      <div class="gsp_con_r_main">
-        <div class="gsp_right_list" >
-          <ul>
-              {% for i in zt %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>
-              {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
+{% include "generic_components/zt_right_bar.html" %}
+{#    <div class="gsp_con_r_main ft30">#}
+{#      <div class="gsp_right_tlt fbold" style="height:30px;">#}
+{#        <p style="color:#205366;font-size:16px;">专题</p>#}
+{#      </div>#}
+{#      <div class="gsp_con_r_main">#}
+{#        <div class="gsp_right_list" >#}
+{#          <ul>#}
+{#              {% for i in zt %}#}
+{#            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.summary }}</a></li>#}
+{#              {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
 
     <!----合作媒体----->
 	<div class="gsp_con_r_main ft30">

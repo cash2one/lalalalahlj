@@ -5,8 +5,7 @@ import json
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import get_image_news, search_news_db, get_head_image, image_server, datetime_op, get_images, \
-    get_mongodb_dict
+from longwang.mongodb_news import get_image_news, search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -40,8 +39,9 @@ def psd_index():
     ph_week = get_image_news("576b37cda6d2e970226062d4", 8)
     # 排行月
     ph_month = get_image_news("576b37daa6d2e970226062d7", 8)
-    # 专题
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 5)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 今日热评
     jrrp = search_news_db([ObjectId("5782f547dcc88e7769576fbd")], 5)
     # 政治经济
@@ -66,7 +66,8 @@ def psd_index():
                            ph_24=ph_24,
                            ph_month=ph_month,
                            ph_week=ph_week,
-                           zt=zt,
+                           # zt=zt,
+                           zt_images=zt_images,
                            jrrp=jrrp,
                            zzjj=zzjj,
                            shms=shms,
@@ -123,7 +124,8 @@ def psd_list(id):
     # 排行月
     ph_month = get_image_news("576b37daa6d2e970226062d7", 8)
     # 专题
-    zt = search_news_db([ObjectId("5765057edcc88e31a7d2e4c6")], 5)
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # # 合作媒体
     # hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 频道
@@ -140,6 +142,7 @@ def psd_list(id):
                            ph_month=ph_month,
                            ph_week=ph_week,
                            zt=zt,
+                           zt_images=zt_images,
                            detail=detail,
                            menu=menu1,
                            cid=ObjectId(channel)

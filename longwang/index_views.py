@@ -30,7 +30,7 @@ def index():
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
@@ -79,8 +79,8 @@ def s_list(id):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-    # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
@@ -162,8 +162,8 @@ def detail(id, page=1):
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-    # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
@@ -203,8 +203,8 @@ def detail_all(id):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-    # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
@@ -287,8 +287,8 @@ def ss_keywords(keywords, page=1):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-    # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
@@ -332,7 +332,7 @@ def front_page(id):
     # 侃八卦
     gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
     # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)

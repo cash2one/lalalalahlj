@@ -46,8 +46,8 @@ def klj_index():
     hldj = search_indexnews_db("57a2b1cf2d87e643c825a5d7", 5)
     # 寒地黑土
     hdht = search_indexnews_db("57a2b2072d87e643c825a5d9", 7)
-    # 专题
-    zt_images = search_indexnews_db("579582c83c7e431eaf791a05", 4)
+     # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
 
     return render_template('klj/klj_index.html', name=name,

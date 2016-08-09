@@ -66,7 +66,7 @@ def psd_index():
                            ph_24=ph_24,
                            ph_month=ph_month,
                            ph_week=ph_week,
-                           # zt=zt,
+                           zt=zt,
                            zt_images=zt_images,
                            jrrp=jrrp,
                            zzjj=zzjj,

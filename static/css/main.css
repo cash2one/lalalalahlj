@@ -44,10 +44,14 @@ td{padding:0;}
 
 .ft10 {margin-top:10px;}
 .ft15 {margin-top:15px;}
+.ft20 {margin-top:20px;}
+.ft25 {margin-top:25px;}
 .ft30 {margin-top:30px;}
 .fl10 {margin-left:10px;}
 .fl20 {margin-left:20px;}
+.fl30 {margin-left:30px;}
 .fl48 {margin-left:48px;}
+.fl50 {margin-left:50px;}
 .fl30 {margin-left:30px; display:inline;}
 .fr20 {margin-right:20px; display:inline;}
 .fr30 {margin-right:30px;}
@@ -61,5 +65,7 @@ a{color:#000;text-decoration: none;}
 a:hover{text-decoration: underline;color:#ff6700;}
 
 .clear{clear:both;}
+
+
 
 .test1{text-decoration: underline; color:#205366;}

@@ -47,13 +47,13 @@ def kbg_index():
     # 热专题
     zt = search_indexnews_db("577c5ee759f0d8efacae7e51", 5)
     # 明星 5带图
-    mx = get_head_image(ObjectId("5765050fdcc88e31a7d2e4c3"), 5)
+    mx = search_indexnews_db("577c5f0d59f0d8efacae7e56", 5)
     # 电视 5带图
-    ds = get_head_image(ObjectId("5768d0c1dcc88e3891c7369d"), 5)
+    ds = search_indexnews_db("577c5f3459f0d8efacae7e5e", 5)
     # 音乐 5带图
-    yy = get_head_image(ObjectId("5768d0c9dcc88e3891c7369e"), 5)
+    yy = search_indexnews_db("577c5f3e59f0d8efacae7e61", 5)
     # 电影 1带图
-    dy = get_head_image(ObjectId("5768d0b9dcc88e3891c7369c"), 1)
+    dy = search_indexnews_db("577c5f3e59f0d8efacae7e61", 1)
     # 热点影评 7
     rdyp = search_indexnews_db("57833a603c7e58bdfe540d7f", 7)
     # 本地影讯 7

@@ -82,32 +82,7 @@
 <script type="text/javascript">
 jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"top", autoPlay:true, autoPage:true, switchLoad:"_src" });
 </script>
-<script type="text/javascript">jQuery(".gsp2_notice").slide({ titCell:".tab2-hd li", mainCell:".tab2-bd",delayTime:0 });</script>
-{#<script type="text/javascript">#}
-{##}
-{#	(function(){#}
-{#			var ind = 2; //初始位置#}
-{#			var nav= jQuery(".nav");#}
-{#			var init = jQuery(".nav .m").eq(ind);#}
-{#			var block = jQuery(".nav .block"); //滑块#}
-{#			block.css({"left":init.position().left-3}); //初始化滑块位置#}
-{#			nav.hover(function(){},function(){ block.animate({"left":init.position().left-3},100); }); //移出导航滑块返回#}
-{##}
-{#			jQuery(".nav").slide({#}
-{#					type:"menu", //效果类型#}
-{#					titCell:".m", // 鼠标触发对象#}
-{#					targetCell:".sub", // 效果对象，必须被titCell包含#}
-{#					delayTime:300, // 效果时间#}
-{#					triggerTime:0, //鼠标延迟触发时间#}
-{#					returnDefault:true,//on返回初始位置#}
-{#					defaultIndex:ind,//初始位置#}
-{#					startFun:function(i,c,s,tit){ //控制当前滑块位置#}
-{#						block.animate({"left":tit.eq(i).position().left-3},100);#}
-{#					}#}
-{#				});#}
-{#	})()#}
-{##}
-{#</script>#}
+
 <script type="text/javascript">
 	Qfast.add('widgets', { path: "/static/js/terminator2.2.min.js", type: "js", requires: ['fx'] });
 	Qfast(false, 'widgets', function () {
@@ -126,8 +101,9 @@ jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"
 		})
 	})
 </script>
-<script>
 
+<script>
+jQuery(".onlyvision").slide({mainCell:".dpt_right_vision ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50});
 var node = $('.dpt_list_n03');
 tagClickEvent(node.find('.n03_pictit p'),node.find('.dpt_list_n04'),"n03_tit01");
 
@@ -140,46 +116,14 @@ function tagClickEvent(tag, closet, style){
 			closet.eq(index).css('display','block');
 	});
 }
-</script>
-<script type="text/javascript">
-jQuery(".onlyvision").slide({mainCell:".dpt_right_vision ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50});
-</script>
-<script type="text/javascript">
-	Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });
-	Qfast(false, 'widgets', function () {
-		K.tabs({
-			id: 'fsD1',   //焦点图包裹id
-			conId: "D1pic1",  //** 大图域包裹id
-			tabId:"D1fBt",
-			tabTn:"a",
-			conCn: '.fcon', //** 大图域配置class
-			auto: 1,   //自动播放 1或0
-			effect: 'fade',   //效果配置
-			eType: 'click', //** 鼠标事件
-			pageBt:true,//是否有按钮切换页码
-			bns: ['.prev', '.next'],//** 前后按钮配置class
-			interval: 3000  //** 停顿时间
-		})
-	})
-</script>
-<script>
-
-var node = $('.lj_list_n02');
+    var node = $('.lj_list_n02');
 tagClickEvent(node.find('.lj_list_pictit p'),node.find('.lj_list_picblock'),"lj_list_tit01");
 
 var node = $('.gsp_con_r_main');
 tagClickEvent(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
 
-function tagClickEvent(tag, closet, style){
-	tag.hover(function(){
-			tag.removeClass(style);
-			$(this).addClass(style);
-			var index = tag.index($(this));
-			closet.css('display','none');
-			closet.eq(index).css('display','block');
-	});
-}
 </script>
+
 </body>
 </html>
 

@@ -1,0 +1,112 @@
+{% extends "klj/master_page/base_page.html" %}
+{% block title %}{{ detail.Name }}_黑龙江网{% endblock %}
+{% block head %}
+    {{ super() }}
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function () {#}
+{##}
+{#            $("#loading").click(function () {#}
+{#                var page = $("#page").val();#}
+{#                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {#}
+{#                    $('#ul_content').append(result);#}
+{#                    $("#page").val(parseInt(page) + 1);#}
+{#                });#}
+{#            });#}
+{##}
+{#        });#}
+{#    #}
+{#    </script>#}
+
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+
+{% endblock %}
+{% block middle %}
+    <!---------left-------->
+    <div class="con_l">
+{#        {% include "generic_components/list_rotation_graph.html" %}#}
+
+        <!---------w950新闻分类-------->
+        <div class="list_tlt">
+            <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
+            <span>{{ detail.Name }}</span>
+        </div>
+
+        <div class="list_news">
+            <ul id="ul_news">
+                {% for i in channel %}
+                    <li>
+                        <p {% if i.guide_image=="" %}style="display: none"{% endif %}><a href="/detail/{{ i._id }}" target="_blank"><img
+                                src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
+                        <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                        <h5>{{ i.summary }}</h5>
+                        {#    <h6><a href="#">舆论场</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;43分钟前</h6>#}
+                        <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+{#        <div class="list_news_jz" id="loading">点击浏览更多文章</div>#}
+        <input type="hidden" id="page" value="2">
+
+    </div>
+
+    <!---------right-------->
+    <div style="margin-top: 20px">
+    {% include 'generic_components/right_side_bar.html' %}
+</div>
+{% endblock %}
+
+{% block footer %}
+        {% include 'master_page/footer_page.html' %}
+
+<script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '#ul_news',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth: 950 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    if(parseInt(page)<=20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON("/list/{{ detail.numid }}/" + page, function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                    {#                            $firstTen.css('opacity', 1);#}
+                                }, 300);
+
+                            });
+                        })
+
+                    }
+                }
+            };
+
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+
+
+    </script>
+{% endblock %}

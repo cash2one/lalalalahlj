@@ -3,12 +3,14 @@ from flask import Blueprint, render_template
 from connect import conn
 from bson import ObjectId
 from longwang.mongodb_news import get_head_image, search_indexnews_db, search_news_db
+from index_views import get_menu
 import encodings
 
 # import pymongo
 
 klj_page = Blueprint('klj_page', __name__, template_folder='templates')
 db = conn.mongo_conn()
+pre_page = 10
 
 
 @klj_page.route('/klj/')
@@ -46,7 +48,7 @@ def klj_index():
     hldj = search_indexnews_db("57a2b1cf2d87e643c825a5d7", 5)
     # 寒地黑土
     hdht = search_indexnews_db("57a2b2072d87e643c825a5d9", 7)
-     # 专题
+    # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 4)
 
@@ -65,5 +67,30 @@ def klj_index():
                            hldj=hldj,
                            hdht=hdht,
                            zt_images=zt_images,
-                           zt=zt
+                           zt=zt,
+                           ys="sy"
                            )
+
+
+@klj_page.route('/klj/list/<id>/')
+def s_list(id):
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
+    # 轮换图
+    lht = get_head_image(ObjectId(channel), 5)
+    c_list = search_news_db([ObjectId(channel)], pre_page)
+    # 频道
+    detail = db.Channel.find_one({"numid": int(id)})
+    # 新闻排行
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    # 侃八卦
+    gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
+    # 专题
+    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
+    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
+    # 热门图集
+    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    menu = db.Channel.find({"Parent": ObjectId("576500b1dcc88e31a7d2e4b8")})
+    return render_template('klj/klj_list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
+                           detail=detail, menu=menu, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel))

@@ -53,7 +53,7 @@ def kbg_index():
     # 音乐 5带图
     yy = search_indexnews_db("577c5f3e59f0d8efacae7e61", 5)
     # 电影 1带图
-    dy = search_indexnews_db("577c5f3e59f0d8efacae7e61", 1)
+    dy = search_indexnews_db("5768d0b9dcc88e3891c7369c", 1)
     # 热点影评 7
     rdyp = search_indexnews_db("57833a603c7e58bdfe540d7f", 7)
     # 本地影讯 7

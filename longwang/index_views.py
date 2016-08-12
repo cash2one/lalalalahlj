@@ -18,6 +18,7 @@ index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 # 分页
 pre_page = 10
+zd = []
 
 
 # 首页
@@ -47,6 +48,7 @@ def index():
     _id_list = []
     for i in _list:
         _id_list.append(ObjectId(i["NewsID"]))
+    zd = _id_list
     zd = db.News.find({"_id": {"$in": _id_list}})
     _zd = []
     for j in zd:
@@ -79,7 +81,7 @@ def s_list(id):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-     # 专题
+    # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
@@ -162,7 +164,7 @@ def detail(id, page=1):
     pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-     # 专题
+    # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
@@ -203,7 +205,7 @@ def detail_all(id):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-     # 专题
+    # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
@@ -287,7 +289,7 @@ def ss_keywords(keywords, page=1):
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-     # 专题
+    # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
@@ -300,7 +302,7 @@ def ss_keywords(keywords, page=1):
 # 首页下拉
 @index_page.route('/issift/<page>/')
 def is_sift(page=1):
-    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4}
+    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4, "_id": {"$nin": zd}}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 14).limit(14)
     string = ""
     for i in news_list:
@@ -317,7 +319,7 @@ def is_sift(page=1):
 
 @index_page.route('/fllist/<id>/')
 def front_page(id):
-    channel = db.Channel.find_one({"numid":int(id)})["_id"]
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
     lht = get_head_image(channel, 5)
     channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
     channel_list = []

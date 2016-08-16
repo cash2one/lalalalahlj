@@ -238,12 +238,11 @@
             <div class="focusBox-zt" style="width:300px; height:251px;">
               <div class="bdzt" style="width:300px; height:251px;">
                 <ul>
-                    {% for i in zt_images %}
+                    {% for i in zt %}
+                        {% if loop.index0 in [0,1,2,3] %}
                   <li><a target="_blank" href="/detail/{{ i._id }}"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}" style="width:300px; height:251px;"/></a></li>
+                    {% endif %}
                     {% endfor %}
-{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/22.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
-{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/33.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
-{#                  <li><a target="_blank" href="http://www.superslide2.com/"><img _src="images/44.jpg" src="images/blank.png" style="width:300px; height:251px;"/></a></li>#}
                 </ul>
               </div>
               <div class="hdzt">
@@ -254,11 +253,11 @@
           </div>
           <ul class="lj_rlist">
               {% for i in zt %}
-            <li><a href="/detail/{{ i_id }}" target="_blank">{{ i.title }}</a></li>
+                   {% if loop.index0 in [4,5,6,7] %}
+            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+                  {% endif %}
               {% endfor %}
-{#            <li><a href="#">关于动漫展的那些事儿</a></li>#}
-{#            <li><a href="#">我为什么要把房卖了！租房住？</a></li>#}
-{#            <li><a href="#">关于动漫展的那些事儿</a></li>#}
+
           </ul>
       </div>
     </div>

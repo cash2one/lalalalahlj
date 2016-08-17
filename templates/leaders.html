@@ -9,10 +9,9 @@
 <div class="content" style="border:1px solid #f0f0f0;margin-top:30px;">
 	<div class="ldr-intor-dwr">
 		<div class="ldr-intor-box">
-        {% for i in wxkjl %}
 			<div class="ldr-intor-title"><a href="/ld/4594/">王宪魁同志报道集</a></div>
             <div class="ldr-intor-text">
-
+                {% for i in wxkjl %}
                 <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
                 <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">王宪魁同志简历</a></div>
                 <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>

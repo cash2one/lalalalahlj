@@ -1,21 +1,21 @@
 {% extends "master_page/base_page.html" %}
-{% block title %}领导人{% endblock %}
+{% block title %}领导活动报道集首页_黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
 
 {% block middle %}
 <body>
-<div class="content" style="border:1px solid #f0f0f0;margin-top:30px;padding-bottom:150px;">
+<div class="content" style="border:1px solid #f0f0f0;margin-top:30px;">
 	<div class="ldr-intor-dwr">
 		<div class="ldr-intor-box">
         {% for i in wxkjl %}
 			<div class="ldr-intor-title"><a href="/ld/4594/">王宪魁同志报道集</a></div>
             <div class="ldr-intor-text">
 
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4594/">王宪魁同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">王宪魁同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -29,9 +29,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4595/">陆昊同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in lhjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4595/">陆昊同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">陆昊同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -47,9 +47,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4596/">黄建盛同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in hjsjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4596/">黄建盛同志简历</a></div>
-                <p>{{ i.content|truncate(75)|safe }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">黄建盛同志简历</a></div>
+                <p>{{ i.summary|truncate(75)|safe }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -63,9 +63,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4597/">张孝廉同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in zxljl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4597/">张孝廉同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">张孝廉同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -76,14 +76,14 @@
 		</div>
 	</div>
 
-	<div class="ldr-intor-dwr" style="border:none">
+	<div class="ldr-intor-dwr" >
 		<div class="ldr-intor-box">
 			<div class="ldr-intor-title"><a href="/ld/4598/">杨汭同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in yrjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4598/">杨汭同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">杨汭同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -97,9 +97,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4599/">陈海波同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in chbjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4599/">陈海波同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">陈海波同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -109,14 +109,14 @@
             </ul>
 		</div>
 	</div>
-	<div class="ldr-intor-dwr" style="border:none">
+	<div class="ldr-intor-dwr" >
 		<div class="ldr-intor-box">
 			<div class="ldr-intor-title"><a href="/ld/4608/">郝会龙同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in hhljl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4608/">郝会龙同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">郝会龙同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -130,9 +130,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4609/">赵敏同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in zmjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4609/">赵敏同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">赵敏同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -147,9 +147,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4610/">李海涛同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in lhtjl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4610/">李海涛同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">李海涛同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -163,9 +163,9 @@
 			<div class="ldr-intor-title"><a href="/ld/4611/">李雷同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in lljl %}
-                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/ld/4611/">李雷同志简历</a></div>
-                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                <a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/detail/{{ i._id }}" target="_blank">李雷同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
             <ul class="ldr-intor-list">
@@ -185,22 +185,7 @@
 </html>
 {% endblock %}
 {% block footer %}
-<div class="footer_fy">
-<div class="footer_nav">
-<div class="footer_menu">
-<a href="#">关于我们</a>
-<a href="#">联系我们</a>
-</div>
-</div>
-<div class="footer_cplogo">
-<span>黑龙江新媒体集团   &  黑龙江画报社   版权所有<br />
-Copyright © 2016 www. zuoyouxinwen. com , All Rights Reserved
-</span>
-</div>
-<div class="footer_ba f14">ICP备案/许可证编号：黑ICP备 16016867号</div>
-</div>
+{% include "master_page/footer_page.html"  %}
 {% endblock %}
-{#{% block footer %}#}
-{#{% include "master_page/footer_page.html" %}#}
-{#{% endblock %}#}
+
 <!---------20160809以下编写：wt------------->

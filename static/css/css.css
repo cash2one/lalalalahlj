@@ -1918,7 +1918,7 @@ a:hover .ep-share-yixin{background-position:-250px -25px}
   .ldr-l-o {float:left; width:420px; height:auto;}
   .ldr-l-box02 { margin:0 auto; width:378px; height:auto; }
   .ldr-l-box02 ul {vertical-align:middle;}
-  .ldr-l-box02 li {display:block;float:left; overflow:hidden; margin:20px 20px 0 0; width:169px; max-height:160}
+  .ldr-l-box02 li {display:block;float:left; overflow:hidden; margin:20px 20px 0 0; width:169px; height:160px}
   .ldr-l-box02 a { display:block;float:left; margin-top:5px; width:169px; height:auto; line-height:20px; text-align:center; font-family:"宋体";}
   .ldr-l-box02 a:hover {color:#333;}
   .ldr-l-box02 p a { display:block;float:left; margin-top:5px; width:169px; max-height:40px; line-height:20px; text-align:center; font-family:"宋体";}
@@ -1960,6 +1960,7 @@ a:hover .ep-share-yixin{background-position:-250px -25px}
   .ldr-m-title p {position:absolute; left:0px; top:0px; display:block; float:left; overflow:hidden; padding-right:20px; border-bottom:3px solid #205366; width:auto; height:54px; line-height:54px; font-size:32px; color:#205366;}
   .ldr-m-title a {float:right; margin-top:25px; font-size:16px; color:#666;}
   .ldr-m-box { float:left; width:1200px; height:auto; }
+ .ldr-m-box ul { position: relative }
   .ldr-m-box li {display:block; float:left; overflow:hidden; padding-left:15px; width:1190px;font-size:18px;background:url(../images/blank02.png) no-repeat left;}
   .ldr-m-box li a { display:block; float:left; overflow:hidden; max-width:1040px; height:40px; line-height:40px; color:#333;}
   .ldr-m-box li span {display:block; float:right; margin-top:13px; color:#999; font-size:14px;}

@@ -446,8 +446,8 @@ def klj_ld_list(id):
     parent = lingdao["_id"]
     order = lingdao["OrderNumber"]
     channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
-    jianghua = search_news_db([channel[0]["_id"]], 6)
-    huodong = search_news_db([channel[1]["_id"]], 6)
+    jianghua = search_news_db([channel[0]["_id"]], 8)
+    huodong = search_news_db([channel[1]["_id"]], 8)
     jianli = search_news_db([channel[2]["_id"]], 1)
     index_channel = db.IndexChannel.find_one(
         {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})["_id"]
@@ -469,12 +469,24 @@ def klj_ld_list_detail(id, num):
     news_list = []
     name = ''
     if num == "1":
-        news_list = search_news_db([channel[0]["_id"]], 12)
+        news_list = search_news_db([channel[0]["_id"]], 20)
         name = "讲话"
     elif num == "2":
-        news_list = search_news_db([channel[1]["_id"]], 12)
+        news_list = search_news_db([channel[1]["_id"]], 20)
         name = "活动"
     return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')
+
+
+@index_page.route('/ldj/<id>/<page>/')
+def ldj(id, page=2):
+    condition = {"Status": 4, "channelnumid": {"$in":[int(id)]}}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 20).limit(
+        20)
+    string = ""
+    for i in news_list:
+        string += "<li><a href='/detail/%s'  target='_blank'>%s</a> <span>%s</span></li>" % (
+        i["numid"], i["Title"], datetime_op(i["Published"]))
+    return json.dumps(string)
 
 
 def get_name(channel):

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>领导人-{{ lingdao.Name }}</title>
+<title>{{ lingdao.Name }}领导活动报道集_{{ name }}_黑龙江网</title>
 <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/css.css" rel="stylesheet" type="text/css" />
 </head>
@@ -16,7 +16,7 @@
 <div class="ldr_menu">
     <ul>
         <li class="ldr_menu_l" style="float:left;">{{ lingdao.Name }}活动报道集</li>
-        <li class="ldr_menu_r" style="float:right;"><a href="#">领导活动报道集</a></li>
+        <li class="ldr_menu_r" style="float:right;"><a>领导活动报道集</a></li>
     </ul>
 </div>
 <div class="content ft30">
@@ -24,9 +24,9 @@
     <div class="ldr_con_l">
 		<div class="ldr-l-box">
             {% for i in jianli %}
-			<a href="/detail/{{ i._id }}" class="leader-pic"><img src="{{ i.guide_image }}?w=207&h=276" width="207" height="276" /></a>
-			<a href="/detail/{{ i._id }}" class="leader-pic">{{ lingdao.Name }}同志简历</a>
-            <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+			<a href="/detail/{{ i._id }}" target="_blank" class="leader-pic"><img src="{{ i.guide_image }}?w=207&h=276" width="207" height="276" /></a>
+			<a href="/detail/{{ i._id }}" target="_blank" class="leader-pic">{{ lingdao.Name }}同志简历</a>
+            <p>{{ i.summary|safe|truncate(80) }}<a href="/detail/{{ i._id }}" target="_blank">[详细]</a></p>
             {% endfor %}
 		</div>
         <div class="ldr-l-o">
@@ -67,20 +67,7 @@
     </div>
 </div>
 
-<div class="footer_fy">
-<div class="footer_nav">
-<div class="footer_menu">
-<a href="#">关于我们</a>
-<a href="#">联系我们</a>
-</div>
-</div>
-<div class="footer_cplogo">
-<span>黑龙江新媒体集团   &  黑龙江画报社   版权所有<br />
-Copyright © 2016 www. zuoyouxinwen. com , All Rights Reserved
-</span>
-</div>
-<div class="footer_ba f14">ICP备案/许可证编号：黑ICP备 16016867号</div>
-</div>
+{% include "master_page/footer_page.html"  %}
 
 </body>
 </html>

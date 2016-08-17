@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>龙网-品深度</title>
+<title>领导人-{{ lingdao.Name }}</title>
 <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/css.css" rel="stylesheet" type="text/css" />
 </head>
@@ -24,8 +24,8 @@
     <div class="ldr_con_l">
 		<div class="ldr-l-box">
             {% for i in jianli %}
-			<a href="#" class="leader-pic"><img src="{{ i.guide_image }}?w=207&h=276" width="207" height="276" /></a>
-			<a href="#" class="leader-pic">{{ lingdao.Name }}同志简历</a>
+			<a href="/detail/{{ i._id }}" class="leader-pic"><img src="{{ i.guide_image }}?w=207&h=276" width="207" height="276" /></a>
+			<a href="/detail/{{ i._id }}" class="leader-pic">{{ lingdao.Name }}同志简历</a>
             <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
             {% endfor %}
 		</div>
@@ -44,7 +44,7 @@
     <!---------right-------->
     <div class="ldr_con_r">
         <div class="ldr_r_o">
-            <div class="ldr-r-title"><p>讲话</p><a href="#">更多</a></div>
+            <div class="ldr-r-title"><p>讲话</p><a href="/ld/{{ lingdao.numid }}/1/">更多</a></div>
             <div class="ldr-r-box">
                 <ul>
                     {% for i in jianghua %}
@@ -55,7 +55,7 @@
         </div>
 
         <div class="ldr_r_o ft80">
-            <div class="ldr-r-title"><p>活动</p><a href="#">更多</a></div>
+            <div class="ldr-r-title"><p>活动</p><a href="/ld/{{ lingdao.numid }}/2/">更多</a></div>
             <div class="ldr-r-box">
                 <ul>
                     {% for i in huodong %}

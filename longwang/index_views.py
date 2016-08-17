@@ -461,8 +461,8 @@ def klj_ld_list(id):
                            )
 
 
-@index_page.route('/ld/<id>/<num>/<page>')
-def klj_ld_list_detail(id, num, page):
+@index_page.route('/ld/<id>/<num>/')
+def klj_ld_list_detail(id, num):
     lingdao = db.Channel.find_one({"numid": int(id)})
     parent = lingdao["_id"]
     channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")

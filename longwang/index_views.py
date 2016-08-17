@@ -258,12 +258,15 @@ def set_menu():
 def search_hot_redis():
     string = ""
     count = 0
-    for i in db_redis.hkeys('hot_searh'):
-        if len(i) < 24:
+    object_list = db_redis.lrange('hot_list', 0, 200)
+    for i in object_list:
+        i = str(i).replace('\n', '').replace('\r', '')
+        detail = eval(i)
+        if len(detail["title"]) < 24:
             if count <= 8:
                 count += 1
                 string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-                    i, i)
+                    detail["title"], detail["title"])
             else:
                 pass
         else:

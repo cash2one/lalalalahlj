@@ -1892,5 +1892,75 @@ a:hover .ep-share-yixin{background-position:-250px -25px}
 
 .lj_list_title04 {float:left; margin-bottom:20px; border-bottom:2px solid #205366; width:1200px; height:100px; line-height:100px; text-align:center; font-family:"微软雅黑";font-size:40px;color:#46abd0; }
 
+/******leaders-2nd******/
+.ldr_header { width:auto; height:45px;background-color:#f1f1f1;}
+  .ldr_header ul {margin:0 auto; width:1200px; height:45px; line-height:45px; font-family:"宋体"; }
+  .ldr_header ul li {float:left;}
+  .ldr_header ul li span{float:left; color:#2b2b2b; }
+  .ldr_header ul li span a:hover{color:#205366; text-decoration:none;}
+  .ldr_header ul li p {float:left; margin:auto 10px;}
 
+.ldr_menu {height:100px; width:100%; background-color:#205366; margin:0 auto; }
+  .ldr_menu ul {display:block;margin:0 auto; width:1200px; height:100px; font-family:"宋体"; font-family:"微软雅黑"; color:#fff}
+  .ldr_menu ul li {display:block; width:auto;}
+  .ldr_menu_l {font-size:58px; line-height:100px;}
+  .ldr_menu_r {margin-top:65px; line-height:14px; font-size:14px;}
+  .ldr_menu_r a {color:#fff;}
+
+.ldr_con_l {width:420px; height:auto; float:left; margin-top:40px;}
+.ldr_con_r {width:720px; height:auto; float:right; margin-top:30px;}
+  .ldr-l-box {float:left; width:420px; height:auto; }
+  .leader-pic { display:block; margin:0 auto; width:207px; height:auto; line-height:54px; text-align:center; font-weight:bold; font-family:"宋体";font-size:14px; color:#05a}
+  .leader-pic:hover {color:#05a;}
+  .ldr-l-box p {display:block; overflow:hidden; margin:0 auto; width:296px; max-height:100px; line-height:25px; text-indent:2em; font-family:"宋体"; font-size:14px;}
+  .ldr-l-box p a {color:#b81010;}
+
+  .ldr-l-o {float:left; width:420px; height:auto;}
+  .ldr-l-box02 { margin:0 auto; width:378px; height:auto; }
+  .ldr-l-box02 ul {vertical-align:middle;}
+  .ldr-l-box02 li {display:block;float:left; overflow:hidden; margin:20px 20px 0 0; width:169px; max-height:160}
+  .ldr-l-box02 a { display:block;float:left; margin-top:5px; width:169px; height:auto; line-height:20px; text-align:center; font-family:"宋体";}
+  .ldr-l-box02 a:hover {color:#333;}
+  .ldr-l-box02 p a { display:block;float:left; margin-top:5px; width:169px; max-height:40px; line-height:20px; text-align:center; font-family:"宋体";}
+  .ldr-l-box02 p a:hover {color:#333;}
+
+
+
+.ldr_r_o {width:720px; height:auto; float:right;}
+  .ldr-r-title {position:relative;border-bottom:3px solid #dbdbdb; margin-bottom:25px; width:720px; height:54px;}
+  .ldr-r-title p {position:absolute; left:0px; top:0px; display:block; float:left; overflow:hidden; padding-right:20px; border-bottom:3px solid #205366; width:auto; height:54px; line-height:54px; font-size:32px; color:#205366;}
+  .ldr-r-title a {float:right; margin-top:25px; font-size:16px; color:#666;}
+  .ldr-r-box { float:left; width:720px; height:auto; }
+  .ldr-r-box li {display:block; float:left; overflow:hidden; padding-left:15px; width:710px;font-size:18px;background:url(../images/blank02.png) no-repeat left;}
+  .ldr-r-box li a { display:block; float:left; overflow:hidden; max-width:610px; height:40px; line-height:40px; color:#333;}
+  .ldr-r-box li span {display:block; float:right; margin-top:13px; color:#999; font-size:14px;}
+
+/******leaders******/
+.ldr_header02 { width:auto; height:100px;background-color:#FFF;}
+.ldr_header02-box {margin:0 auto; width:1200px; height:100px; line-height:100px; font-family:"宋体"; }
+.ldr-intor-dwr {border-bottom:1px solid #f0f0f0; margin:0 auto; margin-bottom:30px; width:1118px; min-height:390px; font-family:"宋体";}
+.ldr-intor-box {float:left; overflow:hidden; width:540px; height:390px;}
+  .ldr-intor-title {float:left; width:540px; height:54px; line-height:54px; font-size:16px; font-weight:bold;}
+  .ldr-intor-title a {color:#b81010;}
+  .ldr-intor-box li {display:block; float:left; overflow:hidden; width:540px;}
+  .ldr-intor-text {margin:10px auto 20px auto; height:230px;}
+  .ldr-intor-text img {float:left;}
+  .ldr-intor-text p { display:block; float:left; overflow:hidden; margin-top:20px; margin-left:20px; width:380px; max-height:90px; line-height:30px; font-size:14px; text-indent:2em; color:#333}
+  .ldr-intor-text .tf { float:left; margin-left:20px; width:360px; height:16px; line-height:16px; font-size:16px; font-weight:bold; color:#000;}
+  .ldr-intor-text .tf a:hover {color:#000;}
+  .ldr-intor-text p a {color:#b81010;}
+  .ldr-intor-text p a:hover  {color:#b81010;}
+  .ldr-intor-list li {padding-left:15px; width:525px; height:30px; line-height:30px; font-size:14px;background:url(../images/blank02.png) no-repeat left;}
+  .ldr-intor-list li a {color:#333;}
+
+/******leaders-3nd******/
+.ldr_con_m {width:1200px; height:auto; float:right; margin-top:30px;}
+.ldr_m_o {width:1200px; height:auto; float:right;}
+  .ldr-m-title {position:relative;border-bottom:3px solid #dbdbdb; margin-bottom:25px; width:1200px; height:54px;}
+  .ldr-m-title p {position:absolute; left:0px; top:0px; display:block; float:left; overflow:hidden; padding-right:20px; border-bottom:3px solid #205366; width:auto; height:54px; line-height:54px; font-size:32px; color:#205366;}
+  .ldr-m-title a {float:right; margin-top:25px; font-size:16px; color:#666;}
+  .ldr-m-box { float:left; width:1200px; height:auto; }
+  .ldr-m-box li {display:block; float:left; overflow:hidden; padding-left:15px; width:1190px;font-size:18px;background:url(../images/blank02.png) no-repeat left;}
+  .ldr-m-box li a { display:block; float:left; overflow:hidden; max-width:1040px; height:40px; line-height:40px; color:#333;}
+  .ldr-m-box li span {display:block; float:right; margin-top:13px; color:#999; font-size:14px;}
 /*--------20160628以下css编写：蒋文婷 结束-------------*/

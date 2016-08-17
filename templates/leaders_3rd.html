@@ -1,0 +1,55 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>龙网-品深度</title>
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/css.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="ldr_header">
+    {% include "master_page/top_page.html" %}
+</div>
+<div class="ldr_menu">
+    <ul>
+        <li class="ldr_menu_l" style="float:left;">{{ lingdao.Name }}活动报道集</li>
+        <li class="ldr_menu_r" style="float:right;"><a href="#">领导活动报道集</a></li>
+    </ul>
+</div>
+<div class="content ft30" style="min-height:485px">
+    <div class="ldr_con_m">
+        <div class="ldr_m_o">
+            <div class="ldr-m-title"><p>{{ name }}</p></div>
+            <div class="ldr-m-box">
+                <ul>
+                    {% for i in news_list %}
+                    <li><a href="/detail/{{ i._id }}">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer_fy">
+<div class="footer_nav">
+<div class="footer_menu">
+<a href="#">关于我们</a>
+<a href="#">联系我们</a>
+</div>
+</div>
+<div class="footer_cplogo">
+<span>黑龙江新媒体集团   &  黑龙江画报社   版权所有<br />
+Copyright © 2016 www. zuoyouxinwen. com , All Rights Reserved
+</span>
+</div>
+<div class="footer_ba f14">ICP备案/许可证编号：黑ICP备 16016867号</div>
+</div>
+
+</body>
+</html>
+
+<!---------20160809以下编写：wt------------->

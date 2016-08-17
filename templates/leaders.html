@@ -1,0 +1,206 @@
+{% extends "master_page/base_page.html" %}
+{% block title %}领导人{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block middle %}
+<body>
+<div class="content" style="border:1px solid #f0f0f0;margin-top:30px;padding-bottom:150px;">
+	<div class="ldr-intor-dwr">
+		<div class="ldr-intor-box">
+        {% for i in wxkjl %}
+			<div class="ldr-intor-title"><a href="/ld/4594/">王宪魁同志报道集</a></div>
+            <div class="ldr-intor-text">
+
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4594/">王宪魁同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in wxk_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/4595/">陆昊同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in lhjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4595/">陆昊同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in lh_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+
+	<div class="ldr-intor-dwr">
+		<div class="ldr-intor-box">
+			<div class="ldr-intor-title"><a href="/ld/4596/">黄建盛同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in hjsjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4596/">黄建盛同志简历</a></div>
+                <p>{{ i.content|truncate(75)|safe }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in hjs_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/4597/">张孝廉同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in zxljl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4597/">张孝廉同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in zxl_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+
+	<div class="ldr-intor-dwr" style="border:none">
+		<div class="ldr-intor-box">
+			<div class="ldr-intor-title"><a href="/ld/4598/">杨汭同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in yrjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4598/">杨汭同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in yr_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/4599/">陈海波同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in chbjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4599/">陈海波同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in chb_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+	<div class="ldr-intor-dwr" style="border:none">
+		<div class="ldr-intor-box">
+			<div class="ldr-intor-title"><a href="/ld/4608/">郝会龙同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in hhljl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4608/">郝会龙同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in hhl_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/4609/">赵敏同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in zmjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4609/">赵敏同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in zm_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+	<div class="ldr-intor-dwr" style="border:none">
+		<div class="ldr-intor-box">
+			<div class="ldr-intor-title"><a href="/ld/4610/">李海涛同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in lhtjl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4610/">李海涛同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in lht_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/4611/">李雷同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in lljl %}
+                <a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/ld/4611/">李雷同志简历</a></div>
+                <p>{{ i.content|safe|truncate(75) }}<a href="#">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in ll_three %}
+                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</body>
+</html>
+{% endblock %}
+{% block footer %}
+<div class="footer_fy">
+<div class="footer_nav">
+<div class="footer_menu">
+<a href="#">关于我们</a>
+<a href="#">联系我们</a>
+</div>
+</div>
+<div class="footer_cplogo">
+<span>黑龙江新媒体集团   &  黑龙江画报社   版权所有<br />
+Copyright © 2016 www. zuoyouxinwen. com , All Rights Reserved
+</span>
+</div>
+<div class="footer_ba f14">ICP备案/许可证编号：黑ICP备 16016867号</div>
+</div>
+{% endblock %}
+{#{% block footer %}#}
+{#{% include "master_page/footer_page.html" %}#}
+{#{% endblock %}#}
+<!---------20160809以下编写：wt------------->

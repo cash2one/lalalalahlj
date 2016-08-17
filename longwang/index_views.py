@@ -377,6 +377,103 @@ def news_list_page(channel, page=1):
     return json.dumps(value)
 
 
+# 领导
+@index_page.route('/ld/')
+def klj_ld():
+    name_list = db.Channel.find({"Parent": ObjectId("57a2ad8edcc88e6ba04499ab")})
+    # 王宪魁
+    wxkjl = search_news_db([ObjectId("57b26adcdcc88e13050f9156")], 1)
+    wxk_three = search_indexnews_db("57b2abe83c7eb9e89a188b7a", 3)
+    # 陆昊
+    lhjl = search_news_db([ObjectId("57b2832cdcc88e5b4c92ff49")], 1)
+    lh_three = search_indexnews_db("57b2abe83c7eb9e89a188b7b", 3)
+    # 黄建盛
+    hjsjl = search_news_db([ObjectId("57b28344dcc88e5b4166a927")], 1)
+    hjs_three = search_indexnews_db("57b2abe83c7eb9e89a188b7c", 3)
+    # 张孝廉
+    zxljl = search_news_db([ObjectId("57b2835ddcc88e5b4166a928")], 1)
+    zxl_three = search_indexnews_db("57b2abe83c7eb9e89a188b7d", 3)
+    # 杨汭
+    yrjl = search_news_db([ObjectId("57b28372dcc88e5b4c92ff4a")], 1)
+    yr_three = search_indexnews_db("57b2abe83c7eb9e89a188b7e", 3)
+    # 陈海波
+    chbjl = search_news_db([ObjectId("57b28388dcc88e5b4166a929")], 1)
+    chb_three = search_indexnews_db("57b2abe83c7eb9e89a188b7f", 3)
+    # 郝会龙
+    hhljl = search_news_db([ObjectId("57b28399dcc88e5b4166a92a")], 1)
+    hhl_three = search_indexnews_db("57b2abe83c7eb9e89a188b80", 3)
+    # 赵敏
+    zmjl = search_news_db([ObjectId("57b283a5dcc88e5b4c92ff4c")], 1)
+    zm_three = search_indexnews_db("57b2abe83c7eb9e89a188b81", 3)
+    # 李海涛
+    lhtjl = search_news_db([ObjectId("57b283b3dcc88e5b4166a92b")], 1)
+    lht_three = search_indexnews_db("57b2abe83c7eb9e89a188b82", 3)
+    # 李雷
+    lljl = search_news_db([ObjectId("57b283c1dcc88e5b4166a92c")], 1)
+    ll_three = search_indexnews_db("57b2abe83c7eb9e89a188b83", 3)
+    return render_template('leaders.html', menu=get_menu(),
+                           ld='ld',
+                           name_list=name_list,
+                           wxkjl=wxkjl,
+                           wxk_three=wxk_three,
+                           lhjl=lhjl,
+                           lh_three=lh_three,
+                           hjsjl=hjsjl,
+                           hjs_three=hjs_three,
+                           zxljl=zxljl,
+                           zxl_three=zxl_three,
+                           yrjl=yrjl,
+                           yr_three=yr_three,
+                           chbjl=chbjl,
+                           chb_three=chb_three,
+                           hhljl=hhljl,
+                           hhl_three=hhl_three,
+                           zmjl=zmjl,
+                           zm_three=zm_three,
+                           lhtjl=lhtjl,
+                           lht_three=lht_three,
+                           lljl=lljl,
+                           ll_three=ll_three
+                           )
+
+
+@index_page.route('/ld/<id>/')
+def klj_ld_list(id):
+    lingdao = db.Channel.find_one({"numid": int(id)})
+    parent = lingdao["_id"]
+    order = lingdao["OrderNumber"]
+    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
+    jianghua = search_news_db([channel[0]["_id"]], 6)
+    huodong = search_news_db([channel[1]["_id"]], 6)
+    jianli = search_news_db([channel[2]["_id"]], 1)
+    index_channel = db.IndexChannel.find_one(
+        {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})["_id"]
+    image_four = search_indexnews_db(index_channel, 4)
+    return render_template('leaders_2nd.html', jianghua=jianghua,
+                           jianli=jianli,
+                           huodong=huodong,
+                           image_four=image_four,
+                           lingdao=lingdao,
+                           ld2nd='ld2nd'
+                           )
+
+
+@index_page.route('/ld/<id>/<num>/<page>')
+def klj_ld_list_detail(id, num, page):
+    lingdao = db.Channel.find_one({"numid": int(id)})
+    parent = lingdao["_id"]
+    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
+    news_list = []
+    name = ''
+    if num == "1":
+        news_list = search_news_db([channel[0]["_id"]], 12)
+        name = "讲话"
+    elif num == "2":
+        news_list = search_news_db([channel[1]["_id"]], 12)
+        name = "活动"
+    return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')
+
+
 def get_name(channel):
     name = db.Channel.find_one({"_id": ObjectId(channel)})["Name"]
     return name

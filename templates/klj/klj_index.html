@@ -70,7 +70,11 @@
         	<div class="lj_list_title02"><a href="/list/12/">城市联播</a></div>
         	<div class="lj_list_pictit">
                 {% for i in menu1 %}
-                 <p {% if loop.index==1 %} class="lj_list_tit01" {% else %} class="lj_list_tit02" {% endif %}><a href="/list/{{ i.numid }}">{{ i.Name }}</a></p>
+                 <p {% if loop.index==1 %} class="lj_list_tit01" {% else %} class="lj_list_tit02" {% endif %} onclick="javascript:window.open('/list/{{ i.numid }}')">
+{#                     <a href="/list/{{ i.numid }}">#}
+                         {{ i.Name }}
+{#                     </a>#}
+                 </p>
                 {% endfor %}
             </div>
         {% for i in news_list %}

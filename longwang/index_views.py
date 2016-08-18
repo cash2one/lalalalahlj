@@ -442,16 +442,16 @@ def klj_ld():
 
 @index_page.route('/ld/<id>/')
 def klj_ld_list(id):
-    lingdao = db.Channel.find_one({"numid": int(id)})
-    parent = lingdao["_id"]
-    order = lingdao["OrderNumber"]
-    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
-    jianghua = search_news_db([channel[0]["_id"]], 8)
-    huodong = search_news_db([channel[1]["_id"]], 8)
-    jianli = search_news_db([channel[2]["_id"]], 1)
+    lingdao = db.Channel.find_one({"numid": int(id)}) # 获取领导信息
+    parent = lingdao["_id"]  # 以领导的二级_id作为三级频道的parent id
+    order = lingdao["OrderNumber"]  # 获取领导的排序，然后有改排序寻找改领导对应的三级频道
+    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")  # 以二级id为三级的parent id查找 全部的三级频道 内容 list 并依OrederNumber排序
+    jianghua = search_news_db([channel[0]["_id"]], 8)  # 讲话在list中的索引为0
+    huodong = search_news_db([channel[1]["_id"]], 8)   # 活动在list中的索引为1
+    jianli = search_news_db([channel[2]["_id"]], 1)   # 简历在list中的索引为2
     index_channel = db.IndexChannel.find_one(
-        {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})["_id"]
-    image_four = search_indexnews_db(index_channel, 4)
+        {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})["_id"]   # 依据领导的排序，查找对应领导在IndexChannel中的 图片新闻的Channel id
+    image_four = search_indexnews_db(index_channel, 4)   # 依据上一步得到的id 查找出四条图片新闻
     return render_template('leaders_2nd.html', jianghua=jianghua,
                            jianli=jianli,
                            huodong=huodong,
@@ -468,10 +468,10 @@ def klj_ld_list_detail(id, num):
     channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
     news_list = []
     name = ''
-    if num == "1":
+    if num == "1":   # 路由中num=='1'得到讲话List
         news_list = search_news_db([channel[0]["_id"]], 20)
         name = "讲话"
-    elif num == "2":
+    elif num == "2":  # 路由中num=='2'得到活动List
         news_list = search_news_db([channel[1]["_id"]], 20)
         name = "活动"
     return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')

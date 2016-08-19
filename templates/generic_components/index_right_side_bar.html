@@ -37,7 +37,7 @@
                             {% for i in hours %}
                                 <li>
                                     <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                    <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span></li>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -46,7 +46,7 @@
                             {% for i in zb %}
                                 <li>
                                     <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                    <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span></li>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -55,7 +55,7 @@
                             {% for i in yb %}
                                 <li>
                                     <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                    <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span></li>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -93,7 +93,7 @@
             <div class="right_list02" id="right_list02" style="margin-top:10px;">
                 <ul>
                     {% for i in rmtj %}
-                        <li><a href="/detail/{{ i._id }}" {% if loop.index0==0 %}style="text-decoration: underline; color:#205366;" {% endif %}>
+                        <li><a href="/d/{{ i._id }}.html" {% if loop.index0==0 %}style="text-decoration: underline; color:#205366;" {% endif %}>
                             <span>{{ i.title }}</span>
                             <img  {% if loop.index0==0 %}  style="display: block"{% else %}style="display: none" {% endif %}
                                                            src="{{ i.guide_image }}?w=220&h=110" width="220"

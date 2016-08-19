@@ -17,8 +17,8 @@
               <div id="D1pic1" class="fPic">
                   {% for i in lht %}
                   <div class="fcon" style="display: none;">
-                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
-                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
+                      <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
                   </div>
                   {% endfor %}
               </div>
@@ -43,12 +43,12 @@
 				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/list/58/">本网独家</a></li>
                 {% for i in bwdj %}
                     {% if loop.index==1 %}
-				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
+				<li class="lj_list_li01"><a href="/d/{{ i._id }}.html" target="_blank">
                 	<img src="{{ i.guide_image }}" width="130" height="85" />
                     <p>{{ i.title }}</p></a>
-                    <tt>{{ i.summary|truncate(60) }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    <tt>{{ i.summary|truncate(60) }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt></li>
                     {% else %}
-				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+				<li class="lj_list_li02"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                     {% endif %}
                 {% endfor %}
 			</ul>
@@ -56,12 +56,12 @@
 				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/list/15/">民情观察</a></li>
                 {% for i in mqgc %}
                     {% if loop.index==1 %}
-				<li class="lj_list_li01"><a href="/detail/{{ i._id }}" target="_blank">
+				<li class="lj_list_li01"><a href="/d/{{ i._id }}.html" target="_blank">
                 	<img src="{{ i.guide_image }}" width="130" height="85" />
                     <p>{{ i.title }}</p></a>
-                    <tt>{{ i.summary|truncate(60) }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt></li>
+                    <tt>{{ i.summary|truncate(60) }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt></li>
                     {% else %}
-				<li class="lj_list_li02"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+				<li class="lj_list_li02"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                     {% endif %}
                 {% endfor %}
 			</ul>
@@ -106,18 +106,18 @@
 				<li class="lj_list02_li01">
                 {% for i in ljzx %}
                     {% if loop.index==1 %}
-                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
+                	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
+                    <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                     {% elif loop.index==2 %}
                     <a href="#"><p class="ft10">{{ i.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
+                    <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                 </li>
                 {% elif loop.index==3 or loop.index==4 %}
-				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
+				<li class="lj_list02_li02"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
                 {% elif loop.index>4 %}
-				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+				<li class="lj_list02_li03"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                 {% endif %}
             {% endfor %}
             </ul>
@@ -129,18 +129,18 @@
 				<li class="lj_list02_li01">
                     {% for i in shwx %}
                     {% if loop.index==1 %}
-                    <a href="/detail/{{ i._id }}" target="_blank"><p>{{ i.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
+                	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
+                    <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                     {% elif loop.index==2 %}
-                    <a href="/detail/{{ i._id }}" target="_blank"><p class="ft10">{{ i.title }}</p></a>
-                	<a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
-                    <tt>{{ i.summary }}<a href="/detail/{{ i._id }}" target="_blank"><span>[详细]</span></a></tt>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p class="ft10">{{ i.title }}</p></a>
+                	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
+                    <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                 </li>
                 {% elif loop.index==3 or loop.index==4 %}
-				<li class="lj_list02_li02"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
+				<li class="lj_list02_li02"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="200" height="125" /><p>{{ i.title }}</p></a></li>
                 {% elif loop.index>4 %}
-				<li class="lj_list02_li03"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+				<li class="lj_list02_li03"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                 {% endif %}
             {% endfor %}
             </ul>
@@ -160,7 +160,7 @@
         <div class="gsp_right_show" >
           <ul class="show_list">
               {% for i in ldhdbdj %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
               {% endfor %}
           </ul>
         </div>
@@ -169,7 +169,7 @@
         <div class="gsp_right_show" >
           <ul class="show_list">
               {% for i in rsrm %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
               {% endfor %}
           </ul>
         </div>
@@ -187,14 +187,14 @@
           <ul class="lj_rpic">
               {% for i in hldj %}
             {% if loop.index==1 %}
-        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&w=65" width="95" height="65" /></a></li>
+        	<li class="lj_rpic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=95&w=65" width="95" height="65" /></a></li>
             <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
           </ul>
 
           <ul class="lj_rlist">
               {% else %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
               {% endif %}
         {% endfor %}
           </ul>
@@ -212,19 +212,19 @@
             {% for i in hdht %}
             {% if loop.index==1 %}
           <ul class="lj_rpic">
-        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
+        	<li class="lj_rpic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
             <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
           </ul>
                 {% elif loop.index==2 %}
           <ul class="lj_rpic">
-        	<li class="lj_rpic_tit"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
-        	<li class="lj_rpic_img"><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
+        	<li class="lj_rpic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+        	<li class="lj_rpic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=95&h=65" width="95" height="65"/></a></li>
             <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
           </ul>
           <ul class="lj_rlist">
               {% else %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
               {% endif %}
         {% endfor %}
           </ul>
@@ -244,7 +244,7 @@
                 <ul>
                     {% for i in zt %}
                         {% if loop.index0 in [0,1,2,3] %}
-                  <li><a target="_blank" href="/detail/{{ i._id }}"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}" style="width:300px; height:251px;"/></a></li>
+                  <li><a target="_blank" href="/d/{{ i._id }}.html"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}" style="width:300px; height:251px;"/></a></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
@@ -258,7 +258,7 @@
           <ul class="lj_rlist">
               {% for i in zt %}
                    {% if loop.index0 in [4,5,6,7] %}
-            <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                   {% endif %}
               {% endfor %}
 
@@ -277,32 +277,32 @@
         {% if loop.index==1 %}
         <li class="big-square">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==2 %}
         <li class="reck ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==3 %}
         <li class="reck last">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==4 %}
         <li class="small-square ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% elif loop.index==5 %}
         <li class="small-square ">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% else %}
         <li class="small-square last02">
             <img src="{{ i.guide_image }}">
-            <a target="_blank" href="/detail/{{ i._id }}"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
+            <a target="_blank" href="/d/{{ i._id }}.html"><div class="cover"><h4>{{ i.title }}</h4><p class="desc"></p></div></a>
         </li>
         {% endif %}
     {% endfor %}

@@ -38,8 +38,8 @@
                   {% for i in lht %}
                   <div class="fcon" style="display: none;">
 
-                      <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
-                      <span class="shadow"><a target="_blank" href="/detail/{{ i._id }}">{{ i.title }}</a></span>
+                      <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
 
                   </div>
                     {% endfor %}
@@ -65,8 +65,8 @@
               <ul>
                   {% for i in ttxw %}
                 <li {% if loop.index%3==0 %} {% else %}class="fr30"{% endif %}>
-                  <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
-                  <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                  <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
+                  <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                   <h4>{{ i.summary|truncate(50) }}</h4>
 				</li>
                   {% endfor %}
@@ -85,8 +85,8 @@
             <ul class="dpt_list_n04" style="display:block;">
                 {% for i in jrrp %}
                 <li>
-                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
-                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
                 </li>
@@ -96,8 +96,8 @@
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in zzjj %}
                 <li>
-                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
-                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
                 </li>
@@ -107,8 +107,8 @@
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in shms %}
                 <li>
-                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
-                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
                 </li>
@@ -117,8 +117,8 @@
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in whyl %}
                 <li>
-                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
-                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
                 </li>
@@ -128,8 +128,8 @@
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in jykj %}
                 <li>
-                    <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
-                    <h2><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h2>
+                    <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
                 </li>

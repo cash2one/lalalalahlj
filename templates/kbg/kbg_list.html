@@ -33,10 +33,10 @@
 {#                    <div id="D1pic1" class="fPic">#}
 {#                        {% for i in lht %}#}
 {#                            <div class="fcon" style="display: none;">#}
-{#                                <a target="_blank" href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}"#}
+{#                                <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"#}
 {#                                                                                   style="opacity: 1; "></a>#}
 {#                                <span class="shadow"><a target="_blank"#}
-{#                                                        href="/detail/{{ i._id }}">{{ i.title }}</a></span>#}
+{#                                                        href="/d/{{ i._id }}.html">{{ i.title }}</a></span>#}
 {#                            </div>#}
 {#                        {% endfor %}#}
 {#                    </div>#}
@@ -65,7 +65,7 @@
                     <li>
                         <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img
                                 src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
-                        <h2><a href="/detail/{{ i._id }}">{{ i.title }}</a></h2>
+                        <h2><a href="/d/{{ i._id }}.html">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
                     </li>
@@ -91,9 +91,9 @@
                 {% for i in rmtj %}
                     {% if loop.index0==0 %}
                         <div class="photo2_list">
-                            <p><a href="/detail/{{ i._id }}"><img src="{{ i.guide_image }}?w=300&h=110" width="300"
+                            <p><a href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}?w=300&h=110" width="300"
                                                                   height="110"/></a></p>
-                            <h3 class="Txt_cu"><a href="/detail/{{ i._id }}">{{ i.title }}</a></h3>
+                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html">{{ i.title }}</a></h3>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -101,7 +101,7 @@
                     <ul>
                         {% for i in rmtj %}
                             {% if loop.index0>0 %}
-                                <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                                <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>
@@ -145,7 +145,7 @@
                                 {% for i in hours %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -155,7 +155,7 @@
                                 {% for i in zb %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -165,7 +165,7 @@
                                 {% for i in yb %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></span>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -204,7 +204,7 @@
                 <div class="gsp2_right_deet">
                     <ul class="deet2_list">
                         {% for i in blt %}
-                            <li><a href="/detail/{{ i._id }}">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

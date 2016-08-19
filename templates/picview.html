@@ -78,7 +78,7 @@
     <div style="overflow:hidden;width:960px; margin:0 auto; height:210px; position:relative">
         <ul class="reviewList clearfix" id="gallery" style="width: 2880px; left: 0px;">
             {% for i in wqhg %}
-           <li><a href="/detail/{{ i._id }}" target="_blank"><img src="{{format_http_url( i.Guideimage )  }}?w=200&h=147" width="200" height="147" alt=""><p>{{ i.Title }}</p></a><b>{{ loop.index }}</b></li>
+           <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{format_http_url( i.Guideimage )  }}?w=200&h=147" width="200" height="147" alt=""><p>{{ i.Title }}</p></a><b>{{ loop.index }}</b></li>
             {% endfor %}
         </ul>
     </div>

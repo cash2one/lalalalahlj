@@ -9,7 +9,7 @@
         <div class="bdzt">
           <ul>
               {% for i in zt_images %}
-            <li><a  href="/detail/{{ i._id }}" target="_blank"><img _src="{{ i.guide_image }}?w=225&h=185"  src="{{ i.guide_image }}" /></a></li>
+            <li><a  href="/d/{{ i._id }}.html" target="_blank"><img _src="{{ i.guide_image }}?w=225&h=185"  src="{{ i.guide_image }}" /></a></li>
               {% endfor %}
           </ul>
         </div>
@@ -22,7 +22,7 @@
     <div class="right_list03" style="margin-top:6px;">
       <ul>
           {% for i in zt %}
-        <li><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></li>
+        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
           {% endfor %}
       </ul>
     </div>

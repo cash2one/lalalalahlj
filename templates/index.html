@@ -22,9 +22,9 @@
                 <ul id="uuuu" class="tiles-wrap animated">
                  {% for i in zd %}
                         <li>
-                            <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
                                                                                   width="261" height="171"/></a></p>
-                            <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
           <span>
           <h5>{{ i.publish_time }}</h5>
@@ -33,9 +33,9 @@
                     {% endfor %}
                     {% for i in news_list %}
                         <li>
-                            <p><a href="/detail/{{ i._id }}" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
                                                                                   width="261" height="171"/></a></p>
-                            <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
           <span>
           <h5>{{ i.publish_time }}</h5>
@@ -61,7 +61,7 @@
                     <ul>
                         {% for i in yw %}
                             <li>
-                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>
                             </li>
                         {% endfor %}
@@ -78,7 +78,7 @@
                     <ul>
                         {% for i in gcdt %}
                             <li>
-                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>
                             </li>
                         {% endfor %}
@@ -95,7 +95,7 @@
                     <ul>
                         {% for i in ljkd %}
                             <li>
-                                <h3 class="Txt_cu"><a href="/detail/{{ i._id }}" target="_blank">{{ i.title }}</a></h3>
+                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>
                             </li>
                         {% endfor %}

@@ -20,18 +20,18 @@
             </div>
         </ul>
     </div>
-    <div class="gsp_logo"><a href="/" class="gsp_logo_a01"><img src="/static/images/hlj-logo3.png"/></a><a href="/klj/" class="gsp_logo_a02"><img src="/static/images/lj-logo.png"/></a></div>
+    <div class="gsp_logo"><a href="/" class="gsp_logo_a01"><img src="/static/images/hlj-logo3.png"/></a><a href="/klj" class="gsp_logo_a02"><img src="/static/images/lj-logo.png"/></a></div>
 
 
 </div>
 <div class="gsp_menu">
     <div class="gsp_navBar">
         <ul class="gsp_nav gsp_clearfix">
-            <li class="m"><h3><a href="/klj/"{% if ys=="sy" %} style="background-color: #46abd0;" {% endif %}>首页</a></h3></li>
+            <li class="m"><h3><a href="/klj"{% if ys=="sy" %} style="background-color: #46abd0;" {% endif %}>首页</a></h3></li>
             {% for i in menu %}
             <li class="m" style="padding-left:20px;">
                 <h3>
-                    <a {% if cid==i._id %} style="background-color:#46abd0;"{% endif %} href="/klj/list/{{ i.numid }}/">{{ i.Name }}</a>
+                    <a {% if cid==i._id %} style="background-color:#46abd0;"{% endif %} href="/klj/list/{{ i.numid }}">{{ i.Name }}</a>
             </h3>
             </li>
             {% endfor %}

@@ -86,8 +86,22 @@ def s_list(id):
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    biaoti=""
+    if id in ["16", "17", "18", "19", "20"]:
+        menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
+        biaoti = "special"
+    elif id in ["21", "22", "23", "55", "56"]:
+        menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
+        biaoti = "special"
+    elif id in ["24", "25", "26", "27", "51"]:
+        menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
+        biaoti = "special"
+    name_list = []
+    for i in menu_list:
+        name_list.append(i)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
-                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb)
+                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb, menu_list=menu_list,
+                           name_list=name_list,biaoti=biaoti,cid=ObjectId(channel))
 
 
 # 二级频道分页
@@ -343,7 +357,20 @@ def front_page(id):
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
-
+    menu_list = []
+    ys=""
+    if id == "5":
+        menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
+        ys='sy'
+    elif id == "6":
+        menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
+        ys='sy'
+    elif id == "8":
+        menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
+        ys='sy'
+    name_list = []
+    for i in menu_list:
+        name_list.append(i)
     return render_template('front_list.html', news_list=news_list,
                            detail=detail,
                            hours=hours,
@@ -354,8 +381,11 @@ def front_page(id):
                            zt_images=zt_images,
                            lht=lht,
                            zt=zt,
+                           cid=ObjectId(channel),
                            rmtj=rmtj,
-                           menu=get_menu()
+                           menu_list=menu_list,
+                           name_list=name_list,
+                           ys=ys
                            )
 
 
@@ -379,7 +409,7 @@ def news_list_page(channel, page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li %s><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s<tt><a href='#'>%s</a></tt></h6></li>" % \
-                 (style, style, i["_id"], image_server + i["Guideimage"], i["_id"], i["Title"], i["Summary"],
+                 (style, style, i["numid"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])), i["cname"])
     return json.dumps(value)
 

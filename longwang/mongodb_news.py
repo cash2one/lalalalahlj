@@ -130,7 +130,7 @@ def datetime_op(date_time):
     month = passed.days / 30
     day = passed.days
     hour = passed.seconds / 3600
-    minute = passed.seconds/60
+    minute = passed.seconds / 60
     if year > 0:
         return '{0}年前'.format(year)
     if month > 0:
@@ -156,7 +156,7 @@ def search_indexnews_db(Channel, limit):
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
-        new_dict["summary"] = i["Summary"]
+        new_dict["summary"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Summary"]
         _news_list.append(new_dict)
     return _news_list
 
@@ -176,6 +176,6 @@ def get_image_news(channel, limit, list_db=[]):
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
-        new_dict["summary"] = i["Summary"]
+        new_dict["summary"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Summary"]
         _lht.append(new_dict)
     return _lht

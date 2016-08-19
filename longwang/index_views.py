@@ -120,7 +120,7 @@ def s_list_page(id, page=1):
         style = 'style="display: block"'
         if i["Guideimage"] == "":
             style = 'style="display: none"'
-        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
                  (style, image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
@@ -327,8 +327,8 @@ def is_sift(page=1):
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 14).limit(14)
     string = ""
     for i in news_list:
-        string += "<li><p><a href='/detail/%s' target='_blank'>" % (i["numid"])
-        string += "<img src='%s?w=261&h=171, width='261' height='171'/></a></p><h3 class='Txt_cu'><a href='/detail/%s' target='_blank'>%s</a></h3>" % (
+        string += "<li><p><a href='/d/%s.html' target='_blank'>" % (i["numid"])
+        string += "<img src='%s?w=261&h=171, width='261' height='171'/></a></p><h3 class='Txt_cu'><a href='/d/%s.html' target='_blank'>%s</a></h3>" % (
             image_server + i["Guideimage"], i["numid"], i["Title"])
         string += "<h4>%s</h4><span><h5>%s</h5>" % (i["Summary"], datetime_op(i["Published"]))
         c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
@@ -417,7 +417,7 @@ def news_list_page(channel, page=1):
         style = 'style="display: block"'
         if i["Guideimage"] == "":
             style = 'style="display: none"'
-        value += "<li %s><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s<tt><a href='#'>%s</a></tt></h6></li>" % \
+        value += "<li %s><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s<tt><a href='#'>%s</a></tt></h6></li>" % \
                  (style, style, i["numid"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])), i["cname"])
     return json.dumps(value)
@@ -529,7 +529,7 @@ def ldj(id, page=2):
         20)
     string = ""
     for i in news_list:
-        string += "<li><a href='/detail/%s'  target='_blank'>%s</a> <span>%s</span></li>" % (
+        string += "<li><a href='/d/%s.html'  target='_blank'>%s</a> <span>%s</span></li>" % (
             i["numid"], i["Title"], datetime_op(i["Published"]))
     return json.dumps(string)
 

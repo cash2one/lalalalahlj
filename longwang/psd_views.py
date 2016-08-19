@@ -92,7 +92,7 @@ def kbg_list(id, page=1):
         style = 'style="display: block"'
         if i["Guideimage"] == "":
             style = 'style="display: none"'
-        value += "<li><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> \
+        value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> \
         <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % (
             style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
             datetime_op((i["Published"])))
@@ -162,7 +162,7 @@ def news_list_page(id, page=1):
         style = 'style="display: block"'
         if i["Guideimage"] == "":
             style = 'style="display: none"'
-        value += "<li %s><p %s><a href='/detail/%s' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/detail/%s' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+        value += "<li %s><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
                  (style, style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)

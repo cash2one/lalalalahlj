@@ -168,7 +168,7 @@ def get_image_news(channel, limit, list_db=[]):
         id_list = []
         for news_list in list_db:
             id_list.append(news_list["_id"])
-        condition.update({"NewsID": {"$nin": id_list}})
+        condition.update({"numid": {"$nin": id_list}})
     lht = db.IndexNews.find(condition).sort("no", pymongo.DESCENDING).limit(limit)
     _lht = []
     for i in lht:

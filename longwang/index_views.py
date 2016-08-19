@@ -49,9 +49,9 @@ def index():
     for i in _list:
         _id_list.append(ObjectId(i["NewsID"]))
     zd = _id_list
-    zd = db.News.find({"_id": {"$in": _id_list}})
+    zd_ = db.News.find({"_id": {"$in": _id_list}})
     _zd = []
-    for j in zd:
+    for j in zd_:
         _zd.append(get_mongodb_dict(j))
     # 首页14条新闻
     condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4}
@@ -86,26 +86,27 @@ def s_list(id):
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
-    biaoti=""
-    pic=0
+    biaoti = ""
+    pic = 0
+    menu_list = []
     if id in ["16", "17", "18", "19", "20"]:
-        pic=1
+        pic = 1
         menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
         biaoti = "special"
     elif id in ["21", "22", "23", "55", "56"]:
-        pic=2
+        pic = 2
         menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
         biaoti = "special"
     elif id in ["24", "25", "26", "27", "51"]:
-        pic=3
+        pic = 3
         menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
         biaoti = "special"
     name_list = []
     for i in menu_list:
         name_list.append(i)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
-                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb, menu_list=menu_list,
-                           name_list=name_list,biaoti=biaoti,cid=ObjectId(channel),pic=pic)
+                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
+                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic)
 
 
 # 二级频道分页
@@ -362,20 +363,20 @@ def front_page(id):
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
     menu_list = []
-    ys=""
-    pic=0
+    ys = ""
+    pic = 0
     if id == "5":
         menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
-        pic=1
-        ys='sy'
+        pic = 1
+        ys = 'sy'
     elif id == "6":
         menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
-        pic=2
-        ys='sy'
+        pic = 2
+        ys = 'sy'
     elif id == "8":
         menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
-        pic=3
-        ys='sy'
+        pic = 3
+        ys = 'sy'
     name_list = []
     for i in menu_list:
         name_list.append(i)

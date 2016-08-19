@@ -87,13 +87,17 @@ def s_list(id):
     # 热门图集
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
     biaoti=""
+    pic=0
     if id in ["16", "17", "18", "19", "20"]:
+        pic=1
         menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
         biaoti = "special"
     elif id in ["21", "22", "23", "55", "56"]:
+        pic=2
         menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
         biaoti = "special"
     elif id in ["24", "25", "26", "27", "51"]:
+        pic=3
         menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
         biaoti = "special"
     name_list = []
@@ -101,7 +105,7 @@ def s_list(id):
         name_list.append(i)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb, menu_list=menu_list,
-                           name_list=name_list,biaoti=biaoti,cid=ObjectId(channel))
+                           name_list=name_list,biaoti=biaoti,cid=ObjectId(channel),pic=pic)
 
 
 # 二级频道分页
@@ -359,14 +363,18 @@ def front_page(id):
     rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
     menu_list = []
     ys=""
+    pic=0
     if id == "5":
         menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
+        pic=1
         ys='sy'
     elif id == "6":
         menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
+        pic=2
         ys='sy'
     elif id == "8":
         menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
+        pic=3
         ys='sy'
     name_list = []
     for i in menu_list:
@@ -385,7 +393,8 @@ def front_page(id):
                            rmtj=rmtj,
                            menu_list=menu_list,
                            name_list=name_list,
-                           ys=ys
+                           ys=ys,
+                           pic=pic
                            )
 
 

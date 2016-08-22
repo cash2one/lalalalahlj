@@ -44,17 +44,16 @@ def index():
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 首页推荐置顶
-    _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f"})
+    _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f"}).sort("orderno", pymongo.ASCENDING)
     _id_list = []
     for i in _list:
         _id_list.append(ObjectId(i["NewsID"]))
     zd = _id_list
-    zd_ = db.News.find({"_id": {"$in": _id_list}})
     _zd = []
-    for j in zd_:
-        _zd.append(get_mongodb_dict(j))
+    for j in zd:
+        _zd.append(get_mongodb_dict(db.News.find_one({"_id": j})))
     # 首页14条新闻
-    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "Status": 4}
+    condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "_id": {"$nin": zd}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).limit(14)
     _news_list = []
     for news_detail in news_list:
@@ -356,7 +355,7 @@ def front_page(id):
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 侃八卦
-    gbg = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], 8)
+    gbg = search_indexnews_db("579190303c7ee91e3478823e", 8)
     # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
@@ -405,8 +404,8 @@ def news_list_page(channel, page=1):
     channel_list = []
     for i in channel_list_raw:
         channel_list.append(i["_id"])
-    # condition = {"Channel": {"$in": channel_list}, "Status": 4}
-    news_list = db.News.find({"Channel": {"$in": channel_list}}).sort('Published', pymongo.DESCENDING).skip(
+    condition = {"Channel": {"$in": channel_list}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(
         pre_page)
     news_dic_list = []

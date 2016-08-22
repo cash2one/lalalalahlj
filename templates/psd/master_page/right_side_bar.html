@@ -28,7 +28,7 @@
     <!----独家视界----->
     <div class="dpt_con_r_main ft30">
       <div class="dpt_right_tlt fb15">
-            <p><a href="/psd/list/36">独家视界</a></p>
+            <p><a href="/psd/36.html">独家视界</a></p>
       </div>
       <div class="dpt_con_r_main onlyvision">
         <div class="dpt_right_vision" >
@@ -48,7 +48,7 @@
     <!----当事者说----->
     <div class="dpt_con_r_main ft30">
       <div class="dpt_right_tlt">
-        <p><a href="/psd/list/38">当事者说</a></p>
+        <p><a href="/psd/38.html">当事者说</a></p>
       </div>
       <div class="dpt_con_r_main">
         <div class="dpt_right_party" >
@@ -86,7 +86,7 @@
                   {% for i in ph_24 %}
                 <li>
                     <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.summary }}</a></span> </li>
+                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
@@ -95,7 +95,7 @@
                   {% for i in ph_week %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.summary }}</a></span> </li>
+                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>
@@ -104,7 +104,7 @@
                   {% for i in ph_month %}
                 <li>
                   <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25" /></p>
-                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.summary }}</a></span> </li>
+                  <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </li>
                   {% endfor %}
               </ul>
             </div>

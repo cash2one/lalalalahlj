@@ -179,7 +179,7 @@ def detail(id, page=1):
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
-    pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
+    pagenums, pagebar_html = pager('/d/' + str(id), int(page), len(count), 1).show_page()
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题

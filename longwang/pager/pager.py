@@ -20,8 +20,8 @@ class pager(object):
             self.pagebar += '<span class="disabled">&lt; </span><span class="current">'+u"首页"+'</li></span>'
             self.pagebar +='<a href="#">' +  u"上一页"+ '</a>'
         else:
-            self.pagebar += '<a href="'+self._url+'/1.html'+'">' + u"首页" + '</a>'
-            self.pagebar += '<a href="'+self._url+'/'+str(self._page - 1)+'.html">' + u"上一页" + '</a>'
+            self.pagebar += '<a href="'+self._url+'_1.html'+'">' + u"首页" + '</a>'
+            self.pagebar += '<a href="'+self._url+'_'+str(self._page - 1)+'.html">' + u"上一页" + '</a>'
 
         if self._pagenum == 1:
             self.pagebar += '<span class="current">1</span>'
@@ -42,8 +42,8 @@ class pager(object):
             self.pagebar += '<a href="#">'+u"下一页"+ '</a>'
             self.pagebar += '<a href="#">'+u"末页"+ '</a>'
         else:
-            self.pagebar += '<a href="'+self._url+'/'+str(self._page + 1)+'.html">' + u"下一页" + '</a>'
-            self.pagebar += '<a href="'+self._url+'/'+str(self._pagenum)+'.html">' + u"末页" + '</a>'
+            self.pagebar += '<a href="'+self._url+'_'+str(self._page + 1)+'.html">' + u"下一页" + '</a>'
+            self.pagebar += '<a href="'+self._url+'_'+str(self._pagenum)+'.html">' + u"末页" + '</a>'
 
         self._pagebar_html = self._pagebar_html %self.pagebar
         return self._pagenum, self._pagebar_html
@@ -54,6 +54,6 @@ class pager(object):
             if i == self._page:
                 self.pagebar += '<span class="current">'+str(i)+'</span>'
             else:
-                self.pagebar += '<a href="'+self._url+'/'+str(i)+'.html">' + str(i) + '</a>'
+                self.pagebar += '<a href="'+self._url+'_'+str(i)+'.html">' + str(i) + '</a>'
 
 

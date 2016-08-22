@@ -1378,9 +1378,10 @@ DISPLAY: none
 	.gsp2_notice .tab2-nav li {width:100px;}
 	.gsp2_notice .tab2-bd { width:300px; height:auto; margin-top:15px;}
 	.gsp2_notice .tab2-bd ul {vertical-align: middle;}
-	.gsp2_notice .tab2-bd ul li {width:300px; height:42px; line-height:42px; border-bottom:1px solid #f0f0f4; float:left;}
+	.gsp2_notice .tab2-bd ul li span {width:250px; padding:6px 0; height:auto; line-height:21px; float:left; margin-left:10px; }
+	.gsp2_notice .tab2-bd ul li {width:300px; height:auto;  border-bottom:1px solid #f0f0f4; float:left;}
 	.gsp2_notice .tab2-bd ul li p {width:21px; height:25px; float:left; font-size:0px; margin-top:7px;}
-	.gsp2_notice .tab2-bd ul li span {width:250px; height:42px; line-height:42px; float:left; margin-left:10px; overflow:hidden;}
+	/*.gsp2_notice .tab2-bd ul li span {width:250px; height:42px; line-height:42px; float:left; margin-left:10px; overflow:hidden;}*/
 	.gsp2_notice .tab2-bd ul li span a {text-decoration:none; color:#333;}
 	.gsp2_notice .tab2-bd ul li span a:hover {text-decoration: underline; color:#205366;}
 

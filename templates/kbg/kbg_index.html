@@ -195,72 +195,11 @@
     <div class="gsp_con_r">
 
 
-        <!----新闻排行----->
-        <div class="gsp2_con_r_main">
-            <div class="gsp2_right_tlt">
-                <p>
-                    {#                    <a href="#">#}
-                    新闻排行
-                    {#                    </a>#}
-                </p>
-            </div>
-            <div class="gsp2_con_r_main">
-                <div class="gsp2_notice" style="margin:0 auto">
-                    <div class="tab2-hd">
-                        <ul class="tab2-nav">
-                        <li>
-                            {#                  <a href="#" target="_blank">#}
-                            <a>24小时</a>
-                            {#                  </a>#}
-                        </li>
-                        <li>
-                            {#                  <a href="#" target="_blank">#}
-                            <a> 周榜</a>
-                            {#                  </a>#}
-                        </li>
-                        <li>
-                            {#                  <a href="#" target="_blank">#}
-                            <a>月榜</a>
-                            {#                  </a>#}
-                        </li>
-                        </ul>
-                    </div>
-                    <div class="tab2-bd">
-                        <div class="tab2-pal">
-                            <ul>
-                                {% for i in hours %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab2-pal" style=" display: none">
-                            <ul>
-                                {% for i in zb %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab2-pal" style=" display: none">
-                            <ul>
-                                {% for i in yb %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
         <!----爆料台----->
-        <div class="gsp_con_r_main ft30">
+        <div class="gsp_con_r_main">
             <div class="gsp_right_tlt">
                 <p style="text-align:left;"><a href="/kbg/46.html"><img
                         src="/static/images/gsp-deet.png" width="98" height="34"/></a>
@@ -367,21 +306,83 @@
             </div>
         </div>
 
-        <!----二次元----->
-        <div class="gsp_con_r_main ft30">
-            <div class="gsp_right_tlt">
-                <p><a href="/list/27">二次元</a></p>
+        <!----新闻排行----->
+        <div class="gsp2_con_r_main ft30">
+            <div class="gsp2_right_tlt">
+                <p>
+                    {#                    <a href="#">#}
+                    新闻排行
+                    {#                    </a>#}
+                </p>
             </div>
-            <div class="gsp_con_r_main">
-                <div class="gsp_right_list">
-                    <ul>
-                        {% for i in ecy %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
-                        {% endfor %}
-                    </ul>
+            <div class="gsp2_con_r_main">
+                <div class="gsp2_notice" style="margin:0 auto">
+                    <div class="tab2-hd">
+                        <ul class="tab2-nav">
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a>24小时</a>
+                            {#                  </a>#}
+                        </li>
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a> 周榜</a>
+                            {#                  </a>#}
+                        </li>
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a>月榜</a>
+                            {#                  </a>#}
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="tab2-bd">
+                        <div class="tab2-pal">
+                            <ul>
+                                {% for i in hours %}
+                                    <li>
+                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="tab2-pal" style=" display: none">
+                            <ul>
+                                {% for i in zb %}
+                                    <li>
+                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="tab2-pal" style=" display: none">
+                            <ul>
+                                {% for i in yb %}
+                                    <li>
+                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!----二次元----->
+{#        <div class="gsp_con_r_main ft30">#}
+{#            <div class="gsp_right_tlt">#}
+{#                <p><a href="/list/27">二次元</a></p>#}
+{#            </div>#}
+{#            <div class="gsp_con_r_main">#}
+{#                <div class="gsp_right_list">#}
+{#                    <ul>#}
+{#                        {% for i in ecy %}#}
+{#                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
         <!----享阅读----->
         {#	<div class="gsp_con_r_main ft30">#}

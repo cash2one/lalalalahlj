@@ -37,11 +37,11 @@ def kbg_index():
     # 今日要闻 10条
     jryw = search_indexnews_db("577c5ecb59f0d8efacae7e4e", 10)
     # 新闻排行
-    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 6)
-    zb = search_indexnews_db("576b37cda6d2e970226062d4", 6)
-    yb = search_indexnews_db("576b37daa6d2e970226062d7", 6)
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 二次元 10条
-    ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 10)
+    # ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 10)
     # 频道菜单
     menu1 = db.Channel.find({"Parent": ObjectId("576500f0dcc88e31a7d2e4ba"), "Visible": 1}).sort("OrderNumber")
     # 热专题
@@ -63,7 +63,8 @@ def kbg_index():
     # 明星 5条
     mx5 = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], pre_page)
     return render_template('kbg/kbg_index.html', lht=lht, tt=tt, jryw=jryw, hours=hours, zb=zb, yb=yb, blt=blt,
-                           blt1=blt1, ecy=ecy,
+                           blt1=blt1,
+                           # ecy=ecy,
                            ljyc=ljyc, xzlj=xzlj, ljyc1=ljyc1, xzlj1=xzlj1, menu=menu1, zt=zt, mx=mx, ds=ds, yy=yy,
                            dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5, ys="sy")
 

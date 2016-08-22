@@ -332,7 +332,7 @@ def is_sift(page=1):
             image_server + i["Guideimage"], i["numid"], i["Title"])
         string += "<h4>%s</h4><span><h5>%s</h5>" % (i["Summary"], datetime_op(i["Published"]))
         c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
-        string += "<h6><a href='%s'>%s</a></h6></span></li>" % (c["Href"], c["Name"])
+        string += "<h6><a href='%s' target='_blank' >%s</a></h6></span></li>" % (c["Href"], c["Name"])
     return json.dumps({"datalist": string})
 
 

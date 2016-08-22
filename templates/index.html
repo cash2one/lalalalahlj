@@ -28,7 +28,7 @@
                             <h4>{{ i.summary }}</h4>
           <span>
           <h5>{{ i.publish_time }}</h5>
-          <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
+          <h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6>
           </span>
                         </li>
                     {% endfor %}
@@ -40,7 +40,7 @@
                             <h4>{{ i.summary }}</h4>
           <span>
           <h5>{{ i.publish_time }}</h5>
-          <h6><a href="/list/{{ i.cid }}">{{ i.cname }}</a></h6>
+          <h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6>
           </span></li>
                     {% endfor %}
                 </ul>

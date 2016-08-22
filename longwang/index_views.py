@@ -294,7 +294,6 @@ def search_hot_redis():
 
 # 全文搜索
 @index_page.route('/ss/<keywords>/')
-@index_page.route('/ss/<keywords>/<page>')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
     # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
@@ -318,6 +317,25 @@ def ss_keywords(keywords, page=1):
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
                            zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)
+
+
+# 搜索页面下拉
+@index_page.route('/ss/<keywords>/<page>')
+def ss_keywords_list(keywords,page=1):
+    keyword = urllib2.unquote(str(keywords))
+    # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
+    condition = {"$text": {"$search": keyword}, "Status": 4}
+    k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+        pre_page * (int(page) - 1)).limit(pre_page)
+    value = ""
+    for i in k_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                 (style, image_server + i["Guideimage"], i["numid"], str(i["Title"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"), str(i["Summary"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"),
+                  datetime_op((i["Published"])))
+    return json.dumps(value)
 
 
 # 首页下拉

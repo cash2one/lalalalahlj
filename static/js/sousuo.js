@@ -15,7 +15,8 @@ function js_method(key) {
     //if (a == "") {
     //    return false;
     //} else {
-        var url = "http://www.hljss.com" + encodeURI("/s/" + key + "/");
+    //    var url = "http://www.hljss.com" + encodeURI("/s/" + key + "/");
+        var url = encodeURI("/ss/" + a + "/");
         window.open(url, '_blank');
     //}
 
@@ -25,8 +26,10 @@ function s_method() {
         if (a == "") {
             return false;
         } else {
-        var url = "http://www.hljss.com" + encodeURI("/s/" + a + "/");
+        //var url = "http://www.hljss.com" + encodeURI("/s/" + a + "/");
+        var url = encodeURI("/ss/" + a + "/");
         window.open(url, '_blank');
+
         }
 
 }

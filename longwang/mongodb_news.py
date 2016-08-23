@@ -101,7 +101,7 @@ def d_to_s(dateTime):
 
 # 轮换图
 def get_head_image(channel, limit):
-    lht = db.ChannelHeadImage.find({"ChannelID": ObjectId(channel)}).sort("no", pymongo.DESCENDING).limit(limit)
+    lht = db.ChannelHeadImage.find({"ChannelID": ObjectId(channel)}).sort("no").limit(limit)
     _lht = []
     for i in lht:
         dd = db.News.find_one({"_id": ObjectId(i["NewsID"])})
@@ -169,7 +169,7 @@ def get_image_news(channel, limit, list_db=[]):
         for news_list in list_db:
             id_list.append(news_list["_id"])
         condition.update({"numid": {"$nin": id_list}})
-    lht = db.IndexNews.find(condition).sort("no", pymongo.DESCENDING).limit(limit)
+    lht = db.IndexNews.find(condition).sort("no").limit(limit)
     _lht = []
     for i in lht:
         new_dict = {}

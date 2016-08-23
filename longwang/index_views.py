@@ -5,7 +5,7 @@ from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict
@@ -34,7 +34,7 @@ def index():
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     # 今日要闻
     gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 4)
     # 龙江看点
@@ -45,13 +45,24 @@ def index():
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 首页推荐置顶
     _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f"}).sort("orderno", pymongo.ASCENDING)
-    _id_list = []
-    for i in _list:
-        _id_list.append(ObjectId(i["NewsID"]))
-    zd = _id_list
     _zd = []
-    for j in zd:
-        _zd.append(get_mongodb_dict(db.News.find_one({"_id": j})))
+    for i in _list:
+        zd.append(i["NewsID"])
+        news = db.News.find_one({"_id": ObjectId(i["NewsID"])})
+        new_dict = {}
+        new_dict["_id"] = i["numid"]
+        new_dict["title"] = i["Title"]
+        new_dict["summary"] = news["Summary"]
+        new_dict["images"] = i["image"]
+        new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
+        new_dict["publish_time"] = datetime_op(news["Published"])
+        new_dict["cid"] = news["channelnumid"][0]
+        try:
+            new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(news["Channel"][0])})["Name"]
+            new_dict["href"] = db.Channel.find_one({"_id": ObjectId(news["Channel"][0])})["Href"]
+        except:
+            pass
+        _zd.append(new_dict)
     # 首页14条新闻
     condition = {"IsSift": 1, "Guideimage": {"$ne": ""}, "_id": {"$nin": zd}, "Status": 4}
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).limit(14)
@@ -84,7 +95,7 @@ def s_list(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     biaoti = ""
     pic = 0
     menu_list = []
@@ -131,7 +142,9 @@ def s_list_page(id, page=1):
 @index_page.route('/detail/<id>/<page>/')
 def detail(id, page=1):
     # 新闻详细
-    detail = db.News.find_one({"numid": int(id)})
+    detail = db.News.find_one({"numid": int(id), "Status": 4})
+    if detail==None:
+        abort(404)
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
@@ -186,7 +199,7 @@ def detail(id, page=1):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     # 热门推荐
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d,
@@ -227,7 +240,7 @@ def detail_all(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     # 热门推荐
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
@@ -313,7 +326,7 @@ def ss_keywords(keywords, page=1):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
                            zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)
@@ -321,7 +334,7 @@ def ss_keywords(keywords, page=1):
 
 # 搜索页面下拉
 @index_page.route('/ss/<keywords>/<page>')
-def ss_keywords_list(keywords,page=1):
+def ss_keywords_list(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
     # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
     condition = {"$text": {"$search": keyword}, "Status": 4}
@@ -333,7 +346,9 @@ def ss_keywords_list(keywords,page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, image_server + i["Guideimage"], i["numid"], str(i["Title"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"), str(i["Summary"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"),
+                 (style, image_server + i["Guideimage"], i["numid"],
+                  str(i["Title"]).replace(keyword, "<span style='color:red'>" + keyword + "</span>"),
+                  str(i["Summary"]).replace(keyword, "<span style='color:red'>" + keyword + "</span>"),
                   datetime_op((i["Published"])))
     return json.dumps(value)
 
@@ -378,7 +393,7 @@ def front_page(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = get_head_image(ObjectId("5768a6f4dcc88e0510fe053a"), 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
     menu_list = []
     ys = ""
     pic = 0

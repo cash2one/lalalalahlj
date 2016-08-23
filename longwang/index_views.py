@@ -179,7 +179,7 @@ def detail(id, page=1):
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
-    pagenums, pagebar_html = pager('/detail/' + str(id), int(page), len(count), 1).show_page()
+    pagenums, pagebar_html = pager('/d/' + str(id), int(page), len(count), 1).show_page()
     # 侃八卦
     gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
     # 专题
@@ -294,7 +294,6 @@ def search_hot_redis():
 
 # 全文搜索
 @index_page.route('/ss/<keywords>/')
-@index_page.route('/ss/<keywords>/<page>')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
     # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
@@ -320,6 +319,25 @@ def ss_keywords(keywords, page=1):
                            c_list=c_list, keyword=keyword)
 
 
+# 搜索页面下拉
+@index_page.route('/ss/<keywords>/<page>')
+def ss_keywords_list(keywords,page=1):
+    keyword = urllib2.unquote(str(keywords))
+    # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
+    condition = {"$text": {"$search": keyword}, "Status": 4}
+    k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+        pre_page * (int(page) - 1)).limit(pre_page)
+    value = ""
+    for i in k_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><img src='%s' width='261' height='171'/></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                 (style, image_server + i["Guideimage"], i["numid"], str(i["Title"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"), str(i["Summary"]).replace(keyword,"<span style='color:red'>"+keyword+"</span>"),
+                  datetime_op((i["Published"])))
+    return json.dumps(value)
+
+
 # 首页下拉
 @index_page.route('/issift/<page>/')
 def is_sift(page=1):
@@ -332,7 +350,7 @@ def is_sift(page=1):
             image_server + i["Guideimage"], i["numid"], i["Title"])
         string += "<h4>%s</h4><span><h5>%s</h5>" % (i["Summary"], datetime_op(i["Published"]))
         c = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})
-        string += "<h6><a href='%s'>%s</a></h6></span></li>" % (c["Href"], c["Name"])
+        string += "<h6><a href='%s' target='_blank' >%s</a></h6></span></li>" % (c["Href"], c["Name"])
     return json.dumps({"datalist": string})
 
 

@@ -284,24 +284,35 @@ def set_menu():
     return "success"
 
 
+# # 热词获取
+# @index_page.route('/get_hot/')
+# def search_hot_redis():
+#     string = ""
+#     count = 0
+#     object_list = db_redis.lrange('hot_list', 0, 200)
+#     for i in object_list:
+#         i = str(i).replace('\n', '').replace('\r', '')
+#         detail = eval(i)
+#         if len(detail["title"]) < 24:
+#             if count <= 8:
+#                 count += 1
+#                 string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+#                     detail["title"], detail["title"])
+#             else:
+#                 pass
+#         else:
+#             pass
+#     return json.dumps({"key": string})
+
+
 # 热词获取
 @index_page.route('/get_hot/')
 def search_hot_redis():
     string = ""
-    count = 0
-    object_list = db_redis.lrange('hot_list', 0, 200)
-    for i in object_list:
-        i = str(i).replace('\n', '').replace('\r', '')
-        detail = eval(i)
-        if len(detail["title"]) < 24:
-            if count <= 8:
-                count += 1
-                string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-                    detail["title"], detail["title"])
-            else:
-                pass
-        else:
-            pass
+    hot=db.Hot_Select.find()
+    for i in hot:
+         string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+         i["name"], i["name"])
     return json.dumps({"key": string})
 
 

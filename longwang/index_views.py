@@ -309,7 +309,7 @@ def set_menu():
 @index_page.route('/get_hot/')
 def search_hot_redis():
     string = ""
-    hot=db.Hot_Select.find()
+    hot=db.Hot_Select.find().sort("orderno")
     for i in hot:
          string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
          i["name"], i["name"])

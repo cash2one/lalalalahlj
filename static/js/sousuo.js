@@ -16,7 +16,7 @@ function js_method(key) {
     //    return false;
     //} else {
     //    var url = "http://www.hljss.com" + encodeURI("/s/" + key + "/");
-        var url = encodeURI("/ss/" + a + "/");
+        var url = encodeURI("/ss/" + key + "/");
         window.open(url, '_blank');
     //}
 

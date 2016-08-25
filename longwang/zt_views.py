@@ -69,7 +69,7 @@ def zt_add(id):
                 nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:
             #     return json.dumps({"status": e.message})
-                return Response(json.dumps({'url': r_path, "status": 0, "name": name + _ext, "type": _ext, "id": nid}))
+                return Response("successCallback"+"("+json.dumps({'url': r_path, "status": 0, "name": name + _ext, "type": _ext, "id": nid})+")")
     else:
         return Response(json.dumps({"status": 400}))
 

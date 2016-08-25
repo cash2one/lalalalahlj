@@ -70,11 +70,11 @@ def zt_add(id):
 
 
 def upload_path(file_name):
-    return os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
+    return os.path.join(os.path.dirname(__file__)+current_app.config["UPLOAD_FOLDER"], file_name)
 
 
 def mkdir_path(file_path):
-    path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_path)
+    path = os.path.join(os.path.dirname(__file__)+current_app.config["UPLOAD_FOLDER"], file_path)
     if not os.path.exists(path):
         try:
             os.makedirs(path)

@@ -17,7 +17,9 @@ def zt_add(id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
-        uploadurl, name, _ext, nid = ""
+        uploadurl = ""
+        name = ""
+        nid = ""
         _title, _ext = os.path.splitext(f.name)
         if f != "" and f != None:
             try:

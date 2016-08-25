@@ -35,8 +35,8 @@ def index():
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
     rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
-    # 今日要闻
-    gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 4)
+    # 龙江生活
+    ljsh = search_indexnews_db("57beb8507fdf3f9496838594", 4)
     # 龙江看点
     ljkd = search_indexnews_db("579190303c7ee91e3478823d", 5)
     # 新闻排行
@@ -69,7 +69,8 @@ def index():
     _news_list = []
     for news_detail in news_list:
         _news_list.append(get_mongodb_dict(news_detail))
-    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, gcdt=gcdt, ljkd=ljkd, lht=lht,
+    return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, ljkd=ljkd, lht=lht,
+                           ljsh=ljsh,
                            rmtj=rmtj,
                            menu=get_menu(),
                            news_list=_news_list,

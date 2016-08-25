@@ -1475,7 +1475,7 @@ DISPLAY: none
 	.dpt_list_n01 {vertical-align:middle;}
 	  .dpt_left_news {width:870px; height:auto; float:left; padding-left:2px;}
 	  .dpt_left_news ul {vertical-align:middle;}
-	  .dpt_left_news ul li {width:270px; padding-bottom:18px; margin-left:-2px; display:inline-block; float:left;}
+	  .dpt_left_news ul li {width:270px; height:369px; padding-bottom:18px; margin-left:-2px; display:inline-block; float:left;}
 	  .dpt_left_news ul li p {width:261px; height:171px; font-size:0px; margin:0 auto; margin-top:20px;}
 	  .dpt_left_news ul li h3 {width:261px; display:block; height:auto; line-height:26px;  font-size:18px; margin:0 auto; overflow:hidden; margin-top:13px;}
 	  .dpt_left_news ul li h3 a { text-decoration:none; color:#333;}

@@ -5,6 +5,7 @@ from longwang.kbg_views import kbg_page
 from longwang.psd_views import psd_page
 from longwang.mongodb_news import image_server
 from longwang.klj_views import klj_page
+from longwang.zt_views import zt_page
 import sys
 reload(sys)
 sys.setdefaultencoding("utf8")
@@ -14,6 +15,11 @@ app.register_blueprint(index_page)
 app.register_blueprint(kbg_page)
 app.register_blueprint(psd_page)
 app.register_blueprint(klj_page)
+app.register_blueprint(zt_page)
+
+
+# 专题的上传路径
+app.config['UPLOAD_FOLDER'] = '/zt/'
 
 
 # Context处理器 相当于页面渲染之前一个拦截器:当前是处理页面图片跳转链接加域名

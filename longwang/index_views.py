@@ -34,7 +34,7 @@ def index():
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     # 今日要闻
     # gcdt = search_indexnews_db("576b3715a6d2e970226062c8", 4)
     # 龙江看点
@@ -95,7 +95,7 @@ def s_list(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     biaoti = ""
     pic = 0
     menu_list = []
@@ -199,7 +199,7 @@ def detail(id, page=1):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     # 热门推荐
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d,
@@ -240,7 +240,7 @@ def detail_all(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     # 热门推荐
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
@@ -284,24 +284,35 @@ def set_menu():
     return "success"
 
 
+# # 热词获取
+# @index_page.route('/get_hot/')
+# def search_hot_redis():
+#     string = ""
+#     count = 0
+#     object_list = db_redis.lrange('hot_list', 0, 200)
+#     for i in object_list:
+#         i = str(i).replace('\n', '').replace('\r', '')
+#         detail = eval(i)
+#         if len(detail["title"]) < 24:
+#             if count <= 8:
+#                 count += 1
+#                 string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+#                     detail["title"], detail["title"])
+#             else:
+#                 pass
+#         else:
+#             pass
+#     return json.dumps({"key": string})
+
+
 # 热词获取
 @index_page.route('/get_hot/')
 def search_hot_redis():
     string = ""
-    count = 0
-    object_list = db_redis.lrange('hot_list', 0, 200)
-    for i in object_list:
-        i = str(i).replace('\n', '').replace('\r', '')
-        detail = eval(i)
-        if len(detail["title"]) < 24:
-            if count <= 8:
-                count += 1
-                string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-                    detail["title"], detail["title"])
-            else:
-                pass
-        else:
-            pass
+    hot=db.Hot_Select.find().sort("orderno")
+    for i in hot:
+         string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+         i["name"], i["name"])
     return json.dumps({"key": string})
 
 
@@ -326,7 +337,7 @@ def ss_keywords(keywords, page=1):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     return render_template('search.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, menu=get_menu(), hours=hours,
                            zb=zb, yb=yb,
                            c_list=c_list, keyword=keyword)
@@ -393,7 +404,7 @@ def front_page(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     menu_list = []
     ys = ""
     pic = 0

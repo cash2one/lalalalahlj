@@ -88,7 +88,7 @@ def s_list(id):
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 3)
+    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     menu = db.Channel.find({"Parent": ObjectId("576500b1dcc88e31a7d2e4b8"), "Visible": 1}).sort("OrderNumber")
     return render_template('klj/klj_list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
                            detail=detail, menu=menu, hours=hours, zb=zb, yb=yb, cid=ObjectId(channel))

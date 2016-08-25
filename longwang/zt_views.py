@@ -2,7 +2,6 @@
 import json
 import os
 
-import ImageFile
 import datetime
 from flask import Blueprint, render_template, request, current_app
 from connect import conn

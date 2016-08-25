@@ -20,8 +20,7 @@ def zt_add(id):
         uploadurl = ""
         name = ""
         nid = ""
-        _title = os.path.splitext(f.filename)[0]
-        _ext = os.path.splitext(f.filename)[1]
+        _title, _ext = os.path.splitext(f.filename)
         if f != "" and f != None:
             try:
                 fext = str(f).lower().split(".")[1]
@@ -29,6 +28,7 @@ def zt_add(id):
                     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
                     name = sltName
                     uploadurl = upload_path(id + "/img/" + name + _ext)
+                    return json.dumps({"status": uploadurl})
                     f.save(uploadurl)
                 else:
                     if fext == "css":

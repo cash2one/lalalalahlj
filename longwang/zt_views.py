@@ -22,14 +22,15 @@ def zt_add(id):
         if f != "" and f != None:
             fext = str(f).lower().split(".")[1]
             if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
-                parser = ImageFile.Parser()
-                for chunk in f.chunks():
-                    parser.feed(chunk)
-                    img = parser.close()
-                    sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-                    name = sltName
-                    uploadurl = upload_path(id + "/img/" + name + _ext)
-                    img.save(uploadurl)
+                # parser = ImageFile.Parser()
+                # for chunk in f.chunks():
+                #     parser.feed(chunk)
+                #     img = parser.close()
+                #     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                #     name = sltName
+                #     uploadurl = upload_path(id + "/img/" + name + _ext)
+                #     img.save(uploadurl)
+                return json.dumps({"status": 500})
 
             else:
                 if fext == "css":

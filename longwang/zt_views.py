@@ -20,7 +20,7 @@ def zt_add(id):
         uploadurl = ""
         name = ""
         nid = ""
-        _title, _ext = os.path.splitext(f.name)
+        _title, _ext = os.path.splitext(f.filename)
         if f != "" and f != None:
             try:
                 fext = str(f).lower().split(".")[1]

@@ -70,22 +70,7 @@
                 </div>
             </div>
             <!----高层动态----->
-{#            <div class="con_m_main ft30">#}
-{#                <div class="mid_tlt">#}
-{#                    <p><a href="/54.html">今日要闻</a></p>#}
-                    {#          <span>SENIOR NEWS</span> #}
-{#                </div>#}
-{#                <div class="mid_list">#}
-{#                    <ul>#}
-{#                        {% for i in gcdt %}#}
-{#                            <li>#}
-{#                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>#}
-{#                                <h4>{{ i.summary }}</h4>#}
-{#                            </li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </div>#}
+
             <!----快讯----->
             <div class="con_m_main ft30">
                 <div class="mid_tlt">
@@ -95,6 +80,22 @@
                 <div class="mid_list">
                     <ul>
                         {% for i in ljkd %}
+                            <li>
+                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                                <h4>{{ i.summary }}</h4>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        <div class="con_m_main ft30">
+                <div class="mid_tlt">
+                    <p><a href="/54.html">龙江生活</a></p>
+                              <span>SENIOR NEWS</span>
+                </div>
+                <div class="mid_list">
+                    <ul>
+                        {% for i in ljsh %}
                             <li>
                                 <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                                 <h4>{{ i.summary }}</h4>

@@ -18,6 +18,7 @@ def zt_add(id):
         pro = db["File_upload"]
         f = request.files['topImage3']
         uploadurl = ""
+        r_path=""
         name = ""
         nid = ""
         _title, _ext = os.path.splitext(f.filename)
@@ -30,6 +31,7 @@ def zt_add(id):
                     mkdir_path(id + "/img/")
                     uploadurl = upload_path(id + "/img/" + name + _ext)
                     f.save(uploadurl)
+                    r_path=relative_path(id + "/img/" + name + _ext)
                 else:
                     if fext == "css":
                         mkdir_path(id + "/css/")
@@ -38,6 +40,7 @@ def zt_add(id):
                         for chunk in f.chunks():
                             destination.write(chunk)
                         name = _title
+                        r_path=relative_path(id + "/css/" + _title + _ext)
                     if fext == "js":
                         mkdir_path(id + "/js/")
                         uploadurl = upload_path(id + "/js/" + _title + _ext)
@@ -45,6 +48,7 @@ def zt_add(id):
                         for chunk in f.chunks():
                             destination.write(chunk)
                         name = _title
+                        r_path=relative_path(id + "/js/" + _title + _ext)
                     if fext == "html":
                         mkdir_path(id)
                         uploadurl = upload_path(id+"/" + _title + _ext)
@@ -52,9 +56,10 @@ def zt_add(id):
                         for chunk in f.chunks():
                             destination.write(chunk)
                         name = _title
+                        r_path=relative_path(id+"/" + _title + _ext)
                 insertinfo = {
                     "name": _title + _ext,
-                    "url": uploadurl,
+                    "url": r_path,
                     "name1": name + _ext,
                     "newsid": id,
                     "type": _ext,
@@ -64,13 +69,17 @@ def zt_add(id):
                 nid = str(pro.find_one({"newsid": id, "url": uploadurl})["_id"])
             # except Exception, e:
             #     return json.dumps({"status": e.message})
-                return Response(json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid}))
+                return Response(json.dumps({'url': r_path, "status": 0, "name": name + _ext, "type": _ext, "id": nid}))
     else:
         return Response(json.dumps({"status": 400}))
 
 
 def upload_path(file_name):
     return os.path.join(os.path.dirname(__file__)+current_app.config["UPLOAD_FOLDER"], file_name)
+
+
+def relative_path(file_name):
+    return os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
 
 
 def mkdir_path(file_path):

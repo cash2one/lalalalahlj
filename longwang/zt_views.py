@@ -22,7 +22,7 @@ def zt_add(id):
         nid = ""
         _title, _ext = os.path.splitext(f.filename)
         if f != "" and f != None:
-            try:
+            # try:
                 fext = str(_ext).lower().replace(".", "")
                 if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
                     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -62,9 +62,9 @@ def zt_add(id):
                 }
                 pro.insert(insertinfo)
                 nid = str(pro.find_one({"newsid": id, "url": uploadurl})["_id"])
-            except Exception, e:
-                return json.dumps({"status": e.message})
-            return json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid})
+            # except Exception, e:
+            #     return json.dumps({"status": e.message})
+                return json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid})
     else:
         return json.dumps({"status": 400})
 

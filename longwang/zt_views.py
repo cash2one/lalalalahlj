@@ -27,23 +27,27 @@ def zt_add(id):
                 if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
                     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
                     name = sltName
+                    mkdir_path(id + "/img/")
                     uploadurl = upload_path(id + "/img/" + name + _ext)
                     f.save(uploadurl)
                 else:
                     if fext == "css":
+                        mkdir_path(id + "/css/")
                         uploadurl = upload_path(id + "/css/" + _title + _ext)
                         destination = open(uploadurl, 'wb+')
                         for chunk in f.chunks():
                             destination.write(chunk)
                         name = _title
                     if fext == "js":
+                        mkdir_path(id + "/js/")
                         uploadurl = upload_path(id + "/js/" + _title + _ext)
                         destination = open(uploadurl, 'wb+')
                         for chunk in f.chunks():
                             destination.write(chunk)
                         name = _title
                     if fext == "html":
-                        uploadurl = upload_path("/html/" + _title + _ext)
+                        mkdir_path(id)
+                        uploadurl = upload_path(id+"/" + _title + _ext)
                         destination = open(uploadurl, 'wb+')
                         for chunk in f.chunks():
                             destination.write(chunk)
@@ -67,3 +71,12 @@ def zt_add(id):
 
 def upload_path(file_name):
     return os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
+
+
+def mkdir_path(file_path):
+    path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_path)
+    if not os.path.exists(path):
+        try:
+            os.makedirs(path)
+        except Exception, e:
+            print e.message

@@ -17,7 +17,7 @@ def zt_add(id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
-        uploadurl = ""
+        uploadurl = "nothing"
         name = ""
         nid = ""
         _title, _ext = os.path.splitext(f.filename)
@@ -28,7 +28,6 @@ def zt_add(id):
                     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
                     name = sltName
                     uploadurl = upload_path(id + "/img/" + name + _ext)
-                    return json.dumps({"status": uploadurl})
                     f.save(uploadurl)
                 else:
                     if fext == "css":

@@ -19,18 +19,13 @@ def zt_add(id):
         f = request.files['topImage3']
         _title, _ext = os.path.splitext(f.name)
         if f != "" and f != None:
+           try:
             fext = str(f).lower().split(".")[1]
             if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
-                # parser = ImageFile.Parser()
-                # for chunk in f.chunks():
-                #     parser.feed(chunk)
-                #     img = parser.close()
-                #     sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-                #     name = sltName
-                #     uploadurl = upload_path(id + "/img/" + name + _ext)
-                #     img.save(uploadurl)
-                return json.dumps({"status": 500})
-
+                    sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                    name = sltName
+                    uploadurl = upload_path(id + "/img/" + name + _ext)
+                    f.save(uploadurl)
             else:
                 if fext == "css":
                     uploadurl = upload_path(id + "/css/" + _title + _ext)
@@ -60,6 +55,8 @@ def zt_add(id):
             }
             pro.insert(insertinfo)
             nid = str(pro.find_one({"newsid": id, "url": uploadurl})["_id"])
+           except:
+               return json.dumps({"status": 500})
         return json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid})
     else:
         return json.dumps({"status": 400})

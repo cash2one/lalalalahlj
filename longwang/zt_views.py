@@ -17,7 +17,7 @@ def zt_add(id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
-        uploadurl = "nothing"
+        uploadurl = ""
         name = ""
         nid = ""
         _title, _ext = os.path.splitext(f.filename)
@@ -60,7 +60,7 @@ def zt_add(id):
                 nid = str(pro.find_one({"newsid": id, "url": uploadurl})["_id"])
             except Exception, e:
                  return json.dumps({"status": e.message})
-        return json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid})
+            return json.dumps({'url': uploadurl, "status": 0, "name": name + _ext, "type": _ext, "id": nid})
     else:
         return json.dumps({"status": 400})
 

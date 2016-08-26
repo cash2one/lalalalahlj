@@ -1,0 +1,29 @@
+  <!----专题----->
+  <div class="gsp_con_r_main ft30">
+    <div class="gsp_right_tlt fbold" style="height:30px;">
+      <p style="color:#205366;font-size:16px;"><a>专题</a></p>
+{#      <span>special topic</span> #}
+    </div>
+    <div class="psd_zt_flash ft15">
+      <div class="psd_focusBox-zt">
+        <div class="bdzt">
+          <ul>
+              {% for i in zt_images %}
+            <li><a  href="/d/{{ i._id }}.html" target="_blank"><img _src="{{ i.guide_image }}?w=300&h=247"  src="{{ i.guide_image }}" /></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+        <div class="hdzt">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="gsp_right_list" style="margin-top:6px;">
+      <ul>
+          {% for i in zt %}
+        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>

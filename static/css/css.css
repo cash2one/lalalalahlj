@@ -453,6 +453,12 @@
     height: 184px;
     float: left;
 }
+/*psd专题flash*/
+.psd_zt_flash {
+    width: 300px;
+    height: 247px;
+    float: left;
+}
 
 /****首页右侧专题***/
 .focusBox-zt {
@@ -507,6 +513,63 @@
 .focusBox-zt .bdzt li img {
     width:220px;
     height:184px;
+    display: block;
+    background: url(/static/images/loading.gif) center center no-repeat;
+}
+/*品深度zt focus box*/
+/****首页右侧专题***/
+.psd_focusBox-zt {
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid #eee;
+    width: 300px;
+    height: 247px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.psd_focusBox-zt .hdzt {
+    height: 22px;
+    position: absolute;
+    z-index: 1;
+    bottom: 6px;
+    right: 6px;
+    overflow: hidden;
+}
+
+.psd_focusBox-zt .hdzt ul {
+    float: right;
+    overflow: hidden;
+}
+
+.psd_focusBox-zt .hdzt li {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    font-family: Arial;
+    float: left;
+    margin: 0 1px;
+    display: inline;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.psd_focusBox-zt .hdzt li.on {
+    background: #205366;
+}
+
+.psd_focusBox-zt .bdzt li {
+    vertical-align: middle;
+}
+
+.psd_focusBox-zt .bdzt li img {
+    width:300px;
+    height:247px;
     display: block;
     background: url(/static/images/loading.gif) center center no-repeat;
 }
@@ -1569,6 +1632,12 @@ DISPLAY: none
 .right_list03 ul li a {text-decoration:none; color:#333;}
 .right_list03 ul li a:hover {text-decoration: underline; color:#205366;}
 
+/*品深度专题*/
+.psd_right_list03 {width:220px; height:auto; float: left;}
+.psd_right_list03 ul {vertical-align: middle;}
+.psd_right_list03 ul li {width:220px; height:36px;line-height:36px; border-bottom:1px solid #f0f0f4; float:left; overflow:hidden;}
+.psd_right_list03 ul li a {text-decoration:none; color:#333;}
+.psd_right_list03 ul li a:hover {text-decoration: underline; color:#205366;}
 
 .list02_news {width:950px; height:auto; float:left;}
 .list02_news ul {vertical-align:middle;position:relative;}

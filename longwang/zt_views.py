@@ -152,7 +152,8 @@ def zt_delete(id):
         pro = db["File_upload"]
         pro.remove({"_id": ObjectId(id)})
         result = '{"status":"' + str(200) + '"}'
-        res = make_response(result)
+        res = make_response("jsonpCallback1("+result+")")
+        # res = make_response(result)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
     else:
@@ -167,8 +168,8 @@ def zt_index(id):
         pro = db["File_upload"]
         pro.update({"_id": ObjectId(id)}, {"$set":{"index": 1}})
         result = '{"status":"' + str(200) + '"}'
-        # res = make_response("jsonpCallback1("+result+"])")
-        res = make_response(result)
+        res = make_response("jsonpCallback1("+result+")")
+        # res = make_response(result)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
     else:

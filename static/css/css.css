@@ -456,7 +456,7 @@
 /*psd专题flash*/
 .psd_zt_flash {
     width: 300px;
-    height: 247px;
+    height: 251px;
     float: left;
 }
 
@@ -523,7 +523,7 @@
     position: relative;
     border: 1px solid #eee;
     width: 300px;
-    height: 247px;
+    height: 251px;
     background: #fff;
     overflow: hidden;
 }
@@ -569,7 +569,7 @@
 
 .psd_focusBox-zt .bdzt li img {
     width:300px;
-    height:247px;
+    height:251px;
     display: block;
     background: url(/static/images/loading.gif) center center no-repeat;
 }

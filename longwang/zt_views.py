@@ -17,11 +17,6 @@ db = conn.mongo_conn()
 # 添加专题文件
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
-    # url = upload_path("1.html")
-    # soup = BeautifulSoup(open(url,"r").read())
-    # url= urllib.urlopen("http://www.baidu.com").read()
-    # soup = BeautifulSoup(url)
-    # print soup.original_encoding
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
@@ -54,6 +49,9 @@ def zt_add(id):
                     uploadurl = upload_path(id + "/" + _title + _ext)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
+                    # soup = BeautifulSoup(open(uploadurl).read())
+                    # if soup.original_encoding!="utf-8":
+                    #
             insertinfo = {
                 "name": _title + _ext,
                 "url": r_path.replace("zt", "zuanti"),
@@ -84,12 +82,15 @@ def zt_add(id):
 
 
 # 修改专题文件
-@zt_page.route('/zt/modify/<_id>/<content>/', methods=['POST', 'GET'])
-def zt_modify(_id, content):
-    if request.method == "GET":
+@zt_page.route('/zt/modify/', methods=['POST', 'GET'])
+def zt_modify():
+    if request.method == "POST":
+        _id = request.POST.get("id")
+        content = request.POST.get("content")
         pro = db["File_upload"]
         file = pro.find_one({"_id": ObjectId(_id)})
-        fileHandle = open(os.path.dirname(__file__) + (str(file["url"]).replace("zuanti", "zt")), "w")
+        fileHandle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (
+            str(file["url"]).replace("zuanti", "zt")), "w")
         fileHandle.write(content)
         result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"
@@ -122,7 +123,8 @@ def zt_get(id):
     if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
-        url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
+        url = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + pro.find_one({"_id": ObjectId(id)})[
+            "url"]
         result = '{"status":"' + str(200) + '","file":"' + str(open(url.replace("zuanti", "zt")).read()).replace("\r",
                                                                                                                  "").replace(
             "\n",
@@ -142,7 +144,8 @@ def zt_show(id):
     if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
-        url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
+        url = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + pro.find_one({"_id": ObjectId(id)})[
+            "url"]
         result = '{"status":"' + str(200) + '","url":"' + url + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
@@ -174,7 +177,9 @@ def zt_index(id):
 
 # 文件上传的全路径
 def upload_path(file_name):
-    return os.path.join(os.path.dirname(__file__) + current_app.config["UPLOAD_FOLDER"], file_name)
+    return os.path.join(
+        os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + current_app.config["UPLOAD_FOLDER"],
+        file_name)
 
 
 # 文件上传的相对路径
@@ -184,7 +189,9 @@ def relative_path(file_name):
 
 # 创建文件夹
 def mkdir_path(file_path):
-    path = os.path.join(os.path.dirname(__file__) + current_app.config["UPLOAD_FOLDER"], file_path)
+    path = os.path.join(
+        os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + current_app.config["UPLOAD_FOLDER"],
+        file_path)
     if not os.path.exists(path):
         try:
             os.makedirs(path)
@@ -194,7 +201,9 @@ def mkdir_path(file_path):
 
 # 删除文件夹
 def rmdir_path(file_path):
-    path = os.path.join(os.path.dirname(__file__) + current_app.config["UPLOAD_FOLDER"], file_path)
+    path = os.path.join(
+        os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + current_app.config["UPLOAD_FOLDER"],
+        file_path)
     if not os.path.exists(path):
         try:
             os.removedirs(path)

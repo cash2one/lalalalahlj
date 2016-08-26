@@ -151,7 +151,7 @@ def zt_delete(id):
         rmdir_path(id)
         pro = db["File_upload"]
         pro.remove({"_id": ObjectId(id)})
-        result = '{"status":"' + str(200) + '"}'
+        result = '{"status":"' + str(200) + '","id":"'+id+'"}'
         res = make_response("jsonpCallback1(" + result + ")")
         # res = make_response(result)
         res.headers['Access-Control-Allow-Origin'] = '*'

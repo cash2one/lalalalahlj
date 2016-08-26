@@ -210,10 +210,17 @@ def detail(id, page=1):
     rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     # 热门推荐
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
+    # 今日热评图片1
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # 今日热评文字3
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=d,
                            qsmw=qsmw, ssf=ssf, ayd=ayd, ecy=ecy,
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
-                           count=len(count), rmtui=rmtui, d=1)
+                           count=len(count), rmtui=rmtui, d=1,
+                           jrrp_2=jrrp_2,
+                           jrrp_5=jrrp_5
+                           )
 
 
 # 详细页面全部显示

@@ -162,7 +162,7 @@ def zt_delete(id):
 # 设置专题首页
 @zt_page.route('/zt/index/<id>/', methods=['POST', 'GET'])
 def zt_index(id):
-    if request.method == "POST":
+    if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
         pro.update({"_id": ObjectId(id)}, {"index": 1})

@@ -70,7 +70,8 @@ def zt_add(id):
             # except Exception, e:
             #     return json.dumps({"status": e.message})
             result = '{"url": "' + r_path + '", "status":"' + str(200) + '", "name":"' + name + _ext + '", "type":"' + _ext + '", "id":"' + nid + '"}'
-            return Response("jsonpCallback" + "(" + result + ")")
+            # return Response("jsonpCallback" + "(" + result + ")")
+            return Response(result)
     else:
         return Response(json.dumps({"status": 400}))
 

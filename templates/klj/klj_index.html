@@ -251,7 +251,7 @@
                 <ul>
                     {% for i in zt %}
                         {% if loop.index0 in [0,1,2,3] %}
-                  <li><a target="_blank" href="/d/{{ i._id }}.html"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}" style="width:300px; height:251px;"/></a></li>
+                  <li><a target="_blank" href="/d/{{ i._id }}.html"><img _src="{{ i.guide_image }}?w=300&h=251"  src="{{ i.guide_image }}?w=300&h=251" style="width:300px; height:251px;"/></a></li>
                     {% endif %}
                     {% endfor %}
                 </ul>

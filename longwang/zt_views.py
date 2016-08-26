@@ -70,7 +70,8 @@ def zt_add(id):
             if count == 0:
                 pro.insert(insertinfo)
             else:  # 覆盖的状态改为1
-                pro.update({"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path})["_id"])}, {"status": 1})
+                pro.update({"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path})["_id"])},
+                           {"$set": {"status": 1}})
             # 返回更新后的编号
             nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:
@@ -131,7 +132,7 @@ def zt_modify(id, _id):
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
-                "_id": ObjectId(_id),
+                # "_id": ObjectId(_id),
                 "name": _title + _ext,
                 "url": r_path,
                 "newsid": id,
@@ -139,7 +140,7 @@ def zt_modify(id, _id):
                 "index": 0,
                 "status": 2
             }
-            pro.save(insertinfo)
+            pro.update({"_id": ObjectId(_id)}, {"$set": insertinfo})
             # 返回更新后的编号
             nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:

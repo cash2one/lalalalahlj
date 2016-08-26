@@ -123,8 +123,10 @@ def zt_get(id):
         rmdir_path(id)
         pro = db["File_upload"]
         url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
-        result = '{"status":"' + str(200) + '","file":"' + str(open(url).read()).replace("\r", "").replace("\n",
-                                                                                                           "").replace(
+        result = '{"status":"' + str(200) + '","file":"' + str(open(url.replace("zuanti", "zt")).read()).replace("\r",
+                                                                                                                 "").replace(
+            "\n",
+            "").replace(
             "\n\r", "").replace("\r\n", "") + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)

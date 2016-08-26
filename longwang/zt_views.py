@@ -1,6 +1,7 @@
 # coding=utf-8
 import json
 import os
+import chardet
 from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
@@ -14,6 +15,8 @@ db = conn.mongo_conn()
 # 添加专题文件
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
+    url = upload_path("1.html")
+
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
@@ -34,23 +37,26 @@ def zt_add(id):
                 if fext == "css":
                     mkdir_path(id + "/css/")
                     uploadurl = upload_path(id + "/css/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/css/" + _title + _ext)
                 if fext == "js":
                     mkdir_path(id + "/js/")
                     uploadurl = upload_path(id + "/js/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
                 "name": _title + _ext,
@@ -83,7 +89,7 @@ def zt_add(id):
 
 # 修改专题文件
 @zt_page.route('/zt/modify/<id>/<_id>/', methods=['POST', 'GET'])
-def zt_modify(id,_id):
+def zt_modify(id, _id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
@@ -104,23 +110,26 @@ def zt_modify(id,_id):
                 if fext == "css":
                     mkdir_path(id + "/css/")
                     uploadurl = upload_path(id + "/css/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/css/" + _title + _ext)
                 if fext == "js":
                     mkdir_path(id + "/js/")
                     uploadurl = upload_path(id + "/js/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    destination = open(uploadurl, 'wb+')
-                    for chunk in f.chunks():
-                        destination.write(chunk)
+                    # destination = open(uploadurl, 'wb+')
+                    # for chunk in f.chunks():
+                    #     destination.write(chunk)
+                    f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
                 "_id": ObjectId(_id),

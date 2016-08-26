@@ -82,8 +82,8 @@ def zt_add(id):
 
 
 # 修改专题文件
-@zt_page.route('/zt/modify/<id>/', methods=['POST', 'GET'])
-def zt_modify(id):
+@zt_page.route('/zt/modify/<id>/<_id>/', methods=['POST', 'GET'])
+def zt_modify(id,_id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
@@ -123,7 +123,7 @@ def zt_modify(id):
                         destination.write(chunk)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
-                "_id": ObjectId(id),
+                "_id": ObjectId(_id),
                 "name": _title + _ext,
                 "url": r_path,
                 "newsid": id,

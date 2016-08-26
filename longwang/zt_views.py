@@ -89,7 +89,7 @@ def zt_modify(_id, content):
     if request.method == "GET":
         pro = db["File_upload"]
         file = pro.find_one({"_id": ObjectId(_id)})
-        fileHandle = open(os.path.dirname(__file__) + file["url"], "w")
+        fileHandle = open(os.path.dirname(__file__) + (str(file["url"]).replace("zuanti", "zt")), "w")
         fileHandle.write(content)
         result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"

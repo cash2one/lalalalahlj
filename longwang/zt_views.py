@@ -1,7 +1,6 @@
 # coding=utf-8
 import json
 import os
-import chardet
 from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
@@ -15,7 +14,7 @@ db = conn.mongo_conn()
 # 添加专题文件
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
-    url = upload_path("1.html")
+    # url = upload_path("1.html")
 
     if request.method == "POST":
         pro = db["File_upload"]

@@ -59,11 +59,11 @@
             </ul>
 		</div>
 		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4597">张孝廉同志报道集</a></div>
+			<div class="ldr-intor-title"><a href="/ld/4597">张效廉同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in zxljl %}
                 <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">张孝廉同志简历</a></div>
+                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">张效廉同志简历</a></div>
                 <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>

@@ -147,7 +147,7 @@ def zt_modify(id, _id):
 # 删除
 @zt_page.route('/zt/delete/<id>/', methods=['POST', 'GET'])
 def zt_delete(id):
-    if request.method == "POST":
+    if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
         pro.remove({"_id": ObjectId(id)})
@@ -165,9 +165,10 @@ def zt_index(id):
     if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
-        pro.update({"_id": ObjectId(id)}, {"index": 1})
+        pro.update({"_id": ObjectId(id)}, {"$set":{"index": 1}})
         result = '{"status":"' + str(200) + '"}'
-        res = make_response("jsonpCallback1(["+result+"])")
+        # res = make_response("jsonpCallback1("+result+"])")
+        res = make_response(result)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
     else:

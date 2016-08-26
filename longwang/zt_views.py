@@ -37,7 +37,6 @@ def zt_add(id):
                     destination = open(uploadurl, 'wb+')
                     for chunk in f.chunks():
                         destination.write(chunk)
-                    name = _title
                     r_path = relative_path(id + "/css/" + _title + _ext)
                 if fext == "js":
                     mkdir_path(id + "/js/")
@@ -45,7 +44,6 @@ def zt_add(id):
                     destination = open(uploadurl, 'wb+')
                     for chunk in f.chunks():
                         destination.write(chunk)
-                    name = _title
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
                     mkdir_path(id)
@@ -53,12 +51,10 @@ def zt_add(id):
                     destination = open(uploadurl, 'wb+')
                     for chunk in f.chunks():
                         destination.write(chunk)
-                    name = _title
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
                 "name": _title + _ext,
                 "url": r_path,
-                "name1": name + _ext,
                 "newsid": id,
                 "type": _ext,
                 "index": 0

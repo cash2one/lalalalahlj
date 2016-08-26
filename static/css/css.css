@@ -2034,4 +2034,18 @@ a:hover .ep-share-yixin{background-position:-250px -25px}
   .ldr-m-box li {display:block; float:left; overflow:hidden; padding-left:15px; width:1190px;font-size:18px;background:url(../images/blank02.png) no-repeat left;}
   .ldr-m-box li a { display:block; float:left; overflow:hidden; max-width:1040px; height:40px; line-height:40px; color:#333;}
   .ldr-m-box li span {display:block; float:right; margin-top:13px; color:#999; font-size:14px;}
+
+/*新闻热搜--->今日热评*/
+.gsp_right_deet02 {width:220px; height:auto; float: left;}
+    .deet02_pic {vertical-align: middle;}
+	.deet02_pic li {display:block; float:left; overflow:hidden;}
+	.deet02_pic_tit { margin-top:10px; margin-bottom:10px; width:220px; max-height:50px; line-height:25px; font-size:16px;}
+	.deet02_pic_tit a {color:#333;}
+	.deet02_pic_tit a:hover {color:#205366;}
+	.deet02_pic_img {width:100px; height:75px;}
+	.deet02_pic_txt {margin-left:10px; width:100px; height:80px; line-height:20px; font-family:"宋体"; font-size:12px; text-indent:2em; color:#7b7b7b;}
+	.deet02_list {vertical-align: middle;}
+	.deet02_list li {width:220px; height:42px; line-height:42px; font-family:"宋体"; border-bottom:1px solid #f0f0f4; float:left; overflow:hidden;}
+	.deet02_list li a {text-decoration:none; color:#333;}
+	.deet02_list li a:hover {text-decoration: underline; color:#205366;}
 /*--------20160628以下css编写：蒋文婷 结束-------------*/

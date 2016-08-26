@@ -6,7 +6,7 @@ import pymongo
 from flask import Blueprint, render_template
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
-    get_mongodb_dict
+    get_mongodb_dict,get_image_news
 from bson import ObjectId
 from psd_views import get_name
 
@@ -62,11 +62,18 @@ def kbg_index():
     hzmt = db.Media.find({"ChannelID": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 明星 5条
     mx5 = search_news_db([ObjectId("5765050fdcc88e31a7d2e4c3")], pre_page)
+    # 今日热评图片1
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # 今日热评文字3
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     return render_template('kbg/kbg_index.html', lht=lht, tt=tt, jryw=jryw, hours=hours, zb=zb, yb=yb, blt=blt,
                            blt1=blt1,
                            # ecy=ecy,
                            ljyc=ljyc, xzlj=xzlj, ljyc1=ljyc1, xzlj1=xzlj1, menu=menu1, zt=zt, mx=mx, ds=ds, yy=yy,
-                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5, ys="sy")
+                           dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5, ys="sy",
+                           jrrp_2=jrrp_2,
+                           jrrp_5=jrrp_5
+                           )
 
 
 # 二级频道列表
@@ -105,7 +112,14 @@ def kbg_list_index(id):
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
     rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
+    # 今日热评图片1
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # 今日热评文字3
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
                            cid=ObjectId(channel),
-                           menu=menu1, blt=blt, rmtj=rmtj, detail=detail)
+                           menu=menu1, blt=blt, rmtj=rmtj, detail=detail,
+                           jrrp_2=jrrp_2,
+                           jrrp_5=jrrp_5
+                           )

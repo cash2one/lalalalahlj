@@ -96,21 +96,25 @@
 
     <!----新闻热搜----->
     <div class="con_r_main ft30">
-        <div class="right_tlt">
-            <p>
-                {#            <a href="#">#}
-                新闻热搜
-                {#            </a>#}
-            </p>
-            {#        <span>News search</span> #}
+      <div class="right_tlt">
+        <p>今日热评</p>
+      </div>
+      <div class="con_r_main">
+        <div class="gsp_right_deet02" >
+          <ul class="deet02_pic">
+              {% for i in jrrp_2 %}
+        	<li class="deet02_pic_tit"><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+        	<li class="deet02_pic_img"><a href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100" height="75" /></a></li>
+            <li class="deet02_pic_txt"><span>{{ i.summary }}</span></li>
+              {% endfor %}
+          </ul>
+          <ul class="deet02_list">
+              {% for i in jrrp_5 %}
+            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+              {% endfor %}
+          </ul>
         </div>
-        <div class="con_r_main">
-            <div class="seach_ci">
-                <ul id="ul_hot">
-                    <li><a href="#">猴宝宝</a></li>
-                </ul>
-            </div>
-        </div>
+      </div>
     </div>
 
 

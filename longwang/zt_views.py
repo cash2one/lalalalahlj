@@ -78,7 +78,7 @@ def zt_add(id):
             res = "jsonpCallback1(" + result + ")"
             return res_result(res)
     else:
-        result = '{"status":"' + 400 + '"}'
+        result = '{"status":"' + str(400) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
 
@@ -91,11 +91,11 @@ def zt_modify(_id, content):
         file = pro.find_one({"_id": ObjectId(_id)})
         fileHandle = open(os.path.dirname(__file__) + file["url"], "w")
         fileHandle.write(content)
-        result = '{"status":"' + 200 + '"}'
+        result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:
-        result = '{"status":"' + 400 + '"}'
+        result = '{"status":"' + str(400) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
 
@@ -111,7 +111,7 @@ def zt_delete(id):
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:
-        result = '{"status":"' + 400 + '"}'
+        result = '{"status":"' + str(400) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
 
@@ -123,11 +123,11 @@ def zt_get(id):
         rmdir_path(id)
         pro = db["File_upload"]
         file = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
-        result = '{"status":"' + str(200) + '","file":"' + "[" + open(file).read() + "]" + '"}'
+        result = '{"status":"' + str(200) + '","file":"' + str(open(file).read())+ '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:
-        result = '{"status":"' + 400 + '"}'
+        result = '{"status":"' + str(400) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
 
@@ -147,7 +147,7 @@ def zt_index(id):
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:
-        result = '{"status":"' + 400 + '"}'
+        result = '{"status":"' + str(400) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
 

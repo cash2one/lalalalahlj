@@ -26,12 +26,10 @@ def zt_add(id):
             # try:
             fext = str(_ext).lower().replace(".", "")
             if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
-                sltName = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-                name = sltName
                 mkdir_path(id + "/img/")
-                uploadurl = upload_path(id + "/img/" + name + _ext)
+                uploadurl = upload_path(id + "/img/" + _title + _ext)
                 f.save(uploadurl)
-                r_path = relative_path(id + "/img/" + name + _ext)
+                r_path = relative_path(id + "/img/" + _title + _ext)
             else:
                 if fext == "css":
                     mkdir_path(id + "/css/")
@@ -65,7 +63,11 @@ def zt_add(id):
                 "type": _ext,
                 "index": 0
             }
-            pro.insert(insertinfo)
+            count = pro.find({"newsid": id, "url": r_path}).count()
+            # 判断数据库中是否存在  不存在时插入
+            if count == 0:
+                pro.insert(insertinfo)
+            # 返回更新后的编号
             nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:
             #     return json.dumps({"status": e.message})
@@ -80,14 +82,17 @@ def zt_add(id):
         return Response(json.dumps({"status": 400}))
 
 
+# 文件上传的全路径
 def upload_path(file_name):
     return os.path.join(os.path.dirname(__file__) + current_app.config["UPLOAD_FOLDER"], file_name)
 
 
+# 文件上传的相对路径
 def relative_path(file_name):
     return os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
 
 
+# 创建文件夹
 def mkdir_path(file_path):
     path = os.path.join(os.path.dirname(__file__) + current_app.config["UPLOAD_FOLDER"], file_path)
     if not os.path.exists(path):

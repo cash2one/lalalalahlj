@@ -56,7 +56,7 @@ def zt_add(id):
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
                 "name": _title + _ext,
-                "url": r_path,
+                "url": r_path.replace("zt", "zuanti"),
                 "newsid": id,
                 "type": _ext,
                 "index": 0,
@@ -123,7 +123,9 @@ def zt_get(id):
         rmdir_path(id)
         pro = db["File_upload"]
         url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
-        result = '{"status":"' + str(200) + '","file":"' + str(open(url).read()) + '"}'
+        result = '{"status":"' + str(200) + '","file":"' + str(open(url).read()).replace("\r", "").replace("\n",
+                                                                                                           "").replace(
+            "\n\r", "").replace("\r\n", "") + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:

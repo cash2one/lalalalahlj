@@ -75,73 +75,29 @@ def zt_add(id):
             #     return json.dumps({"status": e.message})
             result = '{"url":"' + r_path + '","status":"' + str(
                 200) + '","name":"' + name + _ext + '","type":"' + _ext + '","id":"' + nid + '"}'
-            # return Response("jsonpCallback" + "(" + result + ")")
-            # return Response(result)
-            res = make_response(result)
-            res.headers['Access-Control-Allow-Origin'] = '*'
-            return res
+            res = "jsonpCallback1(" + result + ")"
+            return res_result(res)
     else:
-        return Response(json.dumps({"status": 400}))
+        result = '{"status":"' + 400 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
 
 
 # 修改专题文件
-@zt_page.route('/zt/modify/<id>/<_id>/', methods=['POST', 'GET'])
-def zt_modify(id, _id):
-    if request.method == "POST":
+@zt_page.route('/zt/modify/<_id>/<content>/', methods=['POST', 'GET'])
+def zt_modify(_id, content):
+    if request.method == "GET":
         pro = db["File_upload"]
-        f = request.files['topImage3']
-        uploadurl = ""
-        r_path = ""
-        name = ""
-        nid = ""
-        _title, _ext = os.path.splitext(f.filename)
-        if f != "" and f != None:
-            # try:
-            fext = str(_ext).lower().replace(".", "")
-            if fext == 'jpg' or fext == "png" or fext == "jpeg" or fext == "bmp":
-                mkdir_path(id + "/img/")
-                uploadurl = upload_path(id + "/img/" + _title + _ext)
-                f.save(uploadurl)
-                r_path = relative_path(id + "/img/" + _title + _ext)
-            else:
-                if fext == "css":
-                    mkdir_path(id + "/css/")
-                    uploadurl = upload_path(id + "/css/" + _title + _ext)
-                    f.save(uploadurl)
-                    r_path = relative_path(id + "/css/" + _title + _ext)
-                if fext == "js":
-                    mkdir_path(id + "/js/")
-                    uploadurl = upload_path(id + "/js/" + _title + _ext)
-                    f.save(uploadurl)
-                    r_path = relative_path(id + "/js/" + _title + _ext)
-                if fext == "html":
-                    mkdir_path(id)
-                    uploadurl = upload_path(id + "/" + _title + _ext)
-                    f.save(uploadurl)
-                    r_path = relative_path(id + "/" + _title + _ext)
-            insertinfo = {
-                # "_id": ObjectId(_id),
-                "name": _title + _ext,
-                "url": r_path,
-                "newsid": id,
-                "type": _ext,
-                "index": 0,
-                "status": 2
-            }
-            pro.update({"_id": ObjectId(_id)}, {"$set": insertinfo})
-            # 返回更新后的编号
-            nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
-            # except Exception, e:
-            #     return json.dumps({"status": e.message})
-            result = '{"url":"' + r_path + '","status":"' + str(
-                200) + '","name":"' + name + _ext + '","type":"' + _ext + '","id":"' + nid + '"}'
-            # return Response("jsonpCallback" + "(" + result + ")")
-            # return Response(result)
-            res = make_response(result)
-            res.headers['Access-Control-Allow-Origin'] = '*'
-            return res
+        file = pro.find_one({"_id": ObjectId(_id)})
+        fileHandle = open(os.path.dirname(__file__) + file["url"], "w")
+        fileHandle.write(content)
+        result = '{"status":"' + 200 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
     else:
-        return Response(json.dumps({"status": 400}))
+        result = '{"status":"' + 400 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
 
 
 # 删除
@@ -151,13 +107,29 @@ def zt_delete(id):
         rmdir_path(id)
         pro = db["File_upload"]
         pro.remove({"_id": ObjectId(id)})
-        result = '{"status":"' + str(200) + '","id":"'+id+'"}'
-        res = make_response("jsonpCallback1(" + result + ")")
-        # res = make_response(result)
-        res.headers['Access-Control-Allow-Origin'] = '*'
-        return res
+        result = '{"status":"' + str(200) + '","id":"' + id + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
     else:
-        return Response(json.dumps({"status": 400}))
+        result = '{"status":"' + 400 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
+
+
+# 获取文件内容
+@zt_page.route('/zt/get/<id>/', methods=['POST', 'GET'])
+def zt_get(id):
+    if request.method == "GET":
+        rmdir_path(id)
+        pro = db["File_upload"]
+        file = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
+        result = '{"status":"' + str(200) + '","file":"' + "[" + open(file).read() + "]" + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
+    else:
+        result = '{"status":"' + 400 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
 
 
 # 设置专题首页
@@ -172,11 +144,12 @@ def zt_index(id):
         else:
             pro.update({"_id": ObjectId(id)}, {"$set": {"index": 1}})
         result = '{"status":"' + str(200) + '"}'
-        res = make_response("jsonpCallback1(" + result + ")")
-        res.headers['Access-Control-Allow-Origin'] = '*'
-        return res
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
     else:
-        return Response(json.dumps({"status": 400}))
+        result = '{"status":"' + 400 + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
 
 
 # 文件上传的全路径
@@ -207,3 +180,10 @@ def rmdir_path(file_path):
             os.removedirs(path)
         except Exception, e:
             print e.message
+
+
+# response 返回
+def res_result(result):
+    res = make_response(result)
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    return res

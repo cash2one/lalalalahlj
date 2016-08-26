@@ -596,3 +596,8 @@ def ldj(id, page=2):
 def get_name(channel):
     name = db.Channel.find_one({"_id": ObjectId(channel)})["Name"]
     return name
+
+
+# @index_page.route('/404/')
+# def re_404():
+#     return render_template('404.html')

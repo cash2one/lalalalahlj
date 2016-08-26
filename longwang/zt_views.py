@@ -122,8 +122,24 @@ def zt_get(id):
     if request.method == "GET":
         rmdir_path(id)
         pro = db["File_upload"]
-        file = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
-        result = '{"status":"' + str(200) + '","file":"' + str(open(file).read())+ '"}'
+        url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
+        result = '{"status":"' + str(200) + '","file":"' + str(open(url).read()) + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
+    else:
+        result = '{"status":"' + str(400) + '"}'
+        res = "jsonpCallback1(" + result + ")"
+        return res_result(res)
+
+
+# 显示文件内容
+@zt_page.route('/zt/show/<id>/', methods=['POST', 'GET'])
+def zt_show(id):
+    if request.method == "GET":
+        rmdir_path(id)
+        pro = db["File_upload"]
+        url = os.path.dirname(__file__) + pro.find_one({"_id": ObjectId(id)})["url"]
+        result = '{"status":"' + str(200) + '","url":"' + url + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
     else:

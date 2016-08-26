@@ -3,7 +3,7 @@ import json
 import os
 import urllib
 
-# from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
@@ -49,9 +49,11 @@ def zt_add(id):
                     uploadurl = upload_path(id + "/" + _title + _ext)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
-                    # soup = BeautifulSoup(open(uploadurl).read())
-                    # if soup.original_encoding!="utf-8":
-                    #
+                    soup = BeautifulSoup(open(uploadurl).read())
+                    if str(soup.original_encoding) != 'utf-8':
+                        f = open(uploadurl)
+                        for i in f.readline():
+                            i.decode('gbk').encode('utf-8')
             insertinfo = {
                 "name": _title + _ext,
                 "url": r_path.replace("zt", "zuanti"),

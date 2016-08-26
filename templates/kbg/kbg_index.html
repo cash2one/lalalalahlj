@@ -277,14 +277,14 @@
         <div class="gsp_right_deet" >
           <ul class="deet_pic">
               {% for i in jrrp_2 %}
-        	<li class="deet_pic_tit"><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
-        	<li class="deet_pic_img"><a href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="140" height="105" /></a></li>
+        	<li class="deet_pic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+        	<li class="deet_pic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="140" height="105" /></a></li>
             <li class="deet_pic_txt"><span>{{ i.summary }}</span></li>
               {% endfor %}
           </ul>
           <ul class="deet_list">
               {% for i in jrrp_5 %}
-            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
               {% endfor %}
           </ul>
         </div>

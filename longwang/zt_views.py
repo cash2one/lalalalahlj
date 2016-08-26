@@ -85,8 +85,8 @@ def zt_add(id):
 @zt_page.route('/zt/modify/', methods=['POST', 'GET'])
 def zt_modify():
     if request.method == "POST":
-        _id = request.POST.get("id")
-        content = request.POST.get("content")
+        _id = request.values.get("id")
+        content = request.values.get("content")
         pro = db["File_upload"]
         file = pro.find_one({"_id": ObjectId(_id)})
         fileHandle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (

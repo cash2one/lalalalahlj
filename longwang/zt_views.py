@@ -1,6 +1,9 @@
 # coding=utf-8
 import json
 import os
+import urllib
+
+# from bs4 import BeautifulSoup
 from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
@@ -15,7 +18,10 @@ db = conn.mongo_conn()
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
     # url = upload_path("1.html")
-
+    # soup = BeautifulSoup(open(url,"r").read())
+    # url= urllib.urlopen("http://www.baidu.com").read()
+    # soup = BeautifulSoup(url)
+    # print soup.original_encoding
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
@@ -36,25 +42,16 @@ def zt_add(id):
                 if fext == "css":
                     mkdir_path(id + "/css/")
                     uploadurl = upload_path(id + "/css/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/css/" + _title + _ext)
                 if fext == "js":
                     mkdir_path(id + "/js/")
                     uploadurl = upload_path(id + "/js/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
@@ -110,25 +107,16 @@ def zt_modify(id, _id):
                 if fext == "css":
                     mkdir_path(id + "/css/")
                     uploadurl = upload_path(id + "/css/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/css/" + _title + _ext)
                 if fext == "js":
                     mkdir_path(id + "/js/")
                     uploadurl = upload_path(id + "/js/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    # destination = open(uploadurl, 'wb+')
-                    # for chunk in f.chunks():
-                    #     destination.write(chunk)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
             insertinfo = {
@@ -179,7 +167,7 @@ def zt_index(id):
         pro = db["File_upload"]
         pro.update({"_id": ObjectId(id)}, {"index": 1})
         result = '{"status":"' + str(200) + '"}'
-        res = make_response(result)
+        res = make_response("jsonpCallback1(["+result+"])")
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
     else:

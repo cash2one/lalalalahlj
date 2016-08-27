@@ -86,7 +86,7 @@ def index():
 
 # 二级频道列表
 @index_page.route('/list/<id>/')
-@index_page.route('/list/<id>/<page>')
+@index_page.route('/list/<id>/<page>/')
 def s_list(id, page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换图

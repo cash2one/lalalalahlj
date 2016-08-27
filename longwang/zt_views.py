@@ -65,7 +65,7 @@ def zt_add(id):
             }
             file = pro.find({"newsid": id, "url": r_path})
             # 判断数据库中是否存在  不存在时插入
-            if file == None:
+            if file.count() == 0:
                 pro.insert(insertinfo)
             else:  # 覆盖的状态改为1
                 pro.update(

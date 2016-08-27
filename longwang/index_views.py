@@ -86,11 +86,20 @@ def index():
 
 # 二级频道列表
 @index_page.route('/list/<id>/')
-def s_list(id):
+@index_page.route('/list/<id>/<page>')
+def s_list(id, page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换图
     lht = get_head_image(ObjectId(channel), 5)
-    c_list = search_news_db([ObjectId(channel)], pre_page)
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    _news_list=[]
+    for i in news_list:
+        _news_list.append(get_mongodb_dict(i))
+    pagenums, pagebar_html = pager(str(id), int(page), count, 1).show_page()
     # 频道
     detail = db.Channel.find_one({"numid": int(id)})
     # 新闻排行
@@ -122,13 +131,14 @@ def s_list(id):
     name_list = []
     for i in menu_list:
         name_list.append(i)
-    return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=c_list,
+    return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
-                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic)
+                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,
+                           pagebar_html=pagebar_html)
 
 
 # 二级频道分页
-@index_page.route('/list/<id>/<page>')
+# @index_page.route('/list/<id>/<page>')
 def s_list_page(id, page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}

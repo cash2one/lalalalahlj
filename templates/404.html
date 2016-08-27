@@ -5,6 +5,15 @@
 <title>404</title>
 <link href="/static/css/css.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#go").click(function(){
+            window.location.href='/';
+        });
+        });
+
+    </script>
 </head>
 
 <body style="background-color:#f3f2ee;">
@@ -13,7 +22,7 @@
     <div class="notfound404"></div>
     <div class="option404">
     	<p>您还可以：</p>
-        <input type="button" value="返回首页" onclick="window.open('/')">
+        <input type="button" value="返回首页" id="go" >
     </div>
 </div>
 </body>

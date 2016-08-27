@@ -8,6 +8,15 @@
                 </div>
                 <div class="seach_r">
                     <input name="" type="button" onclick="s_method()">
+                     <script>
+            $(function(){
+                $("#keyword").on("keydown",function(e){
+                    if(e.keyCode==13){
+                        s_method();
+                    }
+                })
+            })
+        </script>
                 </div>
             </div>
             {#            <div class="header_nav">#}

@@ -8,7 +8,7 @@ import pymongo
 from flask import Blueprint, render_template, abort
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
-    get_mongodb_dict,get_image_news
+    get_mongodb_dict, get_image_news
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -151,8 +151,8 @@ def s_list_page(id, page=1):
 def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id), "Status": 4})
-    if detail==None:
-        abort(404)
+    if detail == None:
+        return render_template("404.html")
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
@@ -163,6 +163,12 @@ def detail(id, page=1):
              "Guideimage": {"$ne": ""}}).sort(
             "Published", pymongo.DESCENDING).limit(20)
         return render_template('picview.html', detail=detail, wqhg=wqhg)
+    if detail["newstype"] == 3:
+        zt = db.File_upload.find_one({"newsid": id, "index": 1})
+        if zt == None:
+            return render_template("404.html")
+        else:
+            return render_template(zt["url"])
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻
@@ -324,10 +330,10 @@ def set_menu():
 @index_page.route('/get_hot/')
 def search_hot_redis():
     string = ""
-    hot=db.Hot_Select.find().sort("orderno")
+    hot = db.Hot_Select.find().sort("orderno")
     for i in hot:
-         string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-         i["name"], i["name"])
+        string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
+            i["name"], i["name"])
     return json.dumps({"key": string})
 
 
@@ -598,6 +604,6 @@ def get_name(channel):
     return name
 
 
-# @index_page.route('/404/')
-# def re_404():
-#     return render_template('404.html')
+    # @index_page.route('/404/')
+    # def re_404():
+    #     return render_template('404.html')

@@ -5,8 +5,17 @@
             <input name="" type="text" id="keyword" value="{{ keyword }}">
         </div>
         <div class="seach_r">
-            <input name="" type="button" onclick="s_method()">
+            <input name="" type="button" onclick="s_method()" >
         </div>
+        <script>
+            $(function(){
+                $("#keyword").on("keydown",function(e){
+                    if(e.keyCode==13){
+                        s_method();
+                    }
+                })
+            })
+        </script>
     </div>
 {#    <div class="header_nav">#}
 {#        <ul class="f14">#}

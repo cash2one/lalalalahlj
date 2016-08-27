@@ -99,7 +99,7 @@ def s_list(id, page=1):
     _news_list=[]
     for i in news_list:
         _news_list.append(get_mongodb_dict(i))
-    pagenums, pagebar_html = pager(str(id), int(page), count, 1).show_page()
+    pagenums, pagebar_html = pager(str(id), int(page), count, pre_page).show_page()
     # 频道
     detail = db.Channel.find_one({"numid": int(id)})
     # 新闻排行

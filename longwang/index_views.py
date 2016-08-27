@@ -168,7 +168,7 @@ def detail(id, page=1):
         if zt == None:
             return render_template("404.html")
         else:
-            return render_template(zt["url"])
+            return render_template(str(zt["url"]).replace("zuanti", "zt"))
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻

@@ -96,10 +96,10 @@ def s_list(id, page=1):
     count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
         pre_page)
-    _news_list=[]
+    _news_list = []
     for i in news_list:
         _news_list.append(get_mongodb_dict(i))
-    pagenums, pagebar_html = pager(str(id), int(page), count, pre_page).show_page()
+    pagenums, pagebar_html = pager("/" + str(id), int(page), count, pre_page).show_page()
     # 频道
     detail = db.Channel.find_one({"numid": int(id)})
     # 新闻排行
@@ -315,27 +315,6 @@ def set_menu():
     return "success"
 
 
-# # 热词获取
-# @index_page.route('/get_hot/')
-# def search_hot_redis():
-#     string = ""
-#     count = 0
-#     object_list = db_redis.lrange('hot_list', 0, 200)
-#     for i in object_list:
-#         i = str(i).replace('\n', '').replace('\r', '')
-#         detail = eval(i)
-#         if len(detail["title"]) < 24:
-#             if count <= 8:
-#                 count += 1
-#                 string += "<li><a href=\"javascript:void(0);\" onclick=\"js_method(encodeURI('%s'))\" style=\"cursor: pointer;\" target=\"_blank\">%s</a></li>" % (
-#                     detail["title"], detail["title"])
-#             else:
-#                 pass
-#         else:
-#             pass
-#     return json.dumps({"key": string})
-
-
 # 热词获取
 @index_page.route('/get_hot/')
 def search_hot_redis():
@@ -412,9 +391,9 @@ def is_sift(page=1):
 
 
 # 一级页面首页（除侃八卦和品深度）
-
 @index_page.route('/fllist/<id>/')
-def front_page(id):
+@index_page.route('/fllist/<id>/<page>')
+def front_page(id, page=1):
     channel_raw = db.Channel.find_one({"numid": int(id)})
     channel = channel_raw["_id"]
     name = channel_raw["Name"]
@@ -423,8 +402,19 @@ def front_page(id):
     channel_list = []
     for i in channel_list_raw:
         channel_list.append(i["_id"])
-    news_list = search_news_db(channel_list, 9, 1)
+    condition = {"Channel": {"$in": channel_list}, "Status": 4}
+    count = db.News.find(condition).count()
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    _news_list = []
+    for i in news_list:
+        _news_list.append(get_mongodb_dict(i))
+    pagenums, pagebar_html = pager("/index/" + str(id), int(page), count, pre_page).show_page()
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
+    # 今日热评图片1
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # 今日热评文字3
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
@@ -454,7 +444,7 @@ def front_page(id):
     name_list = []
     for i in menu_list:
         name_list.append(i)
-    return render_template('front_list.html', news_list=news_list,
+    return render_template('front_list.html', news_list=_news_list,
                            detail=detail,
                            hours=hours,
                            zb=zb,
@@ -463,17 +453,20 @@ def front_page(id):
                            name=name,
                            zt_images=zt_images,
                            lht=lht,
+                           jrrp_2=jrrp_2,
+                           jrrp_5=jrrp_5,
                            zt=zt,
                            cid=ObjectId(channel),
                            rmtj=rmtj,
                            menu_list=menu_list,
                            name_list=name_list,
                            ys=ys,
-                           pic=pic
+                           pic=pic,
+                           pagebar_html=pagebar_html
                            )
 
 
-@index_page.route('/fllist/<channel>/<page>/')
+# @index_page.route('/fllist/<channel>/<page>/')
 def news_list_page(channel, page=1):
     channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
     channel_list = []

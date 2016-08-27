@@ -62,18 +62,19 @@ def zt_add(id):
                 "index": 0,
                 "status": 0
             }
-            count = pro.find({"newsid": id, "url": r_path}).count()
+            file = pro.find({"newsid": id, "url": r_path.replace("zt", "zuanti")})
             # 判断数据库中是否存在  不存在时插入
-            if count == 0:
+            if file == None:
                 pro.insert(insertinfo)
             else:  # 覆盖的状态改为1
-                pro.update({"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path})["_id"])},
-                           {"$set": {"status": 1}})
+                pro.update(
+                    {"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path.replace("zt", "zuanti")})["_id"])},
+                    {"$set": {"status": 1}})
             # 返回更新后的编号
             nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:
             #     return json.dumps({"status": e.message})
-            result = '{"url":"' + r_path + '","status":"' + str(
+            result = '{"url":"' + r_path.replace("zt", "zuanti") + '","status":"' + str(
                 200) + '","name":"' + name + _ext + '","type":"' + _ext + '","id":"' + nid + '"}'
             res = "jsonpCallback1(" + result + ")"
             return res_result(res)

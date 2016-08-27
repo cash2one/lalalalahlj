@@ -392,7 +392,7 @@ def is_sift(page=1):
 
 # 一级页面首页（除侃八卦和品深度）
 @index_page.route('/fllist/<id>/')
-@index_page.route('/fllist/<id>/<page>')
+@index_page.route('/fllist/<id>/<page>/')
 def front_page(id, page=1):
     channel_raw = db.Channel.find_one({"numid": int(id)})
     channel = channel_raw["_id"]

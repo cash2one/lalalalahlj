@@ -54,27 +54,28 @@ def zt_add(id):
                         f = open(uploadurl)
                         for i in f.readline():
                             i.decode('gbk').encode('utf-8')
+            r_path = r_path.replace("zt", "zuanti")
             insertinfo = {
                 "name": _title + _ext,
-                "url": r_path.replace("zt", "zuanti"),
+                "url": r_path,
                 "newsid": id,
                 "type": _ext,
                 "index": 0,
                 "status": 0
             }
-            file = pro.find({"newsid": id, "url": r_path.replace("zt", "zuanti")})
+            file = pro.find({"newsid": id, "url": r_path})
             # 判断数据库中是否存在  不存在时插入
             if file == None:
                 pro.insert(insertinfo)
             else:  # 覆盖的状态改为1
                 pro.update(
-                    {"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path.replace("zt", "zuanti")})["_id"])},
+                    {"_id": ObjectId(pro.find_one({"newsid": id, "url": r_path})["_id"])},
                     {"$set": {"status": 1}})
             # 返回更新后的编号
             nid = str(pro.find_one({"newsid": id, "url": r_path})["_id"])
             # except Exception, e:
             #     return json.dumps({"status": e.message})
-            result = '{"url":"' + r_path.replace("zt", "zuanti") + '","status":"' + str(
+            result = '{"url":"' + r_path + '","status":"' + str(
                 200) + '","name":"' + name + _ext + '","type":"' + _ext + '","id":"' + nid + '"}'
             res = "jsonpCallback1(" + result + ")"
             return res_result(res)

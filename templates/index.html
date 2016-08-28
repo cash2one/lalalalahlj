@@ -151,6 +151,7 @@
                 var closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
                     var page = $("#page").val();
+                    if (parseInt(page) <= 20) {
                     $.ajaxSettings.async = false;
                     $.getJSON("/issift/" + page, function (data) {
                         {#                 items=data.datalist;#}
@@ -163,20 +164,9 @@
                             setTimeout(function () {
                                 {#                            $firstTen.css('opacity', 1);#}
                             }, 300);
-                            // Get the first then items from the grid, clone them, and add them to the bottom of the grid
-                            {#          var $items = $('li', $container),#}
-                            {#              $firstTen = $items.slice(0, 10).clone().css('opacity', 0);#}
-                            {#          $container.append($firstTen);#}
-                            {##}
-                            {#          wookmark.initItems();#}
-                            {#          wookmark.layout(true, function () {#}
-                            {#            // Fade in items after layout#}
-                            {#            setTimeout(function() {#}
-                            {#              $firstTen.css('opacity', 1);#}
-                            {#            }, 300);#}
                         });
                     })
-
+                }
 
                 }
             };

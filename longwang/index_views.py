@@ -5,14 +5,13 @@ from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict, get_image_news
 from bson import ObjectId
 
 db = conn.mongo_conn()
-db_redis = conn.redis_conn()
 
 index_page = Blueprint('index_page', __name__, template_folder='templates')
 

@@ -9,8 +9,6 @@ from longwang.mongodb_news import get_image_news, search_news_db, get_head_image
 from bson import ObjectId
 
 db = conn.mongo_conn()
-db_redis = conn.redis_conn()
-
 psd_page = Blueprint('psd_page', __name__, template_folder='templates')
 
 pre_page = 10

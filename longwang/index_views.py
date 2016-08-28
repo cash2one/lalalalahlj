@@ -110,6 +110,10 @@ def s_list(id, page=1):
     # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
+    # 今日热评图片1
+    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+    # 今日热评文字3
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     # 热门图集
     rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
     biaoti = ""
@@ -132,7 +136,7 @@ def s_list(id, page=1):
         name_list.append(i)
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
-                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,
+                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,jrrp_5=jrrp_5,jrrp_2=jrrp_2,
                            pagebar_html=pagebar_html)
 
 

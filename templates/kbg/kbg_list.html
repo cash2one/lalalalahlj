@@ -2,270 +2,278 @@
 {% block title %}{{ detail.Name }}-侃八卦-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-{#    <script>#}
-{##}
-{#        function loading(channel, page) {#}
-{#            $.getJSON('/kbg/' + channel + '/' + page, function (result) {#}
-{#                if (page == 1) {#}
-{#                    $('#ul_content').html(result);#}
-{#                } else {#}
-{#                    $('#ul_content').append(result);#}
-{#                }#}
-{#                $("#page").val(parseInt(page) + 1);#}
-{#            });#}
-{#        }#}
-{#        function go_to(channel) {#}
-{#            var page = $("#page").val();#}
-{#            loading(channel, page);#}
-{#        }#}
-{#        ;#}
-{#    </script>#}
-    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
-    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+    {#    <script>#}
+    {##}
+    {#        function loading(channel, page) {#}
+    {#            $.getJSON('/kbg/' + channel + '/' + page, function (result) {#}
+    {#                if (page == 1) {#}
+    {#                    $('#ul_content').html(result);#}
+    {#                } else {#}
+    {#                    $('#ul_content').append(result);#}
+    {#                }#}
+    {#                $("#page").val(parseInt(page) + 1);#}
+    {#            });#}
+    {#        }#}
+    {#        function go_to(channel) {#}
+    {#            var page = $("#page").val();#}
+    {#            loading(channel, page);#}
+    {#        }#}
+    {#        ;#}
+    {#    </script>#}
+    {#    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>#}
+    {#    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>#}
 {% endblock %}
 {% block middle %}
-    <!---------left-------->
-    <!---------轮播图-------->
-    <div class="gsp_con_l">
-{#        <div class="gsp_flash">#}
-{#            <div class="gsp_foucebox" style="margin:0 auto">#}
-{#                <div id="fsD1" class="focus">#}
-{#                    <div id="D1pic1" class="fPic">#}
-{#                        {% for i in lht %}#}
-{#                            <div class="fcon" style="display: none;">#}
-{#                                <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"#}
-{#                                                                                   style="opacity: 1; "></a>#}
-{#                                <span class="shadow"><a target="_blank"#}
-{#                                                        href="/d/{{ i._id }}.html">{{ i.title }}</a></span>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{#                    </div>#}
-{#                    <div class="fbg">#}
-{#                        <div class="D1fBt" id="D1fBt">#}
-{#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>#}
-{#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>#}
-{#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>#}
-{#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <span class="prev"></span>#}
-{#                    <span class="next"></span>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-        <!---------w950新闻分类-------->
-        <div class="list_tlt1">
-            <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
-            <span>{{ detail.Name }}</span>
-        </div>
-        <!---------w950新闻分类-------->
-        <div class="gsp2_list_news">
-            <ul class="gsp2_list_n04" id="ul_news">
-                {% for i in news_list %}
-                    <li>
-                        <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img
-                                src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
-                        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
-                        <h5>{{ i.summary }}</h5>
-                        <h6>{{ i.publish_time }}</h6>
-                    </li>
-                {% endfor %}
+<!---------left-------->
+<!---------轮播图-------->
+<div class="gsp_con_l">
+    {#        <div class="gsp_flash">#}
+    {#            <div class="gsp_foucebox" style="margin:0 auto">#}
+    {#                <div id="fsD1" class="focus">#}
+    {#                    <div id="D1pic1" class="fPic">#}
+    {#                        {% for i in lht %}#}
+    {#                            <div class="fcon" style="display: none;">#}
+    {#                                <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"#}
+    {#                                                                                   style="opacity: 1; "></a>#}
+    {#                                <span class="shadow"><a target="_blank"#}
+    {#                                                        href="/d/{{ i._id }}.html">{{ i.title }}</a></span>#}
+    {#                            </div>#}
+    {#                        {% endfor %}#}
+    {#                    </div>#}
+    {#                    <div class="fbg">#}
+    {#                        <div class="D1fBt" id="D1fBt">#}
+    {#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>#}
+    {#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>#}
+    {#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>#}
+    {#                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <span class="prev"></span>#}
+    {#                    <span class="next"></span>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    <!---------w950新闻分类-------->
+    <div class="list_tlt1">
+        <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
+        <span>{{ detail.Name }}</span>
+    </div>
+    <!---------w950新闻分类-------->
+    <div class="gsp2_list_news">
+        <ul class="gsp2_list_n04" id="ul_news">
+            {% for i in news_list %}
+                <li>
+                    <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img
+                            src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
+                    <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
+                    <h5>{{ i.summary }}</h5>
+                    <h6>{{ i.publish_time }}</h6>
+                </li>
+            {% endfor %}
 
-            </ul>
+        </ul>
+    </div>
+    <div class="content_l ft30">
+        <div class="jogger">
+            {% autoescape false %}
+            {{ pagebar_html }}
+            {% endautoescape %}
         </div>
+    </div>
+    {#        <div class="gsp_list_news_jz" onclick="return go_to('{{ cid }}');">点击浏览更多文章</div>#}
+    {#        <input type="hidden" id="page" value="2">#}
+</div>
 
-{#        <div class="gsp_list_news_jz" onclick="return go_to('{{ cid }}');">点击浏览更多文章</div>#}
-        <input type="hidden" id="page" value="2">
+<!---------right-------->
+<div class="gsp_con_r">
+
+
+    <!----热门图集----->
+    <div class="gsp2_con_r_main">
+        <div class="gsp2_right_tlt">
+            <p><a href="/list/33" target="_blank">热门图集</a></p>
+        </div>
+        <div class="gsp2_con_r_main">
+            {% for i in rmtj %}
+                {% if loop.index0==0 %}
+                    <div class="photo2_list">
+                        <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=300&h=110"
+                                                                              width="300"
+                                                                              height="110"/></a></p>
+                        <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="gsp2_right_list" style="margin-top:12px;">
+                <ul>
+                    {% for i in rmtj %}
+                        {% if loop.index0>0 %}
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <!---------right-------->
-    <div class="gsp_con_r">
-
-
-        <!----热门图集----->
+    <!----新闻排行----->
+    <div class="gsp2_con_r_main ft30">
+        <div class="gsp2_right_tlt">
+            <p>
+                {#                    <a href="#">#}
+                新闻排行
+                {#                    </a>#}
+            </p>
+        </div>
         <div class="gsp2_con_r_main">
-            <div class="gsp2_right_tlt">
-                <p><a href="/list/33" target="_blank">热门图集</a></p>
-            </div>
-            <div class="gsp2_con_r_main">
-                {% for i in rmtj %}
-                    {% if loop.index0==0 %}
-                        <div class="photo2_list">
-                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=300&h=110" width="300"
-                                                                  height="110"/></a></p>
-                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                <div class="gsp2_right_list" style="margin-top:12px;">
-                    <ul>
-                        {% for i in rmtj %}
-                            {% if loop.index0>0 %}
-                                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
-                            {% endif %}
-                        {% endfor %}
+            <div class="gsp2_notice" style="margin:0 auto">
+                <div class="tab2-hd">
+                    <ul class="tab2-nav">
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a>24小时</a>
+                            {#                  </a>#}
+                        </li>
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a> 周榜</a>
+                            {#                  </a>#}
+                        </li>
+                        <li>
+                            {#                  <a href="#" target="_blank">#}
+                            <a>月榜</a>
+                            {#                  </a>#}
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-
-        <!----新闻排行----->
-        <div class="gsp2_con_r_main ft30">
-            <div class="gsp2_right_tlt">
-                <p>
-                    {#                    <a href="#">#}
-                    新闻排行
-                    {#                    </a>#}
-                </p>
-            </div>
-            <div class="gsp2_con_r_main">
-                <div class="gsp2_notice" style="margin:0 auto">
-                    <div class="tab2-hd">
-                        <ul class="tab2-nav">
-                            <li>
-                                {#                  <a href="#" target="_blank">#}
-                                <a>24小时</a>
-                                {#                  </a>#}
-                            </li>
-                            <li>
-                                {#                  <a href="#" target="_blank">#}
-                                <a> 周榜</a>
-                                {#                  </a>#}
-                            </li>
-                            <li>
-                                {#                  <a href="#" target="_blank">#}
-                                <a>月榜</a>
-                                {#                  </a>#}
-                            </li>
+                <div class="tab2-bd">
+                    <div class="tab2-pal">
+                        <ul>
+                            {% for i in hours %}
+                                <li>
+                                    <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
-                    <div class="tab2-bd">
-                        <div class="tab2-pal">
-                            <ul>
-                                {% for i in hours %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab-pal" style=" display: none">
-                            <ul>
-                                {% for i in zb %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab-pal" style=" display: none">
-                            <ul>
-                                {% for i in yb %}
-                                    <li>
-                                        <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                    <div class="tab-pal" style=" display: none">
+                        <ul>
+                            {% for i in zb %}
+                                <li>
+                                    <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="tab-pal" style=" display: none">
+                        <ul>
+                            {% for i in yb %}
+                                <li>
+                                    <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!----新闻热搜----->
-        <div class="gsp_con_r_main ft30">
-      <div class="gsp_right_tlt">
-        <p>今日热评</p>
-      </div>
-      <div class="gsp_con_r_main">
-        <div class="gsp_right_deet" >
-          <ul class="deet_pic">
-              {% for i in jrrp_2 %}
-        	<li class="deet_pic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
-        	<li class="deet_pic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="140" height="105" /></a></li>
-            <li class="deet_pic_txt"><span>{{ i.summary }}</span></li>
-              {% endfor %}
-          </ul>
-          <ul class="deet_list">
-              {% for i in jrrp_5 %}
-            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
-              {% endfor %}
-          </ul>
-        </div>
-      </div>
     </div>
 
-        <!----爆料台----->
-        <div class="gsp2_con_r_main ft30">
-            <div class="gsp2_right_tlt">
-                <p><a href="/kbg/46.html" target="_blank">爆料台</a></p>
-            </div>
-            <div class="gsp2_con_r_main">
-                <div class="gsp2_right_deet">
-                    <ul class="deet2_list">
-                        {% for i in blt %}
-                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
+
+    <!----新闻热搜----->
+    <div class="gsp_con_r_main ft30">
+        <div class="gsp_right_tlt">
+            <p>今日热评</p>
+        </div>
+        <div class="gsp_con_r_main">
+            <div class="gsp_right_deet">
+                <ul class="deet_pic">
+                    {% for i in jrrp_2 %}
+                        <li class="deet_pic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                        <li class="deet_pic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img
+                                src="{{ i.guide_image }}" width="140" height="105"/></a></li>
+                        <li class="deet_pic_txt"><span>{{ i.summary }}</span></li>
+                    {% endfor %}
+                </ul>
+                <ul class="deet_list">
+                    {% for i in jrrp_5 %}
+                        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-
     </div>
-    {#</div>#}
+
+    <!----爆料台----->
+    <div class="gsp2_con_r_main ft30">
+        <div class="gsp2_right_tlt">
+            <p><a href="/kbg/46.html" target="_blank">爆料台</a></p>
+        </div>
+        <div class="gsp2_con_r_main">
+            <div class="gsp2_right_deet">
+                <ul class="deet2_list">
+                    {% for i in blt %}
+                        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+{#</div>#}
 
 {% endblock %}
 {% block footer %}
     {% include 'master_page/footer_page.html' %}
-    <script type="text/javascript">
-        (function ($) {
-            var wookmark,
-                    container = '#ul_news',
-                    $container = $(container),
-                    $window = $(window),
-                    $document = $(document);
-            imagesLoaded(container, function () {
-                wookmark = new Wookmark(container, {
-                    offset: 0, // Optional, the distance between grid items
-                    itemWidth: 870 // Optional, the width of a grid item
-                });
-            });
-
-            function onScroll() {
-                // Check if we're within 100 pixels of the bottom edge of the broser window.
-                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
-                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
-                if (closeToBottom) {
-                    var page = $("#page").val();
-                    if (parseInt(page) <= 20) {
-                    $.ajaxSettings.async = false;
-                    $.getJSON('/kbg/{{ detail.numid }}/' + page, function (result) {
-                        var $firstTen = jQuery.parseHTML(result);
-                        $container.append($firstTen);
-                        $("#page").val(parseInt(page) + 1);
-                        wookmark.initItems();
-                        wookmark.layout(true, function () {
-                            // Fade in items after layout
-                            setTimeout(function () {
-                                {#                            $firstTen.css('opacity', 1);#}
-                            }, 300);
-
-                        });
-                    })
-
-                }
-                }
-            };
-
-            // Capture scroll event.
-            $window.on('scroll.wookmark', onScroll);
-
-        })(jQuery);
-
-
-    </script>
+    {#    <script type="text/javascript">#}
+    {#        (function ($) {#}
+    {#            var wookmark,#}
+    {#                    container = '#ul_news',#}
+    {#                    $container = $(container),#}
+    {#                    $window = $(window),#}
+    {#                    $document = $(document);#}
+    {#            imagesLoaded(container, function () {#}
+    {#                wookmark = new Wookmark(container, {#}
+    {#                    offset: 0, // Optional, the distance between grid items#}
+    {#                    itemWidth: 870 // Optional, the width of a grid item#}
+    {#                });#}
+    {#            });#}
+    {##}
+    {#            function onScroll() {#}
+    {#                // Check if we're within 100 pixels of the bottom edge of the broser window.#}
+    {#                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix#}
+    {#                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);#}
+    {#                if (closeToBottom) {#}
+    {#                    var page = $("#page").val();#}
+    {#                    if (parseInt(page) <= 20) {#}
+    {#                    $.ajaxSettings.async = false;#}
+    {#                    $.getJSON('/kbg/{{ detail.numid }}/' + page, function (result) {#}
+    {#                        var $firstTen = jQuery.parseHTML(result);#}
+    {#                        $container.append($firstTen);#}
+    {#                        $("#page").val(parseInt(page) + 1);#}
+    {#                        wookmark.initItems();#}
+    {#                        wookmark.layout(true, function () {#}
+    {#                            // Fade in items after layout#}
+    {#                            setTimeout(function () {#}
+    {#                            $firstTen.css('opacity', 1);#}
+    {#                            }, 300);#}
+    {##}
+    {#                        });#}
+    {#                    })#}
+    {##}
+    {#                }#}
+    {#                }#}
+    {#            };#}
+    {##}
+    {#            // Capture scroll event.#}
+    {#            $window.on('scroll.wookmark', onScroll);#}
+    {##}
+    {#        })(jQuery);#}
+    {##}
+    {##}
+    {#    </script>#}
 {% endblock %}

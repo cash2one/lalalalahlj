@@ -5,8 +5,11 @@ import json
 import pymongo
 from flask import Blueprint, render_template
 from connect import conn
-from longwang.mongodb_news import get_image_news, search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db
+from longwang.mongodb_news import get_image_news, search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
+    get_mongodb_dict
 from bson import ObjectId
+
+from longwang.pager.pager import pager
 
 db = conn.mongo_conn()
 psd_page = Blueprint('psd_page', __name__, template_folder='templates')
@@ -99,12 +102,20 @@ def kbg_list(id, page=1):
 
 # 二级频道列表
 @psd_page.route('/psd/list/<id>/')
-def psd_list(id):
+@psd_page.route('/psd/list/<id>/<page>/')
+def psd_list(id,page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换头图
     lht = get_head_image(ObjectId(channel), 5)
     # 新闻列表
-    c_list = search_news_db([ObjectId(channel)], pre_page)
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    _news_list = []
+    for i in news_list:
+        _news_list.append(get_mongodb_dict(i))
+    pagenums, pagebar_html = pager("/psd/" + str(id), int(page), count, pre_page).show_page()
     # 今日热评文字1
     # jrrp_1 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评图片1
@@ -131,7 +142,7 @@ def psd_list(id):
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
     # name = get_name(channel)
     return render_template('psd/psd_list.html', lht=lht,
-                           c_list=c_list,
+                           c_list=_news_list,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
                            djsj=djsj,
@@ -143,7 +154,8 @@ def psd_list(id):
                            zt_images=zt_images,
                            detail=detail,
                            menu=menu1,
-                           cid=ObjectId(channel)
+                           cid=ObjectId(channel),
+                           pagebar_html=pagebar_html
                            )
 
 

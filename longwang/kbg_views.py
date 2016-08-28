@@ -9,6 +9,8 @@ from longwang.mongodb_news import search_news_db, get_head_image, image_server, 
     get_mongodb_dict,get_image_news
 from bson import ObjectId
 
+from longwang.pager.pager import pager
+
 db = conn.mongo_conn()
 
 kbg_page = Blueprint('kbg_page', __name__, template_folder='templates')
@@ -95,11 +97,19 @@ def kbg_list(id, page=1):
 
 # 二级频道列表
 @kbg_page.route('/kbg/list/<id>/')
-def kbg_list_index(id):
+@kbg_page.route('/kbg/list/<id>/<page>/')
+def kbg_list_index(id,page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     # 轮换图
     lht = get_head_image(ObjectId(channel), 4)
-    news_list = search_news_db([ObjectId(channel)], pre_page)
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
+        pre_page)
+    _news_list = []
+    for i in news_list:
+        _news_list.append(get_mongodb_dict(i))
+    pagenums, pagebar_html = pager("/kbg/" + str(id), int(page), count, pre_page).show_page()
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
@@ -115,9 +125,9 @@ def kbg_list_index(id):
     # 今日热评文字3
     jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
     detail = db.Channel.find_one({"_id": ObjectId(channel)})
-    return render_template('kbg/kbg_list.html', news_list=news_list, lht=lht, hours=hours, zb=zb, yb=yb,
+    return render_template('kbg/kbg_list.html', news_list=_news_list, lht=lht, hours=hours, zb=zb, yb=yb,
                            cid=ObjectId(channel),
                            menu=menu1, blt=blt, rmtj=rmtj, detail=detail,
                            jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5
+                           jrrp_5=jrrp_5,pagebar_html=pagebar_html
                            )

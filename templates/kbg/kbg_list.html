@@ -65,7 +65,7 @@
                     <li>
                         <p {% if i.guide_image=="" %}style="display: none" {% endif %}><img
                                 src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></p>
-                        <h2><a href="/d/{{ i._id }}.html">{{ i.title }}</a></h2>
+                        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
                     </li>
@@ -85,15 +85,15 @@
         <!----热门图集----->
         <div class="gsp2_con_r_main">
             <div class="gsp2_right_tlt">
-                <p><a href="/list/33">热门图集</a></p>
+                <p><a href="/list/33" target="_blank">热门图集</a></p>
             </div>
             <div class="gsp2_con_r_main">
                 {% for i in rmtj %}
                     {% if loop.index0==0 %}
                         <div class="photo2_list">
-                            <p><a href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}?w=300&h=110" width="300"
+                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=300&h=110" width="300"
                                                                   height="110"/></a></p>
-                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html">{{ i.title }}</a></h3>
+                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -101,7 +101,7 @@
                     <ul>
                         {% for i in rmtj %}
                             {% if loop.index0>0 %}
-                                <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>
@@ -202,13 +202,13 @@
         <!----爆料台----->
         <div class="gsp2_con_r_main ft30">
             <div class="gsp2_right_tlt">
-                <p><a href="/kbg/46.html">爆料台</a></p>
+                <p><a href="/kbg/46.html" target="_blank">爆料台</a></p>
             </div>
             <div class="gsp2_con_r_main">
                 <div class="gsp2_right_deet">
                     <ul class="deet2_list">
                         {% for i in blt %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

@@ -115,13 +115,13 @@
                     {% endfor %}
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="/kbg/47.html">热点影评</a></p>
+                            <p><a href="/kbg/47.html" target="_blank">热点影评</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">
                                 <ul>
                                     {% for i in rdyp %}
-                                        <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                                        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                                     {% endfor %}
 
                                 </ul>
@@ -130,13 +130,13 @@
                     </div>
                     <div class="film_con_r_main fl20">
                         <div class="film_right_tlt">
-                            <p><a href="/kbg/48.html">本地影讯</a></p>
+                            <p><a href="/kbg/48.html" target="_blank">本地影讯</a></p>
                         </div>
                         <div class="film_con_r_main">
                             <div class="film_right_list">
                                 <ul>
                                     {% for i in bdyx %}
-                                        <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                                        <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -178,7 +178,7 @@
                         <p {% if i.guide_image=="" %}style="display: none" {% endif %}><a href="/d/{{ i._id }}.html"
                                                                                           target="_blank"><img
                                 src="{{ i.guide_image }}?w=260&h=170" width="260" height="170"/></a></p>
-                        <h2><a href="/d/{{ i._id }}.html">{{ i.title }}</a></h2>
+                        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                         <h5>{{ i.summary }}</h5>
                         <h6>{{ i.publish_time }}</h6>
                     </li>
@@ -201,7 +201,7 @@
         <!----爆料台----->
         <div class="gsp_con_r_main">
             <div class="gsp_right_tlt">
-                <p style="text-align:left;"><a href="/kbg/46.html"><img
+                <p style="text-align:left;"><a href="/kbg/46.html" target="_blank"><img
                         src="/static/images/gsp-deet.png" width="98" height="34"/></a>
                 </p>
             </div>
@@ -209,8 +209,8 @@
                 <div class="gsp_right_deet">
                     {% for i in blt1 %}
                         <ul class="deet_pic">
-                            <li class="deet_pic_tit"><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
-                            <li class="deet_pic_img"><a href="/d/{{ i._id }}.html"><img
+                            <li class="deet_pic_tit"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                            <li class="deet_pic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img
                                     src="{{ i.guide_image }}?w=140&h=105" width="140" height="105"/></a>
                             </li>
                             <li class="deet_pic_txt"><span>{{ i.summary }}</span>
@@ -219,7 +219,7 @@
                     {% endfor %}
                     <ul class="deet_list">
                         {% for i in blt %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -237,7 +237,7 @@
 
                     <ul class="show_pic">
                         {% for i in ljyc1 %}
-                            <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/d/{{ i._id }}.html"><img
+                            <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
                                     src="{{ i.guide_image }}?w=140&h=92" width="140" height="92"/>
                                 <p>{{ i.title }}</p></a></li>
                         {% endfor %}
@@ -245,7 +245,7 @@
 
                     <ul class="show_list">
                         {% for i in ljyc %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -254,14 +254,14 @@
                 <div class="gsp_right_show">
                     <ul class="show_pic">
                         {% for i in xzlj1 %}
-                            <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/d/{{ i._id }}.html"><img
+                            <li {% if loop.index%2==0 %}class="fl20"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
                                     src="{{ i.guide_image }}?w=140&h=92" width="140" height="92"/>
                                 <p>{{ i.title }}</p></a></li>
                         {% endfor %}
                     </ul>
                     <ul class="show_list">
                         {% for i in xzlj %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -304,7 +304,7 @@
                 <div class="gsp_right_list">
                     <ul>
                         {% for i in zt %}
-                            <li><a href="/d/{{ i._id }}.html">{{ i.title }}</a></li>
+                            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -347,7 +347,7 @@
                                 {% for i in hours %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -356,7 +356,7 @@
                                 {% for i in zb %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -365,7 +365,7 @@
                                 {% for i in yb %}
                                     <li>
                                         <p><img src="/static/images/no{{ loop.index }}.jpg" width="21" height="25"/></p>
-                                        <span><a href="/d/{{ i._id }}.html">{{ i.title }}</a></span></li>
+                                        <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></li>
                                 {% endfor %}
                             </ul>
                         </div>

@@ -40,7 +40,7 @@
     <div class="gsp_list_news" style="margin-top:0px;">
 		<div class="lj_list_n01">
 			<ul>
-				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/klj/58.html">本网独家</a></li>
+				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/klj/58.html" target="_blank">本网独家</a></li>
                 {% for i in bwdj %}
                     {% if loop.index==1 %}
 				<li class="lj_list_li01"><a href="/d/{{ i._id }}.html" target="_blank">
@@ -53,7 +53,7 @@
                 {% endfor %}
 			</ul>
 			<ul class="fl30">
-				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/klj/15.html">民情观察</a></li>
+				<li class="lj_list_title"><img src="/static/images/skin-ljtitle.png" width="5" height="20" /><a href="/klj/15.html" target="_blank">民情观察</a></li>
                 {% for i in mqgc %}
                     {% if loop.index==1 %}
 				<li class="lj_list_li01"><a href="/d/{{ i._id }}.html" target="_blank">
@@ -67,7 +67,7 @@
 			</ul>
 		</div>
         <div class="lj_list_n02">
-        	<div class="lj_list_title02"><a href="/klj/12.html">城市联播</a></div>
+        	<div class="lj_list_title02"><a href="/klj/12.html" target="_blank">城市联播</a></div>
         	<div class="lj_list_pictit">
                 {% for i in menu1 %}
                  <p {% if loop.index==1 %} class="lj_list_tit01" {% else %} class="lj_list_tit02" {% endif %} onclick="javascript:window.open('{{ i.Href }}')">
@@ -101,7 +101,7 @@
                 {% endfor %}
         </div>
         <div class="lj_list_n03">
-        	<div class="lj_list_title03"><a href="/klj/60.html">龙江资讯</a></div>
+        	<div class="lj_list_title03"><a href="/klj/60.html" target="_blank">龙江资讯</a></div>
             <ul class="lj_list_picblock">
 				<li class="lj_list02_li01">
                 {% for i in ljzx %}
@@ -110,7 +110,7 @@
                 	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
                     <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                     {% elif loop.index==2 %}
-                    <a href="#"><p class="ft10">{{ i.title }}</p></a>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p class="ft10">{{ i.title }}</p></a>
                 	<a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="130" height="85" /></a>
                     <tt>{{ i.summary }}<a href="/d/{{ i._id }}.html" target="_blank"><span>[详细]</span></a></tt>
                 </li>
@@ -124,7 +124,7 @@
 
         </div>
         <div class="lj_list_n03">
-        	<div class="lj_list_title03"><a href="/klj/61.html">生活万象</a></div>
+        	<div class="lj_list_title03"><a href="/klj/61.html" target="_blank">生活万象</a></div>
             <ul class="lj_list_picblock">
 				<li class="lj_list02_li01">
                     {% for i in shwx %}
@@ -153,22 +153,22 @@
     <!----领导活动报道集----->
     <div class="gsp_con_r_main">
       <div class="gsp_right_tlt02">
-        <p class="tlt02_bdr01"><a href="/ld">领导活动报道集</a></p>
-        <p class="tlt02_bdr02"><a href="/klj/14.html">人事任免</a></p>
+        <p class="tlt02_bdr01"><a href="/ld" target="_blank">领导活动报道集</a></p>
+        <p class="tlt02_bdr02"><a href="/klj/14.html" target="_blank">人事任免</a></p>
       </div>
       <div class="gsp_con_r_main onlyshow" style="display:block;">
         <div class="gsp_right_show" >
           <ul class="show02_list">
-            <li><a href="/ld/4594">王宪魁同志报道集</a></li>
-            <li><a href="/ld/4595">陆昊同志报道集</a></li>
-            <li><a href="/ld/4596">黄建盛同志报道集</a></li>
-            <li><a href="/ld/4597">张效廉同志报道集</a></li>
-            <li><a href="/ld/4598">杨汭同志报道集</a></li>
-            <li><a href="/ld/4599">陈海波同志报道集</a></li>
-            <li><a href="/ld/4608">郝会龙同志报道集</a></li>
-            <li><a href="/ld/4609">赵敏同志报道集</a></li>
-            <li><a href="/ld/4610">李海涛同志报道集</a></li>
-            <li><a href="/ld/4611">李雷同志报道集</a></li>
+            <li><a href="/ld/4594" target="_blank">王宪魁同志报道集</a></li>
+            <li><a href="/ld/4595" target="_blank">陆昊同志报道集</a></li>
+            <li><a href="/ld/4596" target="_blank">黄建盛同志报道集</a></li>
+            <li><a href="/ld/4597" target="_blank">张效廉同志报道集</a></li>
+            <li><a href="/ld/4598" target="_blank">杨汭同志报道集</a></li>
+            <li><a href="/ld/4599" target="_blank">陈海波同志报道集</a></li>
+            <li><a href="/ld/4608" target="_blank">郝会龙同志报道集</a></li>
+            <li><a href="/ld/4609" target="_blank">赵敏同志报道集</a></li>
+            <li><a href="/ld/4610" target="_blank">李海涛同志报道集</a></li>
+            <li><a href="/ld/4611" target="_blank">李雷同志报道集</a></li>
           </ul>
         </div>
       </div>
@@ -186,7 +186,7 @@
     <!----话龙点经----->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
-        <p><a href="/klj/11.html">话龙点经</a></p>
+        <p><a href="/klj/11.html" target="_blank">话龙点经</a></p>
       </div>
       <div class="gsp_con_r_main">
         <div class="gsp_right_deet" >
@@ -212,7 +212,7 @@
     <!----寒地黑土----->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
-        <p><a href="/klj/59.html">寒地黑土</a></p>
+        <p><a href="/klj/59.html" target="_blank">寒地黑土</a></p>
       </div>
       <div class="gsp_con_r_main">
         <div class="gsp_right_deet" >
@@ -242,7 +242,7 @@
     <!----专题----->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
-        <p><a href="/32.html">专题</a></p>
+        <p><a href="/32.html" target="_blank">专题</a></p>
       </div>
       <div class="gsp_con_r_main">
           <div class="zt_flash ft20" style="width:300px; height:251px;">
@@ -278,7 +278,7 @@
 <!-- 图集精选 -->
 
 <div class="local_site_content">
-<a href="/klj/13.html"><div class="lj_list_title04">图说龙江</div></a>
+<a href="/klj/13.html" target="_blank"><div class="lj_list_title04">图说龙江</div></a>
     <ul class="idx-photo-main">
         {% for i in tslj %}
         {% if loop.index==1 %}

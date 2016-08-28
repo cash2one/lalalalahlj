@@ -121,14 +121,14 @@
     <!----热门图集----->
     <div class="con_r_main ft30">
         <div class="right_tlt">
-            <p><a href="/33.html">热门图集</a></p>
+            <p><a href="/33.html" target="_blank">热门图集</a></p>
             {#        <span>photo</span>#}
         </div>
         <div class="con_r_main">
             <div class="right_list02" id="right_list02" style="margin-top:10px;">
                 <ul>
                     {% for i in rmtj %}
-                        <li><a href="/d/{{ i._id }}.html" {% if loop.index0==0 %}style="text-decoration: underline; color:#205366;" {% endif %}>
+                        <li><a href="/d/{{ i._id }}.html" {% if loop.index0==0 %}style="text-decoration: underline; color:#205366;" {% endif %} target="_blank">
                             <span>{{ i.title }}</span>
                             <img  {% if loop.index0==0 %}  style="display: block"{% else %}style="display: none" {% endif %}
                                                            src="{{ i.guide_image }}?w=220&h=110" width="220"

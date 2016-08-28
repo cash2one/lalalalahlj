@@ -288,14 +288,14 @@ def get_menu():
         c_c = db.Channel.find({"Parent": ObjectId(i["_id"]), "Status": 1, "Visible": 1}).sort("OrderNumber")
         if c_c.count() > 0:
             value += "<li class='m'>"
-            value += "<h3><a href='%s'>%s</a></h3>" % (i["Href"], i["Name"])
+            value += "<h3><a href='%s' target='_blank'>%s</a></h3>" % (i["Href"], i["Name"])
             value += "<ul class='sub'>"
             for j in c_c:
-                value += "<li><a href='%s'>%s</a></li>" % (j["Href"], j["Name"])
+                value += "<li><a href='%s' target='_blank'>%s</a></li>" % (j["Href"], j["Name"])
             value += "</ul></li>"
         else:
             value += "<li class='m'>"
-            value += "<h3><a href='%s'>%s</a></h3></li>" % (i["Href"], i["Name"])
+            value += "<h3><a href='%s' target='_blank'>%s</a></h3></li>" % (i["Href"], i["Name"])
     value += "<li class='block' style='left: 167px;'></li>"
     return value
 

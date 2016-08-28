@@ -465,7 +465,8 @@ def front_page(id, page=1):
                            name_list=name_list,
                            ys=ys,
                            pic=pic,
-                           pagebar_html=pagebar_html
+                           pagebar_html=pagebar_html,
+                           id=id
                            )
 
 

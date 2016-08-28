@@ -134,10 +134,12 @@ def s_list(id, page=1):
     name_list = []
     for i in menu_list:
         name_list.append(i)
+    channel_parent_id=db.Channel.find_one({"numid":int(id)})["Parent"]
+    p_id=db.Channel.find_one({"_id":ObjectId(channel_parent_id)})["numid"]
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
                            name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,jrrp_5=jrrp_5,jrrp_2=jrrp_2,
-                           pagebar_html=pagebar_html)
+                           pagebar_html=pagebar_html,id=p_id)
 
 
 # 二级频道分页

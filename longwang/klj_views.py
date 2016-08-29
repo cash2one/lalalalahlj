@@ -51,7 +51,7 @@ def klj_index():
     # 寒地黑土
     hdht = search_indexnews_db("57a2b2072d87e643c825a5d9", 7)
     # 专题
-    zt = search_indexnews_db("57b2ae833c7eb9e89a188b8e", 8)
+    zt = search_indexnews_db("57b2ae833c7eb9e89a188b8e", 12)
 
     return render_template('klj/klj_index.html', name=name,
                            menu=menu,

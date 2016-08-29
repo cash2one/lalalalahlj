@@ -79,23 +79,20 @@ def kbg_index():
 # 二级频道列表
 @kbg_page.route('/kbg/<id>/<page>/')
 def kbg_list(id, page=1):
-    try:
-        channel = db.Channel.find_one({"numid": int(id)})["_id"]
-        condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
-        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
-            pre_page * (int(page) - 1)).limit(
-            pre_page)
-        value = ""
-        for i in news_list:
-            style = 'style="display: block"'
-            if i["Guideimage"] == "":
-                style = 'style="display: none"'
-            value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                     (style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
-                      datetime_op((i["Published"])))
-        return json.dumps(value)
-    except:
-        abort(404)
+    channel = db.Channel.find_one({"numid": int(id)})["_id"]
+    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+        pre_page * (int(page) - 1)).limit(
+        pre_page)
+    value = ""
+    for i in news_list:
+        style = 'style="display: block"'
+        if i["Guideimage"] == "":
+            style = 'style="display: none"'
+        value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                 (style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
+                  datetime_op((i["Published"])))
+    return json.dumps(value)
 
 
 # 二级频道列表

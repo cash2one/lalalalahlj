@@ -3,10 +3,10 @@
 # __author__ = 'wanglina'
 import json
 import pymongo
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
-    get_mongodb_dict,get_image_news
+    get_mongodb_dict, get_image_news
 from bson import ObjectId
 
 from longwang.pager.pager import pager
@@ -79,55 +79,62 @@ def kbg_index():
 # 二级频道列表
 @kbg_page.route('/kbg/<id>/<page>/')
 def kbg_list(id, page=1):
-    channel = db.Channel.find_one({"numid": int(id)})["_id"]
-    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
-        pre_page * (int(page) - 1)).limit(
-        pre_page)
-    value = ""
-    for i in news_list:
-        style = 'style="display: block"'
-        if i["Guideimage"] == "":
-            style = 'style="display: none"'
-        value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
-                  datetime_op((i["Published"])))
-    return json.dumps(value)
+    try:
+        channel = db.Channel.find_one({"numid": int(id)})["_id"]
+        condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+            pre_page * (int(page) - 1)).limit(
+            pre_page)
+        value = ""
+        for i in news_list:
+            style = 'style="display: block"'
+            if i["Guideimage"] == "":
+                style = 'style="display: none"'
+            value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
+                     (style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
+                      datetime_op((i["Published"])))
+        return json.dumps(value)
+    except:
+        abort(404)
 
 
 # 二级频道列表
 @kbg_page.route('/kbg/list/<id>/')
 @kbg_page.route('/kbg/list/<id>/<page>/')
-def kbg_list_index(id,page=1):
-    channel = db.Channel.find_one({"numid": int(id)})["_id"]
-    # 轮换图
-    lht = get_head_image(ObjectId(channel), 4)
-    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
-    count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
-        pre_page)
-    _news_list = []
-    for i in news_list:
-        _news_list.append(get_mongodb_dict(i))
-    pagenums, pagebar_html = pager("/kbg/" + str(id), int(page), count, pre_page).show_page()
-    # 新闻排行
-    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
-    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
-    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
-    # 频道菜单
-    menu1 = db.Channel.find({"Parent": ObjectId("576500f0dcc88e31a7d2e4ba"), "Visible": 1}).sort("OrderNumber")
-    # 报料台 4条
-    blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
-    # 热门图集
-    rmtj = search_indexnews_db("57c3a1c2795266887b863b83", 5)
-    # 今日热评图片1
-    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
-    # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
-    detail = db.Channel.find_one({"_id": ObjectId(channel)})
-    return render_template('kbg/kbg_list.html', news_list=_news_list, lht=lht, hours=hours, zb=zb, yb=yb,
-                           cid=ObjectId(channel),
-                           menu=menu1, blt=blt, rmtj=rmtj, detail=detail,
-                           jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5,pagebar_html=pagebar_html
-                           )
+def kbg_list_index(id, page=1):
+    try:
+        channel = db.Channel.find_one({"numid": int(id)})["_id"]
+        # 轮换图
+        lht = get_head_image(ObjectId(channel), 4)
+        condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+        count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
+        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+            pre_page * (int(page) - 1)).limit(
+            pre_page)
+        _news_list = []
+        for i in news_list:
+            _news_list.append(get_mongodb_dict(i))
+        pagenums, pagebar_html = pager("/kbg/" + str(id), int(page), count, pre_page).show_page()
+        # 新闻排行
+        hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+        zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+        yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+        # 频道菜单
+        menu1 = db.Channel.find({"Parent": ObjectId("576500f0dcc88e31a7d2e4ba"), "Visible": 1}).sort("OrderNumber")
+        # 报料台 4条
+        blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
+        # 热门图集
+        rmtj = search_indexnews_db("57c3a1c2795266887b863b83", 5)
+        # 今日热评图片1
+        jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+        # 今日热评文字3
+        jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
+        detail = db.Channel.find_one({"_id": ObjectId(channel)})
+        return render_template('kbg/kbg_list.html', news_list=_news_list, lht=lht, hours=hours, zb=zb, yb=yb,
+                               cid=ObjectId(channel),
+                               menu=menu1, blt=blt, rmtj=rmtj, detail=detail,
+                               jrrp_2=jrrp_2,
+                               jrrp_5=jrrp_5, pagebar_html=pagebar_html
+                               )
+    except:
+        abort(404)

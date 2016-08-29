@@ -5,7 +5,7 @@ from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict, get_image_news
@@ -134,12 +134,13 @@ def s_list(id, page=1):
     name_list = []
     for i in menu_list:
         name_list.append(i)
-    channel_parent_id=db.Channel.find_one({"numid":int(id)})["Parent"]
-    p_id=db.Channel.find_one({"_id":ObjectId(channel_parent_id)})["numid"]
+    channel_parent_id = db.Channel.find_one({"numid": int(id)})["Parent"]
+    p_id = db.Channel.find_one({"_id": ObjectId(channel_parent_id)})["numid"]
     return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
                            detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
-                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,jrrp_5=jrrp_5,jrrp_2=jrrp_2,
-                           pagebar_html=pagebar_html,id=p_id)
+                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic, jrrp_5=jrrp_5,
+                           jrrp_2=jrrp_2,
+                           pagebar_html=pagebar_html, id=p_id)
 
 
 # 二级频道分页
@@ -167,7 +168,7 @@ def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id), "Status": 4})
     if detail == None:
-        return render_template("404.html")
+        abort(404)
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,

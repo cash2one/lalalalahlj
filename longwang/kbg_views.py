@@ -119,7 +119,7 @@ def kbg_list_index(id,page=1):
     # 报料台 4条
     blt = search_news_db([ObjectId("5782f7a4dcc88e7769576fc5")], 12)
     # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
+    rmtj = search_indexnews_db("57c3a1c2795266887b863b83", 5)
     # 今日热评图片1
     jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3

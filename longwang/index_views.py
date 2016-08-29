@@ -5,7 +5,7 @@ from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
     get_mongodb_dict, get_image_news
@@ -87,59 +87,64 @@ def index():
 @index_page.route('/list/<id>/')
 @index_page.route('/list/<id>/<page>/')
 def s_list(id, page=1):
-    channel = db.Channel.find_one({"numid": int(id)})["_id"]
-    # 轮换图
-    lht = get_head_image(ObjectId(channel), 5)
-    channel = db.Channel.find_one({"numid": int(id)})["_id"]
-    condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
-    count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
-        pre_page)
-    _news_list = []
-    for i in news_list:
-        _news_list.append(get_mongodb_dict(i))
-    pagenums, pagebar_html = pager("/" + str(id), int(page), count, pre_page).show_page()
-    # 频道
-    detail = db.Channel.find_one({"numid": int(id)})
-    # 新闻排行
-    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
-    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
-    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
-    # 侃八卦
-    gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
-    # 专题
-    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
-    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
-    # 今日热评图片1
-    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
-    # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
-    # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
-    biaoti = ""
-    pic = 0
-    menu_list = []
-    if id in ["16", "17", "18", "19", "20"]:
-        pic = 1
-        menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
-        biaoti = "special"
-    elif id in ["21", "22", "23", "55", "56"]:
-        pic = 2
-        menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
-        biaoti = "special"
-    elif id in ["24", "25", "26", "27", "51"]:
-        pic = 3
-        menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
-        biaoti = "special"
-    name_list = []
-    for i in menu_list:
-        name_list.append(i)
-    channel_parent_id=db.Channel.find_one({"numid":int(id)})["Parent"]
-    p_id=db.Channel.find_one({"_id":ObjectId(channel_parent_id)})["numid"]
-    return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
-                           detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
-                           name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic,jrrp_5=jrrp_5,jrrp_2=jrrp_2,
-                           pagebar_html=pagebar_html,id=p_id)
+    try:
+        channel = db.Channel.find_one({"numid": int(id)})["_id"]
+        # 轮换图
+        lht = get_head_image(ObjectId(channel), 5)
+        channel = db.Channel.find_one({"numid": int(id)})["_id"]
+        condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
+        count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
+        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+            pre_page * (int(page) - 1)).limit(
+            pre_page)
+        _news_list = []
+        for i in news_list:
+            _news_list.append(get_mongodb_dict(i))
+        pagenums, pagebar_html = pager("/" + str(id), int(page), count, pre_page).show_page()
+        # 频道
+        detail = db.Channel.find_one({"numid": int(id)})
+        # 新闻排行
+        hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+        zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+        yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+        # 侃八卦
+        gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
+        # 专题
+        zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
+        zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
+        # 今日热评图片1
+        jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+        # 今日热评文字3
+        jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
+        # 热门图集
+        rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
+        biaoti = ""
+        pic = 0
+        menu_list = []
+        if id in ["16", "17", "18", "19", "20"]:
+            pic = 1
+            menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
+            biaoti = "special"
+        elif id in ["21", "22", "23", "55", "56"]:
+            pic = 2
+            menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
+            biaoti = "special"
+        elif id in ["24", "25", "26", "27", "51"]:
+            pic = 3
+            menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
+            biaoti = "special"
+        name_list = []
+        for i in menu_list:
+            name_list.append(i)
+        channel_parent_id = db.Channel.find_one({"numid": int(id)})["Parent"]
+        p_id = db.Channel.find_one({"_id": ObjectId(channel_parent_id)})["numid"]
+        return render_template('list.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, lht=lht, channel=_news_list,
+                               detail=detail, menu=get_menu(), hours=hours, zb=zb, yb=yb,
+                               name_list=name_list, biaoti=biaoti, cid=ObjectId(channel), pic=pic, jrrp_5=jrrp_5,
+                               jrrp_2=jrrp_2,
+                               pagebar_html=pagebar_html, id=p_id)
+    except:
+        abort(404)
 
 
 # 二级频道分页
@@ -167,7 +172,7 @@ def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id), "Status": 4})
     if detail == None:
-        return render_template("404.html")
+        abort(404)
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
@@ -249,6 +254,8 @@ def detail(id, page=1):
 def detail_all(id):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id)})
+    if detail == None:
+        abort(404)
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 趣事秒闻
@@ -399,77 +406,81 @@ def is_sift(page=1):
 @index_page.route('/fllist/<id>/')
 @index_page.route('/fllist/<id>/<page>/')
 def front_page(id, page=1):
-    channel_raw = db.Channel.find_one({"numid": int(id)})
-    channel = channel_raw["_id"]
-    name = channel_raw["Name"]
-    lht = get_head_image(channel, 5)
-    channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
-    channel_list = []
-    for i in channel_list_raw:
-        channel_list.append(i["_id"])
-    condition = {"Channel": {"$in": channel_list}, "Status": 4}
-    count = db.News.find(condition).count()
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(pre_page * (int(page) - 1)).limit(
-        pre_page)
-    _news_list = []
-    for i in news_list:
-        _news_list.append(get_mongodb_dict(i))
-    pagenums, pagebar_html = pager("/index/" + str(id), int(page), count, pre_page).show_page()
-    detail = db.Channel.find_one({"_id": ObjectId(channel)})
-    # 今日热评图片1
-    jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
-    # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
-    # 新闻排行
-    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
-    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
-    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
-    # 侃八卦
-    gbg = search_indexnews_db("579190303c7ee91e3478823e", 8)
-    # 专题
-    zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
-    zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
-    # 热门图集
-    rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
-    menu_list = []
-    ys = ""
-    pic = 0
-    if id == "5":
-        menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
-        pic = 1
-        ys = 'sy'
-    elif id == "6":
-        menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
-        pic = 2
-        ys = 'sy'
-    elif id == "8":
-        menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
-        pic = 3
-        ys = 'sy'
-    name_list = []
-    for i in menu_list:
-        name_list.append(i)
-    return render_template('front_list.html', news_list=_news_list,
-                           detail=detail,
-                           hours=hours,
-                           zb=zb,
-                           yb=yb,
-                           gbg=gbg,
-                           name=name,
-                           zt_images=zt_images,
-                           lht=lht,
-                           jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5,
-                           zt=zt,
-                           cid=ObjectId(channel),
-                           rmtj=rmtj,
-                           menu_list=menu_list,
-                           name_list=name_list,
-                           ys=ys,
-                           pic=pic,
-                           pagebar_html=pagebar_html,
-                           id=id
-                           )
+    try:
+        channel_raw = db.Channel.find_one({"numid": int(id)})
+        channel = channel_raw["_id"]
+        name = channel_raw["Name"]
+        lht = get_head_image(channel, 5)
+        channel_list_raw = db.Channel.find({"Parent": ObjectId(channel)})
+        channel_list = []
+        for i in channel_list_raw:
+            channel_list.append(i["_id"])
+        condition = {"Channel": {"$in": channel_list}, "Status": 4}
+        count = db.News.find(condition).count()
+        news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+            pre_page * (int(page) - 1)).limit(
+            pre_page)
+        _news_list = []
+        for i in news_list:
+            _news_list.append(get_mongodb_dict(i))
+        pagenums, pagebar_html = pager("/index/" + str(id), int(page), count, pre_page).show_page()
+        detail = db.Channel.find_one({"_id": ObjectId(channel)})
+        # 今日热评图片1
+        jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
+        # 今日热评文字3
+        jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
+        # 新闻排行
+        hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
+        zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
+        yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+        # 侃八卦
+        gbg = search_indexnews_db("579190303c7ee91e3478823e", 8)
+        # 专题
+        zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
+        zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
+        # 热门图集
+        rmtj = search_indexnews_db("57bba817f5e86117cb228908", 5)
+        menu_list = []
+        ys = ""
+        pic = 0
+        if id == "5":
+            menu_list = db.Channel.find({"Parent": ObjectId("576500c6dcc88e31a6f3500c")}).sort("OrderNumber")
+            pic = 1
+            ys = 'sy'
+        elif id == "6":
+            menu_list = db.Channel.find({"Parent": ObjectId("576500cfdcc88e31a7d2e4b9")}).sort("OrderNumber")
+            pic = 2
+            ys = 'sy'
+        elif id == "8":
+            menu_list = db.Channel.find({"Parent": ObjectId("576500e8dcc88e31a6f3500e")}).sort("OrderNumber")
+            pic = 3
+            ys = 'sy'
+        name_list = []
+        for i in menu_list:
+            name_list.append(i)
+        return render_template('front_list.html', news_list=_news_list,
+                               detail=detail,
+                               hours=hours,
+                               zb=zb,
+                               yb=yb,
+                               gbg=gbg,
+                               name=name,
+                               zt_images=zt_images,
+                               lht=lht,
+                               jrrp_2=jrrp_2,
+                               jrrp_5=jrrp_5,
+                               zt=zt,
+                               cid=ObjectId(channel),
+                               rmtj=rmtj,
+                               menu_list=menu_list,
+                               name_list=name_list,
+                               ys=ys,
+                               pic=pic,
+                               pagebar_html=pagebar_html,
+                               id=id
+                               )
+    except:
+        abort(404)
 
 
 # @index_page.route('/fllist/<channel>/<page>/')
@@ -500,100 +511,109 @@ def news_list_page(channel, page=1):
 # 领导
 @index_page.route('/ld/')
 def klj_ld():
-    name_list = db.Channel.find({"Parent": ObjectId("57a2ad8edcc88e6ba04499ab")})
-    # 王宪魁
-    wxkjl = search_news_db([ObjectId("57b26adcdcc88e13050f9156")], 1)
-    wxk_three = search_indexnews_db("57b2abe83c7eb9e89a188b7a", 3)
-    # 陆昊
-    lhjl = search_news_db([ObjectId("57b2832cdcc88e5b4c92ff49")], 1)
-    lh_three = search_indexnews_db("57b2abe83c7eb9e89a188b7b", 3)
-    # 黄建盛
-    hjsjl = search_news_db([ObjectId("57b28344dcc88e5b4166a927")], 1)
-    hjs_three = search_indexnews_db("57b2abe83c7eb9e89a188b7c", 3)
-    # 张孝廉
-    zxljl = search_news_db([ObjectId("57b2835ddcc88e5b4166a928")], 1)
-    zxl_three = search_indexnews_db("57b2abe83c7eb9e89a188b7d", 3)
-    # 杨汭
-    yrjl = search_news_db([ObjectId("57b28372dcc88e5b4c92ff4a")], 1)
-    yr_three = search_indexnews_db("57b2abe83c7eb9e89a188b7e", 3)
-    # 陈海波
-    chbjl = search_news_db([ObjectId("57b28388dcc88e5b4166a929")], 1)
-    chb_three = search_indexnews_db("57b2abe83c7eb9e89a188b7f", 3)
-    # 郝会龙
-    hhljl = search_news_db([ObjectId("57b28399dcc88e5b4166a92a")], 1)
-    hhl_three = search_indexnews_db("57b2abe83c7eb9e89a188b80", 3)
-    # 赵敏
-    zmjl = search_news_db([ObjectId("57b283a5dcc88e5b4c92ff4c")], 1)
-    zm_three = search_indexnews_db("57b2abe83c7eb9e89a188b81", 3)
-    # 李海涛
-    lhtjl = search_news_db([ObjectId("57b283b3dcc88e5b4166a92b")], 1)
-    lht_three = search_indexnews_db("57b2abe83c7eb9e89a188b82", 3)
-    # 李雷
-    lljl = search_news_db([ObjectId("57b283c1dcc88e5b4166a92c")], 1)
-    ll_three = search_indexnews_db("57b2abe83c7eb9e89a188b83", 3)
-    return render_template('leaders.html', menu=get_menu(),
-                           ld='ld',
-                           name_list=name_list,
-                           wxkjl=wxkjl,
-                           wxk_three=wxk_three,
-                           lhjl=lhjl,
-                           lh_three=lh_three,
-                           hjsjl=hjsjl,
-                           hjs_three=hjs_three,
-                           zxljl=zxljl,
-                           zxl_three=zxl_three,
-                           yrjl=yrjl,
-                           yr_three=yr_three,
-                           chbjl=chbjl,
-                           chb_three=chb_three,
-                           hhljl=hhljl,
-                           hhl_three=hhl_three,
-                           zmjl=zmjl,
-                           zm_three=zm_three,
-                           lhtjl=lhtjl,
-                           lht_three=lht_three,
-                           lljl=lljl,
-                           ll_three=ll_three
-                           )
+    try:
+        name_list = db.Channel.find({"Parent": ObjectId("57a2ad8edcc88e6ba04499ab")})
+        # 王宪魁
+        wxkjl = search_news_db([ObjectId("57b26adcdcc88e13050f9156")], 1)
+        wxk_three = search_indexnews_db("57b2abe83c7eb9e89a188b7a", 3)
+        # 陆昊
+        lhjl = search_news_db([ObjectId("57b2832cdcc88e5b4c92ff49")], 1)
+        lh_three = search_indexnews_db("57b2abe83c7eb9e89a188b7b", 3)
+        # 黄建盛
+        hjsjl = search_news_db([ObjectId("57b28344dcc88e5b4166a927")], 1)
+        hjs_three = search_indexnews_db("57b2abe83c7eb9e89a188b7c", 3)
+        # 张孝廉
+        zxljl = search_news_db([ObjectId("57b2835ddcc88e5b4166a928")], 1)
+        zxl_three = search_indexnews_db("57b2abe83c7eb9e89a188b7d", 3)
+        # 杨汭
+        yrjl = search_news_db([ObjectId("57b28372dcc88e5b4c92ff4a")], 1)
+        yr_three = search_indexnews_db("57b2abe83c7eb9e89a188b7e", 3)
+        # 陈海波
+        chbjl = search_news_db([ObjectId("57b28388dcc88e5b4166a929")], 1)
+        chb_three = search_indexnews_db("57b2abe83c7eb9e89a188b7f", 3)
+        # 郝会龙
+        hhljl = search_news_db([ObjectId("57b28399dcc88e5b4166a92a")], 1)
+        hhl_three = search_indexnews_db("57b2abe83c7eb9e89a188b80", 3)
+        # 赵敏
+        zmjl = search_news_db([ObjectId("57b283a5dcc88e5b4c92ff4c")], 1)
+        zm_three = search_indexnews_db("57b2abe83c7eb9e89a188b81", 3)
+        # 李海涛
+        lhtjl = search_news_db([ObjectId("57b283b3dcc88e5b4166a92b")], 1)
+        lht_three = search_indexnews_db("57b2abe83c7eb9e89a188b82", 3)
+        # 李雷
+        lljl = search_news_db([ObjectId("57b283c1dcc88e5b4166a92c")], 1)
+        ll_three = search_indexnews_db("57b2abe83c7eb9e89a188b83", 3)
+        return render_template('leaders.html', menu=get_menu(),
+                               ld='ld',
+                               name_list=name_list,
+                               wxkjl=wxkjl,
+                               wxk_three=wxk_three,
+                               lhjl=lhjl,
+                               lh_three=lh_three,
+                               hjsjl=hjsjl,
+                               hjs_three=hjs_three,
+                               zxljl=zxljl,
+                               zxl_three=zxl_three,
+                               yrjl=yrjl,
+                               yr_three=yr_three,
+                               chbjl=chbjl,
+                               chb_three=chb_three,
+                               hhljl=hhljl,
+                               hhl_three=hhl_three,
+                               zmjl=zmjl,
+                               zm_three=zm_three,
+                               lhtjl=lhtjl,
+                               lht_three=lht_three,
+                               lljl=lljl,
+                               ll_three=ll_three
+                               )
+    except:
+        abort(404)
 
 
 @index_page.route('/ld/<id>/')
 def klj_ld_list(id):
-    lingdao = db.Channel.find_one({"numid": int(id)})  # 获取领导信息
-    parent = lingdao["_id"]  # 以领导的二级_id作为三级频道的parent id
-    order = lingdao["OrderNumber"]  # 获取领导的排序，然后有改排序寻找改领导对应的三级频道
-    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort(
-        "OrderNumber")  # 以二级id为三级的parent id查找 全部的三级频道 内容 list 并依OrederNumber排序
-    jianghua = search_news_db([channel[0]["_id"]], 8)  # 讲话在list中的索引为0
-    huodong = search_news_db([channel[1]["_id"]], 8)  # 活动在list中的索引为1
-    jianli = search_news_db([channel[2]["_id"]], 1)  # 简历在list中的索引为2
-    index_channel = db.IndexChannel.find_one(
-        {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})[
-        "_id"]  # 依据领导的排序，查找对应领导在IndexChannel中的 图片新闻的Channel id
-    image_four = search_indexnews_db(index_channel, 4)  # 依据上一步得到的id 查找出四条图片新闻
-    return render_template('leaders_2nd.html', jianghua=jianghua,
-                           jianli=jianli,
-                           huodong=huodong,
-                           image_four=image_four,
-                           lingdao=lingdao,
-                           ld2nd='ld2nd'
-                           )
+    try:
+        lingdao = db.Channel.find_one({"numid": int(id)})  # 获取领导信息
+        parent = lingdao["_id"]  # 以领导的二级_id作为三级频道的parent id
+        order = lingdao["OrderNumber"]  # 获取领导的排序，然后有改排序寻找改领导对应的三级频道
+        channel = db.Channel.find({"Parent": ObjectId(parent)}).sort(
+            "OrderNumber")  # 以二级id为三级的parent id查找 全部的三级频道 内容 list 并依OrederNumber排序
+        jianghua = search_news_db([channel[0]["_id"]], 8)  # 讲话在list中的索引为0
+        huodong = search_news_db([channel[1]["_id"]], 8)  # 活动在list中的索引为1
+        jianli = search_news_db([channel[2]["_id"]], 1)  # 简历在list中的索引为2
+        index_channel = db.IndexChannel.find_one(
+            {"Parent": "57a2ad8edcc88e6ba04499ab", "Type": 2, "order": order})[
+            "_id"]  # 依据领导的排序，查找对应领导在IndexChannel中的 图片新闻的Channel id
+        image_four = search_indexnews_db(index_channel, 4)  # 依据上一步得到的id 查找出四条图片新闻
+        return render_template('leaders_2nd.html', jianghua=jianghua,
+                               jianli=jianli,
+                               huodong=huodong,
+                               image_four=image_four,
+                               lingdao=lingdao,
+                               ld2nd='ld2nd'
+                               )
+    except:
+        abort(404)
 
 
 @index_page.route('/ld/<id>/<num>/')
 def klj_ld_list_detail(id, num):
-    lingdao = db.Channel.find_one({"numid": int(id)})
-    parent = lingdao["_id"]
-    channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
-    news_list = []
-    name = ''
-    if num == "1":  # 路由中num=='1'得到讲话List
-        news_list = search_news_db([channel[0]["_id"]], 20)
-        name = "讲话"
-    elif num == "2":  # 路由中num=='2'得到活动List
-        news_list = search_news_db([channel[1]["_id"]], 20)
-        name = "活动"
-    return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')
+    try:
+        lingdao = db.Channel.find_one({"numid": int(id)})
+        parent = lingdao["_id"]
+        channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
+        news_list = []
+        name = ''
+        if num == "1":  # 路由中num=='1'得到讲话List
+            news_list = search_news_db([channel[0]["_id"]], 20)
+            name = "讲话"
+        elif num == "2":  # 路由中num=='2'得到活动List
+            news_list = search_news_db([channel[1]["_id"]], 20)
+            name = "活动"
+        return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')
+    except:
+        abort(404)
 
 
 @index_page.route('/ldj/<id>/<page>/')

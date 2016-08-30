@@ -95,7 +95,7 @@ def zt_modify():
         file = pro.find_one({"_id": ObjectId(_id)})
         fileHandle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (
             str(file["url"]).replace("zuanti", "zt")), "w")
-        fileHandle.write(content)
+        fileHandle.write(str(content))
         result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)

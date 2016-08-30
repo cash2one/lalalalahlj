@@ -14,6 +14,12 @@ zt_page = Blueprint('zt_page', __name__, template_folder='templates')
 db = conn.mongo_conn()
 
 
+# 测试
+# @zt_page.route('/zt/test', methods=['POST', 'GET'])
+def zt_test():
+    return render_template("zt/zt.html")
+
+
 # 添加专题文件
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
@@ -95,6 +101,8 @@ def zt_modify():
         file = pro.find_one({"_id": ObjectId(_id)})
         fileHandle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (
             str(file["url"]).replace("zuanti", "zt")), "w")
+        # f = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + "/zt/1.html"
+        # open(f, 'w').write(content)
         fileHandle.write(str(content))
         result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"

@@ -22,6 +22,8 @@ def zt_add(id):
         f = request.files['topImage3']
         r_path = ""
         name = ""
+        uploadurl = ""
+        nid = ""
         _title, _ext = os.path.splitext(f.filename)
         if f != "" and f != None:
             # try:
@@ -47,9 +49,7 @@ def zt_add(id):
                     uploadurl = upload_path(id + "/" + _title + _ext)
                     soup = BeautifulSoup(f)
                     if str(soup.original_encoding) != 'utf-8':
-                        g_u = f.read().decode('gbk').encode('utf-8')
-                        f.write(g_u)
-                        print g_u
+                        f.read().decode('gbk').encode('utf-8')
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
 

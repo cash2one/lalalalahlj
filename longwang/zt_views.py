@@ -49,6 +49,7 @@ def zt_add(id):
                     if str(soup.original_encoding) != 'utf-8':
                         g_u = f.read().decode('gbk').encode('utf-8')
                         f.write(g_u)
+                        print g_u
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
 

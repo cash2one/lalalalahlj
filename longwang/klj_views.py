@@ -29,7 +29,7 @@ def klj_index():
     # 地市List
     menu1 = db.Channel.find({"Parent": ObjectId("5765013ddcc88e31a7d2e4bc")}).sort("OrderNumber")
     # 城市联播
-    city_list = db.IndexChannel.find({"Parent": "576500b1dcc88e31a7d2e4b8", "order": {"$ne": 0}}).sort("order")
+    city_list = db.IndexChannel.find({"Parent": "5765013ddcc88e31a7d2e4bc", "order": {"$ne": 0}}).sort("order")
     channel_list_id = []
     news_list = []
     city_name = []

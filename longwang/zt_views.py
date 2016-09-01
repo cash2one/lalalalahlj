@@ -43,12 +43,14 @@ def zt_add(id):
                     f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
-                    soup = BeautifulSoup(f)
-                    if str(soup.original_encoding) != 'utf-8':
-                        f = f.read().decode('gbk').encode('utf-8')
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    f.save(uploadurl)
+                    soup = BeautifulSoup(f)
+                    if str(soup.original_encoding) != 'utf-8':
+                        g_u = f.read().decode('gbk').encode('utf-8')
+                        f.write(g_u)
+                    else:
+                        f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
 
             r_path = r_path.replace("zt", "zuanti")

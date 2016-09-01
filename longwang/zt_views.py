@@ -47,11 +47,13 @@ def zt_add(id):
                 if fext == "html":
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
-                    html=f.read()
+                    html = f.read()
                     soup = BeautifulSoup(html)
                     if str(soup.original_encoding) != 'utf-8':
-                        g_u = html.decode('gbk').encode('utf-8')
-                        f.write(g_u)
+                        for i in open(f):
+                            # print str(i).decode('gb2312').encode('utf-8')
+                            g_u = str(i).decode('gb2312').encode('utf-8')
+                            f.write(g_u)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
 
@@ -211,7 +213,11 @@ def test():
     uploadurl = "C:\Users\wanglina\Desktop/gb2312.html"
     soup = BeautifulSoup(open(uploadurl).read())
     if str(soup.original_encoding) != 'utf-8':
-        f = open(uploadurl, "r")
-        g_u = f.read().decode('gb2312').encode('utf-8')
-        print g_u
-    return g_u
+        # f = open(uploadurl, "r")
+        # g_u = f.read().decode('gb2312').encode('utf-8')
+        rl = open(uploadurl)
+        for i in rl:
+            print str(i).decode('gb2312').encode('utf-8')
+            g_u = str(i).decode('gb2312').encode('utf-8')
+            print g_u
+    return "nice"

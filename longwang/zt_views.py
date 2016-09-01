@@ -14,22 +14,14 @@ zt_page = Blueprint('zt_page', __name__, template_folder='templates')
 db = conn.mongo_conn()
 
 
-# 测试
-# @zt_page.route('/zt/test', methods=['POST', 'GET'])
-def zt_test():
-    return render_template("zt/zt.html")
-
-
 # 添加专题文件
 @zt_page.route('/zt/add/<id>/', methods=['POST', 'GET'])
 def zt_add(id):
     if request.method == "POST":
         pro = db["File_upload"]
         f = request.files['topImage3']
-        uploadurl = ""
         r_path = ""
         name = ""
-        nid = ""
         _title, _ext = os.path.splitext(f.filename)
         if f != "" and f != None:
             # try:
@@ -51,15 +43,14 @@ def zt_add(id):
                     f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
+                    soup = BeautifulSoup(open(f).read())
+                    if str(soup.original_encoding) != 'utf-8':
+                        f = f.read().decode('gbk').encode('utf-8')
                     mkdir_path(id)
                     uploadurl = upload_path(id + "/" + _title + _ext)
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
-                    soup = BeautifulSoup(open(uploadurl).read())
-                    if str(soup.original_encoding) != 'utf-8':
-                        f = open(uploadurl)
-                        for i in f.readline():
-                            i.decode('gbk').encode('utf-8')
+
             r_path = r_path.replace("zt", "zuanti")
             insertinfo = {
                 "name": _title + _ext,
@@ -98,12 +89,10 @@ def zt_modify():
         _id = request.values.get("id")
         content = request.values.get("content")
         pro = db["File_upload"]
-        file = pro.find_one({"_id": ObjectId(_id)})
-        fileHandle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (
-            str(file["url"]).replace("zuanti", "zt")), "w")
-        # f = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + "/zt/1.html"
-        # open(f, 'w').write(content)
-        fileHandle.write(str(content))
+        files = pro.find_one({"_id": ObjectId(_id)})
+        file_handle = open(os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + (
+            str(files["url"]).replace("zuanti", "zt")), "w")
+        file_handle.write(str(content).encode("utf-8"))
         result = '{"status":"' + str(200) + '"}'
         res = "jsonpCallback1(" + result + ")"
         return res_result(res)
@@ -117,8 +106,9 @@ def zt_modify():
 @zt_page.route('/zt/delete/<id>/', methods=['POST', 'GET'])
 def zt_delete(id):
     if request.method == "GET":
-        rmdir_path(id)
         pro = db["File_upload"]
+        files = pro.find_one({"_id": ObjectId(id)})
+        rmdir_path(str(files["url"]).replace("zuanti", "zt"))
         pro.remove({"_id": ObjectId(id)})
         result = '{"status":"' + str(200) + '","id":"' + id + '"}'
         res = "jsonpCallback1(" + result + ")"
@@ -133,7 +123,6 @@ def zt_delete(id):
 @zt_page.route('/zt/get/<id>/', methods=['POST', 'GET'])
 def zt_get(id):
     if request.method == "GET":
-        rmdir_path(id)
         pro = db["File_upload"]
         url = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + pro.find_one({"_id": ObjectId(id)})[
             "url"]
@@ -150,28 +139,10 @@ def zt_get(id):
         return res_result(res)
 
 
-# 显示文件内容
-@zt_page.route('/zt/show/<id>/', methods=['POST', 'GET'])
-def zt_show(id):
-    if request.method == "GET":
-        rmdir_path(id)
-        pro = db["File_upload"]
-        url = os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + pro.find_one({"_id": ObjectId(id)})[
-            "url"]
-        result = '{"status":"' + str(200) + '","url":"' + url + '"}'
-        res = "jsonpCallback1(" + result + ")"
-        return res_result(res)
-    else:
-        result = '{"status":"' + str(400) + '"}'
-        res = "jsonpCallback1(" + result + ")"
-        return res_result(res)
-
-
 # 设置专题首页
 @zt_page.route('/zt/index/<id>/', methods=['POST', 'GET'])
 def zt_index(id):
     if request.method == "GET":
-        rmdir_path(id)
         pro = db["File_upload"]
         index = pro.find_one({"_id": ObjectId(id)})["index"]
         if index == 1:
@@ -211,14 +182,14 @@ def mkdir_path(file_path):
             print e.message
 
 
-# 删除文件夹
+# 删除文件
 def rmdir_path(file_path):
     path = os.path.join(
         os.path.normpath(os.path.join(os.path.dirname(__file__), "../")) + current_app.config["UPLOAD_FOLDER"],
         file_path)
-    if not os.path.exists(path):
+    if os.path.exists(path):
         try:
-            os.removedirs(path)
+            os.remove(path)
         except Exception, e:
             print e.message
 
@@ -228,3 +199,15 @@ def res_result(result):
     res = make_response(result)
     res.headers['Access-Control-Allow-Origin'] = '*'
     return res
+
+
+# 设置专题首页
+@zt_page.route('/zt/test/', methods=['POST', 'GET'])
+def test():
+    uploadurl = "C:\Users\wanglina\Desktop/gb2312.html"
+    soup = BeautifulSoup(open(uploadurl).read())
+    if str(soup.original_encoding) != 'utf-8':
+        f = open(uploadurl, "r")
+        g_u = f.read().decode('gb2312').encode('utf-8')
+        f.write(g_u)
+    return "nice"

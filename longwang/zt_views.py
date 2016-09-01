@@ -43,7 +43,7 @@ def zt_add(id):
                     f.save(uploadurl)
                     r_path = relative_path(id + "/js/" + _title + _ext)
                 if fext == "html":
-                    soup = BeautifulSoup(open(f).read())
+                    soup = BeautifulSoup(f)
                     if str(soup.original_encoding) != 'utf-8':
                         f = f.read().decode('gbk').encode('utf-8')
                     mkdir_path(id)

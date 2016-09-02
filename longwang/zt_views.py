@@ -7,7 +7,9 @@ from bs4 import BeautifulSoup
 from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 # import pymongo
 
 zt_page = Blueprint('zt_page', __name__, template_folder='templates')

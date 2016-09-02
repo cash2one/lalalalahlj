@@ -97,7 +97,7 @@ def kbg_list(id, page=1):
             style = 'style="display: none"'
         value += "<li><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> \
         <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % (
-            style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
+            style, i["numid"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
             datetime_op((i["Published"])))
     return json.dumps(value)
 
@@ -166,8 +166,8 @@ def psd_list(id, page=1):
 
 
 # 二级频道分页
-@psd_page.route('/psd/list/<id>/')
-@psd_page.route('/psd/list/<id>/<page>')
+# @psd_page.route('/psd/list/<id>/')
+# @psd_page.route('/psd/list/<id>/<page>')
 def news_list_page(id, page=1):
     channel = db.Channel.find_one({"numid": int(id)})["_id"]
     condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
@@ -180,7 +180,7 @@ def news_list_page(id, page=1):
         if i["Guideimage"] == "":
             style = 'style="display: none"'
         value += "<li %s><p %s><a href='/d/%s.html' target='_blank'><img src='%s?w=261&h=171' width='261' height='171'/></a></p><h2><a href='/d/%s.html' target='_blank'>%s</a></h2> <h5>%s</h5> <h6>&nbsp;&nbsp;&nbsp;%s</h6></li>" % \
-                 (style, style, i["_id"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
+                 (style, style, i["numid"], image_server + i["Guideimage"], i["numid"], i["Title"], i["Summary"],
                   datetime_op((i["Published"])))
     return json.dumps(value)
 

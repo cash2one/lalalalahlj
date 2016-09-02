@@ -50,10 +50,9 @@ def zt_add(id):
                     html = f.read()
                     soup = BeautifulSoup(html)
                     if str(soup.original_encoding) != 'utf-8':
-                        for i in open(f):
+                        for i in html:
                             # print str(i).decode('gb2312').encode('utf-8')
-                            g_u = str(i).decode('gb2312').encode('utf-8')
-                            f.write(g_u)
+                            str(i).decode('gb2312').encode('utf-8')
                     f.save(uploadurl)
                     r_path = relative_path(id + "/" + _title + _ext)
 
@@ -208,7 +207,7 @@ def res_result(result):
 
 
 # 设置专题首页
-@zt_page.route('/zt/test/', methods=['POST', 'GET'])
+# @zt_page.route('/zt/test/', methods=['POST', 'GET'])
 def test():
     uploadurl = "C:\Users\wanglina\Desktop/gb2312.html"
     soup = BeautifulSoup(open(uploadurl).read())
@@ -217,7 +216,7 @@ def test():
         # g_u = f.read().decode('gb2312').encode('utf-8')
         rl = open(uploadurl)
         for i in rl:
-            print str(i).decode('gb2312').encode('utf-8')
+            # print str(i).decode('gb2312').encode('utf-8')
             g_u = str(i).decode('gb2312').encode('utf-8')
-            print g_u
+            # print g_u
     return "nice"

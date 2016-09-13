@@ -191,6 +191,8 @@ def detail(id, page=1):
             return render_template(str(zt["url"]).replace("zuanti", "zt"))
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
+    # 父级频道
+    parent = db.Channel.find_one({"_id": ObjectId(channel["Parent"])})
     # 趣事秒闻
     # qsmw1 = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 1)
     qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 6, 1)
@@ -245,7 +247,8 @@ def detail(id, page=1):
                            channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, pagebar_html=pagebar_html,
                            count=len(count), rmtui=rmtui, d=1,
                            jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5
+                           jrrp_5=jrrp_5,
+                           parent=parent
                            )
 
 
@@ -258,6 +261,8 @@ def detail_all(id):
         abort(404)
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
+    # 父级频道
+    parent = db.Channel.find_one({"_id": ObjectId(channel["Parent"])})
     # 趣事秒闻
     qsmw1 = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 1)
     qsmw = search_news_db([ObjectId("57650479dcc88e31a6f35017")], 6, qsmw1)
@@ -288,7 +293,8 @@ def detail_all(id):
     rmtui = search_indexnews_db("579716ec3c7e62e2dacb8f75", 5)
     return render_template('detail.html', zt_images=zt_images, zt=zt, gbg=gbg, rmtj=rmtj, detail=detail, qsmw1=qsmw1,
                            qsmw=qsmw, ssf1=ssf1, ssf=ssf, ayd1=ayd1, ayd=ayd, hrg1=hrg1, hrg=hrg, ecy1=ecy1, ecy=ecy,
-                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1, rmtui=rmtui, d=1)
+                           channel=channel, menu=get_menu(), hours=hours, zb=zb, yb=yb, count=1, rmtui=rmtui, d=1,
+                           parent=parent)
 
 
 # @index_page.route('/menu/')

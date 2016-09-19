@@ -5,10 +5,10 @@ from longwang.pager.pager import pager
 import json
 import urllib2
 import pymongo
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, redirect
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
-    get_mongodb_dict, get_image_news
+    get_mongodb_dict, get_image_news,ym_server
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -188,7 +188,7 @@ def detail(id, page=1):
         if zt == None:
             return render_template("404.html")
         else:
-            return render_template(str(zt["url"]))
+            return redirect(ym_server+str(zt["url"]))
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 父级频道

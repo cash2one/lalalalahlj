@@ -154,12 +154,15 @@ def search_indexnews_db(Channel, limit):
     news_list = db.IndexNews.find(condition).sort("orderno").limit(limit)
     _news_list = []
     for i in news_list:
+      try:
         new_dict = {}
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
         new_dict["summary"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Summary"]
         _news_list.append(new_dict)
+      except:
+          pass
     return _news_list
 
 

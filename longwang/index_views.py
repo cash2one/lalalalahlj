@@ -540,7 +540,7 @@ def klj_ld():
         # 郝会龙
         hhljl = search_news_db([ObjectId("57b28399dcc88e5b4166a92a")], 1)
         hhl_three = search_indexnews_db("57b2abe83c7eb9e89a188b80", 3)
-        # 赵敏
+        # 王常松
         zmjl = search_news_db([ObjectId("57b283a5dcc88e5b4c92ff4c")], 1)
         zm_three = search_indexnews_db("57b2abe83c7eb9e89a188b81", 3)
         # 李海涛
@@ -549,6 +549,12 @@ def klj_ld():
         # 李雷
         lljl = search_news_db([ObjectId("57b283c1dcc88e5b4166a92c")], 1)
         ll_three = search_indexnews_db("57b2abe83c7eb9e89a188b83", 3)
+        # 孙尧
+        syjl = search_news_db([ObjectId("57e4c5d1dcc88e09b37ab87c")], 1)
+        sy_three = search_indexnews_db("57e4ce8d5f6cab349a55693a", 3)
+        # 甘荣坤
+        grkjl = search_news_db([ObjectId("57e4c5f4dcc88e09b37ab87e")], 1)
+        grk_three = search_indexnews_db("57e4cea75f6cab349a55693c", 3)
         return render_template('leaders.html', menu=get_menu(),
                                ld='ld',
                                name_list=name_list,
@@ -571,7 +577,11 @@ def klj_ld():
                                lhtjl=lhtjl,
                                lht_three=lht_three,
                                lljl=lljl,
-                               ll_three=ll_three
+                               ll_three=ll_three,
+                               syjl=syjl,
+                               sy_three=sy_three,
+                               grkjl=grkjl,
+                               grk_three=grk_three
                                )
     except:
         abort(404)

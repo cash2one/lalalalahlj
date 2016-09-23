@@ -126,11 +126,11 @@
             </ul>
 		</div>
 		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4609" target="_blank">赵敏同志报道集</a></div>
+			<div class="ldr-intor-title"><a href="/ld/4609" target="_blank">王常松同志报道集</a></div>
             <div class="ldr-intor-text">
                 {% for i in zmjl %}
                 <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">赵敏同志简历</a></div>
+                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">王常松同志简历</a></div>
                 <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>
                 {% endfor %}
             </div>
@@ -169,6 +169,40 @@
             </div>
             <ul class="ldr-intor-list">
                 {% for i in ll_three %}
+                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+		</div>
+	</div>
+
+<div class="ldr-intor-dwr" style="border:none">
+		<div class="ldr-intor-box">
+			<div class="ldr-intor-title"><a href="/ld/10930" target="_blank">孙尧同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in syjl %}
+                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">孙尧同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in sy_three %}
+                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+		</div>
+		<div class="ldr-intor-box fl35">
+			<div class="ldr-intor-title"><a href="/ld/10931" target="_blank">甘荣坤同志报道集</a></div>
+            <div class="ldr-intor-text">
+                {% for i in grkjl %}
+                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
+                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">甘荣坤同志简历</a></div>
+                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>
+                {% endfor %}
+            </div>
+            <ul class="ldr-intor-list">
+                {% for i in grk_three %}
                 <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                 {% endfor %}
             </ul>

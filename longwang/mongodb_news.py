@@ -159,7 +159,7 @@ def search_indexnews_db(Channel, limit):
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
-        new_dict["summary"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Summary"]
+        new_dict["summary"] = i["Summary"]
         _news_list.append(new_dict)
       except:
           pass
@@ -181,6 +181,6 @@ def get_image_news(channel, limit, list_db=[]):
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
         new_dict["guide_image"] = image_server + i["image"]
-        new_dict["summary"] = db.News.find_one({"_id": ObjectId(i["NewsID"])})["Summary"]
+        new_dict["summary"] = i["Summary"]
         _lht.append(new_dict)
     return _lht

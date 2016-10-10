@@ -8,7 +8,7 @@ import pymongo
 from flask import Blueprint, render_template, abort, redirect
 from connect import conn
 from longwang.mongodb_news import search_news_db, get_head_image, image_server, datetime_op, search_indexnews_db, \
-    get_mongodb_dict, get_image_news,ym_server
+    get_mongodb_dict, get_image_news, ym_server
 from bson import ObjectId
 
 db = conn.mongo_conn()
@@ -173,6 +173,7 @@ def detail(id, page=1):
     detail = db.News.find_one({"numid": int(id), "Status": 4})
     if detail == None:
         abort(404)
+    db.News.update({"numid": int(id), "Status": 4}, {"$set": {"Browseclick": detail["Browseclick"] + 1}})
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,
@@ -188,7 +189,7 @@ def detail(id, page=1):
         if zt == None:
             return render_template("404.html")
         else:
-            return redirect(ym_server+str(zt["url"]))
+            return redirect(ym_server + str(zt["url"]))
     # 频道
     channel = db.Channel.find_one({"_id": ObjectId(detail["Channel"][0])})
     # 父级频道

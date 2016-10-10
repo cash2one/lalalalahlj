@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<div class="menu">
-	<div class="navbar">
+<div class="data-menu">
+	<div class="data-navbar">
 		<ul>
 			<li><a href="/">首页</a></li>
 			<li><a href="/klj/">看龙江</a></li>
@@ -23,10 +23,10 @@
 	</div>
 </div>
 
-<div class="header-outer">
-<div class="header">
-    <div class="logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a></div>
-	<div class="header-nav">
+<div class="data-header-outer">
+<div class="data-header">
+    <div class="data-logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a></div>
+	<div class="data-header-nav">
 		<ul>
 			<li><a href="/">首页</a></li>
 			<li><a href="#">关于我们</a></li>
@@ -92,20 +92,20 @@
     <script src="/static/js/ZoomPic.js"></script>
 </div>
 
-<div class="content-outer">
+<div class="data-content-outer">
     <h1><span>精品推荐</span></h1>
-    <div class="content">
-		<div class="con-main">
-			<ul class="ul-blocks ft40 fb40 radius01">
+    <div class="data-content">
+		<div class="data-con-main">
+			<ul class="data-ul-blocks ft40 fb40 radius01">
                 {% for i in jptj %}
 				<li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="135" /></a></li>
 				{% endfor %}
 			</ul>
 		</div>
 
-		<div class="con-main">
-			<div class="con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span class="pink">NEW&nbsp;</span>最新发布</a></div>
-            <ul class="ul-blocks radius02">
+		<div class="data-con-main">
+			<div class="data-con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span class="pink">NEW&nbsp;</span>最新发布</a></div>
+            <ul class="data-ul-blocks radius02">
                 {% for i in zxfb %}
                 <li>
                     <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
@@ -117,9 +117,9 @@
             </ul>
 		</div>
 
-		<div class="con-main">
-			<div class="con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a></div>
-            <ul class="ul-blocks radius02">
+		<div class="data-con-main">
+			<div class="data-con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a></div>
+            <ul class="data-ul-blocks radius02">
                 {% for i in wqhg %}
                 <li>
                     <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
@@ -134,10 +134,10 @@
     </div><!--content end-->
 </div>
 
-<div class="footer">
-	<div class="content">
-        <div class="footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60" /></div>
-        <div class="footer_list">
+<div class="data-footer">
+	<div class="data-content">
+        <div class="data-footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60" /></div>
+        <div class="data-footer_list">
             <ul class="f14">
                 <li><a href="#">商务合作</a>&nbsp;&nbsp;<a href="#">问题反馈</a>&nbsp;&nbsp;<a href="#">关于我们</a></li>
                 <li>Copyright © 2016-2026 www.chinahlj.com&nbsp;&nbsp;All Rights Reserved.</li>

@@ -8,8 +8,8 @@
 </head>
 
 <body>
-<div class="menu">
-	<div class="navbar">
+<div class="data-menu">
+	<div class="data-navbar">
 		<ul>
 			<li><a href="/">首页</a></li>
 			<li><a href="/klj/">看龙江</a></li>
@@ -22,10 +22,10 @@
 	</div>
 </div>
 
-<div class="header-outer">
-<div class="header">
-    <div class="logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a></div>
-	<div class="header-nav">
+<div class="data-header-outer">
+<div class="data-header">
+    <div class="data-logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a></div>
+	<div class="data-header-nav">
 		<ul>
 			<li><a href="/">首页</a></li>
 			<li><a href="#">关于我们</a></li>
@@ -36,10 +36,10 @@
 </div>
 </div>
 
-<div class="content">
-    <div class="con-main">
-        <div class="con-m-title gray02"><span class="pink">{% if id==12344 %}NEW{% elif id==12345 %}PAST{% endif %}&nbsp;</span>{{ channel.Name }}</div>
-        <ul class="new-list">
+<div class="data-content">
+    <div class="data-con-main">
+        <div class="data-con-m-title gray02"><span class="pink">{% if id==12344 %}NEW{% elif id==12345 %}PAST{% endif %}&nbsp;</span>{{ channel.Name }}</div>
+        <ul class="data-new-list">
             {% for i in list %}
             <li>
                 <a href="#" style="float:left"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
@@ -53,7 +53,7 @@
             {% endfor %}
         </ul>
     </div>
-<div class="content_l ft30">
+<div class="data-content_l ft30">
     <div class="jogger">
         {% autoescape false %}
         {{ pagebar_html }}
@@ -62,10 +62,10 @@
 </div>
 </div><!--content end-->
 
-<div class="footer">
-	<div class="content">
-        <div class="footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60" /></div>
-        <div class="footer_list">
+<div class="data-footer">
+	<div class="data-content">
+        <div class="data-footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60" /></div>
+        <div class="data-footer_list">
             <ul class="f14">
                 <li><a href="#">商务合作</a>&nbsp;&nbsp;<a href="#">问题反馈</a>&nbsp;&nbsp;<a href="#">关于我们</a></li>
                 <li>Copyright © 2016-2026 www.chinahlj.com&nbsp;&nbsp;All Rights Reserved.</li>

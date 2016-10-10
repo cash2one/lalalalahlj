@@ -6,6 +6,7 @@ from longwang.psd_views import psd_page
 from longwang.mongodb_news import image_server
 from longwang.klj_views import klj_page
 from longwang.zt_views import zt_page
+from longwang.sjlj_views import sjlj_page
 import sys
 reload(sys)
 sys.setdefaultencoding("utf8")
@@ -16,6 +17,7 @@ app.register_blueprint(kbg_page)
 app.register_blueprint(psd_page)
 app.register_blueprint(klj_page)
 app.register_blueprint(zt_page)
+app.register_blueprint(sjlj_page)
 
 
 # 专题的上传路径
@@ -34,4 +36,4 @@ def utility_processor():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

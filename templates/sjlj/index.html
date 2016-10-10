@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="/static/css/css.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+{#<script type="text/javascript" src="/static/js/ZoomPic.js"></script>#}
+<title>数据龙江</title>
+</head>
+
+<body>
+<div class="menu">
+	<div class="navbar">
+		<ul>
+			<li><a href="/">首页</a></li>
+			<li><a href="/klj/">看龙江</a></li>
+			<li><a href="/index/5.html">观时事</a></li>
+			<li><a href="/index/6.html">知天下</a></li>
+			<li><a href="psd">品深度</a></li>
+			<li><a href="/index/8.html">享阅读</a></li>
+			<li><a href="/kbg/">侃八卦</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="header-outer">
+<div class="header">
+    <div class="logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a></div>
+	<div class="header-nav">
+		<ul>
+			<li><a href="/">首页</a></li>
+			<li><a href="#">关于我们</a></li>
+{#			<li><a href="#">团队</a></li>#}
+			<li><a href="#">推荐</a></li>
+		</ul>
+	</div>
+</div>
+</div>
+
+<div class="m-slide-con">
+    <div class="combox picListen clearfix">
+    <div class="listenWrap">
+        <div id="listenBox">
+        <span class="prev">&nbsp;</span> <span class="next">&nbsp;</span>
+            {% for i in tt %}
+        <ul>
+        {% if loop.index==1 %}
+        <li style="display: block; border-radius:10px; width: 746px; height: 210px; top: 24px; left: 0px; z-index: 1;">
+            <url>
+        <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+        <p style="display: none;"> <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </p>
+            </url>
+        </li>
+{#        {% endif %}#}
+        {% elif loop.index==2 %}
+        <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 80px; z-index: 2;">
+            <url>
+        <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+        <p style="display: none;"> <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </p>
+            </url>
+        </li>
+{#        {% endif %}#}
+        {% elif loop.index==3 %}
+        <li style="display: block;border-radius:10px; width: 746px; height: 255px; top: 0px; left: 160px; z-index: 3;">
+            <url>
+        <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 1;">
+        <p style="display: block;"> <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </p>
+            </url>
+        </li>
+{#        {% endif %}#}
+            {% elif loop.index==4 %}
+        <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 240px; z-index: 2;">
+            <url>
+        <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+        <p style="display: none;"> <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </p>
+            </url>
+        </li>
+            {% elif loop.index==5 %}
+        <li style="display: block;border-radius:10px; width: 746px; height: 210px; top: 24px; left: 300px; z-index: 1;">
+            <url>
+        <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+        <p style="display: none;"> <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span> </p>
+            </url>
+        </li>
+            {% endif %}
+        </ul>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+	<script src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="/static/js/ZoomPic.js"></script>
+</div>
+
+<div class="content-outer">
+    <h1><span>精品推荐</span></h1>
+    <div class="content">
+		<div class="con-main">
+			<ul class="ul-blocks ft40 fb40 radius01">
+                {% for i in jptj %}
+				<li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="135" /></a></li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="con-main">
+			<div class="con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span class="pink">NEW&nbsp;</span>最新发布</a></div>
+            <ul class="ul-blocks radius02">
+                {% for i in zxfb %}
+                <li>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
+                    <h3 class="blue02 fl10" style="float:left">2016-09-18</h4>
+                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;19</h4>
+                </li>
+                {% endfor %}
+            </ul>
+		</div>
+
+		<div class="con-main">
+			<div class="con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a></div>
+            <ul class="ul-blocks radius02">
+                {% for i in wqhg %}
+                <li>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
+                    <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
+                    <h3 class="blue02 fl10" style="float:left">2016-09-18</h4>
+                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;19</h4>
+                </li>
+                {% endfor %}
+            </ul>
+		</div>
+
+    </div><!--content end-->
+</div>
+
+<div class="footer">
+	<div class="content">
+        <div class="footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60" /></div>
+        <div class="footer_list">
+            <ul class="f14">
+                <li><a href="#">商务合作</a>&nbsp;&nbsp;<a href="#">问题反馈</a>&nbsp;&nbsp;<a href="#">关于我们</a></li>
+                <li>Copyright © 2016-2026 www.chinahlj.com&nbsp;&nbsp;All Rights Reserved.</li>
+                <li>制作单位：黑龙江网&nbsp;&nbsp;版权所有&nbsp;&nbsp;黑龙江新媒体集团有限公司&nbsp;&nbsp;&nbsp;&nbsp;黑ICP备&nbsp;&nbsp;15009298号-7</li>
+            </ul>
+        </div>
+	</div>
+</div>
+
+</body>
+</html>
+
+<!--以上代码编写：wt 20161010-->

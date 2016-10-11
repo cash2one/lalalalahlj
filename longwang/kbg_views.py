@@ -18,7 +18,7 @@ pre_page = 10
 
 
 # 二级频道首页
-@kbg_page.route('/kbg/')
+@kbg_page.route('/kbg')
 def kbg_index():
     # 轮换图 4张
     lht = get_head_image(ObjectId("576500f0dcc88e31a7d2e4ba"), 5)
@@ -96,8 +96,8 @@ def kbg_list(id, page=1):
 
 
 # 二级频道列表
-@kbg_page.route('/kbg/list/<id>/')
-@kbg_page.route('/kbg/list/<id>/<page>/')
+@kbg_page.route('/kbg/<id>.html')
+@kbg_page.route('/kbg/<id>_<page>.html')
 def kbg_list_index(id, page=1):
     try:
         channel = db.Channel.find_one({"numid": int(id)})["_id"]

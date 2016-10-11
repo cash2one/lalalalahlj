@@ -84,8 +84,8 @@ def index():
 
 
 # 二级频道列表
-@index_page.route('/list/<id>/')
-@index_page.route('/list/<id>/<page>/')
+@index_page.route('/<id>.html')
+@index_page.route('/<id>_<page>.html')
 def s_list(id, page=1):
     try:
         channel = db.Channel.find_one({"numid": int(id)})["_id"]
@@ -166,8 +166,8 @@ def s_list_page(id, page=1):
 
 
 # 详细页面 分页显示
-@index_page.route('/detail/<id>/')
-@index_page.route('/detail/<id>/<page>/')
+@index_page.route('/d/<id>.html')
+@index_page.route('/d/<id>_<page>.html')
 def detail(id, page=1):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id), "Status": 4})
@@ -254,7 +254,7 @@ def detail(id, page=1):
 
 
 # 详细页面全部显示
-@index_page.route('/detail_all/<id>/')
+@index_page.route('/da/<id>.html')
 def detail_all(id):
     # 新闻详细
     detail = db.News.find_one({"numid": int(id)})
@@ -410,8 +410,8 @@ def is_sift(page=1):
 
 
 # 一级页面首页（除侃八卦和品深度）
-@index_page.route('/fllist/<id>/')
-@index_page.route('/fllist/<id>/<page>/')
+@index_page.route('/index/<id>.html')
+@index_page.route('/index/<id>_<page>.html')
 def front_page(id, page=1):
     try:
         channel_raw = db.Channel.find_one({"numid": int(id)})

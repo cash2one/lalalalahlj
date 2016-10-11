@@ -19,7 +19,7 @@ pre_page = 10
 
 
 # 二级频道首页
-@psd_page.route('/psd/')
+@psd_page.route('/psd')
 def psd_index():
     # 轮换图
     lht = get_head_image(ObjectId("576500d7dcc88e31a6f3500d"), 4)
@@ -103,8 +103,8 @@ def kbg_list(id, page=1):
 
 
 # 二级频道列表
-@psd_page.route('/psd/list/<id>/')
-@psd_page.route('/psd/list/<id>/<page>/')
+@psd_page.route('/psd/<id>.html')
+@psd_page.route('/psd/<id>_<page>.html')
 def psd_list(id, page=1):
     try:
         channel = db.Channel.find_one({"numid": int(id)})["_id"]

@@ -11,7 +11,7 @@ db = conn.mongo_conn()
 sjlj_page = Blueprint('sjlj_page', __name__, template_folder="templates")
 
 
-@sjlj_page.route("/sjlj/")
+@sjlj_page.route("/sjlj")
 def index():  # 数据龙江首页
     # 头图 5条
     tt = search_indexnews_db("57faed0ab9201c3c53b0ea89", 5)
@@ -35,8 +35,8 @@ def index():  # 数据龙江首页
                            )
 
 
-@sjlj_page.route('/sjlj/<id>.html/')
-@sjlj_page.route('/sjlj/<id>_<page>.html/')
+@sjlj_page.route('/sjlj/<id>.html')
+@sjlj_page.route('/sjlj/<id>_<page>.html')
 def sjlj_list(id, page=1):   # 数据龙江列表页
     pre_page = 10  # 当前页最多新闻条数
     channel = db.Channel.find_one({"numid": int(id)})  #频道内容
@@ -64,7 +64,7 @@ def list_new(raw_list=[]):
     new_list = []
     for i in raw_list:
         raw_new = db.News.find_one({"numid": i["_id"]})
-        i["ctime"] = datetime_op(raw_new["Published"])
+        i["ctime"] = str(raw_new["Published"])[0:10]
         i["browseclick"] = raw_new["Browseclick"]
         new_list.append(i)
     return new_list

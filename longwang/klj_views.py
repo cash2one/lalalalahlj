@@ -15,7 +15,7 @@ db = conn.mongo_conn()
 pre_page = 10
 
 
-@klj_page.route('/klj/')
+@klj_page.route('/klj')
 def klj_index():
     name = '看龙江'
     # 轮换图
@@ -72,8 +72,8 @@ def klj_index():
                            )
 
 
-@klj_page.route('/klj/list/<id>/')
-@klj_page.route('/klj/list/<id>/<page>/')
+@klj_page.route('/klj/<id>.html')
+@klj_page.route('/klj/<id>_<page>.html')
 def s_list(id, page=1):
     try:
         channel = db.Channel.find_one({"numid": int(id)})["_id"]

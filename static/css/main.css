@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
 /* 全局常用设置 */
-*{margin:0px;padding:0px;}
+*{margin:0px;padding:0px; font-family:"微软雅黑"}
 img{border:0px;}
 body,th,td{font:12px "Microsoft Yahei","simsun";}
 html,body{height:100%;}
@@ -8,16 +8,20 @@ ul{list-style-type: none;}
 table{margin:0px;padding:0px;border-collapse:collapse;border:0px;}
 td{padding:0;}
 
-
+.bgblue {background-color:#f6fbff}
 /* 常用字体颜色 */
 .white{color:#FFFFFF;}
 .black{color:#000000;}
 .gray{color:#777;}
+.gray02{color:#423e33;}
+.gray03{color:#999;}
 .red{color:#FF0000;}
 .crimson{color:#de0000;}
 .blue{color:#224181;}
+.blue02{color:#61a4e0;}
 .sky{color:#46abd0;}
 .yellow{color:#ff6700;}
+.pink{color:#ef005a;}
 
 /* 常用字号 */
 .f0{font-size:0px;}
@@ -47,6 +51,8 @@ td{padding:0;}
 .ft20 {margin-top:20px;}
 .ft25 {margin-top:25px;}
 .ft30 {margin-top:30px;}
+.ft40 {margin-top:40px;}
+.ft80 {margin-top:80px;}
 .fl10 {margin-left:10px;}
 .fl20 {margin-left:20px;}
 .fl30 {margin-left:30px;}
@@ -54,10 +60,12 @@ td{padding:0;}
 .fl48 {margin-left:48px;}
 .fl50 {margin-left:50px;}
 .fl30 {margin-left:30px; display:inline;}
+.fr10 {margin-right:10px;}
 .fr20 {margin-right:20px; display:inline;}
 .fr30 {margin-right:30px;}
 .fb10 {margin-bottom:10px;}
 .fb15 {margin-bottom:15px;}
+.fb40 {margin-bottom:40px;}
 .fb60 {margin-bottom:60px;}
 
 
@@ -67,6 +75,5 @@ a:hover{text-decoration: underline;color:#ff6700;}
 
 .clear{clear:both;}
 
+/*以上代码编写：wt 20161010*/
 
-
-.test1{text-decoration: underline; color:#205366;}

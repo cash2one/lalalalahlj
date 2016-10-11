@@ -8,7 +8,7 @@
 <title>数据龙江-黑龙江网</title>
 </head>
 
-<body>
+<body class="bgblue">
 <div class="data-menu">
 	<div class="data-navbar">
 		<ul>
@@ -106,12 +106,12 @@
 		<div class="data-con-main">
 			<div class="data-con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span class="pink">NEW&nbsp;</span>最新发布</a></div>
             <ul class="data-ul-blocks radius02">
-                {% for i in zxfb %}
+                {% for i in zxfb_new %}
                 <li>
                     <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
                     <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
-                    <h3 class="blue02 fl10" style="float:left">2016-09-18</h4>
-                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;19</h4>
+                    <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h4>
+                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;{{ i.browseclick }}</h4>
                 </li>
                 {% endfor %}
             </ul>
@@ -120,12 +120,12 @@
 		<div class="data-con-main">
 			<div class="data-con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a></div>
             <ul class="data-ul-blocks radius02">
-                {% for i in wqhg %}
+                {% for i in wqhg_new %}
                 <li>
                     <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212" /></a>
                     <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
-                    <h3 class="blue02 fl10" style="float:left">2016-09-18</h4>
-                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;19</h4>
+                    <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h4>
+                    <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png" />&nbsp;{{ i.browseclick }}</h4>
                 </li>
                 {% endfor %}
             </ul>

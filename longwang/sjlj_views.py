@@ -11,7 +11,7 @@ db = conn.mongo_conn()
 sjlj_page = Blueprint('sjlj_page', __name__, template_folder="templates")
 
 
-@sjlj_page.route("/sjlj")
+@sjlj_page.route("/sjlj/")
 def index():  # 数据龙江首页
     # 头图 5条
     tt = search_indexnews_db("57faed0ab9201c3c53b0ea89", 5)

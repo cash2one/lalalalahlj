@@ -18,7 +18,7 @@ pre_page = 10
 
 
 # 二级频道首页
-@kbg_page.route('/kbg')
+@kbg_page.route('/kbg/')
 def kbg_index():
     # 轮换图 4张
     lht = get_head_image(ObjectId("576500f0dcc88e31a7d2e4ba"), 5)

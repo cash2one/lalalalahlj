@@ -19,7 +19,7 @@ pre_page = 10
 
 
 # 二级频道首页
-@psd_page.route('/psd')
+@psd_page.route('/psd/')
 def psd_index():
     # 轮换图
     lht = get_head_image(ObjectId("576500d7dcc88e31a6f3500d"), 4)

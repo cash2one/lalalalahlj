@@ -15,7 +15,7 @@ db = conn.mongo_conn()
 pre_page = 10
 
 
-@klj_page.route('/klj')
+@klj_page.route('/klj/')
 def klj_index():
     name = '看龙江'
     # 轮换图

@@ -2175,8 +2175,9 @@ h1 { font-size:26px; font-weight:normal}
 .data-radius01 img { border-radius:5px}
 .data-radius02 img { border-radius:5px 5px 0px 0px}
 
-.data-new-list li {display:block; float:left; margin:30px auto auto auto; width:1200px; height:auto}
-.data-new-list li a:hover { color:inherit; overflow: hidden}
+.data-new-list li {float:left; margin:30px auto auto auto; width:1200px; height:auto;}
+.data-new-list li h3 { float:left; width:278px; height:212px;overflow: hidden;}
+.data-new-list li a:hover {color:inherit;}
 .data-new-list li tt {display:block; float:left; margin-left:30px; width:880px; height:220px}
 .data-new-list li p:hover { text-decoration:underline;}
 .data-new-list li p {padding:10px 10px; overflow:hidden; width:880px;height:40px; line-height:40px; font-size:20px; color:#555}
@@ -2184,8 +2185,8 @@ h1 { font-size:26px; font-weight:normal}
 .data-new-list li h3 {font-weight:normal;font-size:14px;line-height:30px }
 
 /*列表加缩略图*/
-.data-new-list li a img{ display:block;transition: all 1s ease 0s;}
-.data-new-list li a:hover img{-webkit-transform:scale(1.1);transform:scale(1.1)}
+.data-new-list li h3 a  img{ display:block;transition: all 1s ease 0s;}
+.data-new-list li h3 a:hover img{-webkit-transform:scale(1.1);transform:scale(1.1)}
 
 /****footer***/
 .data-footer { position:relative; float:left; margin-top:30px; width:100%; height:200px; background-color:#423e33;}

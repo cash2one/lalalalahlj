@@ -46,13 +46,15 @@
             &nbsp;</span>{{ channel.Name }}</div>
         <ul class="data-new-list">
             {% for i in list %}
-                <li>
-                    <a href="/d/{{ i._id }}.html" style="float:left" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
+                <li><h3>
+                    <a href="/d/{{ i._id }}.html" style="float:left" target="_blank"><img
+                            src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
+                </h3>
                     <tt>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
-                <span>{{ i.summary }}</span>
-                    <!--<h3 class="blue02 fl10" style="float:left">2016-09-18</h3>
-                    <h3 class="gray fr10" style="float:right"><img src="image/like.png" />&nbsp;19</h3>-->
+                        <span>{{ i.summary }}</span>
+                        <!--<h3 class="blue02 fl10" style="float:left">2016-09-18</h3>
+                        <h3 class="gray fr10" style="float:right"><img src="image/like.png" />&nbsp;19</h3>-->
                     </tt>
                 </li>
             {% endfor %}

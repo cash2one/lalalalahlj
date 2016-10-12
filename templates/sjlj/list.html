@@ -45,7 +45,7 @@
         <div class="data-con-m-title gray02"><span class="pink">{% if id==12344 %}NEW{% elif id==12345 %}PAST{% endif %}
             &nbsp;</span>{{ channel.Name }}</div>
         <ul class="data-new-list">
-            {% for i in list %}
+            {% for i in _news_list %}
                 <li><h3>
                     <a href="/d/{{ i._id }}.html" target="_blank"><img
                             src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>

@@ -52,8 +52,9 @@ def sjlj_list(id, page=1):   # 数据龙江列表页
         _news_list.append(get_mongodb_dict(i))
     pagenums, pagebar_html = pager("/sjlj/" + str(id), int(page), count, pre_page).show_page()
     return render_template('sjlj/list.html',
-                           list=list,
+                           # list=list,
                            channel=channel,
+                           _news_list=_news_list,
                            id=int(id),
                            pagebar_html=pagebar_html
                            )

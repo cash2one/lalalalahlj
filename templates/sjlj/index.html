@@ -111,7 +111,7 @@
         <div class="data-con-main">
             <ul class="data-ul-blocks ft40 fb40 radius01">
                 {% for i in jptj %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278"
+                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=135" width="278"
                                                                            height="135"/></a></li>
                 {% endfor %}
             </ul>
@@ -123,7 +123,7 @@
             <ul class="data-ul-blocks radius02">
                 {% for i in zxfb_new %}
                     <li>
-                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278"
+                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278"
                                                                            height="212"/></a>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                         <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h3>
@@ -140,7 +140,7 @@
             <ul class="data-ul-blocks radius02">
                 {% for i in wqhg_new %}
                     <li>
-                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="278"
+                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278"
                                                                            height="212"/></a>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                         <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h3>

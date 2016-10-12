@@ -47,7 +47,7 @@
         <ul class="data-new-list">
             {% for i in list %}
                 <li>
-                    <a href="/d/{{ i._id }}.html" style="float:left" target="_blank"><img src="{{ i.guide_image }}" width="278" height="212"/></a>
+                    <a href="/d/{{ i._id }}.html" style="float:left" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
                     <tt>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                 <span>{{ i.summary }}</span>

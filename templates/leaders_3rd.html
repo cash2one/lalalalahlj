@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
                     if(parseInt(page)<=20) {
                         $.ajaxSettings.async = false;
                         $.getJSON("/ldj/{{ lingdao.numid }}/" + page, function (result) {
-                            alert(result);
+{#                            alert(result);#}
                             var $firstTen = jQuery.parseHTML(result);
                             $container.append($firstTen);
                             $("#page").val(parseInt(page) + 1);

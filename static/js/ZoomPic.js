@@ -1,22 +1,8 @@
-function getX(obj){
-var parObj=obj;
-var left=obj.offsetLeft;
-while(parObj=parObj.offsetParent){
-left+=parObj.offsetLeft;
-}
-return left;
-}
-function DisplayCoord(event){
-var left,oDiv;
-oDiv=document.getElementById("listenBox");
-left=getX(oDiv);
-divLeft = (event.clientX-left+document.documentElement.scrollLeft);
-}
 function ZoomPic ()
 {
-	this.initialize.apply(this, arguments)	
+	this.initialize.apply(this, arguments)
 }
-ZoomPic.prototype = 
+ZoomPic.prototype =
 {
 	initialize : function (id)
 	{
@@ -44,35 +30,7 @@ ZoomPic.prototype =
 		this.setUp();
 		this.addEvent(this.prev, "click", this._doPrev);
 		this.addEvent(this.next, "click", this._doNext);
-		this.doImgClick();		
-		this.timer = setInterval(function ()
-		{
-			//_this.doPrev()//自动向右旋转
-			_this.doNext()//自动向左旋转	
-		}, 5000);
-		this.wrap.onmouseover = function ()
-		{
-			clearInterval(_this.timer)
-		};
-		this.wrap.onmouseout = function ()
-		{
-			//left=this.wrap.offsetLeft;
-			//console.log(divLeft)
-			if(divLeft > 186){
-				_this.timer = setInterval(function ()
-					{
-						_this.doNext()
-						//_this.doPrev()	
-					}, 3000);	
-			}else{
-				_this.timer = setInterval(function ()
-					{
-						//_this.doNext()
-						_this.doPrev()	
-					}, 3000);	
-			}
-			
-		}
+		this.doImgClick();
 	},
 	doPrev : function ()
 	{
@@ -89,8 +47,7 @@ ZoomPic.prototype =
 		var _this = this;
 		for (var i = 0; i < this.aSort.length; i++)
 		{
-			this.aSort[i].onclick= function ()
-			//this.aSort[i].onmouseover= function ()
+			this.aSort[i].onmouseover= function ()
 			{
 				if (this.index > _this.iCenter)
 				{
@@ -117,27 +74,13 @@ ZoomPic.prototype =
 			if (i < 5)
 			{
 				this.css(this.aSort[i], "display", "block");
-				// if(i!=2){
-				// 		this.aSort[i].getElementsByTagName("p")[0].style.display="none"
-				// 	}
 				this.doMove(this.aSort[i], this.options[i], function ()
 				{
 
 					_this.doMove(_this.aSort[_this.iCenter].getElementsByTagName("img")[0], {opacity:100}, function ()
 					{
-						
+
 						_this.aSort[_this.iCenter].getElementsByTagName("p")[0].style.display="block";
-						/*_this.doMove(_this.aSort[_this.iCenter].getElementsByTagName("img")[0], {opacity:100}, function ()
-						{
-							_this.aSort[_this.iCenter].onmouseover = function ()
-							{
-								_this.doMove(this.getElementsByTagName("div")[0], {bottom:0})
-							};
-							_this.aSort[_this.iCenter].onmouseout = function ()
-							{
-								_this.doMove(this.getElementsByTagName("div")[0], {bottom:-100})
-							}
-						})*/
 					})
 				});
 			}
@@ -154,31 +97,9 @@ ZoomPic.prototype =
 			{
 				this.aSort[i].getElementsByTagName("p")[0].style.display="none";
 
-				//this.css(this.aSort[i].getElementsByTagName("img")[0], "opacity", 100)
-				this.aSort[i].onmouseover = function ()
-				{
-					_this.doMove(this.getElementsByTagName("img")[0], {opacity:100})	
-				};
-				this.aSort[i].onmouseout = function ()
-				{
-					_this.doMove(this.getElementsByTagName("img")[0], {opacity:50})
-				};
-				this.aSort[i].onmouseout();
+				this.css(this.aSort[i].getElementsByTagName("img")[0], "opacity", 100)
 			}
-			else
-			{
-				this.aSort[i].onmouseover = this.aSort[i].onmouseout = null
-			}
-			if (i == this.iCenter){
-				
-				//this.aSort[i].style.borderBottom="3px solid #d1c0a5"
-				//console.log(this.aSort[i].style.borderBottom)
-			}else if(i == 1 || i == 3){
-				//this.aSort[i].style.borderBottom="3px solid #f8b551"
-			}else if(i == 0 || i == 4){
-				//this.aSort[i].style.borderBottom="3px solid #84ccc9"
-			}
-		}		
+		}
 	},
 	addEvent : function (oElement, sEventType, fnHandler)
 	{
@@ -187,7 +108,7 @@ ZoomPic.prototype =
 	css : function (oElement, attr, value)
 	{
 
-		
+
 		if (arguments.length == 2)
 		{
 			return oElement.currentStyle ? oElement.currentStyle[attr] : getComputedStyle(oElement, null)[attr]
@@ -195,7 +116,7 @@ ZoomPic.prototype =
 		else if (arguments.length == 3)
 		{
 			switch (attr)
-			{ 
+			{
 				case "width":
 				case "height":
 				case "top":
@@ -211,7 +132,7 @@ ZoomPic.prototype =
 					oElement.style[attr] = value;
 					break
 			}
-			//console.log(oElement.style[attr])	
+			//console.log(oElement.style[attr])
 		}
 	},
 	doMove : function (oElement, oAttr, fnCallBack)
@@ -228,7 +149,7 @@ ZoomPic.prototype =
 				property == "opacity" && (iCur = parseInt(iCur.toFixed(2) * 100));
 				var iSpeed = (oAttr[property] - iCur) / 5;
 				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-				
+
 				if (iCur != oAttr[property])
 				{
 					bStop = false;
@@ -238,7 +159,7 @@ ZoomPic.prototype =
 			if (bStop)
 			{
 				clearInterval(oElement.timer);
-				fnCallBack && fnCallBack.apply(_this, arguments)	
+				fnCallBack && fnCallBack.apply(_this, arguments)
 			}
 		}, 30)
 

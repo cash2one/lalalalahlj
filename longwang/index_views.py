@@ -588,7 +588,7 @@ def klj_ld():
         abort(404)
 
 
-@index_page.route('/ld/<id>/')
+@index_page.route('/ld/<id>.html')
 def klj_ld_list(id):
     try:
         lingdao = db.Channel.find_one({"numid": int(id)})  # 获取领导信息
@@ -614,7 +614,7 @@ def klj_ld_list(id):
         abort(404)
 
 
-@index_page.route('/ld/<id>/<num>/')
+@index_page.route('/ld/<id>_<num>.html')
 def klj_ld_list_detail(id, num):
     try:
         lingdao = db.Channel.find_one({"numid": int(id)})

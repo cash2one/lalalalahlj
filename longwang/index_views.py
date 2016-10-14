@@ -614,35 +614,56 @@ def klj_ld_list(id):
         abort(404)
 
 
-@index_page.route('/ld/<id>_<num>.html')
-def klj_ld_list_detail(id, num):
+@index_page.route('/ld/<id>_<num>_<page>.html')
+def klj_ld_list_detail(id, num, page=1):
     try:
+        pre_page_1 = 20
         lingdao = db.Channel.find_one({"numid": int(id)})
         parent = lingdao["_id"]
         channel = db.Channel.find({"Parent": ObjectId(parent)}).sort("OrderNumber")
         news_list = []
         name = ''
         if num == "1":  # 路由中num=='1'得到讲话List
-            news_list = search_news_db([channel[0]["_id"]], 20)
+            condition = {"Channel": {"$in": [channel[0]["_id"]]}}
+            count = db.News.find(condition).sort('Pulished', pymongo.DESCENDING).count()
+            news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+                pre_page_1 * (int(page) - 1)).limit(
+                pre_page_1)
+            # news_list = search_news_db([channel[0]["_id"]], 20)
             name = "讲话"
         elif num == "2":  # 路由中num=='2'得到活动List
-            news_list = search_news_db([channel[1]["_id"]], 20)
+            condition = {"Channel": {"$in": [channel[1]["_id"]]}}
+            count = db.News.find(condition).sort('Pulished', pymongo.DESCENDING).count()
+            news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
+                pre_page_1 * (int(page) - 1)).limit(
+                pre_page_1)
+            # news_list = search_news_db([channel[1]["_id"]], 20)
             name = "活动"
-        return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd')
+        # 翻页内容
+        _news_list = []
+        for i in news_list:
+            _news_list.append(get_mongodb_dict(i))
+        url_mid = str(id) + "_" + str(num)
+        pagenums, pagebar_html = pager("/ld/" + url_mid, int(page), count, pre_page_1).show_page()
+        return render_template("leaders_3rd.html", news_list=news_list, name=name, lingdao=lingdao, ld2nd='ld2nd',
+                               _news_list=_news_list,
+                               pagebar_html=pagebar_html
+
+                               )
     except:
         abort(404)
 
 
-@index_page.route('/ldj/<id>/<page>/')
-def ldj(id, page=2):
-    condition = {"Status": 4, "channelnumid": {"$in": [int(id)]}}
-    news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 20).limit(
-        20)
-    string = ""
-    for i in news_list:
-        string += "<li><a href='/d/%s.html'  target='_blank'>%s</a> <span>%s</span></li>" % (
-            i["numid"], i["Title"], datetime_op(i["Published"]))
-    return json.dumps(string)
+# @index_page.route('/ldj/<id>/<page>/')
+# def ldj(id, page=2):
+#     condition = {"Status": 4, "channelnumid": {"$in": [int(id)]}}
+#     news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip((int(page) - 1) * 20).limit(
+#         20)
+#     string = ""
+#     for i in news_list:
+#         string += "<li><a href='/d/%s.html'  target='_blank'>%s</a> <span>%s</span></li>" % (
+#             i["numid"], i["Title"], datetime_op(i["Published"]))
+#     return json.dumps(string)
 
 
 def get_name(channel):

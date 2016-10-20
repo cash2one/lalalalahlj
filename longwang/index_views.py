@@ -222,6 +222,8 @@ def detail(id, page=1):
     d["Published"] = detail["Published"]
     d["Author"] = detail["Author"]
     d["Content"] = detail["Content"]
+    d["Keywords"] = detail["Keywords"]
+    d["Summary"] = detail["Summary"]
     if len(count) > 1:
         d["Content"] = count[int(page) - 1]
     d["Editor"] = detail["Editor"]

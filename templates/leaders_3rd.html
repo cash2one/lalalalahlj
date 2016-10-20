@@ -54,57 +54,55 @@ var _hmt = _hmt || [];
 </div>
 </div>
 {% include "master_page/footer_page.html"  %}
-{#  <input type="hidden" id="page" value="2">#}
-{#{% include "master_page/footer_page.html"  %}#}
-{# <script type="text/javascript">#}
-{#        (function ($) {#}
-{#            var wookmark,#}
-{#                    container = '#ul_content',#}
-{#                    $container = $(container),#}
-{#                    $window = $(window),#}
-{#                    $document = $(document);#}
-{#            imagesLoaded(container, function () {#}
-{#                wookmark = new Wookmark(container, {#}
-{#                    offset: 0, // Optional, the distance between grid items#}
-{#                    itemWidth:1200 // Optional, the width of a grid item#}
-{#                });#}
-{#            });#}
-{##}
-{#            function onScroll() {#}
-{#                // Check if we're within 100 pixels of the bottom edge of the broser window.#}
-{#                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix#}
-{#                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);#}
-{#                if (closeToBottom) {#}
-{#                    var page = $("#page").val();#}
-{#                    if(parseInt(page)<=20) {#}
-{#                        $.ajaxSettings.async = false;#}
-{#                        $.getJSON("/ldj/{{ lingdao.numid }}/" + page, function (result) {#}
-{#                            alert(result);#}
-{#                            var $firstTen = jQuery.parseHTML(result);#}
-{#                            $container.append($firstTen);#}
-{#                            $("#page").val(parseInt(page) + 1);#}
-{#                            wookmark.initItems();#}
-{#                            wookmark.layout(true, function () {#}
-{#                                // Fade in items after layout#}
-{#                                setTimeout(function () {#}
-                                    {#                            $firstTen.css('opacity', 1);#}
-{#                                }, 300);#}
-{##}
-{#                            });#}
-{#                        })#}
-{#                    }#}
-{##}
-{#                }#}
-{#            };#}
-{##}
-{#            // Capture scroll event.#}
-{#            $window.on('scroll.wookmark', onScroll);#}
-{##}
-{#        })(jQuery);#}
-{##}
-{##}
-{#    </script>#}
+ <!-- <input type="hidden" id="page" value="2">
+ <script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '#ul_content',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth:1200 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    if(parseInt(page)<=20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON("/ldj/{{ lingdao.numid }}/" + page, function (result) {
+                            alert(result);
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                                                $firstTen.css('opacity', 1);
+                                }, 300);
+
+                            });
+                        })
+                    }
+
+                }
+            };
+
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+
+
+    </script>-->
 </body>
 </html>
 
-<!---------20160809以下编写：wt------------->

@@ -2,34 +2,26 @@
 {% block title %}{{ keyword }}-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-   <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-{#    <script type="text/javascript">#}
-{#        $(document).ready(function () {#}
-{##}
-{#            $("#loading").click(function () {#}
-{#                var page = $("#page").val();#}
-{#                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {#}
-{#                    $('#ul_content').append(result);#}
-{#                    $("#page").val(parseInt(page) + 1);#}
-{#                });#}
-{#            });#}
-{##}
-{#        });#}
-{##}
-{#    </script>#}
+  <!--  <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#loading").click(function () {
+                var page = $("#page").val();
+                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {
+                    $('#ul_content').append(result);
+                    $("#page").val(parseInt(page) + 1);
+                });
+            });
+
+        });
+
+    </script>-->
 {% endblock %}
 {% block middle %}
     <!---------left-------->
     <div class="con_l">
-{#        {% include "generic_components/list_rotation_graph.html" %}#}
-
-        <!---------w950新闻分类-------->
-{#        <div class="list_tlt ft30">#}
-{#            <p><img src="/static/images/ylc_logo.png" width="46" height="45"/></p>#}
-{#            <span>{{ detail.Name }}</span>#}
-{#        </div>#}
-
         <div class="list_news">
             <ul id="ul_news">
                 {% for i in c_list %}
@@ -50,10 +42,8 @@
         <input type="hidden" id="page" value="2">
       {% endif %}
     </div>
-
     <!---------right-------->
     {% include 'generic_components/right_side_bar.html' %}
-
 {% endblock %}
 
 {% block footer %}
@@ -99,10 +89,7 @@
 
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
-
         })(jQuery);
-
-
     </script>
         {% include 'master_page/footer_page.html' %}
 {% endblock %}

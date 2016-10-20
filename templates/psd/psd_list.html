@@ -2,20 +2,20 @@
 {% block title %}{{ detail.Name }}-品深度-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-{#        <script type="text/javascript">#}
-{#        $(document).ready(function () {#}
-{#            $("#loading").click(function () {#}
-{#                var page = $("#page").val();#}
-{#                $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {#}
-{#                    $('.dpt2_list_n04').append(result);#}
-{#                    $("#page").val(parseInt(page) + 1);#}
-{#                });#}
-{#            });#}
-{#        });#}
-{#    </script>#}
+ <!--       <script type="text/javascript">
+        $(document).ready(function () {
+            $("#loading").click(function () {
+                var page = $("#page").val();
+                $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {
+                    $('.dpt2_list_n04').append(result);
+                    $("#page").val(parseInt(page) + 1);
+                });
+            });
+        });
+    </script>
 
-{#    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>#}
-{#    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>#}
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
 
 {% endblock %}
 {% block middle %}
@@ -23,30 +23,30 @@
   <!---------left-------->
   <!---------轮播图-------->
   <div class="gsp_con_l">
-{#    <div class="gsp_flash">#}
-{#      <div class="gsp_foucebox" style="margin:0 auto">#}
-{#          <div id="fsD1" class="focus">  #}
-{#              <div id="D1pic1" class="fPic">#}
-{#                  {% for i in lht %}#}
-{#                  <div class="fcon" style="display: none;">#}
-{#                      <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>#}
-{#                      <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>#}
-{#                  </div>#}
-{#                  {% endfor %}#}
-{#              </div>#}
-{#              <div class="fbg">  #}
-{#              <div class="D1fBt" id="D1fBt">  #}
-{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>  #}
-{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>  #}
-{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>  #}
-{#                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>  #}
-{#              </div>  #}
-{#              </div>  #}
-{#              <span class="prev"></span>   #}
-{#              <span class="next"></span>    #}
-{#          </div>#}
-{#      </div>#}
-{#    </div>#}
+  <!--  <div class="gsp_flash">
+      <div class="gsp_foucebox" style="margin:0 auto">
+          <div id="fsD1" class="focus">
+              <div id="D1pic1" class="fPic">
+                  {% for i in lht %}
+                  <div class="fcon" style="display: none;">
+                      <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
+                      <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
+                  </div>
+                  {% endfor %}
+              </div>
+              <div class="fbg">
+              <div class="D1fBt" id="D1fBt">
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>
+                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>
+              </div>
+              </div>
+              <span class="prev"></span>
+              <span class="next"></span>
+          </div>
+      </div>
+    </div>-->
             <!---------w950新闻分类-------->
         <div class="list_tlt1">
             <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
@@ -66,8 +66,8 @@
         </ul><!--lv1_h360-->        
 
     </div>
-{#    <div class="dpt_list_news_jz" id="loading">点击浏览更多文章</div>#}
-{#  <input type="hidden" id="page" value="2">#}
+ <!--   <div class="dpt_list_news_jz" id="loading">点击浏览更多文章</div>
+  <input type="hidden" id="page" value="2">-->
   <div class="content_l ft30">
     <div class="jogger">
         {% autoescape false %}
@@ -193,94 +193,60 @@
         </div>
       </div>
     </div>
-
-
-
-
-    <!----新闻热搜----->
-{#    <div class="gsp_con_r_main ft30">#}
-{#      <div class="gsp_right_tlt">#}
-{#        <p>新闻热搜</p>#}
-{#      </div>#}
-{#      <div class="gsp_con_r_main">#}
-{#        <div class="gsp_seach_ci">#}
-{#          <ul id="ul_hot">#}
-{#          </ul>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-
     <!----专题----->
   {% include "psd/master_page/psd_zt_right_bar.html" %}
-{#    <div class="gsp_con_r_main ft30">#}
-{#      <div class="gsp_right_tlt fbold" style="height:30px;">#}
-{#        <p style="color:#205366;font-size:16px;">专题</p>#}
-{#      </div>#}
-{#      <div class="gsp_con_r_main">#}
-{#        <div class="gsp_right_list" >#}
-{#          <ul>#}
-{#              {% for i in zt %}#}
-{#            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.summary }}</a></li>#}
-{#              {% endfor %}#}
-{#          </ul>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-
-
-
   </div>
     </div>
 {% endblock %}
 
 {% block footer %}
         {% include 'master_page/footer_page.html' %}
-{#    <script type="text/javascript">#}
-{#        (function ($) {#}
-{#            var wookmark,#}
-{#                    container = '.dpt2_list_n04',#}
-{#                    $container = $(container),#}
-{#                    $window = $(window),#}
-{#                    $document = $(document);#}
-{#            imagesLoaded(container, function () {#}
-{#                wookmark = new Wookmark(container, {#}
-{#                    offset: 0, // Optional, the distance between grid items#}
-{#                    itemWidth: 870 // Optional, the width of a grid item#}
-{#                });#}
-{#            });#}
-{##}
-{#            function onScroll() {#}
-{#                // Check if we're within 100 pixels of the bottom edge of the broser window.#}
-{#                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix#}
-{#                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);#}
-{#                if (closeToBottom) {#}
-{#                    var page = $("#page").val();#}
-{#                    if(parseInt(page)<=20) {#}
-{#                        $.ajaxSettings.async = false;#}
-{#                        $.getJSON("/psd/list/{{ detail.numid }}/" + page, function (result) {#}
-{#                            var $firstTen = jQuery.parseHTML(result);#}
-{#                            $container.append($firstTen);#}
-{#                            $("#page").val(parseInt(page) + 1);#}
-{#                            wookmark.initItems();#}
-{#                            wookmark.layout(true, function () {#}
-{#                                // Fade in items after layout#}
-{#                                setTimeout(function () {#}
-                                    {#                            $firstTen.css('opacity', 1);#}
-{#                                }, 300);#}
-{##}
-{#                            });#}
-{#                        })#}
-{#                    }#}
-{##}
-{#                }#}
-{#            };#}
-{##}
-{#            // Capture scroll event.#}
-{#            $window.on('scroll.wookmark', onScroll);#}
-{##}
-{#        })(jQuery);#}
-{##}
-{##}
-{#    </script>#}
+  <!--  <script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '.dpt2_list_n04',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+            imagesLoaded(container, function () {
+                wookmark = new Wookmark(container, {
+                    offset: 0, // Optional, the distance between grid items
+                    itemWidth: 870 // Optional, the width of a grid item
+                });
+            });
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var page = $("#page").val();
+                    if(parseInt(page)<=20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON("/psd/list/{{ detail.numid }}/" + page, function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                                                $firstTen.css('opacity', 1);
+                                }, 300);
+
+                            });
+                        })
+                    }
+
+                }
+            };
+
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+
+
+    </script>-->
 {% endblock %}
 <!---------20160628以下编写：wt------------->

@@ -24,11 +24,10 @@
         }
     </script>
 {% endblock %}
-
 {% block middle %}
 <div class="content ft30">
-  <!---------left-------->
-  <!---------轮播图-------->
+  <!--left-->
+  <!--轮播图-->
   <div class="gsp_con_l">
     <div class="gsp_flash">
       <div class="gsp_foucebox" style="margin:0 auto">
@@ -36,10 +35,8 @@
               <div id="D1pic1" class="fPic">
                   {% for i in lht %}
                   <div class="fcon" style="display: none;">
-
                       <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
                       <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
-
                   </div>
                     {% endfor %}
               </div>
@@ -56,7 +53,7 @@
           </div>
       </div>
     </div>
-{#    <!---------w950新闻分类-------->#}
+    <!--w950新闻分类-->
     <div class="dpt_list_news">
         <ul class="dpt_list_n01">
             <div class="dpt_left_news">
@@ -69,7 +66,6 @@
 				</li>
                   {% endfor %}
               </ul>
-
             </div>
         </ul>
         <ul class="dpt_list_n03 ft30">
@@ -89,7 +85,6 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
-
             </ul>
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in zzjj %}
@@ -100,7 +95,6 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
-
             </ul>
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in shms %}
@@ -121,7 +115,6 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
-
             </ul>
             <ul class="dpt_list_n04" style="display:none;">
                 {% for i in jykj %}
@@ -132,20 +125,18 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
-
             </ul>
         </ul><!--lv1_h360-->
-
     </div>
     <div class="dpt_list_news_jz" onclick="return go_to();">点击浏览更多文章</div>
     <input type="hidden" id="page" value="2">
       <input type="hidden" id="channel" value="42">
   </div>
-{#  <!---------right-------->#}
+  <!--right-->
 {% include "psd/master_page/right_side_bar.html" %}
   </div>
 {% endblock %}
 {% block footer %}
 {% include "master_page/footer_page.html" %}
 {% endblock %}
-<!---------20160628以下编写：wt------------->
+<!--20160628以下编写：wt-->

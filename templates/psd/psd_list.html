@@ -13,46 +13,20 @@
             });
         });
     </script>
-
     <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
-
 {% endblock %}
 {% block middle %}
 <div class="content ft30"> 
-  <!---------left-------->
-  <!---------轮播图-------->
+  <!--left-->
+  <!--轮播图-->
   <div class="gsp_con_l">
-  <!--  <div class="gsp_flash">
-      <div class="gsp_foucebox" style="margin:0 auto">
-          <div id="fsD1" class="focus">
-              <div id="D1pic1" class="fPic">
-                  {% for i in lht %}
-                  <div class="fcon" style="display: none;">
-                      <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
-                      <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
-                  </div>
-                  {% endfor %}
-              </div>
-              <div class="fbg">
-              <div class="D1fBt" id="D1fBt">
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>
-                  <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>4</i></a>
-              </div>
-              </div>
-              <span class="prev"></span>
-              <span class="next"></span>
-          </div>
-      </div>
-    </div>-->
-            <!---------w950新闻分类-------->
+            <!--w950新闻分类-->
         <div class="list_tlt1">
             <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
             <span>{{ detail.Name }}</span>
         </div>
-    <!---------w950新闻分类-------->
+    <!--w950新闻分类-->
     <div class="dpt_list_news">
             <ul class="dpt2_list_n04">
                 {% for i in c_list %}
@@ -63,11 +37,8 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
                 {% endfor %}
-        </ul><!--lv1_h360-->        
-
+        </ul><!--lv1_h360-->
     </div>
- <!--   <div class="dpt_list_news_jz" id="loading">点击浏览更多文章</div>
-  <input type="hidden" id="page" value="2">-->
   <div class="content_l ft30">
     <div class="jogger">
         {% autoescape false %}
@@ -76,11 +47,9 @@
     </div>
 </div>
   </div>
-  
-  <!---------right-------->
+  <!--right-->
   <div class="gsp_con_r">
-
-    <!----今日热评----->
+    <!--今日热评-->
     <div class="gsp_con_r_main">
       <div class="gsp_right_tlt">
         <p>今日热评</p>
@@ -104,8 +73,7 @@
         </div>
       </div>
     </div>
-
-    <!----独家视界----->
+    <!--独家视界-->
     <div class="dpt_con_r_main ft30">
       <div class="dpt_right_tlt fb15">
         <p><a href="/psd/36.html" target="_blank">独家视界</a></p>
@@ -124,8 +92,7 @@
         </div>
       </div>
     </div>
-
-    <!----当事者说----->
+    <!--当事者说-->
     <div class="dpt_con_r_main ft30">
       <div class="dpt_right_tlt">
         <p><a href="/psd/38.html" target="_blank">当事者说</a></p>
@@ -144,9 +111,7 @@
         </div>
       </div>
     </div>
-
-
-    <!----新闻排行----->
+    <!--新闻排行-->
     <div class="gsp2_con_r_main ft30">
       <div class="gsp2_right_tlt">
         <p>新闻排行</p>
@@ -188,17 +153,15 @@
                   {% endfor %}
               </ul>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-    <!----专题----->
+    <!--专题-->
   {% include "psd/master_page/psd_zt_right_bar.html" %}
   </div>
     </div>
 {% endblock %}
-
 {% block footer %}
         {% include 'master_page/footer_page.html' %}
   <!--  <script type="text/javascript">
@@ -214,7 +177,6 @@
                     itemWidth: 870 // Optional, the width of a grid item
                 });
             });
-
             function onScroll() {
                 // Check if we're within 100 pixels of the bottom edge of the broser window.
                  var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
@@ -233,20 +195,14 @@
                                 setTimeout(function () {
                                                                 $firstTen.css('opacity', 1);
                                 }, 300);
-
                             });
                         })
                     }
-
                 }
             };
-
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
-
         })(jQuery);
-
-
     </script>-->
 {% endblock %}
-<!---------20160628以下编写：wt------------->
+<!--20160628以下编写：wt-->

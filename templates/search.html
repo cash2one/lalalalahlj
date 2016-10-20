@@ -16,11 +16,10 @@
             });
 
         });
-
     </script>-->
 {% endblock %}
 {% block middle %}
-    <!---------left-------->
+    <!--left-->
     <div class="con_l">
         <div class="list_news">
             <ul id="ul_news">
@@ -36,16 +35,13 @@
                 {% endfor %}
             </ul>
         </div>
-
       {% if c_list|length>8 %}
-{#        <div class="list_news_jz" id="loading">点击浏览更多文章</div>#}
         <input type="hidden" id="page" value="2">
       {% endif %}
     </div>
-    <!---------right-------->
+    <!--right-->
     {% include 'generic_components/right_side_bar.html' %}
 {% endblock %}
-
 {% block footer %}
          <script type="text/javascript">
         (function ($) {
@@ -60,7 +56,6 @@
                     itemWidth: 950 // Optional, the width of a grid item
                 });
             });
-
             function onScroll() {
                 // Check if we're within 100 pixels of the bottom edge of the broser window.
                  var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
@@ -79,14 +74,12 @@
                                 setTimeout(function () {
                                     {#                            $firstTen.css('opacity', 1);#}
                                 }, 300);
-
                             });
                         })
 
                     }
                 }
             };
-
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
         })(jQuery);

@@ -1,6 +1,6 @@
 <!---------right-------->
 <div class="con_r">
-    <!----新闻排行----->
+    <!--新闻排行-->
     <div class="con_r_main ">
         <div class="right_tlt">
             <p>
@@ -54,8 +54,7 @@
             </div>
         </div>
     </div>
-
-    <!----今日热评----->
+    <!--今日热评-->
     <div class="con_r_main ft30">
       <div class="right_tlt">
         <p>今日热评</p>
@@ -77,11 +76,11 @@
         </div>
       </div>
     </div>
-    <!----热门图集----->
+    <!--热门图集-->
     <div class="con_r_main ft30">
         <div class="right_tlt">
             <p><a href="/33.html" target="_blank">热门图集</a></p>
-            {#        <span>photo</span>#}
+                    <!--<span>photo</span>-->
         </div>
         <div class="con_r_main">
             <div class="right_list02" id="right_list02" style="margin-top:10px;">
@@ -93,17 +92,14 @@
                                                            src="{{ i.guide_image }}?w=220&h=110" width="220"
                                                            height="110"/></a></li>
                     {% endfor %}
-
                 </ul>
             </div>
         </div>
     </div>
-
     <!----侃八卦----->
    {% include "generic_components/right_bar_kbg.html" %}
 </div>
 <script>
-
     $("#right_list02 ul li").mouseenter(function () {
         var ul = $(this).parent("ul");
         var li = ul.children("li");
@@ -115,11 +111,7 @@
             } else {
                                li.eq(i).find("a").css({"text-decoration": "none","color":"#333"});
                                li.eq(i).find("img").css("display","none");
-
-
             }
         })
-
     });
-
 </script>

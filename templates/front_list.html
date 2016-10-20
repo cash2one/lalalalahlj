@@ -17,15 +17,12 @@
     <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
 {% endblock %}
 {% block middle %}
-  <!---------left-------->
+  <!--left-->
   <div class="con_l">
       <div class="focus02"  style="margin:0 auto;">
           {% include "generic_components/lht.html" %}
-
       </div>
-    
-    <!---------w950新闻分类-------->
-    
+    <!--w950新闻分类-->
     <div class="list02_news ft10">
     <ul id="ul_content">
         {% for i in news_list %}
@@ -38,8 +35,6 @@
         {% endfor %}
     </ul>
     </div>
-{#    <div class="list_news_jz" id="loading" style="margin-top:60px;">点击浏览更多文章</div>#}
-{#  <input type="hidden" id="page" value="2">#}
 <div class="content_l ft30">
     <div class="jogger">
         {% autoescape false %}
@@ -48,11 +43,8 @@
     </div>
 </div>
   </div>
-  
-  <!---------right-------->
+  <!--right-->
     {% include 'generic_components/right_side_bar.html' %}
-
-
 {% endblock %}
 {% block footer %}
         {% include 'master_page/footer_page.html' %}
@@ -95,12 +87,8 @@
 
                 }
             };
-
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
-
         })(jQuery);
-
-
     </script>-->
 {% endblock %}

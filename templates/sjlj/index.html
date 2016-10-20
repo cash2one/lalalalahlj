@@ -10,7 +10,6 @@
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <title>数据龙江-黑龙江网</title>
 </head>
-
 <body class="bgblue">
 <div class="data-menu">
     <div class="data-navbar">
@@ -25,7 +24,6 @@
         </ul>
     </div>
 </div>
-
 <div class="data-header-outer">
     <div class="data-header">
         <div class="data-logo"><a href="/sjlj/"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></a>
@@ -34,13 +32,11 @@
             <ul>
                 <li><a href="/">首页</a></li>
                 <li><a href="#">关于我们</a></li>
-                {#			<li><a href="#">团队</a></li>#}
                 <li><a href="#">推荐</a></li>
             </ul>
         </div>
     </div>
 </div>
-
 <div class="m-slide-con">
     <div class="combox picListen clearfix">
         <div class="listenWrap">
@@ -51,46 +47,35 @@
                         {% if loop.index==1 %}
                             <li style="display: block; border-radius:10px; width: 746px; height: 210px; top: 24px; left: 0px; z-index: 1;">
                                 <url>
-{#                                    <a href="/d/{{ i._id }}.html" target="_blank">#}
                                     <img src="{{ i.guide_image }}" width="756" height="255" border="0"
                                          alt="{{ i.title }}" style="opacity: 0.5;">
-{#                                    </a>#}
                                     <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
                                                                        target="_blank">{{ i.title }}</a></span></p>
                                 </url>
                             </li>
-                            {#        {% endif %}#}
                         {% elif loop.index==2 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 80px; z-index: 2;">
                                 <url>
-{#                                    <a href="/d/{{ i._id }}.html" target="_blank">#}
                                     <img src="{{ i.guide_image }}" width="756" height="255" border="0"
                                          alt="{{ i.title }}" style="opacity: 0.5;">
-{#                                    </a>#}
                                     <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
                                                                        target="_blank">{{ i.title }}</a></span></p>
                                 </url>
                             </li>
-                            {#        {% endif %}#}
                         {% elif loop.index==3 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 255px; top: 0px; left: 160px; z-index: 3;">
                                 <url>
-{#                                    <a href="/d/{{ i._id }}.html" target="_blank">#}
                                     <img src="{{ i.guide_image }}" width="756" height="255" border="0"
                                          alt="{{ i.title }}" style="opacity: 1;">
-{#                                    </a>#}
                                     <p style="display: block;"><span><a href="/d/{{ i._id }}.html"
                                                                         target="_blank">{{ i.title }}</a></span></p>
                                 </url>
                             </li>
-                            {#        {% endif %}#}
                         {% elif loop.index==4 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 240px; z-index: 2;">
                                 <url>
-{#                                    <a href="/d/{{ i._id }}.html" target="_blank">#}
                                     <img src="{{ i.guide_image }}" width="756" height="255" border="0"
                                          alt="{{ i.title }}" style="opacity: 0.5;">
-{#                                    </a>#}
                                     <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
                                                                        target="_blank">{{ i.title }}</a></span></p>
                                 </url>
@@ -98,10 +83,8 @@
                         {% elif loop.index==5 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 210px; top: 24px; left: 300px; z-index: 1;">
                                 <url>
-{#                                    <a href="/d/{{ i._id }}.html" target="_blank">#}
                                     <img src="{{ i.guide_image }}" width="756" height="255" border="0"
                                          alt="{{ i.title }}" style="opacity: 0.5;">
-{#                                    </a>#}
                                     <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
                                                                        target="_blank">{{ i.title }}</a></span></p>
                                 </url>
@@ -114,19 +97,16 @@
     </div>
     <script src="/static/js/ZoomPic.js"></script>
 </div>
-
 <div class="data-content-outer">
     <h1><span>精品推荐</span></h1>
     <div class="data-content">
         <div class="data-con-main">
             <ul class="data-ul-blocks ft40 fb40 radius01">
                 {% for i in jptj %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=135" width="278"
-                                                                           height="135"/></a></li>
+                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=135" width="278" height="135"/></a></li>
                 {% endfor %}
             </ul>
         </div>
-
         <div class="data-con-main" style="margin-top:80px">
             <div class="data-con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span
                     class="pink">NEW&nbsp;</span>最新发布</a></div>
@@ -143,15 +123,13 @@
                 {% endfor %}
             </ul>
         </div>
-
         <div class="data-con-main" style="margin-top:80px">
             <div class="data-con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a>
             </div>
             <ul class="data-ul-blocks radius02">
                 {% for i in wqhg_new %}
                     <li>
-                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278"
-                                                                           height="212"/></a>
+                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                         <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h3>
                         <h3 class="gray fr10" style="float:right"><img
@@ -160,10 +138,8 @@
                 {% endfor %}
             </ul>
         </div>
-
     </div><!--content end-->
 </div>
-
 <div class="data-footer">
     <div class="data-content">
         <div class="data-footer_logo"><img src="/static/images/sjlj-logo.png" width="175" height="60"/></div>
@@ -176,8 +152,6 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
-
 <!--以上代码编写：wt 20161010-->

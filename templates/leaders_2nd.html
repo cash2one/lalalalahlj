@@ -15,14 +15,11 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
-
 <body>
 <div class="ldr_header">
     {% include "master_page/top_page.html" %}
 </div>
-
 <div class="ldr_menu">
     <ul>
         <li class="ldr_menu_l" style="float:left;">{{ lingdao.Name }}活动报道集</li>
@@ -30,7 +27,7 @@ var _hmt = _hmt || [];
     </ul>
 </div>
 <div class="content ft30">
-    <!---------left-------->
+    <!--left-->
     <div class="ldr_con_l">
 		<div class="ldr-l-box">
             {% for i in jianli %}
@@ -45,13 +42,11 @@ var _hmt = _hmt || [];
                     {% for i in image_four %}
                     <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=169&h=110" width="169" height="110" /></a><p><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></p></li>
                     {% endfor %}
-
                 </ul>
             </div>
         </div>
     </div>
-
-    <!---------right-------->
+    <!--right-->
     <div class="ldr_con_r">
         <div class="ldr_r_o">
             <div class="ldr-r-title"><p>讲话</p><a href="/ld/{{ lingdao.numid }}_1_1.html" target="_blank">更多</a></div>
@@ -63,7 +58,6 @@ var _hmt = _hmt || [];
                 </ul>
             </div>
         </div>
-
         <div class="ldr_r_o ft80">
             <div class="ldr-r-title"><p>活动</p><a href="/ld/{{ lingdao.numid }}_2_1.html" target="_blank">更多</a></div>
             <div class="ldr-r-box">
@@ -79,5 +73,4 @@ var _hmt = _hmt || [];
 {% include "master_page/footer_page.html"  %}
 </body>
 </html>
-
-<!---------20160809以下编写：wt------------->
+<!--20160809以下编写：wt-->

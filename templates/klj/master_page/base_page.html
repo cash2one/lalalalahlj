@@ -25,20 +25,19 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
 <body>
-{#头文件#}
+<!--头文件-->
 {% block top %}
     {% include 'klj/master_page/header_page.html' %}
 {% endblock %}
-{#中间文件#}
+<!--中间文件-->
 <div class="content ft30">
     {% block middle %}
     {% endblock %}
 
 </div>
-{#包含底部文件#}
+<!--包含底部文件-->
 {% block footer %}
 {% endblock %}
 <script>
@@ -73,22 +72,18 @@ var _hmt = _hmt || [];
                     var url = encodeURI("/ss/" + a + "/");
                     window.open(url, '_blank')
                 }
-
             }
         </script>
 <script type="text/javascript">
-
 		jQuery(".foucebox").slide({ mainCell:".bd ul", effect:"fold", autoPlay:true, delayTime:300, triggerTime:50, startFun:function(i){
 				//下面代码控制鼠标状态滑动
 				jQuery(".foucebox .hoverBg").animate({"margin-top":74*i},150);
 			}
 		});
-
 </script>
 <script type="text/javascript">
 jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"top", autoPlay:true, autoPage:true, switchLoad:"_src" });
 </script>
-
 <script type="text/javascript">
 	Qfast.add('widgets', { path: "/static/js/terminator2.2.min.js", type: "js", requires: ['fx'] });
 	Qfast(false, 'widgets', function () {
@@ -107,7 +102,6 @@ jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"
 		})
 	})
 </script>
-
 <script>
 jQuery(".onlyvision").slide({mainCell:".dpt_right_vision ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50});
 var node = $('.dpt_list_n03');
@@ -133,12 +127,9 @@ function tagMouseEnterEvent(tag, closet, style){
 }
 var node = $('.lj_list_n02');
 tagMouseEnterEvent(node.find('.lj_list_pictit p'),node.find('.lj_list_picblock'),"lj_list_tit01");
-
 var node = $('.gsp_con_r_main');
 tagMouseEnterEvent(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
-
 </script>
-
 </body>
 </html>
 

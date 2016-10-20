@@ -24,8 +24,8 @@
         <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
 {% endblock %}
 {% block middle %}
-<!---------left-------->
-<!---------轮播图-------->
+<!--left-->
+<!--轮播图-->
 <div class="gsp_con_l">
 <!--
           <div class="gsp_flash">
@@ -53,12 +53,12 @@
                 </div>
             </div>
             -->
-    <!---------w950新闻分类-------->
+    <!--w950新闻分类-->
     <div class="list_tlt1">
         <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
         <span>{{ detail.Name }}</span>
     </div>
-    <!---------w950新闻分类-------->
+    <!--w950新闻分类-->
     <div class="gsp2_list_news">
         <ul class="gsp2_list_n04" id="ul_news">
             {% for i in news_list %}
@@ -70,7 +70,6 @@
                     <h6>{{ i.publish_time }}</h6>
                 </li>
             {% endfor %}
-
         </ul>
     </div>
     <div class="content_l ft30">
@@ -80,15 +79,10 @@
             {% endautoescape %}
         </div>
     </div>
-    {#        <div class="gsp_list_news_jz" onclick="return go_to('{{ cid }}');">点击浏览更多文章</div>#}
-    {#        <input type="hidden" id="page" value="2">#}
 </div>
-
-<!---------right-------->
+<!--right-->
 <div class="gsp_con_r">
-
-
-    <!----热门图集----->
+    <!--热门图集-->
     <div class="gsp2_con_r_main">
         <div class="gsp2_right_tlt">
             <p><a href="/list/33" target="_blank">热门图集</a></p>
@@ -97,9 +91,7 @@
             {% for i in rmtj %}
                 {% if loop.index0==0 %}
                     <div class="photo2_list">
-                        <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=300&h=110"
-                                                                              width="300"
-                                                                              height="110"/></a></p>
+                        <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=300&h=110" width="300" height="110"/></a></p>
                         <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                     </div>
                 {% endif %}
@@ -115,14 +107,11 @@
             </div>
         </div>
     </div>
-
-    <!----新闻排行----->
+    <!--新闻排行-->
     <div class="gsp2_con_r_main ft30">
         <div class="gsp2_right_tlt">
             <p>
-                {#                    <a href="#">#}
                 新闻排行
-                {#                    </a>#}
             </p>
         </div>
         <div class="gsp2_con_r_main">
@@ -130,19 +119,13 @@
                 <div class="tab2-hd">
                     <ul class="tab2-nav">
                         <li>
-                            {#                  <a href="#" target="_blank">#}
                             <a>24小时</a>
-                            {#                  </a>#}
                         </li>
                         <li>
-                            {#                  <a href="#" target="_blank">#}
                             <a> 周榜</a>
-                            {#                  </a>#}
                         </li>
                         <li>
-                            {#                  <a href="#" target="_blank">#}
                             <a>月榜</a>
-                            {#                  </a>#}
                         </li>
                     </ul>
                 </div>
@@ -181,9 +164,7 @@
             </div>
         </div>
     </div>
-
-
-    <!----新闻热搜----->
+    <!--新闻热搜-->
     <div class="gsp_con_r_main ft30">
         <div class="gsp_right_tlt">
             <p>今日热评</p>
@@ -206,8 +187,7 @@
             </div>
         </div>
     </div>
-
-    <!----爆料台----->
+    <!--爆料台-->
     <div class="gsp2_con_r_main ft30">
         <div class="gsp2_right_tlt">
             <p><a href="/kbg/46.html" target="_blank">爆料台</a></p>
@@ -222,58 +202,48 @@
             </div>
         </div>
     </div>
-
 </div>
-{#</div>#}
-
 {% endblock %}
 {% block footer %}
     {% include 'master_page/footer_page.html' %}
-    {#    <script type="text/javascript">#}
-    {#        (function ($) {#}
-    {#            var wookmark,#}
-    {#                    container = '#ul_news',#}
-    {#                    $container = $(container),#}
-    {#                    $window = $(window),#}
-    {#                    $document = $(document);#}
-    {#            imagesLoaded(container, function () {#}
-    {#                wookmark = new Wookmark(container, {#}
-    {#                    offset: 0, // Optional, the distance between grid items#}
-    {#                    itemWidth: 870 // Optional, the width of a grid item#}
-    {#                });#}
-    {#            });#}
-    {##}
-    {#            function onScroll() {#}
-    {#                // Check if we're within 100 pixels of the bottom edge of the broser window.#}
-    {#                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix#}
-    {#                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);#}
-    {#                if (closeToBottom) {#}
-    {#                    var page = $("#page").val();#}
-    {#                    if (parseInt(page) <= 20) {#}
-    {#                    $.ajaxSettings.async = false;#}
-    {#                    $.getJSON('/kbg/{{ detail.numid }}/' + page, function (result) {#}
-    {#                        var $firstTen = jQuery.parseHTML(result);#}
-    {#                        $container.append($firstTen);#}
-    {#                        $("#page").val(parseInt(page) + 1);#}
-    {#                        wookmark.initItems();#}
-    {#                        wookmark.layout(true, function () {#}
-    {#                            // Fade in items after layout#}
-    {#                            setTimeout(function () {#}
-    {#                            $firstTen.css('opacity', 1);#}
-    {#                            }, 300);#}
-    {##}
-    {#                        });#}
-    {#                    })#}
-    {##}
-    {#                }#}
-    {#                }#}
-    {#            };#}
-    {##}
-    {#            // Capture scroll event.#}
-    {#            $window.on('scroll.wookmark', onScroll);#}
-    {##}
-    {#        })(jQuery);#}
-    {##}
-    {##}
-    {#    </script>#}
+        <!--<script type="text/javascript">
+            (function ($) {
+                var wookmark,
+                        container = '#ul_news',
+                        $container = $(container),
+                        $window = $(window),
+                        $document = $(document);
+                imagesLoaded(container, function () {
+                    wookmark = new Wookmark(container, {
+                        offset: 0, // Optional, the distance between grid items
+                        itemWidth: 870 // Optional, the width of a grid item
+                    });
+                });
+                function onScroll() {
+                    // Check if we're within 100 pixels of the bottom edge of the broser window.
+                     var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                    if (closeToBottom) {
+                        var page = $("#page").val();
+                        if (parseInt(page) <= 20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON('/kbg/{{ detail.numid }}/' + page, function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                $firstTen.css('opacity', 1);
+                                }, 300);
+                            });
+                        })
+                    }
+                    }
+                };
+                // Capture scroll event.
+                $window.on('scroll.wookmark', onScroll);
+            })(jQuery);
+        </script>-->
 {% endblock %}

@@ -181,15 +181,13 @@
         </div>
       </div>
     </div>
-
-    <!----话龙点经----->
+    <!--话龙点经-->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
         <p><a href="/klj/11.html" target="_blank">话龙点经</a></p>
       </div>
       <div class="gsp_con_r_main">
         <div class="gsp_right_deet" >
-
           <ul class="lj_rpic">
               {% for i in hldj %}
             {% if loop.index==1 %}
@@ -197,7 +195,6 @@
         	<li class="lj_rpic_img"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=95&w=65" width="95" height="65" /></a></li>
             <li class="lj_rpic_txt"><span>{{ i.summary }}</span></li>
           </ul>
-
           <ul class="lj_rlist">
               {% else %}
             <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
@@ -207,8 +204,7 @@
         </div>
       </div>
     </div>
-
-    <!----寒地黑土----->
+    <!--寒地黑土-->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
         <p><a href="/klj/59.html" target="_blank">寒地黑土</a></p>
@@ -237,8 +233,7 @@
         </div>
       </div>
     </div>
-
-    <!----专题----->
+    <!--专题-->
     <div class="gsp_con_r_main ft30">
       <div class="gsp_right_tlt">
         <p><a href="/sjlj/" target="_blank">数据龙江</a></p>
@@ -267,15 +262,12 @@
             <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
                   {% endif %}
               {% endfor %}
-
           </ul>
       </div>
     </div>
-
   </div>
       </div>
 <!-- 图集精选 -->
-
 <div class="local_site_content">
 <a href="/klj/13.html" target="_blank"><div class="lj_list_title04">图说龙江</div></a>
     <ul class="idx-photo-main">
@@ -313,9 +305,7 @@
         {% endif %}
     {% endfor %}
     </ul>
-
 </div>
-
 {% endblock %}
 {% block footer %}
 {% include "master_page/footer_page.html"  %}

@@ -8,12 +8,11 @@
 {% block middle %}
     <div class="content ft30">
         {% include "generic_components/list_rotation_graph.html" %}
-        {#    {% include "generic_components/lht.html" %}#}
     </div>
-    <!----专题----->
+    <!--专题-->
     {% include "generic_components/zt_right_bar.html" %}
-    <!---------left-------->
-    <!---------w620新闻-------->
+    <!--left-->
+    <!--w620新闻-->
     <div class="wrap ft30">
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
@@ -32,8 +31,7 @@
                     {% endfor %}
                     {% for i in news_list %}
                         <li>
-                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
-                                                                                  width="261" height="171"/></a></p>
+                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
                             <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
           <span>
@@ -45,15 +43,13 @@
             </div>
         </div>
     </div>
-    <!---------mid-------->
+    <!--mid-->
     <div id="right" class="con_i_r ft30">
-
         <div class="con_m">
-            <!----要闻----->
+            <!--要闻-->
             <div class="con_m_main">
                 <div class="mid_tlt">
                     <p><a href="/29.html" target="_blank">龙江头条</a></p>
-                    {#          <span>news</span> #}
                 </div>
                 <div class="mid_list">
                     <ul>
@@ -66,13 +62,11 @@
                     </ul>
                 </div>
             </div>
-            <!----高层动态----->
-
-            <!----快讯----->
+            <!--高层动态-->
+            <!--快讯-->
             <div class="con_m_main ft30">
                 <div class="mid_tlt">
                     <p><a href="/76.html" target="_blank">龙江看点</a></p>
-                    {#          <span>news flash</span>#}
                 </div>
                 <div class="mid_list">
                     <ul>
@@ -88,7 +82,6 @@
         <div class="con_m_main ft30">
                 <div class="mid_tlt">
                     <p><a href="/54.html" target="_blank">龙江生活</a></p>
-{#                              <span>SENIOR NEWS</span>#}
                 </div>
                 <div class="mid_list">
                     <ul>
@@ -101,13 +94,10 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-
         <input type="hidden" value="2" id="page">
-        <!---------right-------->
+        <!--right-->
         {% include 'generic_components/index_right_side_bar.html' %}
-
         <div class="footer">
             <div class="footer_logo"><img src="/static/images/jtlogo.jpg" width="300" height="52"></div>
             <div class="footer_list">
@@ -115,16 +105,12 @@
                     <li>黑龙江新媒体集团 &amp; 黑龙江画报社&nbsp;&nbsp;&nbsp;版权所有</li>
                     <li>Copyright © 2016 www.chinahlj.cn ,All Rights Reserved</li>
                     <li>
-{#                        <a href="#" target="_blank" rel="nofollow">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" rel="nofollow">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
                         黑ICP备 15009298号-7
                     </li>
-
                 </ul>
             </div>
         </div>
-
     </div>
-
     <script type="text/javascript">
         var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
                 rightHeight = $("#right")[0].scrollHeight + 596;  // 页头高度 596
@@ -134,17 +120,14 @@
                     $container = $(container),
                     $window = $(window),
                     $document = $(document);
-
             imagesLoaded(container, function () {
                 wookmark = new Wookmark(container, {
                     offset: 0, // Optional, the distance between grid items
                     itemWidth: 307 // Optional, the width of a grid item
                 });
             });
-
             function onScroll() {
                 fixedRight();
-
                 // Check if we're within 100 pixels of the bottom edge of the broser window.
                 var closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
@@ -165,15 +148,12 @@
                         });
                     })
                 }
-
                 }
             };
-
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
             $window.on('resize', fixedRight);
         })(jQuery);
-
         // 固定右侧列表位置
         function fixedRight() {
             if ($(window).scrollTop() + winHeight >= rightHeight) {

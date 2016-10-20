@@ -11,29 +11,22 @@
             width: auto;
             height: auto;
         }
-
-
     </style>
 {% endblock %}
 {% block middle %}
 <div class="end_tlt ft15 f14">您当前的位置 ：<a href="/" target="_blank">首页</a>{% if parent.Name=='首页' %}{% else %} ><a href="{{ parent.Href }}">{{ parent.Name }}</a>{% endif %} > <a
         href="{{ channel.Href }}">{{ channel.Name }}</a>
 </div>
-
 <div class="content ft30">
     <!---------left-------->
     <div class="con_l">
-
-
         <div class="news_tlt">{{ detail.Title }}</div>
-
         <div class="news_about"><p>来源：{{ detail.Source }}&nbsp;&nbsp;{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;
             {% if detail.Author!="" %}    作者：{{ detail.Author }}{% endif %}
         </p>
             <div class="news_about_btn">
                 <ul>
                     <li>
-
                         <div id="bd" class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1469586652137"><a
                                 class="bds_more" href="#"
                                 style="background: url('/static/images/dot03.jpg') no-repeat;color: #8e8e8e"
@@ -62,7 +55,6 @@
                         }
                     };
                     with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-
                     <li><img src="/static/images/dot04.jpg" width="14" height="13" data-bd-imgshare-binded="1">&nbsp;<a
                             href="#">收藏</a></li>
                     <li><img src="/static/images/dot05.jpg" width="14" height="13" data-bd-imgshare-binded="1">&nbsp;&nbsp;<a
@@ -70,7 +62,6 @@
                     </li>
                 </ul>
             </div>
-
         </div>
         <div class="news_zw">
             <div id="div_content" class="news_font f16">
@@ -78,7 +69,6 @@
             </div>
             <div class="news_pdzb">频道主编：{{ detail.Editor }}</div>
             <div class="news_pdzb_share">
-
                 <div class="bdsharebuttonbox" style="float: right"><a href="#" class="bds_tsina" data-cmd="tsina"
                                                                       title="分享到新浪微博"></a><a href="#" class="bds_weixin"
                                                                                              data-cmd="weixin"
@@ -101,7 +91,6 @@
                     "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["tsina", "weixin", "sqq", "qzone"]}
                 };
                 with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-
             </div>
             <div class="content_l ft20" {% if count==1 %}style="display: none"
                  {% else %}style="margin-top:20px"{% endif %}>
@@ -113,25 +102,22 @@
                 </div>
             </div>
             <div class="news_xgyd ft30">
-                <!---------相关阅读-------->
+                <!--相关阅读-->
                 <div class="www360buy" style="margin:0 auto">
                     <div class="hd">
                         <ul>
                             <li>趣事妙闻</li>
                             <li>时尚范</li>
                             <li>爱运动</li>
-                            {#                            <li>红人馆</li>#}
                             <li>二次元</li>
                         </ul>
                     </div>
                     <div class="bd" id="lh">
-
                         <ul class="lh">
                             <li>
                                 {% for i in qsmw %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
-                                                                                       target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>
@@ -141,17 +127,13 @@
                                         <a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a>
                                     {% endfor %}
                                 </div>
-
                             </li>
-
                         </ul>
-
                         <ul class="lh">
                             <li>
                                 {% for i in ssf %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
-                                                                                       target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>
@@ -162,9 +144,7 @@
                                     {% endfor %}
                                 </div>
                             </li>
-
                         </ul>
-
                         <ul class="lh">
                             <li>
                                 {% for i in ayd %}
@@ -181,31 +161,12 @@
                                     {% endfor %}
                                 </div>
                             </li>
-
                         </ul>
-<!--
-                                                <ul class="lh">
-                                                    <li>
-                                                        {% for i in hrg1 %}
-                                                            <div class="p-img ld"><a href="#"><img src="{{ i.guide_image }}?w=261&h=171"
-                                                                           width="261"
-                                                                           height="171"/></a></div>
-                                                        {% endfor %}
-                                                        <div class="p-list f14">
-                                                            {% for i in hrg %}
-                                                                <a href="/d/{{ i._id }}.html">{{ i.title }}</a>
-                                                            {% endfor %}
-                                                        </div>
-                                                    </li>
-
-                                                </ul>-->
-
                         <ul class="lh">
                             <li>
                                 {% for i in ecy %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
-                                                                                       target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>
@@ -216,22 +177,12 @@
                                     {% endfor %}
                                 </div>
                             </li>
-
                         </ul>
                     </div>
                 </div>
-
-
             </div>
-            <!---------评论-------->
+            <!--评论-->
             <div class="news_xgyd ft30">
-                {#                    <div class="news_pl">#}
-                {#                        <span>评论</span>#}
-                {#                    </div>#}
-                {#                    <div class="news_pl_b ft15">#}
-                {#                        <p><textarea name="" cols="" rows=""></textarea></p>#}
-                {#                        <span><input name="" type="button" value="发送"/></span>#}
-                {#                    </div>#}
                 <!--高速版-->
                 <div id="SOHUCS" sid="{{ detail._id }}"></div>
                 <script charset="utf-8" type="text/javascript"
@@ -242,27 +193,19 @@
                         conf: 'prod_ec0b4efb1ad07f8b6390da8464159f0b'
                     });
                 </script>
-
             </div>
-
         </div>
-
-
     </div>
-
-    <!---------right-------->
+    <!--right-->
     {% include 'generic_components/right_side_bar.html' %}
-
 </div>
 <script type="text/javascript">jQuery(".www360buy").slide({delayTime: 0});</script>
 <script>
-
     $("#lh ul li div[class='p-list f14'] a").mouseenter(function () {
         var li = $(this).parent("div").parent("li");
         var img = li.children("div[class='p-img ld']");
         var text = $(this).parent("div");
         var index = $(this).index();
-        {#        console.log(index);#}
         $.each(img, function (i) {
             if (index == i) {
                 text.find("a").eq(i).css({"text-decoration": "underline", "color": "#205366"});
@@ -270,13 +213,9 @@
             } else {
                 text.find("a").eq(i).css({"text-decoration": "none", "color": "#333"});
                 img.eq(i).css("display", "none");
-
-
             }
         })
-
     });
-
 </script>
 {% endblock %}
 {% block footer %}

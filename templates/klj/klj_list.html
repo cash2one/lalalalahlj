@@ -12,26 +12,19 @@
                     $("#page").val(parseInt(page) + 1);
                 });
             });
-
         });
-
     </script>
-
     <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
-
 {% endblock %}
 {% block middle %}
-    <!---------left-------->
+    <!--left-->
     <div class="con_l">
-{#        {% include "generic_components/list_rotation_graph.html" %}#}
-
-        <!---------w950新闻分类-------->
+        <!--w950新闻分类-->
         <div class="list_tlt">
             <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
             <span>{{ detail.Name }}</span>
         </div>
-
         <div class="list_news">
             <ul id="ul_news">
                 {% for i in channel %}
@@ -53,18 +46,12 @@
         {% endautoescape %}
     </div>
 </div>
-<!--
-        <div class="list_news_jz" id="loading">点击浏览更多文章</div>
-        <input type="hidden" id="page" value="2">
--->
     </div>
-
-    <!---------right-------->
+    <!--right-->
     <div class="ft30">
     {% include 'generic_components/right_side_bar.html' %}
 </div>
 {% endblock %}
-
 {% block footer %}
         {% include 'master_page/footer_page.html' %}
 <!--
@@ -100,19 +87,13 @@
                                 setTimeout(function () {
                                                                 $firstTen.css('opacity', 1);
                                 }, 300);
-
                             });
                         })
-
                     }
                 }
             };
-
             // Capture scroll event.
             $window.on('scroll.wookmark', onScroll);
-
         })(jQuery);
-
-
     </script> -->
 {% endblock %}

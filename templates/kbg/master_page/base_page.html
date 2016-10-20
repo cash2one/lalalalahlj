@@ -25,7 +25,6 @@
                     $("#ul_hot").html(result.key);
                 });
             }
-
         </script>
     {% endblock %}
 <script>
@@ -37,31 +36,26 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
 <body>
-{#头文件#}
+<!--头文件-->
 {% block top %}
     {% include 'kbg/master_page/header_page.html' %}
 {% endblock %}
-{#中间文件#}
+<!--中间文件-->
 <div class="content ft30">
     {% block middle %}
     {% endblock %}
-
 </div>
-{#包含底部文件#}
+<!--包含底部文件-->
 {% block footer %}
 {% endblock %}
-
 <script type="text/javascript">
-
 		jQuery(".foucebox").slide({ mainCell:".bd ul", effect:"fold", autoPlay:true, delayTime:300, triggerTime:50, startFun:function(i){
 				//下面代码控制鼠标状态滑动
 				jQuery(".foucebox .hoverBg").animate({"margin-top":74*i},150);
 			}
 		});
-
 </script>
 <script type="text/javascript">
 jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"top", autoPlay:true, autoPage:true, switchLoad:"_src" });
@@ -86,13 +80,10 @@ jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"
 	})
 </script>
 <script>
-
 var node = $('.gsp_list_n03');
 tagClickEvent(node.find('.n03_pictit p'),node.find('.n03_picblock'),"n03_tit01");
-
 var node = $('.gsp_con_r_main');
 mouseenter(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
-
 function tagClickEvent(tag, closet, style){
 	tag.click(function(){
 			tag.removeClass(style);

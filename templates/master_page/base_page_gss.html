@@ -66,34 +66,28 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
 <body>
-{#头文件#}
+<!--头文件-->
 {% block top %}
     {% include 'master_page/header_page_gss.html' %}
 {% endblock %}
-{#中间文件#}
+<!--中间文件-->
 <div class="content ft30">
     {% block middle %}
     {% endblock %}
-
 </div>
-{#包含底部文件#}
+<!--包含底部文件-->
 {% block footer %}
 {% endblock %}
-
 <script type="text/javascript">
-
     jQuery(".foucebox").slide({
         mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 300, triggerTime: 50, startFun: function (i) {
             //下面代码控制鼠标状态滑动
             jQuery(".foucebox .hoverBg").animate({"margin-top": 74 * i}, 150);
         }
     });
-
 </script>
-
 <script type="text/javascript">
     jQuery(".focusBox-zt").slide({
         titCell: ".hdzt ul",
@@ -110,7 +104,6 @@ var _hmt = _hmt || [];
     delayTime: 0
 });</script>
 <script type="text/javascript">
-
     (function () {
         var ind = 2; //初始位置
         var nav = jQuery(".nav");
@@ -121,7 +114,6 @@ var _hmt = _hmt || [];
         }, function () {
             block.animate({"left": init.position().left - 3}, 100);
         }); //移出导航滑块返回
-
         jQuery(".nav").slide({
             type: "menu", //效果类型
             titCell: ".m", // 鼠标触发对象
@@ -135,7 +127,6 @@ var _hmt = _hmt || [];
             }
         });
     })()
-
 </script>
 </body>
 </html>

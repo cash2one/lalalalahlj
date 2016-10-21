@@ -29,19 +29,15 @@ var _hmt = _hmt || [];
 <div class="content ft30">
     <!--left-->
     <div class="ldr_con_l">
-		<div class="ldr-l-box">
-            {% for i in jianli %}
+		<div class="ldr-l-box">{% for i in jianli %}
 			<a href="/d/{{ i._id }}.html" target="_blank" class="leader-pic"><img src="{{ i.guide_image }}?w=207&h=276" width="207" height="276" /></a>
 			<a href="/d/{{ i._id }}.html" target="_blank" class="leader-pic">{{ lingdao.Name }}同志简历</a>
-            <p>{{ i.summary|safe|truncate(80) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>
-            {% endfor %}
+            <p>{{ i.summary|safe|truncate(80) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
 		</div>
         <div class="ldr-l-o">
             <div class="ldr-l-box02">
-                <ul>
-                    {% for i in image_four %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=169&h=110" width="169" height="110" /></a><p><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></p></li>
-                    {% endfor %}
+                <ul>{% for i in image_four %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=169&h=110" width="169" height="110" /></a><p><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></p></li>{% endfor %}
                 </ul>
             </div>
         </div>
@@ -51,20 +47,16 @@ var _hmt = _hmt || [];
         <div class="ldr_r_o">
             <div class="ldr-r-title"><p>讲话</p><a href="/ld/{{ lingdao.numid }}_1_1.html" target="_blank">更多</a></div>
             <div class="ldr-r-box">
-                <ul>
-                    {% for i in jianghua %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>
-                    {% endfor %}
+                <ul>{% for i in jianghua %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>{% endfor %}
                 </ul>
             </div>
         </div>
         <div class="ldr_r_o ft80">
             <div class="ldr-r-title"><p>活动</p><a href="/ld/{{ lingdao.numid }}_2_1.html" target="_blank">更多</a></div>
             <div class="ldr-r-box">
-                <ul>
-                    {% for i in huodong %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>
-                    {% endfor %}
+                <ul>{% for i in huodong %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>{% endfor %}
                 </ul>
             </div>
         </div>

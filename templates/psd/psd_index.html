@@ -32,13 +32,11 @@
     <div class="gsp_flash">
       <div class="gsp_foucebox" style="margin:0 auto">
           <div id="fsD1" class="focus">
-              <div id="D1pic1" class="fPic">
-                  {% for i in lht %}
+              <div id="D1pic1" class="fPic">{% for i in lht %}
                   <div class="fcon" style="display: none;">
                       <a target="_blank" href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}"  style="opacity: 1; "></a>
                       <span class="shadow"><a target="_blank" href="/d/{{ i._id }}.html">{{ i.title }}</a></span>
-                  </div>
-                    {% endfor %}
+                  </div>{% endfor %}
               </div>
               <div class="fbg">
               <div class="D1fBt" id="D1fBt">
@@ -57,14 +55,11 @@
     <div class="dpt_list_news">
         <ul class="dpt_list_n01">
             <div class="dpt_left_news">
-              <ul>
-                  {% for i in ttxw %}
+              <ul>{% for i in ttxw %}
                 <li {% if loop.index%3==0 %} {% else %}class="fr30"{% endif %}>
                   <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
                   <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                  <h4>{{ i.summary|truncate(50) }}</h4>
-				</li>
-                  {% endfor %}
+                  <h4>{{ i.summary|truncate(50) }}</h4></li>{% endfor %}
               </ul>
             </div>
         </ul>
@@ -76,55 +71,45 @@
                  <p class="n03_tit02" onclick="return goto('45')">文化娱乐</p>
                  <p class="n03_tit02" onclick="return goto('52')">教育科技</p>
             </div>
-            <ul class="dpt_list_n04" style="display:block;">
-                {% for i in jrrp %}
+            <ul class="dpt_list_n04" style="display:block;">{% for i in jrrp %}
                 <li>
                     <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
                     <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
-                </li>
-                {% endfor %}
+                </li>{% endfor %}
             </ul>
-            <ul class="dpt_list_n04" style="display:none;">
-                {% for i in zzjj %}
+            <ul class="dpt_list_n04" style="display:none;">{% for i in zzjj %}
                 <li>
                     <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
                     <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
-                </li>
-                {% endfor %}
+                </li>{% endfor %}
             </ul>
-            <ul class="dpt_list_n04" style="display:none;">
-                {% for i in shms %}
+            <ul class="dpt_list_n04" style="display:none;">{% for i in shms %}
                 <li>
                     <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
                     <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
-                </li>
-                {% endfor %}
+                </li>{% endfor %}
             </ul>
-            <ul class="dpt_list_n04" style="display:none;">
-                {% for i in whyl %}
+            <ul class="dpt_list_n04" style="display:none;">{% for i in whyl %}
                 <li>
                     <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
                     <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
-                </li>
-                {% endfor %}
+                </li>{% endfor %}
             </ul>
-            <ul class="dpt_list_n04" style="display:none;">
-                {% for i in jykj %}
+            <ul class="dpt_list_n04" style="display:none;">{% for i in jykj %}
                 <li>
                     <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=260&h=170" width="260" height="170" /></a></p>
                     <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
                     <h5>{{ i.summary }}</h5>
                     <h6>{{ i.publish_time }}</h6>
-                </li>
-                {% endfor %}
+                </li>{% endfor %}
             </ul>
         </ul><!--lv1_h360-->
     </div>

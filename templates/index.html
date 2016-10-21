@@ -1,10 +1,7 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}首页-黑龙江网{% endblock %}
-{% block head %}
-    {{ super() }}
-    <script src="/static/js/wookmark.min.js"></script>
-    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-{% endblock %}
+{% block head %}{{ super() }}<script src="/static/js/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>{% endblock %}
 {% block middle %}
     <div class="content ft30">
         {% include "generic_components/list_rotation_graph.html" %}
@@ -16,29 +13,17 @@
     <div class="wrap ft30">
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
-                <ul id="uuuu" class="tiles-wrap animated">
-                    {% for i in zd %}
-                        <li>
-                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
-                                                                                  width="261" height="171"/></a></p>
+                <ul id="uuuu" class="tiles-wrap animated">{% for i in zd %}
+                        <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
                             <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
-          <span>
-          <h5>{{ i.publish_time }}</h5>
-          <h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6>
-          </span>
-                        </li>
-                    {% endfor %}
+                            <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6></span></li>{% endfor %}
                     {% for i in news_list %}
-                        <li>
-                            <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
+                        <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
                             <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
-          <span>
-          <h5>{{ i.publish_time }}</h5>
-          <h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6>
-          </span></li>
-                    {% endfor %}
+                            <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6></span>
+                        </li>{% endfor %}
                 </ul>
             </div>
         </div>
@@ -52,13 +37,8 @@
                     <p><a href="/29.html" target="_blank">龙江头条</a></p>
                 </div>
                 <div class="mid_list">
-                    <ul>
-                        {% for i in yw %}
-                            <li>
-                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                                <h4>{{ i.summary }}</h4>
-                            </li>
-                        {% endfor %}
+                    <ul>{% for i in yw %}
+                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>
@@ -69,13 +49,8 @@
                     <p><a href="/76.html" target="_blank">龙江看点</a></p>
                 </div>
                 <div class="mid_list">
-                    <ul>
-                        {% for i in ljkd %}
-                            <li>
-                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                                <h4>{{ i.summary }}</h4>
-                            </li>
-                        {% endfor %}
+                    <ul>{% for i in ljkd %}
+                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>
@@ -84,13 +59,8 @@
                     <p><a href="/54.html" target="_blank">龙江生活</a></p>
                 </div>
                 <div class="mid_list">
-                    <ul>
-                        {% for i in ljsh %}
-                            <li>
-                                <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                                <h4>{{ i.summary }}</h4>
-                            </li>
-                        {% endfor %}
+                    <ul>{% for i in ljsh %}
+                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>

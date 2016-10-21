@@ -8,14 +8,8 @@
 <div class="gsp_menu">
     <div class="gsp_navBar">
         <ul class="gsp_nav gsp_clearfix">
-            <li class="m"><h3><a target="_blank" href="/psd"{% if ys=="sy" %} style="background-color: #46abd0;" {% endif %}>首页</a></h3></li>
-            {% for i in menu %}
-            <li class="m" style="padding-left:20px;">
-                <h3>
-                    <a target="_blank" {% if cid==i._id %} style="background-color:#46abd0;"{% endif %} href="{{ i["Href"] }}">{{ i.Name }}</a>
-            </h3>
-            </li>
-            {% endfor %}
+            <li class="m"><h3><a target="_blank" href="/psd"{% if ys=="sy" %} style="background-color: #46abd0;" {% endif %}>首页</a></h3></li>{% for i in menu %}
+                <li class="m" style="padding-left:20px;"><h3><a target="_blank" {% if cid==i._id %} style="background-color:#46abd0;"{% endif %} href="{{ i["Href"] }}">{{ i.Name }}</a></h3></li>{% endfor %}
             <li class="gsp_block"></li>
             <!-- 滑动块 -->
         </ul>

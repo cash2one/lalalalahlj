@@ -55,17 +55,16 @@
                 });
             };
         </script>
-    {% block head %}
-    {% endblock %}
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+        <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    {% block head %}{% endblock %}
 </head>
 <body>
 <!--头文件-->
@@ -76,7 +75,6 @@ var _hmt = _hmt || [];
 <div class="content ft30">
     {% block middle %}
     {% endblock %}
-
 </div>
 <!--包含底部文件-->
 {% block footer %}

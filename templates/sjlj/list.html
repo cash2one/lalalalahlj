@@ -40,20 +40,9 @@
     <div class="data-con-main">
         <div class="data-con-m-title gray02"><span class="pink">{% if id==12344 %}NEW{% elif id==12345 %}PAST{% endif %}
             &nbsp;</span>{{ channel.Name }}</div>
-        <ul class="data-new-list">
-            {% for i in _news_list %}
-                <li><h3>
-                    <a href="/d/{{ i._id }}.html" target="_blank"><img
-                            src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
-                </h3>
-                    <tt>
-                        <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
-                        <span>{{ i.summary }}</span>
-                        <!--<h3 class="blue02 fl10" style="float:left">2016-09-18</h3>
-                        <h3 class="gray fr10" style="float:right"><img src="image/like.png" />&nbsp;19</h3>-->
-                    </tt>
-                </li>
-            {% endfor %}
+        <ul class="data-new-list">{% for i in _news_list %}
+                <li><h3><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a></h3>
+                    <tt><a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a><span>{{ i.summary }}</span></tt></li>{% endfor %}
         </ul>
     </div>
     <div style="margin-top: 30px;display: inline;width: 1200px;float: left;">

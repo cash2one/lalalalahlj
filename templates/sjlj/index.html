@@ -41,57 +41,39 @@
     <div class="combox picListen clearfix">
         <div class="listenWrap">
             <div id="listenBox">
-                <span class="prev">&nbsp;</span> <span class="next">&nbsp;</span>
-                {% for i in tt %}
-                    <ul>
-                        {% if loop.index==1 %}
+                <span class="prev">&nbsp;</span> <span class="next">&nbsp;</span>{% for i in tt %}
+                    <ul>{% if loop.index==1 %}
                             <li style="display: block; border-radius:10px; width: 746px; height: 210px; top: 24px; left: 0px; z-index: 1;">
                                 <url>
-                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0"
-                                         alt="{{ i.title }}" style="opacity: 0.5;">
-                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
-                                                                       target="_blank">{{ i.title }}</a></span></p>
+                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></p>
                                 </url>
-                            </li>
-                        {% elif loop.index==2 %}
+                            </li>{% elif loop.index==2 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 80px; z-index: 2;">
                                 <url>
-                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0"
-                                         alt="{{ i.title }}" style="opacity: 0.5;">
-                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
-                                                                       target="_blank">{{ i.title }}</a></span></p>
+                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;">
+                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></p>
                                 </url>
-                            </li>
-                        {% elif loop.index==3 %}
+                            </li>{% elif loop.index==3 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 255px; top: 0px; left: 160px; z-index: 3;">
                                 <url>
-                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0"
-                                         alt="{{ i.title }}" style="opacity: 1;">
-                                    <p style="display: block;"><span><a href="/d/{{ i._id }}.html"
-                                                                        target="_blank">{{ i.title }}</a></span></p>
+                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 1;">
+                                    <p style="display: block;"><span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></p>
                                 </url>
-                            </li>
-                        {% elif loop.index==4 %}
+                            </li>{% elif loop.index==4 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 234px; top: 8px; left: 240px; z-index: 2;">
                                 <url>
-                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0"
-                                         alt="{{ i.title }}" style="opacity: 0.5;">
-                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
-                                                                       target="_blank">{{ i.title }}</a></span></p>
+                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;"><p style="display: none;">
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></p>
                                 </url>
-                            </li>
-                        {% elif loop.index==5 %}
+                            </li>{% elif loop.index==5 %}
                             <li style="display: block;border-radius:10px; width: 746px; height: 210px; top: 24px; left: 300px; z-index: 1;">
                                 <url>
-                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0"
-                                         alt="{{ i.title }}" style="opacity: 0.5;">
-                                    <p style="display: none;"><span><a href="/d/{{ i._id }}.html"
-                                                                       target="_blank">{{ i.title }}</a></span></p>
+                                    <img src="{{ i.guide_image }}" width="756" height="255" border="0" alt="{{ i.title }}" style="opacity: 0.5;"><p style="display: none;">
+                                    <span><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></span></p>
                                 </url>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endfor %}
+                            </li>{% endif %}
+                    </ul>{% endfor %}
             </div>
         </div>
     </div>
@@ -101,41 +83,31 @@
     <h1><span>精品推荐</span></h1>
     <div class="data-content">
         <div class="data-con-main">
-            <ul class="data-ul-blocks ft40 fb40 radius01">
-                {% for i in jptj %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=135" width="278" height="135"/></a></li>
-                {% endfor %}
+            <ul class="data-ul-blocks ft40 fb40 radius01">{% for i in jptj %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=135" width="278" height="135"/></a></li>{% endfor %}
             </ul>
         </div>
         <div class="data-con-main" style="margin-top:80px">
-            <div class="data-con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span
-                    class="pink">NEW&nbsp;</span>最新发布</a></div>
-            <ul class="data-ul-blocks radius02">
-                {% for i in zxfb_new %}
+            <div class="data-con-m-title gray02"><a href="/sjlj/12344.html" target="_blank"><span class="pink">NEW&nbsp;</span>最新发布</a></div>
+            <ul class="data-ul-blocks radius02">{% for i in zxfb_new %}
                     <li>
-                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278"
-                                                                           height="212"/></a>
+                        <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                         <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h3>
-                        <h3 class="gray fr10" style="float:right"><img
-                                src="/static/images/like.png"/>&nbsp;{{ i.browseclick }}</h3>
-                    </li>
-                {% endfor %}
+                        <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png"/>&nbsp;{{ i.browseclick }}</h3>
+                    </li>{% endfor %}
             </ul>
         </div>
         <div class="data-con-main" style="margin-top:80px">
             <div class="data-con-m-title gray02"><a href="/sjlj/12345.html" target="_blank"><span class="blue02">PAST&nbsp;</span>往期回顾</a>
             </div>
-            <ul class="data-ul-blocks radius02">
-                {% for i in wqhg_new %}
+            <ul class="data-ul-blocks radius02">{% for i in wqhg_new %}
                     <li>
                         <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=278&h=212" width="278" height="212"/></a>
                         <a href="/d/{{ i._id }}.html" target="_blank"><p>{{ i.title }}</p></a>
                         <h3 class="blue02 fl10" style="float:left">{{ i.ctime }}</h3>
-                        <h3 class="gray fr10" style="float:right"><img
-                                src="/static/images/like.png"/>&nbsp;{{ i.browseclick }}</h3>
-                    </li>
-                {% endfor %}
+                        <h3 class="gray fr10" style="float:right"><img src="/static/images/like.png"/>&nbsp;{{ i.browseclick }}</h3>
+                    </li>{% endfor %}
             </ul>
         </div>
     </div><!--content end-->

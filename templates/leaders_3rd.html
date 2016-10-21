@@ -34,10 +34,8 @@ var _hmt = _hmt || [];
         <div class="ldr_m_o">
             <div class="ldr-m-title"><p>{{ name }}</p></div>
             <div class="ldr-m-box">
-                <ul id="ul_content">
-                    {% for i in _news_list %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>
-                    {% endfor %}
+                <ul id="ul_content">{% for i in _news_list %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>{% endfor %}
                 </ul>
             </div>
         </div>

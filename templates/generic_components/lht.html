@@ -37,8 +37,7 @@
 <body>
 <!-- Swiper -->
 <div class="swiper-container" style="z-index: 0">
-    <div class="swiper-wrapper">
-        {% for i in lht %}
+    <div class="swiper-wrapper">{% for i in lht %}
         <div class="swiper-slide">
             <ul style="display:block; width:950px; height:353px;">
                 <li class="fcs05-li01"><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=620&h=353" width="620" height="353"/></a></li>
@@ -48,8 +47,7 @@
                     <h3>{{ i.publish_time }}</h3>
                 </li>
             </ul>
-        </div>
-        {% endfor %}
+        </div>{% endfor %}
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>

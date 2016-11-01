@@ -20,6 +20,7 @@ pre_page = 10
 # 二级频道首页
 @kbg_page.route('/kbg/')
 def kbg_index():
+    detail = db.Channel.find_one({"_id": ObjectId("576500f0dcc88e31a7d2e4ba")})
     # 轮换图 4张
     lht = get_head_image(ObjectId("576500f0dcc88e31a7d2e4ba"), 5)
     # 头条新闻  15条
@@ -72,7 +73,8 @@ def kbg_index():
                            ljyc=ljyc, xzlj=xzlj, ljyc1=ljyc1, xzlj1=xzlj1, menu=menu1, zt=zt, mx=mx, ds=ds, yy=yy,
                            dy=dy, rdyp=rdyp, bdyx=bdyx, hzmt=hzmt, mx5=mx5, ys="sy",
                            jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5
+                           jrrp_5=jrrp_5,
+                           detail=detail
                            )
 
 

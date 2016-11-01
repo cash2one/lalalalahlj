@@ -2,6 +2,8 @@
 {% block title %}品深度-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
+  <meta name="keywords" content="{{ detail.word }}">
+  <meta name="description" content="{{ detail.title }}">
         <script>
         function goto(channel) {
             loading(channel, 1);
@@ -124,4 +126,3 @@
 {% block footer %}
 {% include "master_page/footer_page.html" %}
 {% endblock %}
-<!--20160628以下编写：wt-->

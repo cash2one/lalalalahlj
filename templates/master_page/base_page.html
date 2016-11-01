@@ -13,7 +13,22 @@
         <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
         <script src="/static/js/sousuo.js"></script>
         <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
-        <script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<!--头文件-->
+{% block top %}
+    {% include 'master_page/header_page.html' %}
+{% endblock %}
+<!--中间文件-->
+<div class="content ft30">
+    {% block middle %}
+    {% endblock %}
+</div>
+<!--包含底部文件-->
+{% block footer %}
+{% endblock %}
+<script>
             $(function () {
                 get_hot();
                 $(".menu").smartFloat();
@@ -55,7 +70,7 @@
                 });
             };
         </script>
-        <script>
+<script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -64,21 +79,6 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-    {% block head %}{% endblock %}
-</head>
-<body>
-<!--头文件-->
-{% block top %}
-    {% include 'master_page/header_page.html' %}
-{% endblock %}
-<!--中间文件-->
-<div class="content ft30">
-    {% block middle %}
-    {% endblock %}
-</div>
-<!--包含底部文件-->
-{% block footer %}
-{% endblock %}
 <script type="text/javascript">
     jQuery(".foucebox").slide({
         mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 300, triggerTime: 50, startFun: function (i) {

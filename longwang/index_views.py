@@ -23,6 +23,7 @@ zd = []
 # 首页
 @index_page.route('/')
 def index():
+    detail = db.Channel.find_one({"_id": ObjectId("5764f5396aba261f94bf517a")})
     # 轮换图
     lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 5)
     # 龙江头条
@@ -75,6 +76,7 @@ def index():
     return render_template('index.html', zt_images=zt_images, zt=zt, gbg=gbg, yw=yw, ljkd=ljkd, lht=lht,
                            ljsh=ljsh,
                            rmtj=rmtj,
+                           detail=detail,
                            menu=get_menu(),
                            news_list=_news_list,
                            hours=hours, zb=zb, yb=yb, zd=_zd,
@@ -91,7 +93,6 @@ def s_list(id, page=1):
         channel = db.Channel.find_one({"numid": int(id)})["_id"]
         # 轮换图
         lht = get_head_image(ObjectId(channel), 5)
-        channel = db.Channel.find_one({"numid": int(id)})["_id"]
         condition = {"Channel": {"$in": [ObjectId(channel)]}, "Status": 4}
         count = db.News.find(condition).sort('Published', pymongo.DESCENDING).count()
         news_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
@@ -521,6 +522,7 @@ def news_list_page(channel, page=1):
 @index_page.route('/ld/')
 def klj_ld():
     try:
+        detail = db.Channel.find_one({"_id": ObjectId("57a2ad8edcc88e6ba04499ab")})
         name_list = db.Channel.find({"Parent": ObjectId("57a2ad8edcc88e6ba04499ab")})
         # 王宪魁
         wxkjl = search_news_db([ObjectId("57b26adcdcc88e13050f9156")], 1)
@@ -562,6 +564,7 @@ def klj_ld():
                                ld='ld',
                                name_list=name_list,
                                wxkjl=wxkjl,
+                               detail=detail,
                                wxk_three=wxk_three,
                                lhjl=lhjl,
                                lh_three=lh_three,

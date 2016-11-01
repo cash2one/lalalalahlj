@@ -2,6 +2,8 @@
 {% block title %}侃八卦-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
+  <meta name="keywords" content="{{ detail.word }}">
+  <meta name="description" content="{{ detail.title }}">
     <script>
         function goto(channel) {
             loading(channel, 1);
@@ -21,8 +23,7 @@
             var channel = $("#channel").val();
             var page = $("#page").val();
             loading(channel, page);
-        }
-        ;
+        };
     </script>
 {% endblock %}
 {% block middle %}

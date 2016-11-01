@@ -17,7 +17,7 @@ pre_page = 10
 
 @klj_page.route('/klj/')
 def klj_index():
-    name = '看龙江'
+    detail = db.Channel.find_one({"_id": ObjectId("576500b1dcc88e31a7d2e4b8")})
     # 轮换图
     lht = get_head_image(ObjectId("576500b1dcc88e31a7d2e4b8"), 4)
     # 二级标题列表
@@ -53,7 +53,7 @@ def klj_index():
     # 专题
     zt = search_indexnews_db("57b2ae833c7eb9e89a188b8e", 12)
 
-    return render_template('klj/klj_index.html', name=name,
+    return render_template('klj/klj_index.html',
                            menu=menu,
                            lht=lht,
                            bwdj=bwdj,
@@ -67,6 +67,7 @@ def klj_index():
                            rsrm=rsrm,
                            hldj=hldj,
                            hdht=hdht,
+                           detail=detail,
                            zt=zt,
                            ys="sy"
                            )

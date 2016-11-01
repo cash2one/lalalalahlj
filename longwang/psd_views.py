@@ -21,6 +21,7 @@ pre_page = 10
 # 二级频道首页
 @psd_page.route('/psd/')
 def psd_index():
+    detail = db.Channel.find_one({"_id": ObjectId("576500d7dcc88e31a6f3500d")})
     # 轮换图
     lht = get_head_image(ObjectId("576500d7dcc88e31a6f3500d"), 4)
     # 头条新闻
@@ -73,6 +74,7 @@ def psd_index():
                            jrrp=jrrp,
                            zzjj=zzjj,
                            shms=shms,
+                           detail=detail,
                            whyl=whyl,
                            jykj=jykj,
                            hzmt=hzmt,

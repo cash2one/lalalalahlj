@@ -2,6 +2,8 @@
 {% block title %}{{ detail.Name }}-品深度-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
+  <meta name="keywords" content="{{ detail.word }}">
+  <meta name="description" content="{{ detail.title }}">
  <!--       <script type="text/javascript">
         $(document).ready(function () {
             $("#loading").click(function () {

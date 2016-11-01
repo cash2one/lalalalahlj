@@ -1,162 +1,184 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}领导活动报道集首页_黑龙江网{% endblock %}
-{% block head %}
-    {{ super() }}
-  <meta name="keywords" content="{{ detail.word }}">
-  <meta name="description" content="{{ detail.title }}">
+{% block head %}{{ super() }}<meta name="keywords" content="{{ detail.word }}">
+    <meta name="description" content="{{ detail.title }}">
 {% endblock %}
 {% block middle %}
-<body>
-<div class="content" style="border:1px solid #f0f0f0;margin-top:30px;">
-	<div class="ldr-intor-dwr">
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/4594.html" target="_blank">王宪魁同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in wxkjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">王宪魁同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+    <body>
+    <div class="content" style="border:1px solid #f0f0f0;margin-top:30px;">
+        <div class="ldr-intor-dwr">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/4594.html" target="_blank">王宪魁同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in wxkjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">王宪魁同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in wxk_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in wxk_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4595.html" target="_blank">陆昊同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in lhjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">陆昊同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/4595.html" target="_blank">陆昊同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in lhjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">陆昊同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in lh_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in lh_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-	<div class="ldr-intor-dwr">
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/4596.html" target="_blank">黄建盛同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in hjsjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">黄建盛同志简历</a></div>
-                <p>{{ i.summary|truncate(75)|safe }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+        </div>
+        <div class="ldr-intor-dwr">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/4596.html" target="_blank">黄建盛同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in hjsjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">黄建盛同志简历</a></div>
+                    <p>{{ i.summary|truncate(75)|safe }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in hjs_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in hjs_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4597.html" target="_blank">张效廉同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in zxljl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">张效廉同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/4597.html" target="_blank">张效廉同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in zxljl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">张效廉同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in zxl_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in zxl_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-	<div class="ldr-intor-dwr" >
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/4598.html" target="_blank">杨汭同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in yrjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">杨汭同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+        </div>
+        <div class="ldr-intor-dwr">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/4598.html" target="_blank">杨汭同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in yrjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">杨汭同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in yr_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in yr_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4599.html" target="_blank">陈海波同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in chbjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">陈海波同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/4599.html" target="_blank">陈海波同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in chbjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">陈海波同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in chb_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in chb_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-	<div class="ldr-intor-dwr" >
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/4608.html" target="_blank">郝会龙同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in hhljl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">郝会龙同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+        </div>
+        <div class="ldr-intor-dwr">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/4608.html" target="_blank">郝会龙同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in hhljl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">郝会龙同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in hhl_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in hhl_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4609.html" target="_blank">王常松同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in zmjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">王常松同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/4609.html" target="_blank">王常松同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in zmjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">王常松同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in zm_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in zm_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-	<div class="ldr-intor-dwr">
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/4610.html" target="_blank">李海涛同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in lhtjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">李海涛同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+        </div>
+        <div class="ldr-intor-dwr">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/4610.html" target="_blank">李海涛同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in lhtjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">李海涛同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in lht_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in lht_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/4611.html" target="_blank">李雷同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in lljl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">李雷同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/4611.html" target="_blank">李雷同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in lljl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">李雷同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in ll_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in ll_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-    <div class="ldr-intor-dwr" style="border:none">
-		<div class="ldr-intor-box">
-			<div class="ldr-intor-title"><a href="/ld/10930.html" target="_blank">孙尧同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in syjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">孙尧同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+        </div>
+        <div class="ldr-intor-dwr" style="border:none">
+            <div class="ldr-intor-box">
+                <div class="ldr-intor-title"><a href="/ld/10930.html" target="_blank">孙尧同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in syjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">孙尧同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in sy_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in sy_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-		<div class="ldr-intor-box fl35">
-			<div class="ldr-intor-title"><a href="/ld/10931.html" target="_blank">甘荣坤同志报道集</a></div>
-            <div class="ldr-intor-text">{% for i in grkjl %}
-                <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135" height="180" /></a>
-                <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">甘荣坤同志简历</a></div>
-                <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a></p>{% endfor %}
+            <div class="ldr-intor-box fl35">
+                <div class="ldr-intor-title"><a href="/ld/10931.html" target="_blank">甘荣坤同志报道集</a></div>
+                <div class="ldr-intor-text">{% for i in grkjl %}
+                    <a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=135&h=180" width="135"
+                                                                       height="180"/></a>
+                    <div class="tf"><a href="/d/{{ i._id }}.html" target="_blank">甘荣坤同志简历</a></div>
+                    <p>{{ i.summary|safe|truncate(75) }}<a href="/d/{{ i._id }}.html" target="_blank">[详细]</a>
+                    </p>{% endfor %}
+                </div>
+                <ul class="ldr-intor-list">{% for i in grk_three %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
+                </ul>
             </div>
-            <ul class="ldr-intor-list">{% for i in grk_three %}
-                <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>{% endfor %}
-            </ul>
-		</div>
-	</div>
-</div>
-</body>
-</html>
+        </div>
+    </div>
+    </body>
+    </html>
 {% endblock %}
 {% block footer %}
-{% include "master_page/footer_page.html"  %}
+    {% include "master_page/footer_page.html" %}
 {% endblock %}
 <!--20160809以下编写：wt-->

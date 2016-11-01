@@ -1,41 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<title>{% block title %}{% endblock %}</title>
 <head>
-    {% block head %}
-        <meta name="render" content="webkit">
-        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>龙网-侃八卦</title>
-        <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
-        <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
-        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-        <script src="/static/js/sousuo.js"></script>
-        <script type="text/javascript" src="/static/js/koala.min.1.5.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
-         <script>
-            $(function () {
-                get_hot();
-            });
-            //热词切换
-            function get_hot() {
-                $.ajaxSettings.async = false;
-                $.getJSON("/get_hot/", function (result) {
-                    $("#ul_hot").html(result.key);
-                });
-            }
-        </script>
-    {% endblock %}
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="render" content="webkit">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {% block head %}{% endblock %}
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/static/js/sousuo.js"></script>
+    <script type="text/javascript" src="/static/js/koala.min.1.5.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
 </head>
 <body>
 <!--头文件-->
@@ -50,58 +27,91 @@ var _hmt = _hmt || [];
 <!--包含底部文件-->
 {% block footer %}
 {% endblock %}
-<script type="text/javascript">
-		jQuery(".foucebox").slide({ mainCell:".bd ul", effect:"fold", autoPlay:true, delayTime:300, triggerTime:50, startFun:function(i){
-				//下面代码控制鼠标状态滑动
-				jQuery(".foucebox .hoverBg").animate({"margin-top":74*i},150);
-			}
-		});
-</script>
-<script type="text/javascript">
-jQuery(".focusBox-zt").slide({ titCell:".hdzt ul", mainCell:".bdzt ul", effect:"top", autoPlay:true, autoPage:true, switchLoad:"_src" });
-</script>
-<script type="text/javascript">jQuery(".gsp2_notice").slide({ titCell:".tab2-hd li", mainCell:".tab2-bd",delayTime:0 });</script>
-<script type="text/javascript">
-	Qfast.add('widgets', { path: "/static/js/terminator2.2.min.js", type: "js", requires: ['fx'] });
-	Qfast(false, 'widgets', function () {
-		K.tabs({
-			id: 'fsD1',   //焦点图包裹id
-			conId: "D1pic1",  //** 大图域包裹id
-			tabId:"D1fBt",
-			tabTn:"a",
-			conCn: '.fcon', //** 大图域配置class
-			auto: 1,   //自动播放 1或0
-			effect: 'fade',   //效果配置
-			eType: 'click', //** 鼠标事件
-			pageBt:true,//是否有按钮切换页码
-			bns: ['.prev', '.next'],//** 前后按钮配置class
-			interval: 3000  //** 停顿时间
-		})
-	})
+<script>
+    $(function () {
+        get_hot();
+    });
+    //热词切换
+    function get_hot() {
+        $.ajaxSettings.async = false;
+        $.getJSON("/get_hot/", function (result) {
+            $("#ul_hot").html(result.key);
+        });
+    }
 </script>
 <script>
-var node = $('.gsp_list_n03');
-tagClickEvent(node.find('.n03_pictit p'),node.find('.n03_picblock'),"n03_tit01");
-var node = $('.gsp_con_r_main');
-mouseenter(node.find('.gsp_right_tlt02 p'),node.find('.onlyshow'),"tlt02_bdr01");
-function tagClickEvent(tag, closet, style){
-	tag.click(function(){
-			tag.removeClass(style);
-			$(this).addClass(style);
-			var index = tag.index($(this));
-			closet.css('display','none');
-			closet.eq(index).css('display','block');
-	});
-}
-function mouseenter(tag, closet, style) {
-    tag.mouseenter(function () {
-        tag.removeClass(style);
-        $(this).addClass(style);
-        var index = tag.index($(this));
-        closet.css('display', 'none');
-        closet.eq(index).css('display', 'block');
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    jQuery(".foucebox").slide({
+        mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 300, triggerTime: 50, startFun: function (i) {
+            //下面代码控制鼠标状态滑动
+            jQuery(".foucebox .hoverBg").animate({"margin-top": 74 * i}, 150);
+        }
     });
-}
+</script>
+<script type="text/javascript">
+    jQuery(".focusBox-zt").slide({
+        titCell: ".hdzt ul",
+        mainCell: ".bdzt ul",
+        effect: "top",
+        autoPlay: true,
+        autoPage: true,
+        switchLoad: "_src"
+    });
+</script>
+<script type="text/javascript">jQuery(".gsp2_notice").slide({
+    titCell: ".tab2-hd li",
+    mainCell: ".tab2-bd",
+    delayTime: 0
+});</script>
+<script type="text/javascript">
+    Qfast.add('widgets', {path: "/static/js/terminator2.2.min.js", type: "js", requires: ['fx']});
+    Qfast(false, 'widgets', function () {
+        K.tabs({
+            id: 'fsD1',   //焦点图包裹id
+            conId: "D1pic1",  //** 大图域包裹id
+            tabId: "D1fBt",
+            tabTn: "a",
+            conCn: '.fcon', //** 大图域配置class
+            auto: 1,   //自动播放 1或0
+            effect: 'fade',   //效果配置
+            eType: 'click', //** 鼠标事件
+            pageBt: true,//是否有按钮切换页码
+            bns: ['.prev', '.next'],//** 前后按钮配置class
+            interval: 3000  //** 停顿时间
+        })
+    })
+</script>
+<script>
+    var node = $('.gsp_list_n03');
+    tagClickEvent(node.find('.n03_pictit p'), node.find('.n03_picblock'), "n03_tit01");
+    var node = $('.gsp_con_r_main');
+    mouseenter(node.find('.gsp_right_tlt02 p'), node.find('.onlyshow'), "tlt02_bdr01");
+    function tagClickEvent(tag, closet, style) {
+        tag.click(function () {
+            tag.removeClass(style);
+            $(this).addClass(style);
+            var index = tag.index($(this));
+            closet.css('display', 'none');
+            closet.eq(index).css('display', 'block');
+        });
+    }
+    function mouseenter(tag, closet, style) {
+        tag.mouseenter(function () {
+            tag.removeClass(style);
+            $(this).addClass(style);
+            var index = tag.index($(this));
+            closet.css('display', 'none');
+            closet.eq(index).css('display', 'block');
+        });
+    }
 </script>
 </body>
 </html>

@@ -1,38 +1,37 @@
 {% extends "master_page/base_page_gss.html" %}
 {% block title %}{{ name }}-黑龙江网{% endblock %}
-{% block head %}
-    {{ super() }}
-  <meta name="keywords" content="{{ detail.word }}">
-  <meta name="description" content="{{ detail.title }}">
+{% block head %}{{ super() }} <meta name="keywords" content="{{ detail.word }}">
+    <meta name="description" content="{{ detail.title }}">
 {% endblock %}
 {% block middle %}
-  <!--left-->
-  <div class="con_l">
-      <div class="focus02"  style="margin:0 auto;">
-          {% include "generic_components/lht.html" %}
-      </div>
+<!--left-->
+<div class="con_l">
+    <div class="focus02" style="margin:0 auto;">
+        {% include "generic_components/lht.html" %}
+    </div>
     <!--w950新闻分类-->
     <div class="list02_news ft10">
-    <ul id="ul_content">{% for i in news_list %}
-        <li>
-        <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="261" height="171" /></a></p>
-        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
-        <h5>{{ i.summary }}</h5>
-        <h6>{{ i.publish_time }} <tt><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></tt></h6>
-        </li>{% endfor %}
-    </ul>
+        <ul id="ul_content">{% for i in news_list %}
+            <li>
+                <p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}" width="261"
+                                                                      height="171"/></a></p>
+                <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
+                <h5>{{ i.summary }}</h5>
+                <h6>{{ i.publish_time }} <tt><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></tt></h6>
+            </li>{% endfor %}
+        </ul>
     </div>
-<div class="content_l ft30">
-    <div class="jogger">
-        {% autoescape false %}
-        {{ pagebar_html }}
-        {% endautoescape %}
+    <div class="content_l ft30">
+        <div class="jogger">
+            {% autoescape false %}
+            {{ pagebar_html }}
+            {% endautoescape %}
+        </div>
     </div>
 </div>
-  </div>
-  <!--right-->
-    {% include 'generic_components/right_side_bar.html' %}
+<!--right-->
+{% include 'generic_components/right_side_bar.html' %}
 {% endblock %}
 {% block footer %}
-        {% include 'master_page/footer_page.html' %}
+    {% include 'master_page/footer_page.html' %}
 {% endblock %}

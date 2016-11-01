@@ -16,15 +16,19 @@
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
                 <ul id="uuuu" class="tiles-wrap animated">{% for i in zd %}
-                        <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
-                            <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
-                            <h4>{{ i.summary }}</h4>
-                            <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6></span></li>{% endfor %}
+                    <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                              width="261" height="171"/></a></p>
+                        <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                        <h4>{{ i.summary }}</h4>
+                        <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a>
+                        </h6></span></li>{% endfor %}
                     {% for i in news_list %}
-                        <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
+                        <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
+                                                                                  width="261" height="171"/></a></p>
                             <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
                             <h4>{{ i.summary }}</h4>
-                            <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}" target="_blank">{{ i.cname }}</a></h6></span>
+                            <span><h5>{{ i.publish_time }}</h5><h6><a href="{{ i.href }}"
+                                                                      target="_blank">{{ i.cname }}</a></h6></span>
                         </li>{% endfor %}
                 </ul>
             </div>
@@ -40,7 +44,8 @@
                 </div>
                 <div class="mid_list">
                     <ul>{% for i in yw %}
-                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
+                        <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                            <h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>
@@ -52,17 +57,19 @@
                 </div>
                 <div class="mid_list">
                     <ul>{% for i in ljkd %}
-                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
+                        <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                            <h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>
-        <div class="con_m_main ft30">
+            <div class="con_m_main ft30">
                 <div class="mid_tlt">
                     <p><a href="/54.html" target="_blank">龙江生活</a></p>
                 </div>
                 <div class="mid_list">
                     <ul>{% for i in ljsh %}
-                            <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3><h4>{{ i.summary }}</h4></li>{% endfor %}
+                        <li><h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>
+                            <h4>{{ i.summary }}</h4></li>{% endfor %}
                     </ul>
                 </div>
             </div>
@@ -105,21 +112,21 @@
                 if (closeToBottom) {
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
-                    $.ajaxSettings.async = false;
-                    $.getJSON("/issift/" + page, function (data) {
-                        {#                 items=data.datalist;#}
-                        var $firstTen = jQuery.parseHTML(data.datalist);
-                        $container.append($firstTen);
-                        $("#page").val(parseInt(page) + 1);
-                        wookmark.initItems();
-                        wookmark.layout(true, function () {
-                            // Fade in items after layout
-                            setTimeout(function () {
-                                {#                            $firstTen.css('opacity', 1);#}
-                            }, 300);
-                        });
-                    })
-                }
+                        $.ajaxSettings.async = false;
+                        $.getJSON("/issift/" + page, function (data) {
+                            {#                 items=data.datalist;#}
+                            var $firstTen = jQuery.parseHTML(data.datalist);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                    {#                            $firstTen.css('opacity', 1);#}
+                                }, 300);
+                            });
+                        })
+                    }
                 }
             };
             // Capture scroll event.

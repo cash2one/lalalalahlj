@@ -2,8 +2,8 @@
 {% block title %}{{ detail.Title }}-黑龙江网{% endblock %}
 {% block head %}
     {{ super() }}
-  <meta name="keywords" content="{{ detail.Keywords|join(",") }}">
-  <meta name="description" content="{{ detail.Summary }}">
+    <meta name="keywords" content="{{ detail.Keywords|join(",") }}">
+    <meta name="description" content="{{ detail.Summary }}">
     <style>
         #div_content img {
             max-width: 100%;
@@ -14,7 +14,8 @@
     </style>
 {% endblock %}
 {% block middle %}
-<div class="end_tlt ft15 f14">您当前的位置 ：<a href="/" target="_blank">首页</a>{% if parent.Name=='首页' %}{% else %} ><a href="{{ parent.Href }}">{{ parent.Name }}</a>{% endif %} > <a
+<div class="end_tlt ft15 f14">您当前的位置 ：<a href="/" target="_blank">首页</a>{% if parent.Name=='首页' %}{% else %} >
+    <a href="{{ parent.Href }}">{{ parent.Name }}</a>{% endif %} > <a
         href="{{ channel.Href }}">{{ channel.Name }}</a>
 </div>
 <div class="content ft30">
@@ -98,7 +99,8 @@
                     {% autoescape false %}
                     {{ pagebar_html }}
                     {% endautoescape %}
-                    <a href="/da/{{ detail._id }}.html" target="_blank" style="font-weight: 900"><font color="#fff">全文阅读</font></a>
+                    <a href="/da/{{ detail._id }}.html" target="_blank" style="font-weight: 900"><font
+                            color="#fff">全文阅读</font></a>
                 </div>
             </div>
             <div class="news_xgyd ft30">
@@ -117,7 +119,8 @@
                             <li>
                                 {% for i in qsmw %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
+                                                                                       target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>
@@ -133,7 +136,8 @@
                             <li>
                                 {% for i in ssf %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
+                                                                                       target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>
@@ -166,7 +170,8 @@
                             <li>
                                 {% for i in ecy %}
                                     <div class="p-img ld" {% if loop.index==1 %}style="display: block"
-                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img
+                                         {% else %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
+                                                                                       target="_blank"><img
                                             src="{{ i.guide_image }}?w=261&h=171"
                                             width="261"
                                             height="171"/></a></div>

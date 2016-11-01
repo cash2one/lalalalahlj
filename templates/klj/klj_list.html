@@ -1,43 +1,43 @@
 {% extends "klj/master_page/base_page.html" %}
 {% block title %}{{ detail.Name }}-看龙江-黑龙江网{% endblock %}
-{% block head %}
-    {{ super() }}
-  <meta name="keywords" content="{{ detail.word }}">
-  <meta name="description" content="{{ detail.title }}">
+{% block head %}{{ super() }}<meta name="keywords" content="{{ detail.word }}">
+    <meta name="description" content="{{ detail.title }}">
 {% endblock %}
 {% block middle %}
-    <!--left-->
-    <div class="con_l">
-        <!--w950新闻分类-->
-        <div class="list_tlt">
-            <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
-            <span>{{ detail.Name }}</span>
+<!--left-->
+<div class="con_l">
+    <!--w950新闻分类-->
+    <div class="list_tlt">
+        <p><img src="/static/images/{{ detail.icon }}" width="46" height="45"/></p>
+        <span>{{ detail.Name }}</span>
+    </div>
+    <div class="list_news">
+        <ul id="ul_news">{% for i in channel %}
+            <li><p {% if i.guide_image=="" %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html"
+                                                                                 target="_blank"><img
+                    src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
+                <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
+                <h5>{{ i.summary }}</h5>
+                <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
+            </li>{% endfor %}
+        </ul>
+    </div>
+    <div class="content_l ft30">
+        <div class="jogger">
+            {% autoescape false %}
+            {{ pagebar_html }}
+            {% endautoescape %}
         </div>
-        <div class="list_news">
-            <ul id="ul_news">{% for i in channel %}
-                    <li><p {% if i.guide_image=="" %}style="display: none"{% endif %}><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></a></p>
-                        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h2>
-                        <h5>{{ i.summary }}</h5>
-                        <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
-                    </li>{% endfor %}
-            </ul>
-        </div>
-<div class="content_l ft30">
-    <div class="jogger">
-        {% autoescape false %}
-        {{ pagebar_html }}
-        {% endautoescape %}
     </div>
 </div>
-    </div>
-    <!--right-->
-    <div class="ft30">
+<!--right-->
+<div class="ft30">
     {% include 'generic_components/right_side_bar.html' %}
 </div>
 {% endblock %}
 {% block footer %}
-        {% include 'master_page/footer_page.html' %}
-<!--
+    {% include 'master_page/footer_page.html' %}
+    <!--
 <script type="text/javascript">
         (function ($) {
             var wookmark,

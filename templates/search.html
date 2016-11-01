@@ -1,10 +1,8 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}{{ keyword }}-黑龙江网{% endblock %}
-{% block head %}
-    {{ super() }}
-    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+{% block head %}{{ super() }}<script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-  <!--  <script type="text/javascript">
+    <!--  <script type="text/javascript">
         $(document).ready(function () {
 
             $("#loading").click(function () {
@@ -27,7 +25,9 @@
                     <li>
                         <p {% if i.guide_image=="" %}style="display: none"{% endif %}><img
                                 src="{{ i.guide_image }}?w=261&h=171" width="261" height="171"/></p>
-                        <h2><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title|replace(keyword,"<span style='color:red'>"+keyword+"</span>")|safe }}</a></h2>
+                        <h2><a href="/d/{{ i._id }}.html"
+                               target="_blank">{{ i.title|replace(keyword,"<span style='color:red'>"+keyword+"</span>")|safe }}</a>
+                        </h2>
                         <h5>{{ i.summary|replace(keyword,"<span style='color:red'>"+keyword+"</span>")|safe }}</h5>
                         {#    <h6><a href="#">舆论场</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;43分钟前</h6>#}
                         <h6>&nbsp;&nbsp;&nbsp;{{ i.publish_time }}</h6>
@@ -35,15 +35,15 @@
                 {% endfor %}
             </ul>
         </div>
-      {% if c_list|length>8 %}
-        <input type="hidden" id="page" value="2">
-      {% endif %}
+        {% if c_list|length>8 %}
+            <input type="hidden" id="page" value="2">
+        {% endif %}
     </div>
     <!--right-->
     {% include 'generic_components/right_side_bar.html' %}
 {% endblock %}
 {% block footer %}
-         <script type="text/javascript">
+    <script type="text/javascript">
         (function ($) {
             var wookmark,
                     container = '#ul_news',
@@ -58,11 +58,11 @@
             });
             function onScroll() {
                 // Check if we're within 100 pixels of the bottom edge of the broser window.
-                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
-                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
                     var page = $("#page").val();
-                    if(parseInt(page)<=20) {
+                    if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
                         $.getJSON("/ss/{{ keyword }}/" + page, function (result) {
                             var $firstTen = jQuery.parseHTML(result);
@@ -84,5 +84,5 @@
             $window.on('scroll.wookmark', onScroll);
         })(jQuery);
     </script>
-        {% include 'master_page/footer_page.html' %}
+    {% include 'master_page/footer_page.html' %}
 {% endblock %}

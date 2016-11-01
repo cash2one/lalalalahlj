@@ -1,25 +1,25 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{{ lingdao.Name }}领导活动报道集_{{ name }}_黑龙江网</title>
-<meta name="keywords" content="{{ lingdao.word }}">
-<meta name="description" content="{{ lingdao.title }}">
-<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/css.css" rel="stylesheet" type="text/css" />
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
-<script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{{ lingdao.Name }}领导活动报道集_{{ name }}_黑龙江网</title>
+    <meta name="keywords" content="{{ lingdao.word }}">
+    <meta name="description" content="{{ lingdao.title }}">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/css.css" rel="stylesheet" type="text/css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
     <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1773379f6367cc81123e8e5c1fa532dc";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 <div class="ldr_header">
@@ -37,21 +37,22 @@ var _hmt = _hmt || [];
             <div class="ldr-m-title"><p>{{ name }}</p></div>
             <div class="ldr-m-box">
                 <ul id="ul_content">{% for i in _news_list %}
-                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a> <span>{{ i.publish_time }}</span></li>{% endfor %}
+                    <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a>
+                        <span>{{ i.publish_time }}</span></li>{% endfor %}
                 </ul>
             </div>
         </div>
     </div>
-<div class="content_l ft30">
-    <div class="jogger">
-        {% autoescape false %}
-        {{ pagebar_html }}
-        {% endautoescape %}
+    <div class="content_l ft30">
+        <div class="jogger">
+            {% autoescape false %}
+            {{ pagebar_html }}
+            {% endautoescape %}
+        </div>
     </div>
 </div>
-</div>
-{% include "master_page/footer_page.html"  %}
- <!-- <input type="hidden" id="page" value="2">
+{% include "master_page/footer_page.html" %}
+<!-- <input type="hidden" id="page" value="2">
  <script type="text/javascript">
         (function ($) {
             var wookmark,

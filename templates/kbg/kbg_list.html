@@ -1,28 +1,7 @@
 {% extends "kbg/master_page/base_page.html" %}
 {% block title %}{{ detail.Name }}-侃八卦-黑龙江网{% endblock %}
 {% block head %}{{ super() }}<meta name="keywords" content="{{ detail.word }}">
-    <meta name="description" content="{{ detail.title }}">
-    <!--     <script>
-
-             function loading(channel, page) {
-                 $.getJSON('/kbg/' + channel + '/' + page, function (result) {
-                     if (page == 1) {
-                         $('#ul_content').html(result);
-                     } else {
-                         $('#ul_content').append(result);
-                     }
-                     $("#page").val(parseInt(page) + 1);
-                 });
-             }
-             function go_to(channel) {
-                 var page = $("#page").val();
-                 loading(channel, page);
-             }
-             ;
-         </script>
-         <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
-         <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
-{% endblock %}
+    <meta name="description" content="{{ detail.title }}">{% endblock %}
 {% block middle %}
 <!--left-->
 <!--轮播图-->

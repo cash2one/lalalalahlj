@@ -1,21 +1,7 @@
 {% extends "psd/master_page/base_page.html" %}
 {% block title %}{{ detail.Name }}-品深度-黑龙江网{% endblock %}
 {% block head %}{{ super() }}<meta name="keywords" content="{{ detail.word }}">
-    <meta name="description" content="{{ detail.title }}">
-    <!--       <script type="text/javascript">
-        $(document).ready(function () {
-            $("#loading").click(function () {
-                var page = $("#page").val();
-                $.getJSON('/psd/list/{{ detail._id }}/' + page, function (result) {
-                    $('.dpt2_list_n04').append(result);
-                    $("#page").val(parseInt(page) + 1);
-                });
-            });
-        });
-    </script>
-    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
-    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>-->
-{% endblock %}
+    <meta name="description" content="{{ detail.title }}">{% endblock %}
 {% block middle %}
 <div class="content ft30">
     <!--left-->

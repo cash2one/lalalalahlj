@@ -1,21 +1,7 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}{{ keyword }}-黑龙江网{% endblock %}
 {% block head %}{{ super() }}<script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
-    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-    <!--  <script type="text/javascript">
-        $(document).ready(function () {
-
-            $("#loading").click(function () {
-                var page = $("#page").val();
-                $.getJSON('/list/{{ detail._id }}/' + page, function (result) {
-                    $('#ul_content').append(result);
-                    $("#page").val(parseInt(page) + 1);
-                });
-            });
-
-        });
-    </script>-->
-{% endblock %}
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>{% endblock %}
 {% block middle %}
     <!--left-->
     <div class="con_l">

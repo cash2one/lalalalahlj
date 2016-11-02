@@ -679,3 +679,15 @@ def get_name(channel):
     # @index_page.route('/404/')
     # def re_404():
     #     return render_template('404.html')
+
+
+# 关于我们
+@index_page.route('/about/')
+def about():
+    return render_template('about.html', menu=get_menu())
+
+
+# 联系我们
+@index_page.route('/contract/')
+def contract():
+    return render_template('contract.html', menu=get_menu())

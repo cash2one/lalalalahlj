@@ -352,6 +352,7 @@ def search_hot_redis():
 @index_page.route('/ss/<keywords>/')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
+    print keyword
     # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
     condition = {"$text": {"$search": keyword}, "Status": 4}
     k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(

@@ -211,7 +211,7 @@ def detail(id, page=1):
     # ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 6, 1)
     # <div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>
-    count = detail["Content"].split(
+    count = detail["Content"].replace('<div style="page-break-after: always;"><span style="display:none">&nbsp;</span></div>','<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>').split(
         '<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>')
     # print len(count)
     # for i in count:

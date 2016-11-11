@@ -10,8 +10,8 @@ from connect import conn
 db = conn.mongo_conn()
 
 # image_server = "http://125.211.222.237:17937/"
-image_server = "http://www.hljpic.cn/"
-ym_server = "http://www.chinahlj.cn"
+image_server = "//www.hljpic.cn/"
+ym_server = "https://www.chinahlj.cn"
 
 
 # 根据编号  是否带图  调取的条数 新闻编号列表  新闻类型 是否推荐

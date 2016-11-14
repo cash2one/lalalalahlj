@@ -222,7 +222,7 @@ def detail(id, page=1):
     d["Source"] = detail["Source"]
     d["Published"] = detail["Published"]
     d["Author"] = detail["Author"]
-    d["Content"] = detail["Content"]
+    d["Content"] = detail["Content"].replace("<p>&nbsp;</p>", "<div style='width:10px;height:15px'></div>")
     d["Keywords"] = detail["Keywords"]
     d["Summary"] = detail["Summary"]
     if len(count) > 1:

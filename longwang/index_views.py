@@ -56,7 +56,7 @@ def index():
         new_dict = {}
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
-        new_dict["summary"] = news["Summary"]
+        new_dict["summary"] = i["Summary"]
         new_dict["images"] = i["image"]
         new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
         new_dict["publish_time"] = datetime_op(news["Published"])

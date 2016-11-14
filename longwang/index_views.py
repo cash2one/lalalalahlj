@@ -352,9 +352,10 @@ def search_hot_redis():
 @index_page.route('/ss/<keywords>/')
 def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
-    print keyword
-    # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
-    condition = {"$text": {"$search": keyword}, "Status": 4}
+    # print keyword
+    condition = {"Status": 4}
+    condition.update({"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
+    # condition = {"$text": {"$search": keyword}, "Status": 4}
     k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
     c_list = []
@@ -380,8 +381,8 @@ def ss_keywords(keywords, page=1):
 @index_page.route('/ss/<keywords>/<page>')
 def ss_keywords_list(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
-    # condition={"$or": [{"$text": {"$search": keyword}}, {"title": {"$regex": keyword}}]}
-    condition = {"$text": {"$search": keyword}, "Status": 4}
+    condition = {"Status": 4}
+    condition.update({"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
     k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
     value = ""

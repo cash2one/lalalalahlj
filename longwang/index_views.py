@@ -187,7 +187,7 @@ def detail(id, page=1):
         return render_template('picview.html', detail=detail, wqhg=wqhg)
     if detail["newstype"] == 3:
         zt = db.File_upload.find_one({"newsid": id, "index": 1})
-        if zt == None:
+        if zt is None:
             return render_template("404.html")
         else:
             return redirect(ym_server + str(zt["url"]))

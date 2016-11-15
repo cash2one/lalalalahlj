@@ -1,0 +1,38 @@
+{% extends "wap_site/master_page/base.html" %}
+{% block title %}{{ detail.Title }}_黑龙江网{% endblock %}
+{% block head %}
+   {{ super() }}<link rel="stylesheet" href="/static/wap_site/css/baguetteBox.css">
+{% endblock %}
+{% block content %}
+<div style="background-color:#000;">
+<div class="photo-header">
+    <a class="goback" href="javascript:history.go(-1)">返回</a>
+    <span class="header-title">{{ detail.Title }}</span>
+    <a class="channellist" href="/m/index">频道列表</a> </div>
+<div class="photo-content">
+
+    <div class="baguetteBoxOne gallery">
+        {% for i in detail["Images"] %}
+          <a href="{{ i.url|img_dom }}" title="{{ i.describe }}"><img src="{{ i.url|img_dom }}"></a>
+        {% endfor %}
+    </div>
+   
+</div>
+
+<script src="/static/js/baguetteBox.js"></script>
+<script>
+window.onload = function() {
+    baguetteBox.run('.baguetteBoxOne');
+    baguetteBox.run('.baguetteBoxTwo');
+    baguetteBox.run('.baguetteBoxThree', {
+        animation: 'fadeIn',
+    });
+    baguetteBox.run('.baguetteBoxFour', {
+        buttons: false
+    });
+    baguetteBox.run('.baguetteBoxFive');
+};
+    </script>
+</div>
+{% include "wap_site/master_page/footer.html" %}
+{% endblock %}

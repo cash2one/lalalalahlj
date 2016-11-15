@@ -1,0 +1,45 @@
+{% extends "wap_site/master_page/base.html" %}
+{% block title %}{{ detail.Title }}_黑龙江网{% endblock %}
+{% block content %}
+<div class="header-wrap">
+  <div class="md-nav"> <a class="goback" href="javascript:history.go(-1)">返回</a> <span class="header-title"> <a href="#">新闻细览页</a> </span> </div>
+</div>
+<a name="title"></a>
+<!--正文-->
+<div class="article">
+  <div class="top" >
+    <h1>{{ detail.Title }}</h1>
+    <p class="time"> <span>{{ detail.Published.strftime('%Y-%m-%d %H:%M') }}</span> <span>{{ detail.Source }}</span> </p>
+  </div>
+  <div class="content">
+    <div class="detail">
+        {{ detail.Content|safe }}
+    </div>
+  </div>
+    <!--相关新闻-->
+    <!--
+  <div class="rela">
+    <h2>相关新闻</h2>
+    <ul id="rela-list">
+      <li><a href="#">
+        <h3 class="tit">你知道吗？NFC功能在Android上原来这么强大！</h3>
+        </a></li>
+      <li><a href="#">
+        <h3 class="tit">传统行业如何拥抱工业4.0 智能制造正在中国上演</h3>
+        </a></li>
+      <li><a href="#">
+        <h3 class="tit">诺基亚105成极端武装份子最爱：用来引爆炸弹</h3>
+        </a></li>
+      <li><a href="#">
+        <h3 class="tit">网友抢癌症患者救命红包拒退还 回称"谢谢"</h3>
+        </a></li>
+      <li><a href="#">
+        <h3 class="tit">北京现我国首例输入性黄热病 专家称扩散风险低</h3>
+        </a></li>
+    </ul>
+  </div>
+  -->
+</div>
+<a class="gotop" href="#title"><i class="icon"></i></a>
+{% include "wap_site/master_page/footer.html" %}
+{% endblock %}

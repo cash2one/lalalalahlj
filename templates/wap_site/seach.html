@@ -1,0 +1,83 @@
+{% extends "wap_site/master_page/base.html" %}
+{% block title %}黑龙江网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="header-wrap">
+        <div class="md-nav"><a class="goback" href="javascript:history.go(-1)">返回</a>
+            <span class="header-title"> <a href="#">搜新闻</a></span></div>
+    </div>
+    <div id="box">
+        <!---------搜索------->
+        <div class="seach">
+            <form method="get">
+                <div class="con-wrap">
+                    <input type="search" autocomplete="off" onblur="search()" maxlength="2048" autocorrect="off"
+                           id="keys" name="keys"
+                           class="se-input"/>
+                    <div class="se-inner">
+                        <input class="se-bn" type="button" onclick="search()" />
+                    </div>
+                </div>
+                <input type="hidden" value="2" id="page">
+            </form>
+        </div>
+    </div>
+    <!---------新闻列表------->
+    <div class="news">
+        <ul class="news-list" id="ul_content">
+        </ul>
+    </div>
+    <script type="text/javascript">
+        function search(){
+        var keys = $("#keys").val();
+        var page = $("#page").val();
+        if (parseInt(page) <= 20) {
+            $.ajaxSettings.async = false;
+            $.getJSON("/m/ss_" + encodeURI(keys) + "_" + page, function (result) {
+                var $firstTen = jQuery.parseHTML(result);
+                $("#ul_content").append($firstTen);
+                $("#page").val(parseInt(page) + 1);
+            })
+        }
+        }
+        (function ($) {
+            var wookmark,
+                    container = '#ul_content',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var keys = $("#keys").val();
+                    var page = $("#page").val();
+                    if (parseInt(page) <= 20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON(encodeURI("/m/ss_" + encodeURI(keys) + "_" + page), function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                }, 300);
+                            });
+                        })
+                    }
+                }
+            };
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+    </script>
+{% endblock %}

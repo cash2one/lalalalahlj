@@ -1,0 +1,140 @@
+{% extends "wap_site/master_page/base.html" %}
+{% block title %}{{ channel_raw.Name }}_黑龙江网{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "微软雅黑";
+        }
+
+        .wrap {
+            margin: 0 auto;
+
+        }
+
+        .tabs {
+            height: 64px;
+            background: #46abd0;
+            width: 100%;
+            padding-top: 8px;
+            text-align: center;
+        }
+
+        .tabs .part {
+            display: block;
+            float: left;
+            width: 24.8%;
+            color: #fff;
+            text-align: center;
+            height: 20px;
+            margin-bottom: 12px;
+        }
+
+        .tabs .part:first-child {
+            border-right: 1px solid #ADDAFD;
+        }
+
+        .tabs a {
+            width: 70px;
+            display: block;
+            color: #fff;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 16px;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+
+        .tabs span.active a {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            border-top: 0;
+            margin-top: 10px !important
+        }
+
+        .swiper-slide {
+            width: 100%;
+            background: none;
+            color: #373737;
+        }
+
+        p {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="header-wrap">
+        <div class="md-nav"><a class="goback" href="javascript:history.go(-1)">返回</a><span class="header-title"><a
+                href="#">{{ channel_raw.Name }}</a></span></div>
+    </div>
+    <body class="bgc_gray" style="margin-top:50px">
+    <div class="pg-main">
+        <div id="wrapper">
+            <!--header end-->
+            <div class="wrap">
+                <ul class="news-list" id="ul_content">
+                    {% for i in news %}
+                    <li>
+                        <a href="/m/d_{{ i.numid }}.html">
+                            <img src="{{ i.Guideimage |img_dom }}" class="news-img">
+                        <div class="m_article_desc_l">{{ i["Published"]|time_filter}}</div>
+                        <div class="news-text">
+                            <h3>{{ i.Title }}</h3>
+                        </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="2" id="page">
+    <input type="hidden" value="{{ channel_raw.numid }}" id="cid">
+    <script type="text/javascript">
+        (function ($) {
+            var wookmark,
+                    container = '#ul_content',
+                    $container = $(container),
+                    $window = $(window),
+                    $document = $(document);
+
+            function onScroll() {
+                // Check if we're within 100 pixels of the bottom edge of the broser window.
+                var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                if (closeToBottom) {
+                    var cid = $("#cid").val();
+                    var page = $("#page").val();
+                    if (parseInt(page) <= 20) {
+                        $.ajaxSettings.async = false;
+                        $.getJSON(encodeURI("/m/list_" + cid + "_" + page), function (result) {
+                            var $firstTen = jQuery.parseHTML(result);
+                            $container.append($firstTen);
+                            $("#page").val(parseInt(page) + 1);
+                            wookmark.initItems();
+                            wookmark.layout(true, function () {
+                                // Fade in items after layout
+                                setTimeout(function () {
+                                }, 300);
+                            });
+                        })
+                    }
+                }
+            };
+            // Capture scroll event.
+            $window.on('scroll.wookmark', onScroll);
+
+        })(jQuery);
+    </script>
+{% endblock %}

@@ -4,8 +4,8 @@
     <meta name="description" content="{{ detail.Summary }}">{% endblock %}
 {% block middle %}
 <div class="end_tlt ft15 f14">您当前的位置 ：<a href="/" target="_blank">首页</a>{% if parent.Name=='首页' %}{% else %} >
-    <a href="{{ parent.Href }}">{{ parent.Name }}</a>{% endif %} > <a
-        href="{{ channel.Href }}">{{ channel.Name }}</a>
+    <a href="{{ parent.Href }}" target="_blank">{{ parent.Name }}</a>{% endif %} > <a
+        href="{{ channel.Href }}" target="_blank">{{ channel.Name }}</a>
 </div>
 <div class="content ft30">
     <!---------left-------->

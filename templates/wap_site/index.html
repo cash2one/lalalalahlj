@@ -123,7 +123,7 @@
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
-                        $.getJSON("/m_index/" + page, function (result) {
+                        $.getJSON("/m_index/" + page+"/", function (result) {
                             var $firstTen = jQuery.parseHTML(result);
                             $container.append($firstTen);
                             $("#page").val(parseInt(page) + 1);

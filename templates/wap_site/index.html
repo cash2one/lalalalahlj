@@ -1,7 +1,8 @@
 {% extends "wap_site/master_page/base.html" %}
 {% block title %}黑龙江网_首页{% endblock %}
 {% block head %}
-   {{ super() }}<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    {{ super() }}
+    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/jquery.wookmark/2.1.2/wookmark.min.js"></script>
     <script src="//cdn.bootcss.com/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 {% endblock %}
@@ -39,14 +40,22 @@
         <div id='mySwipe' style='margin: 0 auto' class='swipe'>
             <div class='swipe-wrap'>
                 {% for i in lht %}
-                    <div><a href="/m/d_{{ i.numid }}"><img src="{{ i.guide_image }}" width="100%"/></a>
+                    <div><a href="/m/d_{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
                         <div
                                 class="mySwipeceng">
                             <div class="left">{{ i.title }}</div>
-                            <div class="right" style="height: 26px;"><span class="mySwipetabdiancurr"></span><span
-                                    class="mySwipetabdian"></span>
-							<span
-                                    class="mySwipetabdian"></span>
+                            <div class="right" style="height: 26px;">
+                                {% if loop.index==1 %}
+                               <span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span>
+							<span class="mySwipetabdian"></span>
+                                {% elif loop.index==2%}
+                                    <span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span>
+						<span class="mySwipetabdian"></span>
+                                {% else%}
+                                    <span class="mySwipetabdian"></span><span class="mySwipetabdian"></span>
+					<span class="mySwipetabdiancurr"></span>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -60,14 +69,14 @@
             {% for i in tjzd %}
                 <li>
                     <a href="/m/d_{{ i.numid }}.html">
-                   <!--     {% if i.newstype!=2 %}-->
+                        <!--     {% if i.newstype!=2 %}-->
                             <img src="{{ i.Guideimage |img_dom }}" class="news-img">
-                  <!--       {% endif %}-->
-                        <div class="m_article_desc_l">{{ i["Published"]|time_filter}}</div>
+                            <!--       {% endif %}-->
+                        <div class="m_article_desc_l">{{ i["Published"]|time_filter }}</div>
                         <div class="news-text">
                             <h3>{{ i.Title }}</h3>
                         </div>
-                        {% if i.newstype==2 %}
+                        <!--     {% if i.newstype==2 %}
                             <p class="news-pic3">
                                 {% for j in i.Images %}
                                     {% if loop.index<4 %}
@@ -75,7 +84,7 @@
                                     {% endif %}
                                 {% endfor %}
                             </p>
-                        {% endif %}
+                        {% endif %}-->
                     </a>
                 </li>
             {% endfor %}
@@ -105,13 +114,14 @@
                     $container = $(container),
                     $window = $(window),
                     $document = $(document);
+
             function onScroll() {
                 // Check if we're within 100 pixels of the bottom edge of the broser window.
-                 var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
-                    closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+                var winHeight = window.innerHeight ? window.innerHeight : $(window).height(), // iphone fix
+                        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
                 if (closeToBottom) {
                     var page = $("#page").val();
-                    if(parseInt(page)<=20) {
+                    if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
                         $.getJSON("/m_index/" + page, function (result) {
                             var $firstTen = jQuery.parseHTML(result);

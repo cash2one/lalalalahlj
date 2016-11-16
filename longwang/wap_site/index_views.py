@@ -18,7 +18,7 @@ pre_page = 10
 
 
 # 首页
-@wap_page.route("/m/index")
+@wap_page.route("/m/")
 def m_index():
     # 轮换图3张
     lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 3)

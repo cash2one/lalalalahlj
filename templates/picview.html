@@ -77,7 +77,7 @@
             <div class="imgnav" id="imgnav">
                 <div id="img">
                     {% for i in detail["Images"] %}
-                        <img src="{{ format_http_url(i.url) }}?h=570"/>
+                        <img src="{{ i.url|img_dom }}?h=570"/>
                     {% endfor %}
 
                     <div id="front" title="上一张"><a href="javaScript:void(0)" class="pngFix"></a></div>
@@ -94,7 +94,7 @@
                     <div id="cSlideUl">
                         <ul>
                             {% for i in detail["Images"] %}
-                                <li><img src="{{ format_http_url(i.url) }}?w=116&h=86"/><tt></tt></li>
+                                <li><img src="{{ i.url|img_dom }}?w=116&h=86"/><tt></tt></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -139,7 +139,7 @@
             <ul class="reviewList clearfix" id="gallery" style="width: 2880px; left: 0px;">
                 {% for i in wqhg %}
                     <li><a href="/d/{{ i.numid }}.html" target="_blank"><img
-                            src="{{ format_http_url( i.Guideimage ) }}?w=200&h=147" width="200" height="147" alt="">
+                            src="{{ i.Guideimage|img_dom }}?w=200&h=147" width="200" height="147" alt="">
                         <p>{{ i.Title }}</p></a><b>{{ loop.index }}</b></li>
                 {% endfor %}
             </ul>

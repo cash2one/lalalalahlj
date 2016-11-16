@@ -66,7 +66,8 @@ def m_list_by_id(cid, page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] !="":
+           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"
@@ -82,7 +83,8 @@ def m_index_page(page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] !="":
+           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"
@@ -122,7 +124,8 @@ def ss_keys_page(keys, page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] !="":
+           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"

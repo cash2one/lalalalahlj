@@ -211,7 +211,9 @@ def detail(id, page=1):
     # ecy1 = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 1)
     ecy = search_news_db([ObjectId("57650505dcc88e31a6f3501b")], 6, 1)
     # <div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>
-    count = detail["Content"].replace('<div style="page-break-after: always;"><span style="display:none">&nbsp;</span></div>','<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>').split(
+    count = detail["Content"].replace(
+        '<div style="page-break-after: always;"><span style="display:none">&nbsp;</span></div>',
+        '<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>').split(
         '<div style="page-break-after: always"><span style="display:none">&nbsp;</span></div>')
     # print len(count)
     # for i in count:
@@ -354,7 +356,8 @@ def ss_keywords(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
     # print keyword
     condition = {"Status": 4}
-    condition.update({"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
+    condition.update(
+        {"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
     # condition = {"$text": {"$search": keyword}, "Status": 4}
     k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
@@ -382,7 +385,8 @@ def ss_keywords(keywords, page=1):
 def ss_keywords_list(keywords, page=1):
     keyword = urllib2.unquote(str(keywords))
     condition = {"Status": 4}
-    condition.update({"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
+    condition.update(
+        {"$or": [{"Title": {"$regex": keyword}}, {"Content": {"regex": keyword}}, {"Keywords": {"$in": [keyword]}}]})
     k_list = db.News.find(condition).sort('Published', pymongo.DESCENDING).skip(
         pre_page * (int(page) - 1)).limit(pre_page)
     value = ""
@@ -693,3 +697,9 @@ def about():
 @index_page.route('/contract/')
 def contract():
     return render_template('contract.html', menu=get_menu())
+
+
+# 自定义过滤器 图片加域名
+@index_page.app_template_filter('img_dom')
+def img_dom(url):
+    return image_server + url

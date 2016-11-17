@@ -113,7 +113,7 @@
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
-                        $.getJSON("/issift/" + page, function (data) {
+                        $.getJSON("/issift/" + page+"/", function (data) {
                             {#                 items=data.datalist;#}
                             var $firstTen = jQuery.parseHTML(data.datalist);
                             $container.append($firstTen);

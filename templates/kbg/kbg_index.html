@@ -258,7 +258,7 @@
             $("#channel").val(channel);
         }
         function loading(channel, page) {
-            $.getJSON('/kbg/' + channel + '/' + page, function (result) {
+            $.getJSON('/kbg/' + channel + '/' + page + '/', function (result) {
                 if (page == 1) {
                     $('#ul_content').html(result);
                 } else if (page <= 20) {

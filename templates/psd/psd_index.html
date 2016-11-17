@@ -116,7 +116,7 @@
             $("#channel").val(channel);
         }
         function loading(channel, page) {
-            $.getJSON('/psd/' + channel + '/' + page, function (result) {
+            $.getJSON('/psd/' + channel + '/' + page + '/', function (result) {
                 if (page == 1) {
                     $('.dpt_list_n04').html(result);
                 } else {

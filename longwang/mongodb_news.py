@@ -56,15 +56,16 @@ def get_hot_list(column_id):
 
 # 根据mongodb按照条件取出的数据重新
 def get_mongodb_dict(i):
-    new_dict = {}
-    new_dict["_id"] = i["numid"]
-    new_dict["title"] = i["Title"]
-    new_dict["summary"] = i["Summary"]
-    new_dict["images"] = i["Images"]
-    new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
-    new_dict["publish_time"] = datetime_op(i["Published"])
-    new_dict["cid"] = i["channelnumid"][0]
     try:
+        new_dict = {}
+        new_dict["_id"] = i["numid"]
+        new_dict["title"] = i["Title"]
+        new_dict["summary"] = i["Summary"]
+        new_dict["images"] = i["Images"]
+        new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
+        new_dict["publish_time"] = datetime_op(i["Published"])
+        new_dict["cid"] = i["channelnumid"][0]
+
         new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Name"]
         new_dict["href"] = db.Channel.find_one({"_id": ObjectId(i["Channel"][0])})["Href"]
     except:
@@ -154,15 +155,15 @@ def search_indexnews_db(Channel, limit):
     news_list = db.IndexNews.find(condition).sort("orderno").limit(limit)
     _news_list = []
     for i in news_list:
-      try:
-        new_dict = {}
-        new_dict["_id"] = i["numid"]
-        new_dict["title"] = i["Title"]
-        new_dict["guide_image"] = image_server + i["image"]
-        new_dict["summary"] = i["Summary"]
-        _news_list.append(new_dict)
-      except:
-          pass
+        try:
+            new_dict = {}
+            new_dict["_id"] = i["numid"]
+            new_dict["title"] = i["Title"]
+            new_dict["guide_image"] = image_server + i["image"]
+            new_dict["summary"] = i["Summary"]
+            _news_list.append(new_dict)
+        except:
+            pass
     return _news_list
 
 

@@ -48,20 +48,20 @@ def index():
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
     yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
     # 首页推荐置顶
-    _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f"}).sort("orderno", pymongo.ASCENDING)
+    _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f", "guide_image": {"$ne": ""}}).sort("orderno",
+                                                                                                          pymongo.ASCENDING)
     _zd = []
     for i in _list:
-        zd.append(i["NewsID"])
-        news = db.News.find_one({"_id": ObjectId(i["NewsID"])})
-        new_dict = {}
-        new_dict["_id"] = i["numid"]
-        new_dict["title"] = i["Title"]
-        new_dict["summary"] = i["Summary"]
-        new_dict["images"] = i["image"]
-        new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
-        new_dict["publish_time"] = datetime_op(news["Published"])
-        new_dict["cid"] = news["channelnumid"][0]
         try:
+            zd.append(i["NewsID"])
+            news = db.News.find_one({"_id": ObjectId(i["NewsID"])})
+            new_dict = {}
+            new_dict["_id"] = i["numid"]
+            new_dict["title"] = i["Title"]
+            new_dict["summary"] = i["Summary"]
+            new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
+            new_dict["publish_time"] = datetime_op(news["Published"])
+            new_dict["cid"] = news["channelnumid"][0]
             new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(news["Channel"][0])})["Name"]
             new_dict["href"] = db.Channel.find_one({"_id": ObjectId(news["Channel"][0])})["Href"]
         except:
@@ -174,7 +174,11 @@ def detail(id, page=1):
     detail = db.News.find_one({"numid": int(id), "Status": 4})
     if detail == None:
         abort(404)
-    db.News.update({"numid": int(id), "Status": 4}, {"$set": {"Browseclick": detail["Browseclick"] + 1}})
+    try:
+        db1=conn.mongo_conn_master()
+        db1.News.update({"numid": int(id), "Status": 4}, {"$set": {"Browseclick": detail["Browseclick"] + 1}})
+    except:
+        pass
     if detail["newstype"] == 2:
         # wqhg = db.News.find(
         #     {"Channel": {"$in": detail["Channel"]}, "Published": {"$gt": detail["Published"]}, "Status": 4,

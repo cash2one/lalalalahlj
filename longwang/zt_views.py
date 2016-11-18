@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf8')
 # import pymongo
 
 zt_page = Blueprint('zt_page', __name__, template_folder='templates')
-db = conn.mongo_conn()
+db = conn.mongo_conn_master()
 
 
 # 添加专题文件

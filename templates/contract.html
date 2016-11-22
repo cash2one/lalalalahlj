@@ -14,7 +14,7 @@
     </div>
     <div style="width:659px;height:570px;border:#ccc solid 1px;" id="dituContent"></div>
 </div>
-<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true&s=1"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&s=1&services=true"></script>
 <!--地图-->
 <script type="text/javascript">
     //创建和初始化地图函数：
@@ -52,7 +52,8 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"黑龙江新媒体集团",content:"哈尔滨市先锋路469号&nbsp;哈尔滨广告产业园5号楼5层",point:"126.689404|45.773398",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"黑龙江新媒体" +
+    "集团",content:"哈尔滨市先锋路469号&nbsp;哈尔滨广告产业园5号楼5层",point:"126.689404|45.773398",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){

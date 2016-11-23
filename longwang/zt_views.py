@@ -8,6 +8,7 @@ from bson import ObjectId
 from flask import Blueprint, render_template, request, current_app, Response, make_response
 from connect import conn
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 # import pymongo
@@ -58,6 +59,11 @@ def zt_add(id):
                             open(uploadurl).write(str(i).decode('gb2312').encode('utf-8'))
 
                     r_path = relative_path(id + "/" + _title + _ext)
+            if fext not in ["jpg", "png", "jpeg", "bmp", "js", "css", "html"]:
+                mkdir_path(id + "/others/")
+                uploadurl = upload_path(id + "/others/" + _title + _ext)
+                f.save(uploadurl)
+                r_path = relative_path(id + "/others/" + _title + _ext)
 
             r_path = r_path.replace("zt", "zuanti")
             insertinfo = {

@@ -66,8 +66,8 @@ def m_list_by_id(cid, page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        if i["Guideimage"] !="":
-           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] != "":
+            string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"
@@ -83,8 +83,8 @@ def m_index_page(page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        if i["Guideimage"] !="":
-           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] != "":
+            string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"
@@ -95,15 +95,18 @@ def m_index_page(page=1):
 @wap_page.route("/m/d_<id>.html")
 def m_detail(id):
     detail = db.News.find_one({"numid": int(id)})
+    parent_id = detail["channelnumid"][0]
+    gparent_id = db.Channel.find_one({"numid": int(parent_id)})["Parent"]
+    gparent_name = db.Channel.find_one({"_id":ObjectId(gparent_id)})["Name"]
     if detail["newstype"] == 2:
-        return render_template("wap_site/photo-end.html", detail=detail)
+        return render_template("wap_site/photo-end.html", detail=detail, gparent_name=gparent_name)
     if detail["newstype"] == 3:
         zt = db.File_upload.find_one({"newsid": id, "index": 1})
         if zt is None:
             return render_template("404.html")
         else:
             return redirect(ym_server + str(zt["url"]))
-    return render_template("wap_site/end.html", detail=detail)
+    return render_template("wap_site/end.html", detail=detail, gparent_name=gparent_name)
 
 
 # 龙江搜索
@@ -124,8 +127,8 @@ def ss_keys_page(keys, page=1):
     string = ""
     for i in news_list:
         string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
-        if i["Guideimage"] !="":
-           string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
+        if i["Guideimage"] != "":
+            string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
         string += "<div class='news-text'><h3>%s</h3></div>" % (i["Title"])
         string += "</a></li>"

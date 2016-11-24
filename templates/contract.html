@@ -9,12 +9,12 @@
 		<p><span>地址：</span>&nbsp;哈尔滨市先锋路469号 哈尔滨广告产业园5号楼5层</p>
 		<p><span>电话：</span>&nbsp;400-036-5959</p>
         <p><span>邮编：</span>&nbsp;150009</p>
-        <p><span>邮箱：</span>&nbsp;13836048929@163.com</p>
+        <p><span>邮箱：</span>&nbsp;xmtjt@163.com</p>
         <p><span>公司主页：</span>&nbsp;http://www.hljxmt.cn/</p>
     </div>
     <div style="width:659px;height:570px;border:#ccc solid 1px;" id="dituContent"></div>
 </div>
-<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&s=1&services=true"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MuCgSqRjiRXio7SxcPtiAjHh8AEr84Tp&s=1"></script>
 <!--地图-->
 <script type="text/javascript">
     //创建和初始化地图函数：
@@ -65,7 +65,7 @@
 			var iconImg = createIcon(json.icon);
             var marker = new BMap.Marker(point,{icon:iconImg});
 			var iw = createInfoWindow(i);
-			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+90,-0)});
 			marker.setLabel(label);
             map.addOverlay(marker);
             label.setStyle({
@@ -105,9 +105,15 @@
     }
     //创建一个Icon
     function createIcon(json){
-        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
-        return icon;
+        var pt = new BMap.Point(126.689368,45.773392);
+	    var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	    var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+	    map.addOverlay(marker2);
+{#        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})#}
+        return myIcon;
     }
+    //创建小狐狸
+
 
     initMap();//创建和初始化地图
 </script>

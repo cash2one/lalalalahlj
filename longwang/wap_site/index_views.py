@@ -65,7 +65,7 @@ def m_list_by_id(cid, page=1):
         pre_page)
     string = ""
     for i in news_list:
-        string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
+        string += "<li><a href='/m/d/%s.html'>" % (i["numid"])
         if i["Guideimage"] != "":
             string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
@@ -82,7 +82,7 @@ def m_index_page(page=1):
         pre_page)
     string = ""
     for i in news_list:
-        string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
+        string += "<li><a href='/m/d/%s.html'>" % (i["numid"])
         if i["Guideimage"] != "":
             string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))
@@ -92,7 +92,7 @@ def m_index_page(page=1):
 
 
 # 新闻详细
-@wap_page.route("/m/d_<id>.html")
+@wap_page.route("/m/d/<id>.html")
 def m_detail(id):
     detail = db.News.find_one({"numid": int(id)})
     parent_id = detail["channelnumid"][0]
@@ -126,7 +126,7 @@ def ss_keys_page(keys, page=1):
         pre_page)
     string = ""
     for i in news_list:
-        string += "<li><a href='/m/d_%s.html'>" % (i["numid"])
+        string += "<li><a href='/m/d/%s.html'>" % (i["numid"])
         if i["Guideimage"] != "":
             string += "<img src='%s' class='news-img' />" % (image_server + i["Guideimage"])
         string += "<div class='m_article_desc_l'>%s</div>" % (datetime_op(i["Published"]))

@@ -40,7 +40,7 @@
         <div id='mySwipe' style='margin: 0 auto' class='swipe'>
             <div class='swipe-wrap'>
                 {% for i in lht %}
-                    <div><a href="/m/d_{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
+                    <div><a href="/m/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
                         <div
                                 class="mySwipeceng">
                             <div class="left">{{ i.title }}</div>
@@ -68,7 +68,7 @@
         <ul class="news-list" id="ul_content">
             {% for i in tjzd %}
                 <li>
-                    <a href="/m/d_{{ i.numid }}.html">
+                    <a href="/m/d/{{ i.numid }}.html">
                         <!--     {% if i.newstype!=2 %}-->
                             <img src="{{ i.Guideimage |img_dom }}" {% if i.Guideimage=="" %}style="display: none" {% endif %}class="news-img">
                             <!--       {% endif %}-->

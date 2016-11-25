@@ -86,7 +86,7 @@
                 <ul class="news-list" id="ul_content">
                     {% for i in news %}
                     <li>
-                        <a href="/m/d/{{ i.numid }}.html">
+                        <a href=/d/{{ i.numid }}.html">
                             <img src="{{ i.Guideimage |img_dom }}" {% if i.Guideimage=="" %}style="display: none" {% endif %} class="news-img">
                         <div class="m_article_desc_l">{{ i["Published"]|time_filter}}</div>
                         <div class="news-text">
@@ -118,7 +118,7 @@
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
-                        $.getJSON(encodeURI("/m/list_" + cid + "_" + page), function (result) {
+                        $.getJSON(encodeURI("/list_" + cid + "_" + page), function (result) {
                             var $firstTen = jQuery.parseHTML(result);
                             $container.append($firstTen);
                             $("#page").val(parseInt(page) + 1);

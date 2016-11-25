@@ -38,7 +38,7 @@
         var page = $("#page").val();
         if (parseInt(page) <= 20) {
             $.ajaxSettings.async = false;
-            $.getJSON("/m/ss_" + encodeURI(keys) + "_" + page, function (result) {
+            $.getJSON("/ss_" + encodeURI(keys) + "_" + page, function (result) {
                 var $firstTen = jQuery.parseHTML(result);
                 $("#ul_content").append($firstTen);
                 $("#page").val(parseInt(page) + 1);
@@ -61,7 +61,7 @@
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
                         $.ajaxSettings.async = false;
-                        $.getJSON(encodeURI("/m/ss_" + encodeURI(keys) + "_" + page), function (result) {
+                        $.getJSON(encodeURI("/ss_" + encodeURI(keys) + "_" + page), function (result) {
                             var $firstTen = jQuery.parseHTML(result);
                             $container.append($firstTen);
                             $("#page").val(parseInt(page) + 1);

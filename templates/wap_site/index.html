@@ -12,7 +12,7 @@
             <a href="/">
                 <div class="md-nav-logo"><img src="/static/wap_site/imgs/logo-title.png"></div>
             </a>
-            <a href="/m/ss/">
+            <a href="/ss/">
                 <div class="md-nav-searchBtn"><img src="/static/wap_site/imgs/btn.png"></div>
             </a>
         </div>
@@ -24,13 +24,13 @@
             </div>
             <div class="top_menu">
                 <div class="top_menu_list">
-                    <a href="/m/index" class="btn cur" scroll-left="0">首页</a>
-                    <a href="/m/list4" class="btn" scroll-left="0">看龙江</a>
-                    <a href="/m/list5" class="btn" scroll-left="0">观时事</a>
-                    <a href="/m/list6" class="btn" scroll-left="0">知天下</a>
-                    <a href="/m/list7" class="btn" scroll-left="0">品深度</a>
-                    <a href="/m/list8" class="btn" scroll-left="0">享悦读</a>
-                    <a href="/m/list9" class="btn" scroll-left="0">侃八卦</a>
+                    <a href="/index" class="btn cur" scroll-left="0">首页</a>
+                    <a href="/list4" class="btn" scroll-left="0">看龙江</a>
+                    <a href="/list5" class="btn" scroll-left="0">观时事</a>
+                    <a href="/list6" class="btn" scroll-left="0">知天下</a>
+                    <a href="/list7" class="btn" scroll-left="0">品深度</a>
+                    <a href="/list8" class="btn" scroll-left="0">享悦读</a>
+                    <a href="/list9" class="btn" scroll-left="0">侃八卦</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div id='mySwipe' style='margin: 0 auto' class='swipe'>
             <div class='swipe-wrap'>
                 {% for i in lht %}
-                    <div><a href="/m/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
+                    <div><a href="/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
                         <div
                                 class="mySwipeceng">
                             <div class="left">{{ i.title|truncate(21) }}</div>
@@ -68,7 +68,7 @@
         <ul class="news-list" id="ul_content">
             {% for i in tjzd %}
                 <li>
-                    <a href="/m/d/{{ i.numid }}.html">
+                    <a href="/d/{{ i.numid }}.html">
                         <!--     {% if i.newstype!=2 %}-->
                             <img src="{{ i.Guideimage |img_dom }}" {% if i.Guideimage=="" %}style="display: none" {% endif %}class="news-img">
                             <!--       {% endif %}-->

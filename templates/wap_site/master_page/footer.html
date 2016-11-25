@@ -1,6 +1,12 @@
 <div class="footer">
-  <p class="link"> <a href="https://www.chinahlj.cn">PC版</a>|<span class="cur">触屏版</span>
+  <p class="link"> <a href="javascript:redirection(1)">PC版</a>|<span class="cur"><a href="javascript:redirection(2)">触屏版</a></span>
     <!--  |<a href="#">客户端</a>-->
   </p>
   <p class="copy"> ©2016 黑龙江网&nbsp;&nbsp;黑ICP备 15009298号-7 </p>
 </div>
+<script type="text/javascript">
+    function redirection(mode) {
+        document.cookie = 'mode=' + mode;
+        location.replace(location.href.replace("m.", "www."));
+    }
+</script>

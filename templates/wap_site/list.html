@@ -86,7 +86,7 @@
                 <ul class="news-list" id="ul_content">
                     {% for i in news %}
                     <li>
-                        <a href=/d/{{ i.numid }}.html">
+                        <a href="/d/{{ i.numid }}.html">
                             <img src="{{ i.Guideimage |img_dom }}" {% if i.Guideimage=="" %}style="display: none" {% endif %} class="news-img">
                         <div class="m_article_desc_l">{{ i["Published"]|time_filter}}</div>
                         <div class="news-text">

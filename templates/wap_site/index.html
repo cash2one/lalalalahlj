@@ -43,19 +43,19 @@
                     <div><a href="/m/d/{{ i._id }}.html"><img src="{{ i.guide_image }}" width="100%"/></a>
                         <div
                                 class="mySwipeceng">
-                            <div class="left">{{ i.title }}</div>
+                            <div class="left">{{ i.title|truncate(21) }}</div>
                             <div class="right" style="height: 26px;">
                                 {% if loop.index==1 %}
-                               <span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span>
-							<span class="mySwipetabdian"></span>
+                                <span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span>
                                 {% elif loop.index==2%}
-                                    <span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span>
-						<span class="mySwipetabdian"></span>
+                                <span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span>
+                                    {% elif loop.index==3%}
+                                <span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span>
+                                    {% elif loop.index==4%}
+                                <span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span><span class="mySwipetabdian"></span>
                                 {% else%}
-                                    <span class="mySwipetabdian"></span><span class="mySwipetabdian"></span>
-					<span class="mySwipetabdiancurr"></span>
+                                <span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdian"></span><span class="mySwipetabdiancurr"></span>
                                 {% endif %}
-
                             </div>
                         </div>
                     </div>

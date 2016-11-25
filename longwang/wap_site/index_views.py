@@ -21,7 +21,7 @@ pre_page = 10
 @wap_page.route("/m/")
 def m_index():
     # 轮换图3张
-    lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 3)
+    lht = get_head_image(ObjectId("57688f50dcc88e552361ba27"), 5)
     # 首页推荐置顶
     _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f"}).sort("orderno", pymongo.ASCENDING)
     tjzd = []

@@ -59,7 +59,11 @@ def index():
             new_dict["_id"] = i["numid"]
             new_dict["title"] = i["Title"]
             new_dict["summary"] = i["Summary"]
-            new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
+            try:
+                new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
+            except:
+                new_dict["guide_image"] = "/static/images/bg-hui.png"
+            # new_dict["guide_image"] = i["image"] if i["image"] == "" else image_server + i["image"]
             new_dict["publish_time"] = datetime_op(news["Published"])
             new_dict["cid"] = news["channelnumid"][0]
             new_dict["cname"] = db.Channel.find_one({"_id": ObjectId(news["Channel"][0])})["Name"]

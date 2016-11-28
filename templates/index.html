@@ -15,7 +15,8 @@
     <div class="wrap ft30">
         <div class="box1">
             <div class="left_news ft30" style="height: 2150px">
-                <ul id="uuuu" class="tiles-wrap animated">{% for i in zd %}
+                <ul id="uuuu" class="tiles-wrap animated">
+                    {% for i in zd %}
                     <li><p><a href="/d/{{ i._id }}.html" target="_blank"><img src="{{ i.guide_image }}?w=261&h=171"
                                                                               width="261" height="171"/></a></p>
                         <h3 class="Txt_cu"><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></h3>

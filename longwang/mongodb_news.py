@@ -62,7 +62,11 @@ def get_mongodb_dict(i):
         new_dict["title"] = i["Title"]
         new_dict["summary"] = i["Summary"]
         new_dict["images"] = i["Images"]
-        new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
+        try:
+            new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
+        except:
+            new_dict["guide_image"] = "/static/images/bg-hui.png"
+        # new_dict["guide_image"] = i["Guideimage"] if i["Guideimage"] == "" else image_server + i["Guideimage"]
         new_dict["publish_time"] = datetime_op(i["Published"])
         new_dict["cid"] = i["channelnumid"][0]
 
@@ -111,7 +115,11 @@ def get_head_image(channel, limit):
         new_dict = {}
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
-        new_dict["guide_image"] = image_server + i["HeadImage"]
+        try:
+            new_dict["guide_image"] = image_server + i["HeadImage"]
+        except:
+            new_dict["guide_image"] = "/static/images/bg-hui.png"
+        # new_dict["guide_image"] = image_server + i["HeadImage"]
         new_dict["summary"] = dd["Summary"]
         new_dict["publish_time"] = datetime_op(dd["Published"])
         _lht.append(new_dict)
@@ -159,7 +167,10 @@ def search_indexnews_db(Channel, limit):
             new_dict = {}
             new_dict["_id"] = i["numid"]
             new_dict["title"] = i["Title"]
-            new_dict["guide_image"] = image_server + i["image"]
+            try:
+                new_dict["guide_image"] = image_server + i["image"]
+            except:
+                new_dict["guide_image"] = "/static/images/bg-hui.png"
             new_dict["summary"] = i["Summary"]
             _news_list.append(new_dict)
         except:
@@ -181,7 +192,11 @@ def get_image_news(channel, limit, list_db=[]):
         new_dict = {}
         new_dict["_id"] = i["numid"]
         new_dict["title"] = i["Title"]
-        new_dict["guide_image"] = image_server + i["image"]
+        try:
+            new_dict["guide_image"] = image_server + i["image"]
+        except:
+            new_dict["guide_image"] = "/static/images/bg-hui.png"
+        # new_dict["guide_image"] = image_server + i["image"]
         new_dict["summary"] = i["Summary"]
         _lht.append(new_dict)
     return _lht

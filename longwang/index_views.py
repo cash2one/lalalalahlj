@@ -43,8 +43,10 @@ def index():
     jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
     jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
-    # 城市联播
-    cslb = search_indexnews_db("583bcab159f02f781666d40d", 6)
+    # 城市联播图片1
+    cslb_1 = get_image_news("583bcab159f02f781666d40d", 1)
+    # 城市联播文字2
+    cslb_2 = get_image_news("583bcab159f02f781666d40d", 2, cslb_1)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 6)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 6)
@@ -88,7 +90,8 @@ def index():
                            hours=hours, zb=zb, yb=yb, zd=_zd,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
-                           cslb=cslb
+                           cslb_1=cslb_1,
+                           cslb_2=cslb_2
                            )
 
 

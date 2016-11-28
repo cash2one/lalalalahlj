@@ -29,7 +29,7 @@ def index():
     # 龙江头条
     yw = search_indexnews_db("576b36a9a6d2e970226062c3", 3)
     # 侃八卦
-    gbg = search_indexnews_db("579190303c7ee91e3478823e", 10)
+    gbg = search_indexnews_db("579190303c7ee91e3478823e", 5)
     # 专题
     zt_images = get_head_image("5765057edcc88e31a7d2e4c6", 4)
     zt = search_indexnews_db("579584633c7e431eaf791a06", 3)
@@ -43,10 +43,12 @@ def index():
     jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
     jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
+    # 城市联播
+    cslb = search_indexnews_db("583bcab159f02f781666d40d", 6)
     # 新闻排行
-    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 8)
-    zb = search_indexnews_db("576b37cda6d2e970226062d4", 8)
-    yb = search_indexnews_db("576b37daa6d2e970226062d7", 8)
+    hours = search_indexnews_db("576b37b8a6d2e970226062d1", 6)
+    zb = search_indexnews_db("576b37cda6d2e970226062d4", 6)
+    yb = search_indexnews_db("576b37daa6d2e970226062d7", 6)
     # 首页推荐置顶
     _list = db.IndexNews.find({"ChannelId": "579190303c7ee91e3478823f", "guide_image": {"$ne": ""}}).sort("orderno",
                                                                                                           pymongo.ASCENDING)
@@ -85,7 +87,8 @@ def index():
                            news_list=_news_list,
                            hours=hours, zb=zb, yb=yb, zd=_zd,
                            jrrp_2=jrrp_2,
-                           jrrp_5=jrrp_5
+                           jrrp_5=jrrp_5,
+                           cslb=cslb
                            )
 
 
@@ -180,7 +183,7 @@ def detail(id, page=1):
     if detail == None:
         abort(404)
     try:
-        db1=conn.mongo_conn_master()
+        db1 = conn.mongo_conn_master()
         db1.News.update({"numid": int(id), "Status": 4}, {"$set": {"Browseclick": detail["Browseclick"] + 1}})
     except:
         pass

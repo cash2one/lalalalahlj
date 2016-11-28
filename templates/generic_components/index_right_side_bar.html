@@ -32,6 +32,22 @@
             </div>
         </div>
     </div>
+    <!--城市联播-->
+    <div class="con_r_main ft30">
+      <div class="right_tlt">
+        <p>城市联播</p>
+      </div>
+      <div class="con_r_main">
+        <div class="gsp_right_deet02" >
+          <ul class="deet02_list">
+              {% for i in cslb %}
+            <li><a href="/d/{{ i._id }}.html" target="_blank">{{ i.title }}</a></li>
+              {% endfor %}
+
+          </ul>
+        </div>
+      </div>
+    </div>
     <!--今日热评-->
     <div class="con_r_main ft30">
       <div class="right_tlt">

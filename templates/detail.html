@@ -1,7 +1,10 @@
 {% extends "master_page/base_page.html" %}
 {% block title %}{{ detail.Title }} - 黑龙江网{% endblock %}
 {% block head %}{{ super() }}<meta name="keywords" content="{{ detail.Keywords|join(",") }}">
-    <meta name="description" content="{{ detail.Summary }}">{% endblock %}
+    <meta name="description" content="{{ detail.Summary }}">
+    <script src="http://siteapp.baidu.com/static/webappservice/uaredirect.js" type="text/javascript"></script>
+    <script type="text/javascript">uaredirect("/m/d/{{ ss }}.html");</script>
+{% endblock %}
 {% block middle %}
 <div class="end_tlt ft15 f14">您当前的位置 ：<a href="/" target="_blank">首页</a>{% if parent.Name=='首页' %}{% else %} >
     <a href="{{ parent.Href }}" target="_blank">{{ parent.Name }}</a>{% endif %} > <a

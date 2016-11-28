@@ -175,6 +175,7 @@ def s_list_page(id, page=1):
 @index_page.route('/d/<id>_<page>.html')
 def detail(id, page=1):
     # 新闻详细
+    ss = id
     detail = db.News.find_one({"numid": int(id), "Status": 4})
     if detail == None:
         abort(404)
@@ -262,7 +263,8 @@ def detail(id, page=1):
                            count=len(count), rmtui=rmtui, d=1,
                            jrrp_2=jrrp_2,
                            jrrp_5=jrrp_5,
-                           parent=parent
+                           parent=parent,
+                           ss=ss
                            )
 
 

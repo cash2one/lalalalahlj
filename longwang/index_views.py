@@ -42,11 +42,11 @@ def index():
     # 今日热评图片1
     jrrp_2 = get_image_news("577c647559f0d8efacae7e68", 1)
     # 今日热评文字3
-    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 4, jrrp_2)
+    jrrp_5 = get_image_news("577c647559f0d8efacae7e68", 3, jrrp_2)
     # 城市联播图片1
     cslb_1 = get_image_news("583bcab159f02f781666d40d", 1)
     # 城市联播文字2
-    cslb_2 = get_image_news("583bcab159f02f781666d40d", 2, cslb_1)
+    cslb_2 = get_image_news("583bcab159f02f781666d40d", 3, cslb_1)
     # 新闻排行
     hours = search_indexnews_db("576b37b8a6d2e970226062d1", 6)
     zb = search_indexnews_db("576b37cda6d2e970226062d4", 6)

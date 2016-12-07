@@ -27,4 +27,4 @@ app.register_blueprint(wap_page)  # wap_网站
 app.config['UPLOAD_FOLDER'] = '/zt/'
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

@@ -114,7 +114,7 @@
                 if (closeToBottom) {
                     var page = $("#page").val();
                     if (parseInt(page) <= 20) {
-                        $.ajaxSettings.async = false;
+                        $.ajaxSettings.async = fa   lse;
                         $.getJSON("/issift/" + page+"/", function (data) {
                             {#                 items=data.datalist;#}
                             var $firstTen = jQuery.parseHTML(data.datalist);
